@@ -1,1 +1,183 @@
-site_name: My Docs
+site_name: IMPLANTACIÓN DE SISTEMAS OPERATIVOS
+site_url: https://example.com/
+nav:
+  - Home: index.html
+  # - Exámenes:
+      # - Examen 1EVA: ./Examenes/Examen1EVA/examen.md
+    #     - Examen 2EVA: ./Examenes/Examen2EVA/examen.md
+    #    - Examen 3EVA: ./Examenes/Examen3EVA/examenbis.md
+    #    - Examen Ordinaria: ./Examenes/Ordinaria/ExamenOrd.md
+    #    - Examen Ordinaria Requisitos: ./Examenes/Ordinaria/Requisitos.md
+    #   - Examen Extraordinaria Requisitos: ./Examenes/Extraordinaria/Requisitos.md
+    # - Examen Extraordinaria: ./Examenes/Extraordinaria/ExamenExtra.md
+  - UD1 S.O. Estructura y Virtualización:
+      - Estructura: ./UD1/Estructura.md
+      - Bios: ./UD1/bios.md
+      - Virtualización: ./UD1/virtual.md
+      # - LXD: ./UD1/lxd.md
+      - Actividades: ./UD1/Actividades.md
+
+  - UD2 Configuración de los SO:
+      - Introducción Terminal: ./UD2/IntroTerminal.md
+      - Estructura Directorios: ./UD2/EstructuraDirectorios.md
+      - Gestión Archivos: ./UD2/gestionArchivos.md
+      - Redirecciones: ./UD2/redirecciones.md
+      - Filtros: ./UD2/filtros.md
+      - Búsqueda Archivos: ./UD2/busquedaArchivos.md
+      - Administración de memoria secundaria: ./UD2/AdminMemoriaSecundaria.md
+      - Gestor de Arranque: ./UD2/gestorArranque.md
+      - Permisos básicos: ./UD2/permisosBasicos.md
+      - Actividades: ./UD2/Actividades.md
+
+  - UD3.Administración de software base y aplicaciones:
+      - Instalación en Windows: ./UD3/InstaWindow.md
+      - Instalación en Linux: ./UD3/InstaLinux.md
+      - Gestión de procesos: ./UD3/procesosLinux.md
+      - Gestión de Servicios: ./UD3/GestiServicios.md
+      - Programación de Tareas: ./UD3/programaTareas.md
+      - Actualización del Sistema: ./UD3/actuSisOp.md
+      - Registro de Windows: ./UD3/registroWindow.md
+      - Actividades: ./UD3/Actividades.md
+
+  - UD4.Instalación de servicios de Directorios:
+      - Sistema de organización de redes: ./UD4/sistemaRedes.md
+      - Configuración del protocolo TCP/IP: ./UD4/IP.md
+      - Instalación del servicio de Directorio: ./UD4/instaServDirectorio.md
+      - Actividades: ./UD4/Actividades.md
+
+  - UD5.Configuración de servicios de directorio:
+      - Configuración de la resolución de nombres DNS: ./UD5/dns.md
+      - Instalación y configuración del servicio DHCP: ./UD5/dhcp.md
+      - Conexión de clientes a un controlador de dominio: ./UD5/conxClientesWindows.md
+      - Conexión de clientes a un controlador de dominio en GNU/Linux: ./UD5/conxClientesLinux.md
+      - Administración remota: ./UD5/adminRemota.md
+      - Actividades: ./UD5/Actividades.md
+
+  - UD6.Administración de usuarios locales y de red:
+      - Administración de usuarios: ./UD6/adminUsers.md
+      - Objetos predeterminados de Active Directory: ./UD6/objActive.md
+      - Política de contraseñas: ./UD6/polContra.md
+      - Scripts de inicio de sesión: ./UD6/scriptsInicio.md
+      - Directivas de seguridad locales: ./UD6/direcSegLocal.md
+      - Perfiles de usuario, móviles y obligatorios: ./UD6/perUsers.md
+      - Carpetas personales. Redireccionamiento de las carpetas de usuario: ./UD6/carpetasUsers.md
+      - Variables de entorno: ./UD6/varEntorno.md
+      - Actividades: ./UD6/Actividades.md
+
+  - UD7.Administración de objetos y políticas de grupo:
+      - Estrategias de anidamiento: ./UD7/estrategiaAnidamiento.md
+      - Grupos de seguridad: ./UD7/gruposSeguridad.md
+      - Unidades organizativas: ./UD7/unidadesOrganiza.md
+      - Equipos del dominio: ./UD7/equiposDominio.md
+      - Directivas de grupo: ./UD7/directivasGrupo.md
+      - Administración de directivas de grupo: ./UD7/adminDirecGrupo.md
+      - Actividades: ./UD7/Actividades.md
+
+  - UD8.Administración de recursos y permisos de acceso:
+      - Control de acceso a recursos: ./UD8/controlAcceso.md
+      - Derechos de inicio de sesión y privilegios de usuario: ./UD8/derechosInicio.md
+      - Permisos de red y locales: ./UD8/permisosRed.md
+      - Herencia: ./UD8/herencia.md
+      - Cuotas de disco: ./UD8/cuoatasDisco.md
+      - Actividades: ./UD8/Actividades.md
+
+  - UD9.Scripts en Linux:
+      - Creación de Scripts: ./UD9/Scripts.md
+      - Variables: ./UD9/Variables.md
+      - Aritmetica: ./UD9/Aritmetica.md
+      - Comparadores: ./UD9/Comparadores.md
+      - Estructura IF: ./UD9/IF.md
+      - Operadores Binarios: ./UD9/Operadores_Binarios.md
+      - Argumentos: ./UD9/Argumentos.md
+      - Esructura CASE: ./UD9/Case.md
+      - Esructura WHILE: ./UD9/While_Until.md
+      - Esructura FOR: ./UD9/For.md
+      - Break y Continue: ./UD9/Break.md
+      - Actividades: ./UD9/Actividades.md
+
+  - UD10.Introducción a PowerShell:
+      - Introducción: ./UD10/021_IntroducciónPwSh.md
+      - Comandos: ./UD10/comandos.md
+      - Manejo de Resultados: ./UD10/Manejo resultados.md
+      - Sintaxis: ./UD10/022_PowerShell_Sintaxis.md
+      - Control de flujo: ./UD10/023_PowerShell_ControlFlujo.md
+      - Vectores y funciones: ./UD10/024_PowerShell_VectoresFunciones.md
+      - Administración: ./UD10/Estandares WMI-CIM.md
+      - Actividades: ./UD10/Actividades.md
+
+  - UD11. Integridad y seguridad de la información.:
+      - Seguridad del sistema y de los datos: ./UD11/01_seguridadIntegridad.md
+      - Volúmenes distribuidos: ./UD11/02_VolumenesDistribuidos.md
+      - Sistemas de tolerancia a fallos: ./UD11/03_toleranciaFallos.md
+      - Encriptación de datos: ./UD11/04_encriptDatos.md
+      - Compresión de datos: ./UD11/05_compresionDatos.md
+      - Discos de arranque y de recuperación.: ./UD11/06_discosArranque.md
+      - Actividades: ./UD11/Actividades.md
+
+  - UD12.Respaldo de la información y del sistema operativo:
+      - Copias de seguridad del Sistema: ./UD12/01CopiasSeguriad.md
+      - Recuperación del sistema. Opciones de restauración del Sistema: ./UD12/02Recuperacion.md
+      - Clonación: ./UD12/03Clonacion.md
+      - Configuración y uso de instalaciones desatendidas: ./UD12/04IntalaciónDesatendidas.md
+      - Actividades: ./UD12/Actividades.md
+theme:
+  name: material
+  icon:
+    admonition:
+      example: octicons/terminal-16
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    # - navigation.sections
+    - navigation.top
+    - navigation.path
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotate
+    - content.code.copy
+    - toc.integrate
+  language: es
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: teal
+      accent: purple
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+      primary: teal
+      accent: lime
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - tables
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - pymdownx.keys
+  - attr_list
+  - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra_css:
+  - stylesheets/extra.css
