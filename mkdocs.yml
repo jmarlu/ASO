@@ -2,39 +2,32 @@ site_name: IMPLANTACIÓN DE SISTEMAS OPERATIVOS
 site_url: https://example.com/
 nav:
   - Home: index.html
-  - Unidades Didácticas:
-      - Recordatorio de Commandos:
-          - linux: ./recordatorios/commandosLinux.md
-          - windows: ./recordatorios/commandosWindows.md
-      - UD1 - Scripting:
-          - Contenidos: ud1/contenidos.md
-          - Actividades: ud1/actividades.md
-      - UD2 - Procesos del Sistema:
-          - Contenidos: ud2/contenidos.md
-          - Actividades: ud2/actividades.md
-      - UD3 - Servicio de Directorio:
-          - Contenidos: ud3/contenidos.md
-          - Actividades: ud3/actividades.md
-      - UD4 - Integración de SO en red:
-          - Contenidos: ud4/contenidos.md
-          - Actividades: ud4/actividades.md
-      - UD5 - Información del SO:
-          - Contenidos: ud5/contenidos.md
-          - Actividades: ud5/actividades.md
-      - UD6 - Administración Remota:
-          - Contenidos: ud6/contenidos.md
-          - Actividades: ud6/actividades.md
-      - UD7 - Servidores de Impresión:
-          - Contenidos: ud7/contenidos.md
-          - Actividades: ud7/actividades.md
-  - Evaluación:
-      - Sistema de evaluación: evaluacion/sistema.md
-      - Instrumentos de evaluación: evaluacion/instrumentos.md
-      - Recuperación: evaluacion/recuperacion.md
-      - Criterios de inasistencia: evaluacion/inasistencia.md
-  - Anexos:
-      - Ponderación de RA y CE: anexos/ponderacion.md
-      - Medidas de atención a la diversidad: anexos/diversidad.md  
+  
+  - Recordatorio de Commandos:
+      - linux: ./recordatorios/commandosLinux.md
+      - windows: ./recordatorios/commandosWindows.md
+  - UD1 - Scripting:
+      - Contenidos: ud1/contenidos.md
+      - Actividades: ud1/actividades.md
+  - UD2 - Procesos del Sistema:
+      - Contenidos: ud2/contenidos.md
+      - Actividades: ud2/actividades.md
+  - UD3 - Servicio de Directorio:
+      - Contenidos: ud3/contenidos.md
+      - Actividades: ud3/actividades.md
+  - UD4 - Integración de SO en red:
+      - Contenidos: ud4/contenidos.md
+      - Actividades: ud4/actividades.md
+  - UD5 - Información del SO:
+      - Contenidos: ud5/contenidos.md
+      - Actividades: ud5/actividades.md
+  - UD6 - Administración Remota:
+      - Contenidos: ud6/contenidos.md
+      - Actividades: ud6/actividades.md
+  - UD7 - Servidores de Impresión:
+      - Contenidos: ud7/contenidos.md
+      - Actividades: ud7/actividades.md
+  
 theme:
   name: material
   icon:
@@ -60,7 +53,7 @@ theme:
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
-      primary: teal
+      primary: indigo
       accent: purple
     - scheme: slate
       toggle:
