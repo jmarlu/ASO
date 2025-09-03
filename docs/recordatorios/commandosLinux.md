@@ -1,86 +1,63 @@
 # Comandos Linux
 
+## Objetivo
+Realizar una serie de ejercicios prácticos para reforzar el uso de comandos básicos y avanzados en Linux, siguiendo una progresión de lo más simple a lo más complejo.
 Aquí se incluirán los comandos básicos y avanzados para trabajar en sistemas Linux.
 
-## Actividad de Repaso: Comandos Linux
+## Introducción
 
-### Objetivo
-Realizar una serie de ejercicios prácticos para reforzar el uso de comandos básicos y avanzados en Linux, siguiendo una progresión de lo más simple a lo más complejo.
+### Ejercicio 1: Exploración básica
+1. Introduce el comando para mostrar tu ubicación actual en el sistema.
+2. Introduce el comando para listar los archivos y directorios en tu ubicación actual.
+3. Introduce el comando para crear un archivo vacío llamado `prueba.txt` en tu ubicación actual.
 
-### Instrucciones
-1. **Introducción a la Terminal**
-   - Abre una terminal en tu sistema Linux.
-   - Ejecuta el comando `echo "Hola, Linux"` para imprimir un mensaje en pantalla.
+### Ejercicio 2: Navegación y directorios
+1. Introduce el comando para cambiar al directorio raíz del sistema.
+2. Introduce el comando para crear un directorio llamado `nuevo_directorio` en tu ubicación actual.
+3. Introduce el comando para eliminar el directorio `nuevo_directorio` que creaste anteriormente.
 
-2. **Estructura de Directorios**
-   - Navega al directorio `/home` usando `cd`.
-   - Crea una estructura de carpetas: `mkdir -p practicaLinux/ejercicios`.
-   - Lista el contenido del directorio con `ls -la`.
+### Ejercicio 3: Visualización de contenido
+1. Introduce el comando para mostrar el contenido del archivo `/etc/passwd`.
+2. Introduce el comando para contar las líneas de un archivo llamado `prueba.txt`.
+3. Introduce el comando para buscar la palabra "root" en el archivo `/etc/passwd`.
 
-3. **Gestión de Archivos**
-   - Crea un archivo vacío: `touch practicaLinux/ejercicios/archivo1.txt`.
-   - Copia el archivo: `cp practicaLinux/ejercicios/archivo1.txt practicaLinux/ejercicios/archivo2.txt`.
-   - Mueve el archivo: `mv practicaLinux/ejercicios/archivo2.txt practicaLinux/archivo2.txt`.
-   - Elimina el archivo: `rm practicaLinux/archivo2.txt`.
 
-4. **Redirecciones**
-   - Redirige la salida de `ls` a un archivo: `ls -la > practicaLinux/listado.txt`.
-   - Añade una línea al archivo: `echo "Nueva línea" >> practicaLinux/listado.txt`.
+## Ejercicios avanzados
 
-5. **Filtros**
-   - Usa `cat` para mostrar el contenido de `listado.txt`.
-   - Filtra líneas que contengan la palabra "archivo": `grep "archivo" practicaLinux/listado.txt`.
+### Ejercicio 1: Listado de archivos y directorios
+1. Introduce el comando para listar todos los archivos y directorios, incluidos los ocultos, en el directorio raíz.
+2. Introduce el comando para obtener una lista detallada de todos los archivos y directorios, incluidos los contenidos de los subdirectorios, en `/home`.
+3. Introduce el comando para listar los nombres de los archivos en tu directorio actual que comiencen con la letra `a`.
 
-6. **Búsqueda de Archivos**
-   - Busca un archivo llamado `archivo1.txt` en el directorio `practicaLinux`: `find practicaLinux -name archivo1.txt`.
+### Ejercicio 2: Variables de entorno
+1. Introduce el comando para mostrar el valor de la variable de entorno que indica el directorio de inicio del usuario actual.
+2. Introduce el comando para mostrar el valor de la variable de entorno que contiene las rutas de búsqueda de comandos.
+3. Introduce el comando para añadir un nuevo directorio a la variable de entorno PATH.
 
-7. **Administración de Memoria Secundaria**
-   - Muestra el espacio en disco: `df -h`.
-   - Muestra el uso de espacio por directorio: `du -sh practicaLinux`.
+### Ejercicio 3: Gestión de directorios
+1. Introduce un comando para crear un directorio llamado `D1` en tu directorio de trabajo.
+2. Introduce un comando para copiar todos los archivos de tu directorio de trabajo al directorio `D1`.
+3. Introduce un comando para mover un archivo llamado `archivo.txt` desde tu directorio de trabajo al directorio `D1`.
 
-8. **Gestor de Arranque**
-   - Verifica el gestor de arranque instalado: `sudo grub-install --version`.
+### Ejercicio 4: Permisos y propietarios
+1. Introduce un comando para cambiar los permisos de un archivo para que solo el propietario pueda modificarlo.
+2. Introduce un comando para cambiar el propietario de un archivo al usuario `root`.
+3. Introduce un comando para añadir permisos de ejecución a todos los archivos con extensión `.sh` en tu directorio actual.
 
-9. **Permisos Básicos**
-   - Cambia los permisos de un archivo: `chmod 644 practicaLinux/ejercicios/archivo1.txt`.
-   - Cambia el propietario del archivo: `sudo chown usuario:grupo practicaLinux/ejercicios/archivo1.txt`.
+### Ejercicio 5: Búsqueda y manipulación de archivos
+1. Introduce un comando para buscar en tu directorio personal todos los archivos que comiencen con la letra `t` y modificar su fecha de actualización a la actual.
+2. Introduce un comando para buscar todos los archivos en el sistema que sean menores de 1 MB y pertenezcan al usuario `root`, y guarda sus nombres en un archivo llamado `ficheros_pequeños`.
+3. Introduce un comando para buscar todos los archivos del usuario `guest` que ocupen más de 5000 MB y tengan permisos de escritura, y elimínalos.
 
-## Actividades
+### Ejercicio 6: Procesamiento de contenido
+1. Introduce un comando para mostrar el contenido del archivo `/etc/passwd` y reemplazar los dos puntos (`:`) por guiones bajos (`_`).
+2. Introduce un comando para mostrar solo las líneas del archivo `/etc/passwd` que correspondan al usuario `root`.
+3. Introduce un comando para contar el número de líneas en el archivo `/etc/passwd` que contengan la palabra "bash".
 
-### Actividad 1: Introducción al terminal de comandos
-1. Investiga cómo abrir un terminal en tu sistema operativo y describe los pasos necesarios.
-2. Identifica las partes del _prompt_ y explica su significado.
-3. Ejecuta el comando `ls` en tu terminal y describe el resultado obtenido.
-
-### Actividad 2: Estructura de directorios
-1. Describe la diferencia entre el directorio raíz y el directorio personal del usuario.
-2. Investiga y enumera los directorios principales que se encuentran en un sistema basado en Unix, explicando brevemente su función.
-3. Utiliza el comando `pwd` para mostrar tu directorio actual y explica su utilidad.
-
-### Actividad 3: Gestión de archivos
-1. Investiga los diferentes tipos de archivos en Linux y proporciona ejemplos de cada uno.
-2. Crea un archivo de texto en tu terminal y verifica su tipo utilizando el comando `file`.
-3. Explica la importancia de la nomenclatura de archivos en Linux y menciona las reglas básicas para nombrarlos.
-
-### Actividad 4: Permisos básicos
-1. Investiga cómo se asignan los permisos a los archivos y directorios en Linux.
-2. Utiliza el comando `ls -l` para listar los permisos de un archivo o directorio y explica su significado.
-3. Describe los tres casos principales de permisos: propietario, grupo y otros.
-
-### Actividad 5: Redirecciones
-1. Investiga qué son las redirecciones en Linux y proporciona ejemplos de su uso.
-2. Utiliza el comando `>` para redirigir la salida de un comando a un archivo y describe el resultado.
-3. Explica la diferencia entre `>` y `>>` al redirigir salidas.
-
-### Actividad 6: Filtros
-1. Investiga qué son los filtros en Linux y menciona algunos comandos que actúan como filtros.
-2. Utiliza el comando `grep` para buscar líneas específicas en un archivo y describe el resultado.
-3. Explica la diferencia entre `grep` y `egrep`.
-
-### Actividad 7: Búsqueda de archivos
-1. Investiga el comando `find` y describe su uso general.
-2. Utiliza el comando `find` para buscar archivos con una extensión específica en un directorio y describe el resultado.
-3. Explica cómo se pueden combinar opciones en el comando `find` para realizar búsquedas más precisas.
+### Ejercicio 7: Redirecciones
+1. Introduce un comando para redirigir la salida estándar del contenido del archivo `/etc/shadow` al final de un archivo llamado `salida.txt` y los errores a un archivo llamado `errores.txt`.
+2. Introduce un comando para obtener las tres últimas líneas de un archivo llamado `t1` y guardar el resultado en un archivo llamado `resultado.txt`.
+3. Introduce un comando para redirigir la salida de un comando que liste los archivos en el directorio actual a un archivo llamado `listado.txt`, y los errores a un archivo llamado `errores_listado.txt`.
 
 ### Entrega
 - Realiza cada uno de los pasos y toma capturas de pantalla de los resultados.
