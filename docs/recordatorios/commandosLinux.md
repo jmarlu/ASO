@@ -59,6 +59,31 @@ Aquí se incluirán los comandos básicos y avanzados para trabajar en sistemas 
 2. Introduce un comando para obtener las tres últimas líneas de un archivo llamado `t1` y guardar el resultado en un archivo llamado `resultado.txt`.
 3. Introduce un comando para redirigir la salida de un comando que liste los archivos en el directorio actual a un archivo llamado `listado.txt`, y los errores a un archivo llamado `errores_listado.txt`.
 
+## Resumen de comandos que se utilizan en los ejercicios. 
+
+
+| Comando | Descripción | Ejemplo |
+|---------|-------------|---------|
+| `pwd` | Muestra el directorio actual de trabajo. | `pwd` devuelve `/home/usuario` si estás en tu directorio personal. |
+| `ls` | Lista los archivos y directorios en la ubicación actual. | `ls` muestra `archivo1 archivo2 directorio1`. |
+| `touch` | Crea un archivo vacío. | `touch prueba.txt` crea un archivo llamado `prueba.txt`. |
+| `cd` | Cambia de directorio. | `cd /` te lleva al directorio raíz. |
+| `mkdir` | Crea un nuevo directorio. | `mkdir nuevo_directorio` crea un directorio llamado `nuevo_directorio`. |
+| `rmdir` | Elimina un directorio vacío. | `rmdir nuevo_directorio` elimina el directorio si está vacío. |
+| `cat` | Muestra el contenido de un archivo. | `cat archivo.txt` muestra el contenido de `archivo.txt`. |
+| `wc` | Cuenta líneas, palabras y caracteres en un archivo. | `wc -l archivo.txt` cuenta las líneas en `archivo.txt`. |
+| `grep` | Busca patrones en un archivo. | `grep "root" /etc/passwd` busca la palabra "root" en el archivo. |
+| `find` | Busca archivos y directorios. | `find . -name "*.txt"` busca todos los archivos `.txt` en el directorio actual. |
+| `chmod` | Cambia los permisos de un archivo. | `chmod +x script.sh` hace ejecutable el archivo `script.sh`. |
+| `chown` | Cambia el propietario de un archivo. | `sudo chown root archivo` asigna el archivo al usuario `root`. |
+| `export` | Establece variables de entorno. | `export PATH=$PATH:/nuevo/directorio` añade un directorio al PATH. |
+| `tail` | Muestra las últimas líneas de un archivo. | `tail -n 3 archivo.txt` muestra las últimas 3 líneas de `archivo.txt`. |
+| `head` | Muestra las primeras líneas de un archivo. | `head -n 5 archivo.txt` muestra las primeras 5 líneas de `archivo.txt`. |
+| `echo` | Muestra un mensaje o el valor de una variable. | `echo $HOME` muestra el directorio personal del usuario. |
+| `cp` | Copia archivos o directorios. | `cp archivo1 archivo2` copia `archivo1` a `archivo2`. |
+| `mv` | Mueve o renombra archivos o directorios. | `mv archivo1 archivo2` renombra `archivo1` a `archivo2`. |
+| `rm` | Elimina archivos o directorios. | `rm archivo.txt` elimina el archivo `archivo.txt`. |
+
 ### Entrega
 - Realiza cada uno de los pasos y toma capturas de pantalla de los resultados.
 - Entrega un archivo comprimido con las capturas y los archivos generados durante la práctica.

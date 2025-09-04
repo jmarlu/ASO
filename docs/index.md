@@ -1,17 +1,95 @@
-# Welcome to MkDocs
+# Administración de Sistemas Operativos
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Aquí puedes encontrar los apuntes del módulo de ***Administración de Sistemas Operativos***, que se imparte en el segundo curso del ciclo formativo de grado superior de Administración de Sistemas Informáticos en Red.
 
-## Commands
+* La duración del módulo es de **85 horas lectivas**, a razón de **4 horas semanales**. Estas horas son totales que cubren las prácticas. 
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## ¿Qué voy a aprender?
 
-## Project layout
+* Administrar sistemas operativos de servidor, instalando y configurando el software, en condiciones de calidad para asegurar el funcionamiento del sistema.
+* Administrar servicios de recursos compartidos (acceso a directorios, impresión, accesos remotos, entre otros) instalando y configurando el software, en condiciones de calidad.
+* Administrar usuarios de acuerdo a las especificaciones de explotación para garantizar los accesos y la disponibilidad de los recursos del sistema.
+* Gestionar los recursos de diferentes sistemas operativos (programando y verificando su cumplimiento).
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+## Resultados de aprendizaje
+
+Un *Resultado de Aprendizaje* **"es una declaración de lo que el estudiante se espera que conozca, comprenda y sea capaz de hacer al finalizar un periodo de aprendizaje".** Los resultados de aprendizaje de ASO vienen definidos en el [RD 1629/2009.](https://www.boe.es/eli/es/rd/2009/10/30/1629)
+
+Los Resultados de Aprendizaje de ASO son:
+
+1. Administra el servicio de directorio interpretando especificaciones e integrándolo en una red.
+2. Administra procesos del sistema describiéndolos y aplicando criterios de seguridad y eficiencia.
+3. Gestiona la automatización de tareas del sistema, aplicando criterios de eficiencia y utilizando comandos y herramientas gráficas.
+4. Administra de forma remota el sistema operativo en red valorando su importancia y aplicando criterios de seguridad.
+5. Administra servidores de impresión describiendo sus funciones e integrándolos en una red.
+6. Integra sistemas operativos libres y propietarios, justificando y garantizando su interoperabilidad.
+7. Utiliza lenguajes de guiones en sistemas operativos, describiendo su aplicación y administrando servicios del sistema operativo.
+
+## Unidades didácticas / Temporalización
+
+A continuación se muestran las unidades didácticas y una estimación temporal de cada una de ellas, repartidas en cada evaluación con una duración aproximada de **30 sesiones por evaluación**.
+
+### Primera evaluación
+
+1. **ShellScripting Linux y Powershell. (4 sesiones, 8 horas)**
+    * ShellScripting, creación scripts, variables, parámetros, operadores.
+    * ShellScripting, Re-direcciones, tuberías.
+    * Control de flujo en Shell, vectores.
+2. **Administración de Procesos del Sistema. (4 sesiones, 8 horas)**
+    * Procesos. Tipos. Estados. Estructura. Transiciones, Hilos.
+    * Planificador, Tipos de algoritmos de planificación, Sincronización e interrupciones entre procesos.
+    * Gestión de procesos, demonios/servicios con Shell y Powershell.
+3. **Servicios de Directorio (4 sesiones, 8 horas)**
+    * Libres: LDAP (No tiene que ser ese obligatorio).
+    * Propietarios: Active Directory 
+### Segunda evaluación
+4. **Integración de sistemas operativos en red. (8 sesiones, 16 horas).**
+    * Escenarios heterogéneos, Protocolos para redes heterogéneas, servicios de recursos compartidos.
+    * NFS, Instalación, Permisos, Montaje automático de un cliente NFS, configuración de ficheros.
+    * NextCloud, Instalación, configuración de ficheros y permisos de usuario.
+    * SAMBA, fichero configuración, Creación directorio compartido, Integración de permisos.
+    * SAMBA, Administración de servicios con RSAT, perfiles de usuario y carpetas personales, cuotas.
+5. **Información del sistema operativo (4 sesiones, 8 horas).**
+    * Estructura directorios. Búsqueda de información del sistema. Rendimiento. Estadísticas.
+    * Planificación de Tareas, Programador de tareas, `crontab`.
+    * Servicio Monitorización, Nagios, PRTG, OpenNMS.
+6. **Servicios de acceso y administración remota (4 sesiones, 8 horas).** 
+    * Acceso remoto en modo texto `SSH`. Tunelización.
+    * Escritorio Remoto:  RDP y xRDP. Acceso remoto de equipos en el AD con PWSH.
+    * Herramientas gráficas externas, TeamViewer, AnyDesk y Apache Guacamole.
+7. **Administración de Servidores de Impresión (4 sesiones, 8 horas).**
+    * Sistemas de Impresión, Puertos y protocolos de impresión.
+    * Servidor de impresión en GNU/Linux, `CUPS`. Órdenes para la gestión de impresoras y trabajos.
+    * Administración de los Servicios de Impresión en Windows Server.
+
+## Evaluación
+### Instrumentos de calificación
+
+1. **Instrumento de calificación 1 (IC1):**: *escala de valores* comprendidas entre 0 y 3 puntos calificados de la siguiente forma:
+    * **0**: No entregada.
+    * **1**: Entregada pero solución errónea o incompleta.
+    * **2**: Entregada y solución aceptable, aunque tiene algún apartado incompleto.
+    * **3**: Entregada y solución correcta.
+
+2. **Instrumento de calificación 2 (IC2):** *escala de valores* comprendidas entre 0 y 7 puntos calificados de la siguiente forma:
+    * **0**: No entregada
+    * **1-3**: Entregada pero solución errónea o incompleta
+    * **3-6**: Entregada y solución aceptable, aunque tiene algún apartado incompleto.
+    * **7**: Entregada y solución correcta.
+### Instrumentos de Evaluación
+La nota de cada **Resultado de Aprendizaje** se calcula mediante la media ponderada de los puntos obtenidos, de los siguientes instrumentos de evaluación.
+
+1. **Instrumento de Evaluación 1 (IE1). Trabajo en Clase/Actividades.**
+    1. Se evalúan todas las actividades realizadas en clase y en casa.
+    2. Las actividades se evalúan mediante tareas en el `moodle` aplicando el **IC1**.
+    
+2. **Instrumentos de Evaluación 2 (IE2). Pruebas de Auditoría.**
+    1. Cuestionario multi-opción (test) de 20 preguntas sobre la teoría de la unidad.
+    2. Ejercicios prácticos sobre las actividades realizadas de la unidad.
+
+!!! not "**Nota**:"    
+    Esta prueba se califica entre 0 y 30 puntos siguiendo las siguientes premisas:
+- **0-10** puntos. Donde Cada dos contestaciones incorrectas contestadas resta una bien.
+- **0-6** puntos: dos ejercicios de *nivel medio-bajo*, 3 puntos cada uno de ellos aplicando **IC1**.
+- **0-14** puntos: dos ejercicios de *nivel medio-alto* aplicando **IC2**
+
