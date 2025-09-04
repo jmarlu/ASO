@@ -27,40 +27,68 @@ Los Resultados de Aprendizaje de ASO son:
 
 ## Unidades didácticas / Temporalización
 
-A continuación se muestran las unidades didácticas y una estimación temporal de cada una de ellas, repartidas en cada evaluación con una duración aproximada de **30 sesiones por evaluación**.
+A continuación se muestran las unidades didácticas y una estimación temporal de cada una de ellas, ajustadas al calendario escolar y repartidas en cada evaluación con una duración aproximada de **32 sesiones**.
 
 ### Primera evaluación
 
 1. **ShellScripting Linux y Powershell. (4 sesiones, 8 horas)**
+    * Fechas: 8-sep-2025 al 24-sep-2025.
     * ShellScripting, creación scripts, variables, parámetros, operadores.
     * ShellScripting, Re-direcciones, tuberías.
     * Control de flujo en Shell, vectores.
 2. **Administración de Procesos del Sistema. (4 sesiones, 8 horas)**
+    * Fechas: 29-sep-2025 al 15-oct-2025 (excepto festivo 10-oct-2025).
     * Procesos. Tipos. Estados. Estructura. Transiciones, Hilos.
     * Planificador, Tipos de algoritmos de planificación, Sincronización e interrupciones entre procesos.
     * Gestión de procesos, demonios/servicios con Shell y Powershell.
 3. **Servicios de Directorio (4 sesiones, 8 horas)**
+    * Fechas: 20-oct-2025 al 5-nov-2025.
     * Libres: LDAP (No tiene que ser ese obligatorio).
     * Propietarios: Active Directory 
 ### Segunda evaluación
 4. **Integración de sistemas operativos en red. (8 sesiones, 16 horas).**
+    * Fechas: 10-nov-2025 al 10-dic-2025.
     * Escenarios heterogéneos, Protocolos para redes heterogéneas, servicios de recursos compartidos.
     * NFS, Instalación, Permisos, Montaje automático de un cliente NFS, configuración de ficheros.
     * NextCloud, Instalación, configuración de ficheros y permisos de usuario.
     * SAMBA, fichero configuración, Creación directorio compartido, Integración de permisos.
     * SAMBA, Administración de servicios con RSAT, perfiles de usuario y carpetas personales, cuotas.
 5. **Información del sistema operativo (4 sesiones, 8 horas).**
+    * Fechas: 15-ene-2026 al 3-feb-2026 (excepto festivo 16-feb-2026).
     * Estructura directorios. Búsqueda de información del sistema. Rendimiento. Estadísticas.
     * Planificación de Tareas, Programador de tareas, `crontab`.
     * Servicio Monitorización, Nagios, PRTG, OpenNMS.
 6. **Servicios de acceso y administración remota (4 sesiones, 8 horas).** 
+    * Fechas: 8-feb-2026 al 24-feb-2026.
     * Acceso remoto en modo texto `SSH`. Tunelización.
     * Escritorio Remoto:  RDP y xRDP. Acceso remoto de equipos en el AD con PWSH.
     * Herramientas gráficas externas, TeamViewer, AnyDesk y Apache Guacamole.
 7. **Administración de Servidores de Impresión (4 sesiones, 8 horas).**
+    * Fechas: 1-mar-2026 al 16-mar-2026 (excepto festivo 20-mar-2026).
     * Sistemas de Impresión, Puertos y protocolos de impresión.
     * Servidor de impresión en GNU/Linux, `CUPS`. Órdenes para la gestión de impresoras y trabajos.
     * Administración de los Servicios de Impresión en Windows Server.
+
+## Diagrama de Gantt
+
+A continuación se presenta un diagrama de Gantt que ilustra la temporalización de las unidades didácticas y sus fechas:
+
+```mermaid
+gantt
+    title Temporalización de las Unidades Didácticas
+    dateFormat  YYYY-MM-DD
+    section Primera Evaluación
+    ShellScripting Linux y Powershell      :done, 2025-09-08, 2025-09-24
+    Administración de Procesos del Sistema:done, 2025-09-29, 2025-10-15
+    Servicios de Directorio               :done, 2025-10-20, 2025-11-05
+    section Segunda Evaluación
+    Integración de sistemas operativos en red :active, 2025-11-10, 2025-12-10
+    Información del sistema operativo         :2026-01-15, 2026-02-03
+    Servicios de acceso y administración remota :2026-02-08, 2026-02-24
+    Administración de Servidores de Impresión  :2026-03-01, 2026-03-16
+```
+
+Este diagrama proporciona una visión general de las fechas y duración de cada unidad didáctica, incluyendo los festivos relevantes.
 
 ## Evaluación
 ### Instrumentos de calificación
