@@ -6,8 +6,8 @@ nav:
   - Recordatorio de Commandos:
       - linux: ./recordatorios/commandosLinux.md
       - windows: ./recordatorios/commandosWindows.md
-  - UD1 - Shell Scripting:
-      - Introducción: ./UD1/011_ShellScripting_Intro.md
+  - UD1-Shell Scripting:
+      - Introducción: ./UD1/011_ShellScript_Intro.md
       - Sintaxis: ./UD1/012_ShellScripting_Sintaxis.md
       - Estructuras de Control: ./UD1/013_ShellScripting_Control.md
       - Funciones: ./UD1/014_ShellScripting_VectoresFunciones.md
@@ -16,7 +16,8 @@ theme:
   name: material
 
 markdown_extensions:
-  - pymdownx.arithmatex:
+  - pymdownx.arithmatex
+  - pymdownx.superfences
 
 extra_css:
   - stylesheets/extra.css
