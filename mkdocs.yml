@@ -2,7 +2,6 @@ site_name: Administración de Sistemas Operativos
 site_url: https://example.com/
 nav:
   - Home: index.html
-  
   - Recordatorio de Commandos:
       - linux: ./recordatorios/commandosLinux.md
       - windows: ./recordatorios/commandosWindows.md
@@ -47,8 +46,29 @@ theme:
       accent: lime
 
 markdown_extensions:
-  - pymdownx.arithmatex
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - tables
+  - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.mark
+  - pymdownx.keys
+  - attr_list
+  - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 extra_css:
   - stylesheets/extra.css
