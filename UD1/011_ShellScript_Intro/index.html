@@ -1,0 +1,900 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://example.com/UD1/011_ShellScript_Intro/">
+      
+      
+        <link rel="prev" href="../../recordatorios/commandosWindows/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
+    
+    
+      
+        <title>Introducción - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+  
+  
+    
+      
+      
+    
+  
+  
+  <style>:root{--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M0%202.75C0%201.784.784%201%201.75%201h12.5c.966%200%201.75.784%201.75%201.75v10.5A1.75%201.75%200%200%201%2014.25%2015H1.75A1.75%201.75%200%200%201%200%2013.25Zm1.75-.25a.25.25%200%200%200-.25.25v10.5c0%20.138.112.25.25.25h12.5a.25.25%200%200%200%20.25-.25V2.75a.25.25%200%200%200-.25-.25ZM7.25%208a.75.75%200%200%201-.22.53l-2.25%202.25a.749.749%200%200%201-1.275-.326.75.75%200%200%201%20.215-.734L5.44%208%203.72%206.28a.749.749%200%200%201%20.326-1.275.75.75%200%200%201%20.734.215l2.25%202.25c.141.14.22.331.22.53m1.5%201.5h3a.75.75%200%200%201%200%201.5h-3a.75.75%200%200%201%200-1.5%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduccion" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introducción
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Recordatorio de Commandos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Recordatorio de Commandos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recordatorios/commandosLinux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    linux
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recordatorios/commandosWindows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    windows
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    UD1-Shell Scripting
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            UD1-Shell Scripting
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Introducción
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introducción
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#formato-comandos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formato comandos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principales-comandos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principales comandos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-script-en-gnulinux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell Script en GNU/Linux
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shell Script en GNU/Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estructura-general" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura general
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creacion-shell-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creación Shell scripts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-primer-shellscript" class="md-nav__link">
+    <span class="md-ellipsis">
+      El primer Shellscript
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comentarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comentarios
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#depuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Depuración
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividades
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="introduccion">Introducción</h1>
+<p>Para administrar sistemas operativos es crucial manejar y dominar las interfaces (terminales) disponibles que nos permiten gestionarlos. Entre dichas interfaces destacan los siguientes tipos:</p>
+<ul>
+<li>De líneas  de texto (<strong>CLI</strong>, Command-Line Interface, interfaz de línea de comandos),</li>
+<li>Gráficos/ventanas (<strong>GUI</strong>, Graphical User Interface, interfaz gráfica de usuario),</li>
+<li>De lenguaje natural (<strong>NUI</strong>, Natural User Interface, interfaz natural de usuario, ejemplo SIRI en IOS).</li>
+</ul>
+<p>Este tema se centra en Sistemas basados en código libre del tipo UNIX, debido a su amplio despliegue en empresas para implementar servicios, más en concreto de distribuciones <strong>Linux/GNU</strong>.</p>
+<p>El CLI de las distribuciones de <strong>Linux/GNU</strong> es conocido como Shell o terminal, con esta interfaz es posible crear cualquier comando que el usuario necesite, incluso para las tareas más específicas, <strong>debido a estar directamente conectado al Kernel a diferencia de las aplicaciones como se puede observar en la siguiente figura</strong>.</p>
+<figure>
+  <img src="imagenes/01/EstructuraLinux.png" width="475"/>
+  <figcaption>Estructura de Linux</figcaption>
+</figure>
+
+<div class="admonition tip">
+<p class="admonition-title"><strong>NOTA</strong></p>
+<ul>
+<li>Por lo tanto, es buena práctica que el administrador del sistemas tenga conocimientos en el manejo y gestión del terminal Shell, <strong>así como en la programación de scripts</strong>.</li>
+</ul>
+</div>
+<h2 id="shell">Shell</h2>
+<ul>
+<li>En informática, el <strong>shell o intérprete de comandos</strong>, es el programa informático que permite a los usuarios interactuar con el sistema, procesando las órdenes que se le indican; además provee una interfaz de usuario para acceder a los servicios del sistema operativo.</li>
+<li>Los comandos ejecutables desde el shell pueden clasificarse en <strong>internos</strong> (corresponden en realidad a órdenes interpretadas por el propio shell) y <strong>externos</strong> (corresponden a ficheros ejecutables externos al shell, conocidos como guiones o scripts).</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title"><strong>IMPORTANTE:</strong></p>
+<ul>
+<li>Linux dispone de varios Shell diferentes <em>csh</em>, <em>bash</em>, <em>sh</em>, <em>ksh</em>, <em>zsh</em>, etc... A destacar:</li>
+<li><strong>sh (Bourne Shell)</strong>: este shell fue usado desde las primeras versiones de Unix (Unix Versión 7). Recibe ese nombre por su desarrollador, <em>Stephen Bourne</em>, de los Laboratorios <em>Bell de AT&amp;T</em>.</li>
+<li><strong>bash</strong>: fue desarrollado para ser un superconjunto de la funcionalidad del Bourne Shell, siendo el intérprete de comandos asignado por defecto a los usuarios en las distribuciones de Linux, por lo que es el shell empleado en la mayoría de las consolas de comandos de Linux. Se caracteriza por una gran funcionalidad adicional a la del Bourne Shell.</li>
+<li>Para intentar homogeneizar esta diversidad de shells, el <strong>IEEE</strong> definió un estándar de «intérprete de comandos» bajo la especificación <strong>POSIX 1003.2</strong> (también recogida como <strong>ISO 9945.2</strong>). La creación de dicho estándar se basó en la sintaxis que presentaban múltiples shells de la familia Bourne shell.</li>
+<li><strong>bash</strong> respeta completamente el estándar POSIX, sobre el que añade un número considerable de extensiones (estructura select, arrays, mayor número de operadores,…). En este tema utilizaremos el Shell de <strong>bash</strong>.</li>
+</ul>
+</div>
+<h3 id="formato-comandos">Formato comandos</h3>
+<p>En general, el formato de las órdenes de GNU/Linux es el siguiente:</p>
+<ul>
+<li><strong>Comando</strong>, que indica la acción que se va a ejecutar.</li>
+<li><strong>Modificadores</strong>, que cambian el comportamiento estándar del comando para adaptarlo a las necesidades.</li>
+<li><strong>Argumentos</strong>, elementos necesarios para realizar la acción del comando.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>Un dato a tener en cuenta cuando se trabaja con un terminal, es que GNU/Linux distingue entre mayúsculas y minúsculas, es decir, la ejecución de comandos en el CLI de Linux es <strong>CASE SENSITIVE</strong>.</li>
+</ul>
+</div>
+<h3 id="principales-comandos">Principales comandos</h3>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Acción</th>
+<th>Comando</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ls</code></td>
+<td>muestra el contenido de una carpeta</td>
+<td><code>uname</code></td>
+<td>muestra información del sistema</td>
+</tr>
+<tr>
+<td><code>df</code></td>
+<td>muestra estado del disco</td>
+<td><code>cd</code></td>
+<td>cambiar de directorio</td>
+</tr>
+<tr>
+<td><code>fsck</code></td>
+<td>comprueba integridad de discos</td>
+<td><code>mkdir</code></td>
+<td>crear directorios</td>
+</tr>
+<tr>
+<td><code>mount</code></td>
+<td>monta particiones y volúmenes</td>
+<td><code>shutdown</code></td>
+<td>apaga el equipo (<em>restart</em> o <em>reboot</em>)</td>
+</tr>
+<tr>
+<td><code>unmount</code></td>
+<td>desmonta particiones y volúmenes</td>
+<td><code>clear</code></td>
+<td>limpia la pantalla</td>
+</tr>
+<tr>
+<td><code>fdisk</code></td>
+<td>administra particiones</td>
+<td><code>date/cal</code></td>
+<td>muestra hora/calendario del sistema</td>
+</tr>
+<tr>
+<td><code>echo</code></td>
+<td>imprime por pantalla</td>
+<td><code>who</code></td>
+<td>muestra quien está conectado</td>
+</tr>
+</tbody>
+</table>
+<h2 id="shell-script-en-gnulinux">Shell Script en GNU/Linux</h2>
+<ul>
+<li>Un Shell script (guion) es un archivo de texto que contiene una serie de comandos que, ordenados de forma específica, realizan la tarea para la que fueron diseñados, es decir, es un programa escrito de comandos Shell para ser ejecutados de forma secuencial.</li>
+<li>De esta forma se pueden automatizar tareas repetitivas ahorrando tiempo al administrador.</li>
+<li>Un programa escrito en shell se denomina shellscript, programa shell o simplemente un shell.</li>
+</ul>
+<h3 id="estructura-general">Estructura general</h3>
+<ul>
+<li>En su forma más básica, un shell-script puede ser un simple fichero de texto que contenga uno o varios comandos.</li>
+<li>Para ayudar a la identificación del contenido a partir del nombre del archivo, es habitual que los shell scripts tengan la extensión «.sh»,</li>
+<li>Se seguirá este criterio pero hay que tener en cuenta que es informativo y opcional.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#*********************************</span>
+<span class="c1">#Este es mi primer script</span>
+<span class="c1">#*********************************</span>
+<span class="nb">echo</span><span class="w"> </span>Hola<span class="w"> </span>Mundo
+<span class="c1">#Esto es un comentario, soy muy útil.</span>
+</code></pre></div>
+<h3 id="creacion-shell-scripts">Creación Shell scripts</h3>
+<ul>
+<li>Para crear un script utilizaremos cualquiera de los editores de texto plano como <em>vi</em>, <em>vim</em> , <em>nano</em>.</li>
+<li>Después de crear el archivo hay que dotarlo de permisos de lectura y ejecución. </li>
+</ul>
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span><span class="nv">ugo</span><span class="o">=</span>rx<span class="w"> </span>script.sh
+</code></pre></div>
+<ul>
+<li>
+<p>Para ejecutar el archivo: (ubicados en la carpeta que contiene el archivo), se pueden utilizar el siguiente archivo:</p>
+<div class="highlight"><pre><span></span><code>./script.sh
+</code></pre></div>
+</li>
+<li>
+<p>Además se puede utilizar otro método que consiste en definir la carpeta dentro de la variable de entorno <strong>PATH</strong> (editando el fichero <strong>.bashrc</strong>.) Una vez realizado ya se podría ejecutar directamente el fichero con el nombre del script.</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/home/administrador/scripts
+<span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/home/administrador/scripts
+<span class="nb">export</span><span class="w"> </span>PATH
+</code></pre></div>
+</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title"><strong>NOTA</strong></p>
+<ul>
+<li>La primera forma ejecutará el contenido del shell script en un subshell o hilo del terminal original. El programa se ejecuta hasta que se terminan las órdenes del archivo, se recibe una señal de finalización, se encuentra un error sintáctico o se llega a una orden <strong>exit</strong>. Cuando el programa termina, el subshell muere y el terminal original toma el control del sistema. </li>
+<li>Esto no ocurre si se usa la opción de <strong>PATH</strong>, la cual ejecuta el contenido del shell script en el mismo terminal donde fue invocado.</li>
+</ul>
+</div>
+<h3 id="el-primer-shellscript">El primer Shellscript</h3>
+<ul>
+<li>Crea un ejemplo llamado <em>listar.sh</em>, se aconseja ejecutar los siguientes comandos de forma secuencial.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~
+mkdir<span class="w"> </span>scripts
+<span class="nb">cd</span><span class="w"> </span>scripts
+touch<span class="w"> </span>listar.sh
+nano<span class="w"> </span>listar.sh
+</code></pre></div>
+<ul>
+<li>Genera, guarda y prueba el siguiente código.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="ch">#! /bin/bash</span>
+clear
+ls<span class="w"> </span>-la
+<span class="nb">echo</span><span class="w"> </span>“Listado<span class="w"> </span>realizado<span class="w"> </span>el<span class="w"> </span>“<span class="k">$(</span>date<span class="k">)</span>
+</code></pre></div>
+<h3 id="comentarios">Comentarios</h3>
+<ul>
+<li>Para realizar un comentario se usa el carácter <strong>#</strong></li>
+<li>Cuando el terminal encuentra una línea que comienza con este carácter, ignora todo lo que existe desde él hasta el final de línea.</li>
+<li>A esta regla existe una excepción:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1">#!/bin/bash</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li>Es el "Shebang" Indica el terminal que será utilizado por el shell script, no un comentario.</li>
+<li>Esta línea debe ser la primera del fichero que, aún siendo opcional, indica el tipo de lenguaje en el que ha sido escrito el programa.</li>
+<li>Si la versión de GNU/Linux dispone de el terminal especificado en esta línea, ejecutará el código con él, si no es así, utilizará el que por defecto tenga asignado el usuario que lo ejecuta.</li>
+</ul>
+</div>
+<h2 id="depuracion">Depuración</h2>
+<p>Esta tarea no es sencilla en ShellScripting, aun así se recomienda los siguientes métodos de depuración, apoyados en los siguientes argumentos a la hora de ejecutar el script:</p>
+<ul>
+<li><code>-x</code> &#8594; Expande cada orden simple, e imprime por pantalla la orden con sus argumentos, y a continuación su salida.</li>
+<li><code>-v</code> &#8594; Imprime en pantalla cada elemento completo del script (estructura de control, …) y a continuación su salida.</li>
+</ul>
+<p>Además en el propio Script se pueden utilizar los siguientes comandos:</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>set -x</code> <code>set –xv</code></td>
+<td>Activa las trazas/verbose. Se debe ubicar justo antes del trozo del script que se desea depurar.</td>
+</tr>
+<tr>
+<td><code>set +x</code> <code>set +xv</code></td>
+<td>Desactiva las trazas/verbose. Ubicarlo justo después del trozo del script que se desea depurar.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="actividades">Actividades</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Escribe el código de los scripts en <strong>ShellScript</strong> que se detallan en cada ejercicio. Deberás crear un fichero de texto para cada ejercicio con el siguiente nombre: ejXXX.sh, donde las X representan el número de ejercicio. Una vez terminada la práctica, comprime todos estos ficheros en uno y súbelos al Moodle.</p>
+</div>
+<ol>
+<li>
+<p>Crea un shell script que muestre por pantalla el mensaje “<strong>¡Hola Mundo!</strong>”.</p>
+</li>
+<li>
+<p>Realiza un script que guarde en un fichero el listado de archivos y directorios de la carpeta <em>etc</em>, a posteriori que imprima por pantalla dicho listado.</p>
+</li>
+<li>
+<p>Modifica el script anterior para que además muestre por pantalla el número de líneas del archivo y el número de palabras.</p>
+</li>
+<li>
+<p>Depura los ejercicios anteriores utilizando los argumentos <code>-x</code> y <code>-v</code>.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../../recordatorios/commandosWindows/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: windows">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                windows
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "navigation.path", "navigation.footer", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotate", "content.code.copy", "toc.integrate"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>
