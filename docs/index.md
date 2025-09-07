@@ -94,24 +94,26 @@ Este diagrama proporciona una visión general de las fechas y duración de cada 
 ### Instrumentos de calificación
 
 1. **Instrumento de calificación 1 (IC1):**: *escala de valores* comprendidas entre 0 y 3 puntos calificados de la siguiente forma:
-    * **0**: No entregada.
-    * **1**: Entregada pero solución errónea o incompleta.
-    * **2**: Entregada y solución aceptable, aunque tiene algún apartado incompleto.
-    * **3**: Entregada y solución correcta.
+    * **0**: No realizada.
+    * **1**: Realizada pero solución errónea o incompleta.
+    * **2**: Realizada y solución aceptable, aunque tiene algún apartado incompleto.
+    * **3**: Realizada y solución correcta.
 
 2. **Instrumento de calificación 2 (IC2):** *escala de valores* comprendidas entre 0 y 7 puntos calificados de la siguiente forma:
-    * **0**: No entregada
-    * **1-3**: Entregada pero solución errónea o incompleta
-    * **3-6**: Entregada y solución aceptable, aunque tiene algún apartado incompleto.
-    * **7**: Entregada y solución correcta.
+    * **0**: No realizada.
+    * **1-3**: Realizada pero solución errónea o incompleta.
+    * **3-6**: Realizada y solución aceptable, aunque tiene algún apartado incompleto.
+    * **7**: Realizada y solución correcta.
+
 ### Instrumentos de Evaluación
 La nota de cada **Resultado de Aprendizaje** se calcula mediante la media ponderada de los puntos obtenidos, de los siguientes instrumentos de evaluación.
 
 1. **Instrumento de Evaluación 1 (IE1). Trabajo en Clase/Actividades.**
-    1. Se evalúan todas las actividades realizadas en clase y en casa.
-    2. Las actividades se evalúan mediante tareas en el `moodle` aplicando el **IC1**.
+    1. Se evalúan todas las actividades realizadas en clase.
+    2. Las actividades se evalúan mediante observación directa del docente y aplicando el **IC1**.
     
 2. **Instrumentos de Evaluación 2 (IE2). Pruebas de Auditoría.**
+    Pueden conterner:
     1. Cuestionario multi-opción (test) de 20 preguntas sobre la teoría de la unidad.
     2. Ejercicios prácticos sobre las actividades realizadas de la unidad.
 
@@ -119,5 +121,5 @@ La nota de cada **Resultado de Aprendizaje** se calcula mediante la media ponder
     Esta prueba se califica entre 0 y 30 puntos siguiendo las siguientes premisas:
 - **0-10** puntos. Donde Cada dos contestaciones incorrectas contestadas resta una bien.
 - **0-6** puntos: dos ejercicios de *nivel medio-bajo*, 3 puntos cada uno de ellos aplicando **IC1**.
-- **0-14** puntos: dos ejercicios de *nivel medio-alto* aplicando **IC2**
+- **0-14** puntos: dos ejercicios de *nivel medio-alto* aplicando **IC2**.
 

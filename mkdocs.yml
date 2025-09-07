@@ -6,86 +6,18 @@ nav:
   - Recordatorio de Commandos:
       - linux: ./recordatorios/commandosLinux.md
       - windows: ./recordatorios/commandosWindows.md
-  - UD1 - Scripting:
-      - Contenidos: ud1/contenidos.md
-      - Actividades: ud1/actividades.md
-  - UD2 - Procesos del Sistema:
-      - Contenidos: ud2/contenidos.md
-      - Actividades: ud2/actividades.md
-  - UD3 - Servicio de Directorio:
-      - Contenidos: ud3/contenidos.md
-      - Actividades: ud3/actividades.md
-  - UD4 - Integración de SO en red:
-      - Contenidos: ud4/contenidos.md
-      - Actividades: ud4/actividades.md
-  - UD5 - Información del SO:
-      - Contenidos: ud5/contenidos.md
-      - Actividades: ud5/actividades.md
-  - UD6 - Administración Remota:
-      - Contenidos: ud6/contenidos.md
-      - Actividades: ud6/actividades.md
-  - UD7 - Servidores de Impresión:
-      - Contenidos: ud7/contenidos.md
-      - Actividades: ud7/actividades.md
-  
+  - UD1 - Shell Scripting:
+      - Introducción: ./UD1/011_ShellScripting_Intro.md
+      - Total: ./UD1/11_ShellScripting_Total.md
+      - Sintaxis: ./UD1/012_ShellScripting_Sintaxis.md
+      - Estructuras de Control: ./UD1/013_ShellScripting_Control.md
+      - Funciones: ./UD1/014_ShellScripting_VectoresFunciones.md
+      
 theme:
   name: material
-  icon:
-    admonition:
-      example: octicons/terminal-16
-  font:
-    text: Roboto
-    code: Roboto Mono
-  features:
-    # - navigation.sections
-    - navigation.top
-    - navigation.path
-    - navigation.footer
-    - search.suggest
-    - search.highlight
-    - content.tabs.link
-    - content.code.annotate
-    - content.code.copy
-    - toc.integrate
-  language: es
-  palette:
-    - scheme: default
-      toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
-      primary: indigo
-      accent: purple
-    - scheme: slate
-      toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode
-      primary: teal
-      accent: lime
 
 markdown_extensions:
   - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - admonition
-  - pymdownx.arithmatex:
-      generic: true
-  - footnotes
-  - tables
-  - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.mark
-  - pymdownx.keys
-  - attr_list
-  - md_in_html
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
 
 extra_css:
   - stylesheets/extra.css
