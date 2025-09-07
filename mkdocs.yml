@@ -14,6 +14,37 @@ nav:
       
 theme:
   name: material
+  icon:
+    admonition:
+      example: octicons/terminal-16
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    # - navigation.sections
+    - navigation.top
+    - navigation.path
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotate
+    - content.code.copy
+    - toc.integrate
+  language: es
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: teal
+      accent: purple
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+      primary: teal
+      accent: lime
 
 markdown_extensions:
   - pymdownx.arithmatex
