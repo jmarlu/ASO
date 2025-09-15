@@ -2,13 +2,44 @@ site_name: Administración de Sistemas Operativos
 site_url: https://example.com/
 nav:
   - Home: index.html
-  - Recordatorio de Commandos:
-      - linux: ./recordatorios/commandosLinux.md
-      - windows: ./recordatorios/commandosWindows.md
+ # - Recordatorio de Commandos:
+     # - linux: ./recordatorios/commandosLinux.md
+     # - windows: ./recordatorios/commandosWindows.md
   - UD1-Shell Scripting:
-      - Introducción: ./UD1/011_ShellScript_Intro.md
+    - Linux:
+        - Creación de Scripts: ./UD1/linux/Scripts.md
+        - Variables: ./UD1/linux/Variables.md
+        - Aritmetica: ./UD1/linux/Aritmetica.md
+        - Comparadores: ./UD1/linux/Comparadores.md
+        - Estructura IF: ./UD1/linux/IF.md
+        - Operadores Binarios: ./UD1/linux/Operadores_Binarios.md
+        - Argumentos: ./UD1/linux/Argumentos.md
+        - Esructura CASE: ./UD1/linux/Case.md
+        - Esructura WHILE: ./UD1/linux/While_Until.md
+        - Esructura FOR: ./UD1/linux/For.md
+        - Break y Continue: ./UD1/linux/Break.md
+       # - Actividades: ./UD1/linux/Actividades.md
+    - Windows:
+      - Introducción: ./UD1/windows/021_IntroducciónPwSh.md
+      - Comandos: ./UD1/windows/comandos.md
+      - Manejo de Resultados: ./UD1/windows/Manejo resultados.md
+      - Sintaxis: ./UD1/windows/022_PowerShell_Sintaxis.md
+      - Control de flujo: ./UD1/windows/023_PowerShell_ControlFlujo.md
+      - Vectores y funciones: ./UD1/windows/024_PowerShell_VectoresFunciones.md
+      - Administración: ./UD1/windows/Estandares WMI-CIM.md
+      #- Actividades: ./UD1/windows/Actividades.md
+  
+  - UD2.Administración procesos y Servicios:
+      - Instalación en Windows: ./UD2/InstaWindow.md
+      - Instalación en Linux: ./UD2/InstaLinux.md
+      - Gestión de procesos: ./UD2/procesosLinux.md
+      - Gestión de Servicios: ./UD2/GestiServicios.md
+      - Programación de Tareas: ./UD2/programaTareas.md
+      - Actualización del Sistema: ./UD2/actuSisOp.md
+      - Registro de Windows: ./UD2/registroWindow.md
+     # - Actividades: ./UD2/Actividades.md
 
-      
+
 theme:
   name: material
   icon:
@@ -18,7 +49,6 @@ theme:
     text: Roboto
     code: Roboto Mono
   features:
-    # - navigation.sections
     - navigation.top
     - navigation.path
     - navigation.footer
@@ -34,13 +64,13 @@ theme:
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
-      primary: teal
+      primary:  #0E7C7B
       accent: purple
     - scheme: slate
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
-      primary: teal
+      primary:  #0E7C7B
       accent: lime
 
 markdown_extensions:
