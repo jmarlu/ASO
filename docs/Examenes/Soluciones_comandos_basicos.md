@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Soluciones Examen de Comandos Linux
 
 ## 1. Gestión de Usuarios (2 puntos)

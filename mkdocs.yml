@@ -107,10 +107,4 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css
 
-plugins:
-  - search:
-      lang: es
-      exclude: 
-        - ./Examenes/Soluciones_comandos_basicos.md
-  - tags
 

@@ -1,3 +1,7 @@
+---
+search:
+  exclude: true
+---
 ## Soluciones: Linux
 
 ### Introducción
