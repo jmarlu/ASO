@@ -78,6 +78,7 @@ theme:
       accent: lime
 
 markdown_extensions:
+  - meta
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.inlinehilite
@@ -101,6 +102,15 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  
 
 extra_css:
   - stylesheets/extra.css
+
+plugins:
+  - search:
+      lang: es
+      exclude: 
+        - ./Examenes/Soluciones_comandos_basicos.md
+  - tags
+
