@@ -69,4 +69,4 @@ do
 done
 ```
 
-![alt text](../imagenes/30.png)
+![alt text](./imagenes/30.png)

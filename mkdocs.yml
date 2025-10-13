@@ -5,6 +5,10 @@ nav:
  # - Recordatorio de Commandos:
      # - linux: ./recordatorios/commandosLinux.md
      # - windows: ./recordatorios/commandosWindows.md
+  - Examenes:
+
+    - Examen1: ./Examenes/Examen de comandos.md
+  
   - UD1-Shell Scripting:
     - Linux:
         - Creación de Scripts: ./UD1/linux/Scripts.md
@@ -26,12 +30,12 @@ nav:
       - Sintaxis: ./UD1/windows/022_PowerShell_Sintaxis.md
       - Control de flujo: ./UD1/windows/023_PowerShell_ControlFlujo.md
       - Vectores y funciones: ./UD1/windows/024_PowerShell_VectoresFunciones.md
-      - Administración: ./UD1/windows/Estandares WMI-CIM.md
+      #- Administración: ./UD1/windows/Estandares WMI-CIM.md
       #- Actividades: ./UD1/windows/Actividades.md
   
   - UD2.Administración procesos y Servicios:
-      - Instalación en Windows: ./UD2/InstaWindow.md
-      - Instalación en Linux: ./UD2/InstaLinux.md
+      #- Instalación en Windows: ./UD2/InstaWindow.md
+      #- Instalación en Linux: ./UD2/InstaLinux.md
       - Gestión de procesos: ./UD2/procesosLinux.md
       - Gestión de Servicios: ./UD2/GestiServicios.md
       - Programación de Tareas: ./UD2/programaTareas.md
