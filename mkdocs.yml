@@ -5,9 +5,9 @@ nav:
  # - Recordatorio de Commandos:
      # - linux: ./recordatorios/commandosLinux.md
      # - windows: ./recordatorios/commandosWindows.md
-  - Examenes:
+ # - Examenes:
 
-    - Examen1: ./Examenes/Examen de comandos.md
+    #- Examen1: ./Examenes/Examen de comandos.md
   
   - UD1-Shell Scripting:
     - Linux:
@@ -42,8 +42,14 @@ nav:
       - Actualización del Sistema: ./UD2/actuSisOp.md
       - Registro de Windows: ./UD2/registroWindow.md
      # - Actividades: ./UD2/Actividades.md
-
-
+  
+  - UD3.Servicios de Directorio:
+      - Introducción a LDAP: ./UD3/teoria.md
+      - Instalación y Configuración de OpenLDAP: ./UD3/LDAP/InstalacionOpenLDAP.md
+      - Administración de OpenLDAP: ./UD3/LDAP/AdminOpenLDAP.md
+      - Servicios de Autenticación: ./UD3/LDAP/ServiciosAutenticacion.md
+      - Integración de Servicios con LDAP: ./UD3/LDAP/IntegracionServiciosLDAP.md
+     # - Actividades: ./UD3/Actividades.md
 theme:
   name: material
   icon:
