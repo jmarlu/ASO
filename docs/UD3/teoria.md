@@ -16,15 +16,15 @@ Un **servicio de directorio** es una base de datos **jerárquica y optimizada pa
 ### **LDAP HOY**
 
 ```mermaid
-┌───────────────────────────────────────────────┐
-│                    LDAP HOY                   │
-├───────────────────────────────────────────────┤
-│ ✅ Acceso estándar a directorios (TCP/IP)     │
-│ ✅ Base de OpenLDAP/AD                        │
-│ ✅ Lecturas rápidas, estructura jerárquica     │
-│ ✅ Seguridad: SASL, TLS/LDAPS                  │
-│ ⚠️ No es SQL ni sistema de ficheros            │
-└───────────────────────────────────────────────┘
+flowchart TB
+    subgraph LDAP_HOY[LDAP HOY]
+        direction TB
+        A["✅ Acceso estándar a directorios (TCP/IP)"]
+        B["✅ Base de OpenLDAP/AD"]
+        C["✅ Lecturas rápidas, estructura jerárquica"]
+        D["✅ Seguridad: SASL, TLS/LDAPS"]
+        E["⚠️ No es SQL ni sistema de ficheros"]
+    end
 ```
 
 ---
@@ -34,26 +34,15 @@ Un **servicio de directorio** es una base de datos **jerárquica y optimizada pa
 LDAP se entiende mejor con **cuatro modelos**: **información**, **nombrado**, **funcional** y **seguridad**.
 
 ### 2.1 Modelo de información
-- **Entrada (entry)** = nodo del DIT, con **DN** y **atributos** que cumplen uno o más **objectClass**; cada clase define atributos **MUST**/**MAY** y sus reglas de coincidencia.
+Este modelo provee de las estructuras y tipos de datos necesarios para construir un árbol de directorios LDAP. La unidad básica en un directorio LDAP es la entrada. Una entrada se puede ver como un nodo en el árbol de
+información de directorio (DIT). Una entrada contiene información sobre una
+instancia de uno o más objectClass. Estos objectClass son unos objetos que
+tienen ciertos atributos, algunos opcionales y otros obligatorios. Los
+atributos pueden ser de distintos tipos y cada tipo lleva asociado reglas de
+codificación y de coincidencia que tienen en cuenta cosas como qué tipo de
+dato puede tomar este atributo o como compararlo en una búsqueda.
+Veamos como sería una entrada simple.
 
-```c
-classDiagram
-    class Entry {
-      +dn: DistinguishedName
-      +atributos: {tipo: valor}
-    }
-    class ObjectClass {
-      +name
-      +must[]
-      +may[]
-    }
-    class Atributo {
-      +tipo
-      +valor
-    }
-    Entry --> ObjectClass : "usa"
-    Entry --> Atributo : "contiene"
-```
 
 **Ejemplo de entrada (LDIF):**
 
@@ -68,6 +57,12 @@ mail: jmartin@universidad.edu
 
 ### 2.2 Modelo de nombrado
 Las entradas se **organizan en árbol**. El **DN** se construye concatenando **RDNs** desde la raíz (sufijos `dc=...`). **Case-insensitive** en nombres de atributos; espacios en torno a `,` y `=` se ignoran.
+
+- **DN (Distinguished Name)**: la “dirección completa” de una entrada. Es la suma de todos los RDN desde el nodo hasta la raíz, por ejemplo `cn=Ana Lopez,ou=Usuarios,dc=empresa,dc=com`.
+- **RDN (Relative Distinguished Name)**: el fragmento que identifica a la entrada dentro de su rama. En el ejemplo anterior, `cn=Ana Lopez` es el RDN dentro de `ou=Usuarios`.
+- **OU (Organizational Unit)**: contenedor lógico para agrupar entradas relacionadas (departamentos, equipos, aulas). Aparece como `ou=...`.
+- **CN (Common Name)**: nombre común de una entrada, usado para personas o grupos (`cn=Ana Lopez`, `cn=admins`).
+- **DC (Domain Component)**: fragmento del dominio DNS usado en la raíz del directorio (`dc=empresa`, `dc=com`), ayuda a que la jerarquía refleje el dominio de la organización.
 
 ```mermaid
 graph TD
@@ -102,7 +97,7 @@ sequenceDiagram
 ### 2.4 Modelo de seguridad
 - **Autenticación** (simple o **SASL**), **cifrado** (**TLS/LDAPS**), y **ACL** para autorización. LDAPv3 integra métodos, TLS es **operación extendida** estándar; LDAPS usa puerto **636**.
 
-```mermaid
+``` mermaid
 graph TD
     U[Cliente] -->|bind| A[Autenticación]
     A -->|SASL/Password| T[TLS/LDAPS]
@@ -115,36 +110,48 @@ graph TD
 
 ## 3. Búsquedas LDAP: base, alcance y filtros
 
-Un **search** define: **base DN**, **alcance** (base / un nivel / subárbol) y un **filtro**.
+Cuando ejecutamos un `search` estamos diciendo al servidor qué parte del árbol queremos examinar y qué condiciones deben cumplir las entradas que devuelva. Piensa en tres preguntas:
 
+1. **¿Dónde empiezo?** → *Base DN*  
+   Es el punto del árbol a partir del cual se busca (`dc=empresa,dc=com`, `ou=Usuarios,dc=empresa,dc=com`, etc.).
 
+2. **¿Hasta dónde bajo?** → *Scope* (alcance)  
+   - `base`: solo consulta la entrada indicada como base.  
+   - `oneLevel`: revisa sus hijos directos (un único nivel).  
+   - `subtree`: baja por todo el subárbol.
 
-``` mermaid
-graph LR
-  A[Start] --> B{Error?};
-  B -->|Yes| C[Hmm...];
-  C --> D[Debug];
-  D --> B;
-  B ---->|No| E[Yay!];
-```
-
+3. **¿Qué estoy buscando?** → *Filtro*  
+   Es el conjunto de condiciones sobre atributos, parecido a un `WHERE`.
 
 ```mermaid
-graphn
-    A[Cliente LDAP] -->|search| B[Servidor]
-    B --> C[(DIT)]
-    B --> D1[Base DN]
-    B --> D2[Scope: base / onelevel / subtree]
-    B --> D3[Filtro (ej. (&(objectClass=person)(sn=Lopez)))]
-    C --> B --> A
+graph TD
+    Cliente[Cliente LDAP] -->|search| Servidor
+    Servidor --> Base[Base DN]
+    Servidor --> Alcance[Scope: base / oneLevel / subtree]
+    Servidor --> Filtro[condiciones]
+    Filtro --> Resultado[Entradas devueltas]
+    Resultado --> Cliente
 ```
 
-**Alcance:**  
-- *base* → solo la entrada base.  
-- *onelevel* → hijos directos (no incluye la base).  
-- *subtree* → desde la base hacia abajo.
+### 3.1 Scope y filtros en acción
+| Scope | ¿Qué abarca? | Ejemplo de uso |
+|-------|--------------|----------------|
+| `base` | Solo la entrada del *base DN* | Leer atributos de `cn=admin,dc=empresa,dc=com` |
+| `oneLevel` | Los hijos directos (1 nivel) | Listar usuarios dentro de `ou=Usuarios,dc=empresa,dc=com` |
+| `subtree` | Toda la rama descendiente | Inventariar todas las entradas bajo `dc=empresa,dc=com` |
 
-**Tipos de filtro:** presencia, igualdad, subcadenas, rangos, AND/OR/NOT.
+| Tipo de filtro | Sintaxis | ¿Qué hace? |
+|----------------|----------|------------|
+| Presencia | `(atributo=*)` | Devuelve entradas que tengan ese atributo |
+| Igualdad | `(atributo=valor)` | Coincidencia exacta |
+| Subcadenas | `(atributo=valor*)` | Compara prefijos o sufijos (`*valor*`) |
+| OR | `(|(cond1)(cond2))` | Entradas que cumplan al menos una condición |
+| AND | `(&(cond1)(cond2))` | Entradas que cumplan todas las condiciones |
+| NOT | `(!(cond))` | Entradas que NO cumplan la condición |
+
+Los filtros se pueden anidar: `(&(objectClass=person)(|(sn=Lopez)(sn=Perez)))` devuelve personas con apellido López **o** Pérez.
+
+
 
 ---
 
@@ -153,102 +160,12 @@ graphn
 **LDIF**: formato de texto para **representar/alterar** entradas y esquemas; soporta cambios (`changetype: modify`) y **Base64** para binarios. **DSML**: representación **XML** útil para integración con aplicaciones/servicios web.
 
 ```mermaid
-graph LR
-    L[Servidor LDAP] <-->|import/export| F[LDIF .ldif]
-    L --> X[DSML (XML)]
-    X --> Apps[Integración con apps/servicios]
+  graph LR
+      L[Servidor LDAP] <-->|import/export| F[LDIF .ldif]
+      L --> X[DSML/XML]
+      X --> Apps[Integración con apps/servicios]
 ```
 
-**Ejemplo LDIF – añadir OU y usuario**:
-```ldif
-dn: ou=People,dc=plainjoe,dc=org
-objectClass: organizationalUnit
-ou: People
-
-dn: cn=Sam Smith,ou=People,dc=plainjoe,dc=org
-objectClass: person
-objectClass: organizationalPerson
-cn: Sam Smith
-sn: Smith
-```
-
-**Ejemplo LDIF – modify y schema (ilustrativo)**:
-```ldif
-dn: cn=jose martin,dc=ldap,dc=com
-changetype: modify
-add: description
-description: aqui va la descripcion
--
-replace: cn
-cn: pepe martin
-```
-```ldif
-objectclasses: (2.5.6.6 NAME 'person' SUP top MUST (sn $ cn) MAY (password $ telephoneNumber $ description))
-```
 
 ---
 
-## 5. OpenLDAP (slapd) y características relevantes
-
-**slapd** implementa LDAPv3, soporta **SASL**, **TLS/SSL**, **ACL**, múltiples **backends**, i18n, control por topología, etc.
-
-**Añadir entradas con `slapadd` vs herramientas en red (`ldapadd/ldapmodify`)**: `slap*` operan **directo sobre BD**; `ldap*` usan **protocolo**.
-
----
-
-## 6. Ejemplos de comandos (para laboratorio)
-
-> Base supuesta: `dc=empresa,dc=com` en `localhost`.
-
-**Búsqueda “listarlo todo” desde la base:**
-```bash
-ldapsearch -x -H ldap://127.0.0.1:389 \
-  -b "dc=empresa,dc=com" "(objectClass=*)" dn
-```
-
-**Alta de OU y usuario (por red):**
-```bash
-ldapadd -x -H ldap://127.0.0.1:389 -D "cn=admin,dc=empresa,dc=com" -W -f alta.ldif
-```
-`alta.ldif`:
-```ldif
-dn: ou=Usuarios,dc=empresa,dc=com
-objectClass: organizationalUnit
-ou: Usuarios
-
-dn: cn=Ana Torres,ou=Usuarios,dc=empresa,dc=com
-objectClass: inetOrgPerson
-cn: Ana Torres
-sn: Torres
-uid: atorre
-mail: atorre@empresa.com
-userPassword: {SSHA}abc123
-```
-
-**Modificar atributo (replace):**
-```bash
-ldapmodify -x -H ldap://127.0.0.1:389 -D "cn=admin,dc=empresa,dc=com" -W -f cambio.ldif
-```
-`cambio.ldif`:
-```ldif
-dn: cn=Ana Torres,ou=Usuarios,dc=empresa,dc=com
-changetype: modify
-replace: mail
-mail: ana.torres@empresa.com
-```
-
----
-
-## 7. Aplicaciones que usan LDAP
-
-**Páginas blancas**, **Autenticación/Autorización**, **Correo**, **Perfiles**, **PKI**.
-
-```mermaid
-graph LR
-    LDAP[(Directorio LDAP)]
-    LDAP --> PB[Páginas Blancas]
-    LDAP --> AA[Autenticación / Autorización]
-    LDAP --> EM[Correo]
-    LDAP --> PF[Perfiles/Preferencias]
-    LDAP --> PKI[PKI / Certificados]
-```

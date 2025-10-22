@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # ✅ Soluciones – Bloque 1
 
 ---
@@ -173,3 +178,77 @@ flowchart LR
     L[Servidor LDAP] -->|export XML| D[DSML]
     D --> S[Servicio externo / App]
 ```
+
+---
+
+### 9. Arquitectura con réplica
+Diseña  una arquitectura con **slapd maestro** y **réplica**, 3 aplicaciones cliente (una de solo lectura), y señala **qué peticiones** van al maestro y cuáles a la réplica. Añade una nota sobre **TLS** y **ACL**.
+
+## 10. Endurece el laboratorio Docker con TLS (solución)
+
+1. **Estructura**  
+   ```bash
+   mkdir -p certs
+   ```
+2. **CA interna y certificado del servidor**  
+   ```bash
+   openssl req -x509 -newkey rsa:4096 -days 365 \
+     -keyout certs/ca.key -out certs/ca.crt -nodes \
+     -subj "/C=ES/ST=Andalucia/O=ASIR2X/CN=CA OpenLDAP"
+
+   openssl req -new -newkey rsa:4096 -keyout certs/asir.local.key \
+     -out certs/asir.local.csr -nodes \
+     -subj "/C=ES/ST=Andalucia/O=ASIR2X/CN=asir.local"
+
+   openssl x509 -req -in certs/asir.local.csr -CA certs/ca.crt -CAkey certs/ca.key \
+     -CAcreateserial -out certs/asir.local.crt -days 365 -sha256 \
+     -extfile <(printf "subjectAltName=DNS:asir.local,IP:127.0.0.1")
+   ```
+   Entrega `certs/ca.crt` (y opcionalmente `asir.local.crt`) a los clientes; la clave `asir.local.key` permanece solo en el servidor.
+3. **`docker-compose.yml`**  
+   ```yaml
+   services:
+     openldap:
+       image: osixia/openldap:1.5.0
+       environment:
+         LDAP_ORGANISATION: "IES ASIR"
+         LDAP_DOMAIN: "asir.local"
+         LDAP_ADMIN_PASSWORD: "admin123"
+         LDAP_TLS: "true"
+         LDAP_TLS_ENFORCE: "true"
+         LDAP_TLS_CRT_FILENAME: "asir.local.crt"
+         LDAP_TLS_KEY_FILENAME: "asir.local.key"
+         LDAP_TLS_CA_CRT_FILENAME: "ca.crt"
+       ports:
+         - "389:389"
+         - "636:636"
+       volumes:
+         - ./datos/ldap:/var/lib/ldap
+         - ./datos/slapd.d:/etc/ldap/slapd.d
+         - ./config/bootstrap.ldif:/container/service/slapd/assets/config/bootstrap/ldif/50-bootstrap.ldif:ro
+         - ./certs:/container/service/slapd/assets/certs:ro
+
+     phpldapadmin:
+       image: osixia/phpldapadmin:0.9.0
+       environment:
+         PHPLDAPADMIN_LDAP_HOSTS: openldap
+         PHPLDAPADMIN_HTTPS: "true"
+       ports:
+         - "8443:443"
+       depends_on:
+         - openldap
+       volumes:
+         - ./certs/asir.local.crt:/container/service/phpldapadmin/assets/apache2/certs/server.crt:ro
+         - ./certs/asir.local.key:/container/service/phpldapadmin/assets/apache2/certs/server.key:ro
+         - ./certs/ca.crt:/container/service/phpldapadmin/assets/apache2/certs/ca.crt:ro
+   ```
+4. **Recrea y valida**  
+   ```bash
+   docker compose down
+   docker compose up -d
+
+   ldapsearch -H ldaps://localhost:636 -b "dc=asir,dc=local" -x
+   ldapsearch -H ldap://localhost:389 -b "dc=asir,dc=local" -x -ZZ
+   openssl s_client -connect localhost:636 -CAfile certs/ca.crt
+   ```
+   Guarda las salidas de `ldapsearch` y `openssl s_client` para adjuntarlas como evidencia.

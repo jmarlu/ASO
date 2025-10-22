@@ -22,7 +22,8 @@ nav:
         - Esructura WHILE: ./UD1/linux/While_Until.md
         - Esructura FOR: ./UD1/linux/For.md
         - Break y Continue: ./UD1/linux/Break.md
-       # - Actividades: ./UD1/linux/Actividades.md
+        - Actividades: ./UD1/linux/Actividades.md
+      #  - Soluciones de Actividades: ./UD1/linux/Soluciones_Actividades.md
     - Windows:
       - Introducción: ./UD1/windows/021_IntroducciónPwSh.md
       - Comandos: ./UD1/windows/comandos.md
@@ -41,15 +42,15 @@ nav:
       - Programación de Tareas: ./UD2/programaTareas.md
       - Actualización del Sistema: ./UD2/actuSisOp.md
       - Registro de Windows: ./UD2/registroWindow.md
-     # - Actividades: ./UD2/Actividades.md
+      #- Actividades: ./UD2/Actividades.md
   
   - UD3.Servicios de Directorio:
       - Introducción a LDAP: ./UD3/teoria.md
-      - Instalación y Configuración de OpenLDAP: ./UD3/LDAP/InstalacionOpenLDAP.md
-      - Administración de OpenLDAP: ./UD3/LDAP/AdminOpenLDAP.md
+      - OpenLDAP en Docker: ./UD3/docker-openldap.md
       - Servicios de Autenticación: ./UD3/LDAP/ServiciosAutenticacion.md
       - Integración de Servicios con LDAP: ./UD3/LDAP/IntegracionServiciosLDAP.md
-     # - Actividades: ./UD3/Actividades.md
+      - Actividades: ./UD3/actividades.md
+      #- soluciones: ./UD3/soluciones.md
 theme:
   name: material
   icon:
@@ -112,5 +113,3 @@ markdown_extensions:
 
 extra_css:
   - stylesheets/extra.css
-
-

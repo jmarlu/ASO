@@ -97,3 +97,37 @@ else
         echo "O no eres ni Salva, ni Pepe o la contrasenya es incorrecta"
 fi
 ```
+
+## Evaluacion aritmetica con (( ))
+
+- La sintaxis `(( ))` ejecuta expresiones aritmeticas con enteros; devuelve 0 cuando la condicion se cumple y 1 en caso contrario.
+- Dentro de `(( ))` se pueden usar operadores como `+`, `-`, `*`, `/`, `%`, comparaciones (`<`, `<=`, `>`, `>=`, `==`, `!=`) y operadores logicos (`&&`, `||`).
+- No es necesario anteponer `$` a las variables mientras estemos dentro de `(( ))`.
+
+| Expresion con `(( ))` | Equivalencia con `[[ ]]` |
+| --- | --- |
+| `(( a < b ))` | `[[ $a -lt $b ]]` |
+| `(( contador++ ))` | `contador=$((contador + 1))` |
+| `(( a < b && b < c ))` | `[[ $a -lt $b && $b -lt $c ]]` |
+
+### Ejemplo
+
+```bash
+read -p "Introduce un numero mayor que cero: " numero
+
+if (( numero <= 0 ))
+then
+        echo "Debes introducir un numero positivo"
+        exit 1
+fi
+
+contador=1
+while (( contador <= numero ))
+do
+        if (( numero % contador == 0 ))
+        then
+                echo "$contador es divisor de $numero"
+        fi
+        (( contador++ ))
+done
+```
