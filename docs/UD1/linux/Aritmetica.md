@@ -1,89 +1,93 @@
-# Operaciones Matemáticas.
+# Operaciones Matemáticas
 
-## Operaciones
+## Operaciones básicas
 
+| Símbolo | Significado         |
+| :-----: | :------------------ |
+|   `*`   | Multiplicación      |
+|   `/`   | División            |
+|   `-`   | Resta               |
+|   `+`   | Suma                |
+|   `%`   | Resto (5 % 2 = 1)   |
 
+## Métodos aritméticos en Bash
 
-| Símbolo |  Significado                   |
-| :-----: | :----------------------------- |
-|   `*`   | Multiplicación                 |
-|   `/`   | División                       |
-|   `-`   | Resta                          |
-|   `+`   | Suma                           |
-|   `%`   | Resto. Ej. 5%2 = 1             |
+| Método  | Uso recomendado                                            | ¿Soporta decimales? | Sintaxis básica                               |
+| ------- | ---------------------------------------------------------- | ------------------- | --------------------------------------------- |
+| `(( ))` | Operaciones entre enteros y lógica habitual de programación | No                  | `resultado=$(( a + b ))`                      |
+| `let`   | Incrementos/decrementos sobre variables ya declaradas       | No                  | `let "contador+=1"`                           |
+| `expr`  | Compatibilidad POSIX y utilidades con cadenas               | Parcial (`length`)  | `expr 2 \* 3`, `expr length "$cadena"`        |
+| `bc`    | Cálculos con decimales o funciones avanzadas                | Sí                  | `resultado=$(echo "scale=2; 5/3" \| bc)`      |
 
+### `(( ))` — Expresiones aritméticas
 
-
-## Comandos Aritméticos.
-
-Existen varias posibilidades para realizar operaciones matemáticas.
-
-### 1. Usando doble paréntesis:
+Acepta la sintaxis habitual de los lenguajes de programación para enteros. Dentro del doble paréntesis no es necesario anteponer `$` a las variables.
 
 ```bash
-suma=$(( $x + $y ))
+total=$(( aciertos + fallos ))
+porcentaje=$(( aciertos * 100 / intentos ))
 ```
 
-### 2. Usando el comando “let”:
+### `let` — Incrementos rápidos
+
+Permite modificar variables existentes de forma compacta, útil para contadores.
 
 ```bash
-#Ejemplo de Multiplicación:
-let "mult = $x * $y"
-
-#Ejemplo de triplicar un valor:
-let “mult = $mult * 3”
-
-
-#Ejemplo de incrementar un valor o decrementar:
+let "mult = cantidad * precio_unitario"
+let "mult *= 3"
 let mult++
 let mult--
 ```
 
-### 3. Usar el comando “expr”:
+### `expr` — Herencia POSIX y cadenas
 
-- Este comando es más antiguo y tiene el inconveniente de tener que escaparse (añadir \) delanta de cada carácter especial como \*,<,>,(,), etc.
+Ofrece aritmética básica y funciones sobre cadenas. Necesita escapar los caracteres especiales (`*`, `(`, `)`, `<`, `>`).
 
 ```bash
-#Ejemplo del uso de * y () escapado (\)
 expr 2 \* 3
 expr \( 2 + 2 \) \* 3
+
+expr length "Hola Mundo"     # Devuelve 10
+expr substr "Hola Mundo" 6 5 # Devuelve Mundo
 ```
 
-- Por contra, expr es útil para comprobar longitud de cadena de caracteres y sustraer subcadenas.
+### `bc` — Calculadora con decimales
+
+`bc` es una calculadora de precisión arbitraria. Lee expresiones desde la entrada estándar, por lo que suele combinarse con `echo` o con un heredoc.
 
 ```bash
-#Este comando devuelve 10, que es la longitud de la cadena pasada como parámetro.
-#Tened en cuenta que se contabiliza cada espacio en blanco como una letra.
-expr length “Hola Mundo”
-
-#Desde el carácter n.º 4 (a) devuelve los siguientes 4 caracteres → “a Mu”
-expr substr “Hola Mundo” 4 4
-
-#. Desde el carácter número 6, devuelve los siguientes 5 caracteres → “Mundo”
-expr substr “Hola Mundo” 6 5
+importe=$(echo "scale=2; $kg * $precio" | bc)
+media=$(echo "scale=3; $total / $muestras" | bc -l)
 ```
 
-### 4. Comando "bc" para decimales.
+La opción `scale` fija los decimales deseados y `-l` habilita funciones matemáticas avanzadas.
 
-Para trabajar con decimales debemos usar el comando “bc”:
+!!! note "Recuerda"
+    - `expr` requiere escapar los caracteres `*`, `(`, `)` y `<`, `>`: `expr 3 \* \( 2 + 1 \)`.
+    - En `echo "..." | bc` usa comillas rectas (`"`) o simples (`'`); evita las comillas tipográficas.
+    - Prefiere la sustitución de comandos `$( ... )` al estilo antiguo con comillas invertidas.
 
-```bash title=""
+## Ejemplos en contexto
 
-	operacion=`echo “7.5 * 12.5” | bc `
+### Calcular espacio usado por un directorio
+
+```bash
+bytes=$(du -sb /var/log | cut -f1)
+gb=$(echo "scale=2; $bytes / 1024 / 1024 / 1024" | bc)
+echo "Uso de /var/log: $gb GB"
 ```
 
-Las comillas invertidas devuelven el valor de la operación o del comando.
+Combinamos `du` con `bc` para convertir bytes a gigabytes con dos decimales.
 
-Para sacar todos los posibles decimales usamos la opción “-l”
+### Generar identificadores consecutivos
 
-```bash title=""
-
-    operacion=`echo “7.5 * 12.5” | bc  -l`
+```bash
+contador=1000
+while read -r nombre
+do
+    id=$(( contador++ ))
+    echo "$id;$nombre"
+done < alumnos.txt
 ```
 
-Si queremos cierto número de decimales usamos la opción scale:
-
-```bash title=""
-
-    operacion=`echo “scale=3;7.5 * 12.5” | bc `
-```
+El doble paréntesis permite incrementar el contador sin convertirlo a cadena. Cada iteración genera un ID único para el alumno.

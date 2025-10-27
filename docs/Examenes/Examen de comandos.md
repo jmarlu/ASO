@@ -22,6 +22,10 @@ Crea un comando que muestre ÚNICAMENTE el UID y nombre del usuario en el sistem
 - `sort` - Ordena líneas de texto
 - `tr` - Traduce o elimina caracteres
 
+!!! Note:
+
+      No se puede utilizar ni awk ni sed 
+
 **Ejemplo de salida esperada:**
 ```
 1000 julio

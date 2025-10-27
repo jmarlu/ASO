@@ -47,6 +47,7 @@ nav:
   - UD3.Servicios de Directorio:
       - Introducción a LDAP: ./UD3/teoria.md
       - OpenLDAP en Docker: ./UD3/docker-openldap.md
+      - PAM en Linux: ./UD3/pam.md
       - Servicios de Autenticación: ./UD3/LDAP/ServiciosAutenticacion.md
       - Integración de Servicios con LDAP: ./UD3/LDAP/IntegracionServiciosLDAP.md
       - Actividades: ./UD3/actividades.md

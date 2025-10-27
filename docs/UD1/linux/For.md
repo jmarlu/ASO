@@ -1,137 +1,79 @@
-# Estructura FOR IN
+# Bucles `for` en Bash
 
-## FOR IN
+## 1. Descripción
 
-```bash title="FOR IN"
-for VARIABLE in LISTA
-        do
-                ACCIONES
-        done
-```
+Los bucles `for` permiten repetir acciones sobre cada elemento de una lista. Son útiles para recorrer argumentos, resultados de comandos o secuencias numéricas sin necesidad de usar estructuras más complejas.
 
-- Permite recorrer una lista.
-
-- Importante el espacio entre los corchetes y el uso de “do” y “done” para crear la estructura.
-
-- Por defecto se interpreta como un objeto de la lista todo aquello que va separado por un espacio en blanco.
-
-- Usaremos una variable y en cada iteración dicha variable tendrá un valor de la lista.
-
-!!! info "Iteración"
-
-        Se refiere a cada vez que se va ejecutando el bucle. La primera ejecución con el primer objeto de la lista es la primera iteración, la segunda vez será la segunda iteración, y así sucesivamente.
-
-## Ejemplos de listas
-
-### Ejemplo de lista usando literales
+## 2. Sintaxis con anotaciones
 
 ```bash
-iteracion=1
-for nombres in Salva Pepe Juan Domingo
+for elemento in LISTA
 do
-        echo "En la iteracion $iteracion la variable vale $nombres"
-        let iteracion=$iteracion+1
+    ACCIONES
 done
 ```
 
-  <img src="../imagenes/27.png" width="300"/>
+- `LISTA` puede ser un conjunto de literales, la expansión de un comando o el contenido de una variable.
+- `elemento` toma un valor distinto en cada iteración.
+- Las instrucciones del bucle van entre `do` y `done`.
 
-### Ejemplo de lista usando variables.
+### Variante aritmética
 
 ```bash
-directorios=`ls`
-iteracion=1
-for nombres in $directorios
+for (( i = 1; i <= LIMITE; i++ ))
 do
-        echo "El directorio en la iteracion $iteracion es $nombres"
-        let iteracion=iteracion+1
+    ACCIONES
 done
 ```
 
-### Ejemplo de lista usando comandos.
+Esta forma usa sintaxis similar a C para recorrer rangos numéricos.
+
+## 3. Ejemplos escalados
+
+### Ejemplo básico: recorrer literales
 
 ```bash
-iteracion=1
-for nombres in `ls`
+for equipo in switch router firewall
 do
-        echo "El directorio en la iteracion $iteracion es $nombres"
-        let iteracion=iteracion+1
+    echo "Revisando $equipo"
 done
 ```
 
-## Ejemplos genéricos.
-
-### Ejemplos usando el comando seq.
+### Ejemplo intermedio: procesar resultados de un comando
 
 ```bash
-for numero in `seq 1 10`
+readarray -t servicios < <(systemctl list-units --type=service --state=failed --no-legend --plain | cut -d' ' -f1)
+
+for servicio in "${servicios[@]}"
 do
-        echo "Ahora la variable numero vale $numero
+    [[ -n $servicio ]] && echo "Servicio con errores: $servicio"
 done
 ```
 
-### Ejemplos con un for anidado.
+### Ejemplo aplicado: tratar ficheros con espacios
 
 ```bash
-filas=5
-columnas=5
-for fila in `seq 1 $filas`
+while IFS= read -r fichero
 do
-        for col in `seq 1 $columnas`
-        do
-                echo -n "*"
-        done
-        #Para saltar de linea.
-        echo
-done
+    echo "Analizando \"$fichero\""
+    du -h "$fichero"
+done < <(find /var/log -type f -maxdepth 1)
 ```
 
-  <img src="../imagenes/28.png" width="50"/>
+En este caso usamos **process substitution** y cambiamos el separador (`IFS`) dentro del bucle para respetar rutas con espacios.
 
-### Ejemplo recorriendo un fichero SIN espacios en blanco.
+!!! question "Prueba tú"
+    Completa la actividad **Tablero de asteriscos** descrita en `docs/UD1/linux/Actividades.md` y prueba distintas combinaciones de filas y columnas para familiarizarte con la sintaxis `for (( ... ))`.
 
-```bash
-#Solo nos quedamos con los primeros 3 campos porque el 4 de informacion personal
-#puede contener espacios
-for linea in `cat /etc/passwd | cut -d':' -f1-3`
-do
-        #Nos quedamos con el nombre de usuario y su uid.
-        userID=`echo $linea | cut -d':' -f3`
-        usuario=`echo $linea | cut -d':' -f1`
-        #Si su UID es mayor de 1000 y menor de 65534 es un usuario normal.
-        if [[ $userID -ge 1000 && $userID -lt 65534 ]]
-        then
-                echo "$usuario es un usuario normal"
-        fi
-done
-```
+## 4. Buenas prácticas
 
-### Ejemplo recorriendo un fichero CON espacios en blanco usando IFS.
+- Prefiere `$(comando)` en lugar de las comillas invertidas antiguas.
+- Cita `"$elemento"` al trabajar con nombres que puedan incluir espacios.
+- Evita `for item in $(cat fichero)`; usa `while read` para preservar líneas completas.
+- Usa la variante `for (( ... ))` cuando necesites contadores explícitos o saltos controlados.
 
-<center>
-!!! danger "Cambiar el IFS"
-        IFS=$'{\n}'
-</center>
+## 5. Actividades rápidas
 
-- El IFS es el separador por defecto del sistema.
-
-- Existe la variable de entorno $IFS que nos indica cuál es.
-
-- Podemos modificarla dentro de nuestro script como cualquier variable 🔀 IFS=$'{\n}'
-
-- Por defecto el IFS es el espacio en blanco, por esa razón cada objeto de una lista está separado por un espacio en blanco.
-
-En el siguiente ejemplo cambiamos el IFS al salto de línea, de esta forma cada iteración coge una linea entera.
-
-```bash
-IFS=$'{\n}'
-
-for linea in `ls -l | tr -s ' '`
-do
-        echo $linea
-done
-```
-
-## Vídeo de Ejemplo.
-
-1. [Vídeo Ejemplo Estructura For in](https://youtu.be/dlbvqiW-y14)
+- **Actividad 1:** Recorre los usuarios normales del sistema (`getent passwd`) y muestra su UID y directorio personal.
+- **Actividad 2:** Utiliza `for (( ))` para generar una tabla de multiplicar configurable por teclado.
+- **Actividad 3:** Crea un script que compruebe la conectividad (`ping -c1`) de una lista de hosts guardados en un array y registre los resultados en `monitor.log`.

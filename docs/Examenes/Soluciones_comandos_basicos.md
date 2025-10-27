@@ -16,6 +16,8 @@ cut -d":" -f1,3 /etc/passwd | tr -s ":" " " | sort -k2n
 **Solución:**
 ```bash
 find / -type f -exec egrep -l ".*@.*\..*" {} \; 2>/dev/null
+solucion: Hay que añadir la exprensión regular del correo-e 
+
 ```
 
 ## 3. Gestión de Ficheros y Permisos (3 puntos)
@@ -34,7 +36,8 @@ while true; do
 done
 ``` -->
 ```bash 
-    ps -u $USER -o pid,%mem,comm --sort=-%mem | head -n 6
+    ps -e -u $USER -o pid,%mem,comm --sort=-%mem | head -n 6
+    
 ```
 
 ## Notas de evaluación

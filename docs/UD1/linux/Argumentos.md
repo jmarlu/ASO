@@ -1,87 +1,93 @@
-# Argumentos
+# Argumentos de scripts en Bash
 
-Un argumento es un parámetros que se le pasa a una función o a un programa. Es decir, son variables de entrada. Puede haber más de uno o ninguno.
+## 1. Descripción
 
-<center>
-!!! danger "Script con argumentos" 
-	
-      ./script.sh arg1 arg2 arg3 … argN
-</center>
+Los argumentos permiten pasar información a un script desde la línea de comandos. Se numeran empezando en `$1` y ofrecen flexibilidad para reutilizar el mismo script con datos diferentes.
 
-### Ejemplo:
-
-Ejecutamos el mismo script con diferentes argumentos, dando salidas distintas.
-
-![alt text](imagenes/15.png)
-
-- Se puede acceder al contenido de cada uno de los argumentos usando $X donde “X” es la posición del argumento (primero, segundo, tercero, ...).
-
-- `$0`: Es el nombre del script → soyUnScript.sh.
-
--` $\*`: Una lista con todos los argumentos → salva 1010 "Salva Serrano" /home/Salva /bin/bash.
-
--`$#`: Número de argumentos → 5.
-
-- `shift`: Elimina el argumento uno ($1) y promueve una posición al resto de argumentos, es decir, lo que antes era $2 ahora será $1.
-
-### Ejemplo 1\.
-
-<center>
-!!! info "Script con argumentos" 
-	
-      `./soyUnScript.sh` salva 1010 "Salva Serrano" /home/Salva /bin/bash
-</center>
-
-<center>
-
-| Variable | <center> Contenido </center>                     |
-| :------: | :----------------------------------------------- |
-|   `$0`   | soyUnScript.sh                                   |
-|   `$1`   | salva                                            |
-|   `$2`   | 1010                                             |
-|   `$3`   | Salva Serrano                                    |
-|   `$4`   | /home/Salva                                      |
-|   `$5`   | /bin/bash                                        |
-|   `$*`   | salva 1010 "Salva Serrano" /home/Salva /bin/bash |
-|   `$#`   | 5                                                |
-
-</center>
-
-- Los argumentos van separados por espacios y en caso de insertar un metacaracter, como por ejemplo asterisco (\*), es necesario escaparlo con \:
-
-<center>
-!!! warning "Escapar carácteres especiales" 
-	
-      ./soyUnScript.sh 5 \\* 10
-</center>
-
-### Ejemplo de $#
+## 2. Sintaxis con anotaciones
 
 ```bash
-if [ $# -eq 3 ]
+./script.sh arg1 arg2 arg3 ...
+```
+
+Dentro del script, dispones de variables especiales:
+
+| Variable | Significado                                  |
+| :------: | :------------------------------------------- |
+| `$0`     | Nombre del script                            |
+| `$1`…`$9`| Argumentos posicionados                      |
+| `$#`     | Número total de argumentos                   |
+| `$*`     | Todos los argumentos como una sola palabra   |
+| `$@`     | Todos los argumentos preservando espacios    |
+| `shift`  | Desplaza los argumentos: `$2` pasa a `$1`, etc. |
+
+Usa `"$@"` cuando necesites mantener los argumentos exactamente como se passaron.
+
+## 3. Ejemplos escalados
+
+### Ejemplo básico: validar número de argumentos
+
+```bash
+if [[ $# -ne 2 ]]
 then
-        echo "Se han insertado 3 argumentos."
-else
-        echo "Por favor, inserte 3 argumentos."
+    echo "Uso: $0 origen destino"
+    exit 1
 fi
+
+echo "Origen: $1"
+echo "Destino: $2"
 ```
 
-  <img src="../imagenes/21.png" width="400"/>
-
-### Ejemplo Shift.
-
-Se puede observar como $1 va a ir valiendo cada uno de los argumentos.
+### Ejemplo intermedio: recorrer todos los argumentos
 
 ```bash
-echo "El primer argumento es: $1"
-shift
-echo "Ahora el primer argumento es: $1"
-shift
-echo "Ahora el primer argumento es: $1"
+for fichero in "$@"
+do
+    if [[ -e $fichero ]]
+    then
+        echo "$fichero existe."
+    else
+        echo "$fichero no encontrado."
+    fi
+done
 ```
 
-  <img src="../imagenes/20.png" width="400"/>
+### Ejemplo aplicado: consumir argumentos con `shift`
 
-## Vídeos de Ejemplo.
+```bash
+while [[ $# -gt 0 ]]
+do
+    case $1 in
+        --usuario)
+            usuario=$2
+            shift 2
+            ;;
+        --grupo)
+            grupo=$2
+            shift 2
+            ;;
+        *)
+            echo "Opción desconocida: $1"
+            exit 2
+            ;;
+    esac
+done
 
-1. [Ejemplos de Argumentos.](https://youtu.be/-j6-3HWyv_k)
+echo "Crear usuario $usuario dentro del grupo $grupo"
+```
+
+!!! question "Prueba tú"
+    Completa las actividades **Propietario y permisos** y **Datos de usuario** del apartado de Argumentos: te ayudarán a practicar el uso de `"$@"`, validaciones y mensajes de uso.
+
+## 4. Buenas prácticas
+
+- Cita siempre los argumentos (`"$1"`, `"$@"`) para preservar espacios y caracteres especiales.
+- Comprueba `"$#"` al inicio del script y ofrece un mensaje de uso claro cuando falten argumentos.
+- Emplea `case` para manejar opciones con nombres largos (`--option`).
+- Documenta los argumentos aceptados en la cabecera del script.
+
+## 5. Actividades rápidas
+
+- **Actividad 1:** Crea un script que reciba tres argumentos y verifique si el primero es un fichero, el segundo un directorio y el tercero un número.
+- **Actividad 2:** Implementa un contador que acepte `-n` con un número y muestre una cuenta atrás desde ese valor.
+- **Actividad 3:** Construye un script que acepte cualquier cantidad de rutas y copie cada fichero existente a un directorio `backup/` creado en la ejecución.

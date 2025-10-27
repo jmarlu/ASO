@@ -1,0 +1,42 @@
+site_name: Laboratorio OpenLDAP en Docker - ASIR2X
+site_description: Guía docente completa para aprender OpenLDAP con Docker y phpLDAPadmin
+theme:
+  name: material
+  language: es
+  features:
+    - navigation.sections
+    - content.code.annotate
+    - content.code.copy
+    - navigation.expand
+    - toc.integrate
+    - content.tabs.link
+  palette:
+    scheme: default
+    primary: indigo
+    accent: deep purple
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.highlight
+plugins:
+  - search
+nav:
+  - Inicio: index.md
+  - Teoría LDAP: teoria.md
+  - Comandos LDAP: comandos.md
+  - Autenticación centralizada: autenticacion.md
+  - Actividades: actividades.md
+  - Soluciones: soluciones.md
+  - Docker Compose: docker-compose.md

@@ -1,133 +1,78 @@
-# Operadores Binarios.
+# Operadores lógicos en Bash
 
-## AND.
+## 1. Descripción
 
-- Devuelve verdadero cuando las dos expresiones son verdaderas, en otros casos devuelve falso.
-- Se aplica mediante el uso de “&&”.
+Los operadores lógicos permiten combinar varias condiciones dentro de `[[ ... ]]` o `(( ... ))`. Con ellos puedes crear reglas más expresivas, tomar decisiones complejas y controlar el flujo de tus scripts.
 
-### Ejemplo 1
+## 2. Sintaxis con anotaciones
 
-```bash title=""
-# El directorio /tmp/svg no existe;
-$[[ -d /tmp/svg ]] && cd /tmp/svg
+| Operador | Significado                                        | Ejemplo |
+| :------: | -------------------------------------------------- | ------- |
+| `&&`     | AND: ambas condiciones deben ser verdaderas        | `[[ -d $dir && -w $dir ]]` |
+| `||`     | OR: al menos una condición debe ser verdadera      | `[[ $rol = "admin" || $rol = "operador" ]]` |
+| `!`      | NOT: invierte el resultado de la condición         | `[[ ! -f $conf ]]` |
 
-$ echo $?        # Código del comando [[ ]]
-1
-$ pwd
-/export/home/ubuntu
-```
+También puedes usar `(( ... ))` para evaluaciones aritméticas con operadores similares a los de C (`<`, `>`, `==`, `&&`, `||`).
 
-### Ejemplo 2
+## 3. Ejemplos escalados
 
-El programa compara dos argumentos, y dirá si son diferentes de a y b o no.
+### Ejemplo básico: directorio listo para copias
 
 ```bash
-read -p "Introduce el numero de vidas " vidas
-read -p "Introduce el numero de continues " continues
+backup_dir=/var/backups
+
+if [[ -d $backup_dir && -w $backup_dir ]]
+then
+    echo "Preparado para crear copias en $backup_dir."
+else
+    echo "No se puede escribir en $backup_dir."
+fi
+```
+
+### Ejemplo intermedio: combinación de múltiples condiciones
+
+```bash
+read -rp "Número de vidas: " vidas
+read -rp "Número de continues: " continues
 
 if [[ $vidas -le 0 && $continues -le 0 ]]
 then
-        echo "Game Over!"
+    echo "Game Over."
+elif [[ $vidas -le 0 || $continues -le 0 ]]
+then
+    echo "Última oportunidad."
 else
-        echo "Continue?"
+    echo "Puedes seguir jugando."
 fi
 ```
 
-  <img src="imagenes/17.png" width="400"/>
-
-## OR.
-
-- El comando OR devuelve verdadero cuando al menos una de sus expresiones se cumple.
-- Se representa usando “||” doble barra vertical.
-
-### Ejemplo 1
-
-```bash title=""
-
-#El directorio /tmp/svg no existe;
-$ pwd
-/export/home/ubuntu
-$ [[ -d /tmp/svg ]] || echo "El directorio /tmp/svg no existe"
-El directorio /tmp/svg no existe
-El directorio /tmp/svg existe; por tanto, el comando echo no se ejecuta.
-```
-
-### Ejemplo 2
+### Ejemplo aplicado: credenciales con validación compuesta
 
 ```bash
-read -p "Indica tu nombre " nombre
+read -rp "Usuario: " usuario
+read -rsp "Contraseña: " pass
+echo
 
-if [[ $nombre == "Salva" || $nombre == "Admin" ]]
+if [[ ( $usuario = "admin" && $pass = "4dm1n!" ) || ( $usuario = "soporte" && $pass = "s0p0rt3" ) ]]
 then
-        echo "Bienvenido!"
+    echo "Acceso autorizado."
 else
-        echo "Usuario Incorrecto"
+    echo "Credenciales incorrectas."
 fi
 ```
 
-  <img src="imagenes/19.png" width="400"/>
+!!! question "Prueba tú"
+    Pon en práctica los operadores lógicos con la actividad **Menú interactivo de red** del bloque Case y While: combina condiciones para validar opciones y comandos disponibles.
 
-### Uso de múltiples operadores binarios.
+## 4. Buenas prácticas
 
-- Si quisiéramos agregar más de dos operadores binarios, sería el mismo proceso:
+- Agrupa con paréntesis `()` para dejar clara la prioridad de evaluación.
+- Usa `[[ ... ]]` (no `[`), porque admite operadores `&&` y `||` sin necesidad de escapado.
+- Prefiere comparadores dobles (`==`, `!=`) para cadenas dentro de `[[ ]]` y operadores numéricos clásicos (`-lt`, `-gt`) cuando estés en `[[ ]]`.
+- En `(( ... ))`, no pongas `$` delante de las variables y documenta el objetivo del cálculo.
 
-```bash
-read -p "Introduce el numero de vidas " vidas
-read -p "Introduce el numero de continues " continues
-read -p "Quieres activar las trampas? (s/n)" trampas
+## 5. Actividades rápidas
 
-if [[ $vidas -le 0 && $continues -le 0 && $trampas = "s" ]]
-then
-        echo "Game Over!"
-else
-        echo "Continue?"
-fi
-```
-
-- Si vamos a agrupar diferentes opciones usando varios operadores binarios rodeamos, igual que en las ecuaciones matemáticas, con paréntesis “(“ y “)”.
-
-```bash
-read -p "Introduce tu nombre de usuario " usuario
-read -p "Introduce tu contrasenya " pass
-
-if [[ ($usuario = "Salva" && $pass = "abc1234") || ($usuario = "Pepe" && $pass="4231abc") ]]
-then
-        echo "Solo Salva y Pepe pueden acceder con su contrasenya"
-else
-        echo "O no eres ni Salva, ni Pepe o la contrasenya es incorrecta"
-fi
-```
-
-## Evaluacion aritmetica con (( ))
-
-- La sintaxis `(( ))` ejecuta expresiones aritmeticas con enteros; devuelve 0 cuando la condicion se cumple y 1 en caso contrario.
-- Dentro de `(( ))` se pueden usar operadores como `+`, `-`, `*`, `/`, `%`, comparaciones (`<`, `<=`, `>`, `>=`, `==`, `!=`) y operadores logicos (`&&`, `||`).
-- No es necesario anteponer `$` a las variables mientras estemos dentro de `(( ))`.
-
-| Expresion con `(( ))` | Equivalencia con `[[ ]]` |
-| --- | --- |
-| `(( a < b ))` | `[[ $a -lt $b ]]` |
-| `(( contador++ ))` | `contador=$((contador + 1))` |
-| `(( a < b && b < c ))` | `[[ $a -lt $b && $b -lt $c ]]` |
-
-### Ejemplo
-
-```bash
-read -p "Introduce un numero mayor que cero: " numero
-
-if (( numero <= 0 ))
-then
-        echo "Debes introducir un numero positivo"
-        exit 1
-fi
-
-contador=1
-while (( contador <= numero ))
-do
-        if (( numero % contador == 0 ))
-        then
-                echo "$contador es divisor de $numero"
-        fi
-        (( contador++ ))
-done
-```
+- **Actividad 1:** Escribe una condición que verifique que un fichero existe y no está vacío antes de procesarlo.
+- **Actividad 2:** Comprueba si un servicio está activo (`systemctl is-active`) **o** si el puerto está escuchando (`ss -ltn`). Lanza un aviso si ambos fallan.
+- **Actividad 3:** Usa `(( ... ))` para determinar si un número es múltiplo de 3 **y** par antes de añadirlo a una lista.

@@ -1,72 +1,82 @@
-# Exit, Break y Continue
+# Control del flujo: `exit`, `break` y `continue`
 
-## Exit.
+## 1. Descripción
 
-<center>
-!!! danger "EXIT"
+Estas instrucciones permiten salir de scripts o modificar el recorrido de los bucles:
 
-        El comando **exit** finaliza el script.
+- `exit` finaliza el script devolviendo un código al sistema.
+- `break` termina la iteración actual y sale del bucle.
+- `continue` salta a la siguiente iteración sin ejecutar el resto del bloque.
 
-</center>
-
-## Break
-
-<center>
-!!! danger "BREAK"
-
-        El comando "break" nos saca de un bucle.
-
-</center>
-
-- Nos permite dar por finalizado un bucle (while, until o for).
-
-- En caso de tener un bucle anidado, podemos usar break X para romper y salir de X bucles.
-
-- No hay que confundirlo con exit, el comando exit termina el programa, mientras que break finaliza el bucle en el que está pero continua el programa.
-
-### Ejemplo Break.
+## 2. Sintaxis con anotaciones
 
 ```bash
-#En el siguiente ejemplo hay un bucle que va desde 0 a 100 incrementando de 1 en 1.
-#No obstante, cuando llega al número indicado por el usuario se sale del bucle for y continúa.
-read -p "Escribe un numero del 1 al 100: " num
+exit CODIGO        # CODIGO suele ser 0 (éxito) u otro número (error)
 
-for x in `seq 1 $num`
-do
-        echo $x
-        if [ $x -eq $num ]
-        then
-                echo "Ya he llegado al numero $num"
-                break
-        fi
-done
-echo
-echo "El programa no ha terminado."
-echo "Simplemente se ha salido del bucle mediante el break."
+break              # Sale del bucle más interno
+break N            # Sale de N niveles de bucles anidados
+
+continue           # Salta a la siguiente iteración
+continue N         # Salta N niveles en bucles anidados
 ```
 
-  <img src="../imagenes/29.png" width="400"/>
+## 3. Ejemplos escalados
 
-## Continue
-
-<center>
-!!! danger "CONTINUE"
-        El comando "continue" manda el programa directamente a la siguiente iteración.
-</center>
-
-### Ejemplo Continue
+### Ejemplo básico: finalizar un script
 
 ```bash
-#En este ejemplo se recorre del 1 al 10 y no se muestra nada para el valor de 5.
-for x in `seq 1 10`
-do
-        if [ $x -eq 5 ]
-        then
-                continue
-        fi
+if [[ $# -ne 2 ]]
+then
+    echo "Uso: $0 origen destino"
+    exit 1
+fi
+```
 
-        echo "Vamos a mostrar todos los numeros menos el 5: $x"
+### Ejemplo intermedio: detener un `for` cuando se cumpla una condición
+
+```bash
+read -rp "Introduce un límite (1-100): " limite
+
+for (( i = 1; i <= 100; i++ ))
+do
+    echo "$i"
+    if [[ $i -eq limite ]]
+    then
+        echo "Se alcanzó el límite ($limite)."
+        break
+    fi
+done
+
+echo "El script continúa después del bucle."
+```
+
+### Ejemplo aplicado: omitir elementos con `continue`
+
+```bash
+for archivo in /var/log/*.log
+do
+    if [[ ! -s $archivo ]]
+    then
+        continue    # Ignora ficheros vacíos
+    fi
+
+    echo "Procesando $archivo"
+    grep -q "CRITICAL" "$archivo" && echo "Alerta: $archivo tiene eventos críticos"
 done
 ```
 
-![alt text](./imagenes/30.png)
+!!! question "Prueba tú"
+    Analiza la actividad **Traza de `ejemploContinue.sh`** del dossier de ejercicios y comprueba cómo `continue` y `break` afectan al flujo del bucle.
+
+## 4. Buenas prácticas
+
+- Devuelve códigos de salida coherentes (`exit 0` para éxito, `exit 1` o superior para errores).
+- Acompaña `break` y `continue` con comentarios si la condición no es evidente.
+- Evita `break` o `continue` dentro de funciones largas: considera extraer lógica en funciones auxiliares.
+- En bucles anidados, usa `break N`/`continue N` solo cuando sea imprescindible; lo normal es reestructurar el código.
+
+## 5. Actividades rápidas
+
+- **Actividad 1:** Escribe un script que abra un fichero y pare (`break`) al encontrar la cadena `FIN`.
+- **Actividad 2:** Implementa una comprobación que termine el script (`exit 2`) si el directorio `/var/backups` no es escribible.
+- **Actividad 3:** Recorre una lista de nombres y omite (`continue`) aquellos que empiecen por `test`, mostrando solo el resto.

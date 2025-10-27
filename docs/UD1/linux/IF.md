@@ -1,183 +1,109 @@
-# Estructura IF.
+# Condicionales `if` en Bash
 
-Una estructura de programación IF sirve para generar condiciones:
+## 1. Descripción
 
-- Si se cumple cierta condición realizaremos una acción, si no, realizaremos otra:
+Las sentencias `if` permiten ejecutar bloques de código solo cuando se cumple una condición. Son la base para tomar decisiones en scripts y automatizar respuestas diferentes según la entrada o el contexto del sistema.
 
-!!! info "Estructura IF simple"  
-	```bash
-		if [ CONDICIÓN ]
-		then
-			ACCIONES
-		fi 
-	```
+## 2. Sintaxis con anotaciones
 
-Cosas que se deben tener en cuenta:
-
-- Hay que dejar un espacio en blanco entre los corchetes.
-- Podemos hacer condiciones usando variables, haciendo uso del $, puesto que queremos comparar su contenido.
-- Es recomendable tabular (indentar) las acciones para que quede más limpio el código.
-- Siempre debe terminar la estructura con “fi”
-
-Podemos crear condiciones con alternativas, donde si no se cumple una condición se realiza otra lista de acciones:
-
-!!! info "Estructura IF ELSE"
-	```bash
-		if [ condición ]
-		then
-			ACCIONES
-		else
-			ACCIONES
-			fi
-	```
-
-Se pueden anidar muchas condiciones diferentes con el elemento “elif”:
-
-!!! info "Estructura IF ELSE"
-
-	``` bash
-	if [ condición ]
-	then
-		ACCIONES
-	elif [ condición ]
-	then
-		ACCIONES
-	elif [ condición ]
-	else
-		ACCIONES
-	fi
-	```
-
-
-## Ejemplos.
-
-
-### Ejemplo 1.
+### Estructura básica
 
 ```bash
-read -p  "Cual es tu nombre? " nombre
-
-if [ $nombre = "Salva" ]
+if [[ CONDICION ]]
 then
-        echo "Bienvenido Salva"
+    ACCIONES
 fi
 ```
 
-### Ejemplo 2.
+- Las comparaciones se hacen dentro de `[[ ... ]]`.
+- `then` abre el bloque de instrucciones cuando la condición es verdadera.
+- El cierre del bloque siempre se realiza con `fi`.
+
+### Variantes habituales
 
 ```bash
-read -p  "Cual es tu nombre? " nombre
-
-if [ $nombre = "Salva" ]
+# if / else
+if [[ CONDICION ]]
 then
-        echo "Bienvenido Salva"
-        touch fichero.txt
+    ACCIONES_SI
 else
-        echo "No eres Bienvenido"
-        echo "AutoDestruccion"
-        rm -f fichero.txt
+    ACCIONES_NO
+fi
+
+# if / elif / else
+if [[ CONDICION_1 ]]
+then
+    ACCIONES_1
+elif [[ CONDICION_2 ]]
+then
+    ACCIONES_2
+else
+    ACCIONES_DEFECTO
 fi
 ```
 
-### Ejemplo 3.
+!!! tip "Recuerda"
+    Tabula cada bloque para mejorar la lectura y deja espacios a ambos lados de los operadores (`[[ $edad -ge 18 ]]`).
+
+## 3. Ejemplos escalados
+
+### Ejemplo básico: validación de entrada
 
 ```bash
-read -p  "Cual es tu nombre? " nombre
+read -rp "¿Eres alumno del centro? (s/n): " respuesta
 
-if [ $nombre = "Salva" ]
+if [[ $respuesta = "s" ]]
 then
-        echo "Bienvenido Salva"
-        touch fichero.txt
-elif [ $nombre = "Pepe" ]
-then
-        echo "Que tal Pepe?"
+    echo "Acceso concedido."
 else
-        echo "No eres Bienvenido"
-        echo "AutoDestruccion"
-        rm -f fichero.txt
+    echo "Solo alumnos registrados pueden acceder."
 fi
 ```
 
-### Ejemplo 4.
+### Ejemplo intermedio: comprobar ruta y permisos
 
 ```bash
-read -p "Cual es tu edad? " edad
+read -rp "Ruta a comprobar: " ruta
 
-if [ $edad -ge 33 ]
+if [[ -d $ruta ]]
 then
-        echo "Tienes la edad de Cristo o mas"
+    echo "$ruta es un directorio."
+elif [[ -f $ruta && -r $ruta ]]
+then
+    echo "$ruta es un fichero legible."
 else
-        echo "Tienes menos que la edad de Cristo"
+    echo "La ruta no existe o no puedes leerla."
 fi
 ```
 
-### Ejemplo 5.
+### Ejemplo aplicado: control de recursos
 
 ```bash
-read -p "Inserta un nombre de archivo: " fic
+uso_root=$(df --output=pcent / | tail -n1 | tr -dc '0-9')
 
-if [ -f $fic ]
+if [[ $uso_root -ge 90 ]]
 then
-        echo "$fic es un fichero"
+    echo "El sistema raíz supera el 90 % de uso."
+elif [[ $uso_root -ge 70 ]]
+then
+    echo "Advertencia: / ocupa el $uso_root %."
 else
-        echo "$fic no es un fichero"
+    echo "Uso de disco en / bajo control ($uso_root %)."
 fi
 ```
 
-### Ejemplo 6.
+!!! question "Prueba tú"
+    Revisa la actividad **Script_IF_5.sh** en `docs/UD1/linux/Actividades.md` y desarrolla el script propuesto para practicar la comprobación de rutas con condicionales encadenados.
 
-```bash
-read -p "Inserta un directorio: " dir
+## 4. Buenas prácticas
 
-if [ -e $dir ]
-then
-        echo "$dir existe, pero no se si es un directorio."
-else
-        echo "$dir no existe."
-fi
-```
+- Usa `[[ ... ]]` para evitar problemas con cadenas vacías y soportar `&&` / `||`.
+- Cita las variables cuando puedan contener espacios: `[[ -f "$fichero" ]]`.
+- Combina condicionales con funciones (`return`/`exit`) para evitar anidar en exceso.
+- Explica con comentarios breves las condiciones complejas.
 
-### Ejemplo 7.
+## 5. Actividades rápidas
 
-```bash
-read -p  "Indica un ficher o directorio: " recurso
-
-if [ -f $recurso ]
-then
-        echo "$recurso es un fichero"
-elif [ -d $recurso ]
-then
-        echo "$recurso es un directorio"
-elif [ -e $recurso ]
-then
-        echo "$recurso existe pero no es ni un directorio ni un fichero"
-else
-        echo "El $recurso ni si quiera existe"
-fi
-```
-
-### Ejemplo 8. Operador [[]]
-
-Con el comando test:
-
-```bash title=""
-
-if [ -w $arch1 -a \( -e $dir1 -o -e $dir2 \) ]
-then
-...
-```
-
-Con el comando [[]]:
-
-```bash title=""
-
-if [[-w $arch1 && ( -e $dir1 || -e $dir2 )]]
-then
-...
-```
-
-## Vídeos de Ejemplo.
-
-1. [Ejemplos de la Estructura IF.](https://youtu.be/dD9zn6mH0MY)
-
-	
+- **Actividad 1:** Comprueba si un usuario existe (`getent passwd`) y, en caso afirmativo, muestra su directorio personal.
+- **Actividad 2:** Pide la hora actual (`date +%H`) y recomienda “Descanso” si está entre 11 y 12, “Comida” si es 14, o “Clase” en cualquier otro caso.
+- **Actividad 3:** Solicita una URL y utiliza `curl -Is` para determinar si el servicio responde con código 200. Imprime mensajes diferenciados según el código HTTP recibido.

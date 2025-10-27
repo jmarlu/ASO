@@ -1,203 +1,89 @@
-# Comparadores.
+# Comparadores en Bash
 
-## Comparadores Aritméticos.
+Comprender los distintos tipos de comparaciones es clave para construir condiciones fiables en tus scripts. Separamos los comparadores más habituales según el tipo de dato y añadimos ejemplos prácticos.
 
+## Comparadores numéricos
 
-
-| Comparador |  Significado 				    |
-| :--------: | :------------------------------- |
-|   `-eq`    | Igual a (Equeal to)              |
-|   `-ne`    | No Igual (Not Equal)             |
-|   `-gt`    | Mayor que (Greater Than)         |
-|   `-ge`    | Mayor o igual (Greater or Equal) |
-|   `-lt`    | Menor que (Lower Than)           |
-|   `-le`    | Menor o igual (Lower or Equal)   |
-
-				 
-
-### Ejemplo 1
+| Comparador | Significado                  | Ejemplo práctico |
+| :--------: | :--------------------------- | ---------------- |
+| `-eq`      | Igual a                      | `[[ $usuarios -eq 50 ]]` → ¿Hay 50 usuarios dados de alta? |
+| `-ne`      | Distinto                      | `[[ $intentos -ne 3 ]]` → ¿No ha agotado los 3 intentos? |
+| `-gt`      | Mayor que                    | `[[ $uso_memoria -gt 80 ]]` → ¿La RAM supera el 80 %? |
+| `-ge`      | Mayor o igual que           | `[[ $dias_sin_backup -ge 7 ]]` → ¿Han pasado 7 días sin copia? |
+| `-lt`      | Menor que                    | `[[ $usuarios_activos -lt 10 ]]` → ¿Quedan menos de 10 usuarios conectados? |
+| `-le`      | Menor o igual que           | `[[ $procesos -le 100 ]]` → ¿Hay 100 procesos o menos? |
 
 ```bash
-if [ $edad -gt 25 ]
+if [[ $uso_memoria -gt 80 ]]
 then
-	echo "Tienes más de 25 años."
+    echo "Atención: memoria por encima del 80 %"
+fi
+```
+
+## Comparadores de archivos
+
+| Comparador | Significado                               | Ejemplo práctico |
+| :--------: | :---------------------------------------- | ---------------- |
+| `-e`       | Existe                                     | `[ -e /etc/passwd ]` |
+| `-f`       | Es un fichero regular                      | `[ -f /var/log/syslog ]` |
+| `-d`       | Es un directorio                           | `[ -d /var/backups ]` |
+| `-r`       | Permiso de lectura                         | `[ -r "$fichero_config" ]` |
+| `-w`       | Permiso de escritura                       | `[ -w "$HOME/.bashrc" ]` |
+| `-x`       | Permiso de ejecución                       | `[ -x /usr/bin/docker ]` |
+| `-O`       | Propietario es el usuario actual           | `[ -O "$report" ]` |
+| `-G`       | El grupo coincide con el grupo actual      | `[ -G "$script" ]` |
+| `-s`       | El fichero no está vacío                   | `[ -s /tmp/informe.txt ]` |
+| `-L`       | Es un enlace simbólico                     | `[ -L /usr/bin/python ]` |
+
+```bash
+if [[ -d $backup_dir && -w $backup_dir ]]
+then
+    echo "Preparado para guardar la copia en $backup_dir"
 else
-	echo "Tienes 25 o menos años."
+    echo "No se puede escribir en $backup_dir"
 fi
 ```
 
-### Ejemplo 2
+## Comparadores de cadenas
+
+| Comparador | Significado                       | Ejemplo práctico |
+| :--------: | :-------------------------------- | ---------------- |
+| `=`        | Igualdad                          | `[[ $usuario = "root" ]]` |
+| `!=`       | Distinto                          | `[[ $estado != "OK" ]]` |
+| `-n`       | Cadena no vacía                   | `[[ -n $HOSTNAME ]]` |
+| `-z`       | Cadena vacía                      | `[[ -z $respuesta ]]` |
 
 ```bash
-if [ $examenes -ne 20 ]
+if [[ -z $respuesta ]]
 then
-	echo "No tenemos exactamente 20 exámenes entregados, algo ha ido mal"
-else
-	echo "Han entregado 20 exámenes."
+    echo "No se recibió respuesta del servicio."
 fi
 ```
 
-### Ejemplo 3
+## Operadores lógicos
+
+| Operador | Significado | Uso típico |
+| :------: | :---------- | ---------- |
+| `!`      | Negación    | `[[ ! -d $dir ]]` |
+| `&&`     | Y           | `[[ -f $cfg && -r $cfg ]]` |
+| `||`     | O           | `[[ $rol = "admin" || $rol = "operador" ]]` |
 
 ```bash
-if [ $memoria -le 100000 ]
+if [[ -w $archivo && ( -e $dir1 || -e $dir2 ) ]]
 then
-	echo "Quedan 100MB o menos en el sistema."
+    echo "Hay permiso de escritura y al menos una de las rutas existe."
 fi
 ```
 
-## Comparadores de Archivos.
+## Test clásico `[` frente a `[[ ]]`
 
-
-
-| Comparador |  Significado 				                |
-| :--------: | :------------------------------------------- |
-|    `-f`    | Verdadero si es un fichero                   |
-|    `-e`    | Verdadero si existe                          |
-|    `-d`    | Verdadero si es un directorio                |
-|    `-r`    | Verdadero si tengo permisos de lectura       |
-|    `-w`    | Verdadero si tengo permisos de escritura     |
-|    `-x`    | Verdadero si tengo permisos de ejecución     |
-|    `-O`    | Verdadero si soy el usuario propietario      |
-|    `-G`    | Verdadero si pertenezco al grupo propietario |
-|    `-s`    | Verdadero si el fichero NO está vacío        |
-|    `-L`    | Verdadero si se trata de un enlace simbólico |
-
-				 
-
-### Ejemplo 1
+El comando `[[ ]]` extiende la funcionalidad de `[` (`test`) y evita algunos problemas de expansión. Aun así, ambos son válidos si se respetan los espacios y las comillas.
 
 ```bash
-if [ -e $carpeta ]
-then
-	echo "La carpeta existe, aunque quizá se trate de un fichero."
-else
-	echo "La carpeta no existe"
-fi
+# Formas equivalentes para comprobar si la variable está vacía
+[ -z "$respuesta" ]
+[[ -z $respuesta ]]
 ```
 
-### Ejemplo 2
-
-```bash
-if [ -d $carpeta ]
-then
-	echo "La carpeta existe y se trata seguro de una carpeta."
-else
-	echo "La carpeta no existe"
-fi
-```
-
-### Ejemplo 3
-
-```bash
-if [ -s $fichero ]
-then
-	echo "El fichero contiene información."
-else
-	echo "El fichero está vació y lo voy a borrar."
-	rm -f $fichero
-fi
-```
-
-## Comparadores de cadenas / variables.
-
-
-
-| Comparador |  Significado 				            |
-| :--------: | :--------------------------------------- |
-|    `=`     | Verdadero si es igual                    |
-|    `!=`    | Verdadero si es diferente                |
-|    `-n`    | Verdadero si la variable tiene contenido |
-|    `-z`    | Verdadero si la variable está vacía      |
-
-
-
-### Ejemplo 1
-
-```bash
-if [ $usuario = "ajc" ]
-then
-	echo "Bienvenido Alejandro!"
-else
-	echo "¿Quién eres?"
-	read -p "Introduce tu nombre: " nombre
-fi
-```
-
-### Ejemplo 2
-
-```bash
-if [ $salir != "s" ]
-then
-	echo "El usuario quiere seguir jugando."
-else
-	echo "El usuario quiere continuar jugando."
-fi
-```
-
-### Ejemplo 3
-
-```bash
-if [ -z $respuesta]
-then
-	echo "Hubo algún error y se ha recibido una respuesta vacía"
-fi
-```
-
-## Los operadores.
-
-| Operador del comando test (por orden de prioridad decreciente) | Significado |
-| -------------------------------------------------------------- | ----------- |
-| !                                                              | Negación    |
-| -a                                                             | Y           |
-| -o                                                             | O           |
-
-### Ejemplo 1
-
-El comando test( []) devuelve verdadero si $dir es un directorio y si el usuario tiene el permiso de recorrerlo:
-
-```bash title=""
-$ dir=/tmp
-$ echo $dir
-/tmp
-$ [ -d $dir -a -x $dir ]
-$ echo $?
-0
-```
-
-## El comando [[]]
-
-El comando [[]] es una versión enriquecida del comando test([]).
-Consideraciones:
-
-- Los operadores lógicos -a y -o han sido reemplazados por `&& y ||`.
-- Funcionalidades suplementarias en referencia al comando test
-- Verificaciones sobre cadenas
-- Las comillas dobles alrededor de los nombres de variables ya no son obligatorias.
-
-### Ejemplo
-
-Sintaxis correctas para verificar si una cadena está vacía:
-
-```bash title=""
-
-$ echo $vacia
-
-$ [ -z "$vacia" ]
-$ echo $?
-0
-$
-$ [[ -z $vacia ]]
-$ echo $?
-0
-$ [[ -z "$vacia" ]]
-$ echo $?
-0
-$ [[ $vacia = "" ]]
-$ echo $?
-0
-```
-
-!!! warning
-
-    `$?` es un parámetro que pregunta al comando que se ha ejecutado con anterioridad , si se ha realizado correctamente. Cuando sale 0 es afirmativo. Este parámetro es útil cuando se trata de comparaciones. En el supuesto de una suma la sumaria y te saldría correcto pero si no lo suma te saldría >0.
+!!! tip
+    Usa `[[ ... ]]` siempre que puedas: mejora la lectura, admite `&&` y `||` y evita errores cuando la variable está vacía o contiene espacios.

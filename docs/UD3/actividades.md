@@ -31,7 +31,7 @@ Crea un DIT para `dc=empresa,dc=com` con:
 
 - `ou=Usuarios`, `ou=Departamentos` (Ventas/Soporte), `ou=Grupos`.
 - 4 usuarios `inetOrgPerson` y 2 grupos (`groupOfNames` con `member:` DN).
-- Diagrama Mermaid del DIT.
+- Diagrama del DIT.
 
 ### 4. LDIF de altas y cambios
 Crea `altas.ldif` con OU+2 usuarios.  
@@ -72,3 +72,4 @@ En la carpeta del laboratorio:
 - Genera una **CA interna** y firma un certificado para `asir.local` (incluye SAN con el host/IP que uses).
 - Monta los certificados en `openldap` mediante `docker-compose.yml`, habilita `LDAP_TLS`, fuerza conexiones cifradas y ajusta `phpLDAPadmin` para servir por HTTPS.
 - Demuestra la configuración con dos capturas de comandos: `ldapsearch` contra `ldaps://` y `openssl s_client` mostrando el certificado emitido por tu CA.
+
