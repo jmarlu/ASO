@@ -1,6 +1,6 @@
 # Scripts de refuerzo muy basicos (UD1 Linux)
 
-Este set contiene ejercicios rapidos para practicar los mismos conceptos que se trabajan en `docs/UD1/linux/Actividades.md` y en la hoja de comandos (`docs/recordatorios/commandosLinux.md`). Los ficheros estan en `docs/UD1/linux/refuerzo_scripts/` y ya tienen permiso de ejecucion. Cada script abre con un enunciado paso a paso y solo emplea comandos basicos (sin `printf`, `awk`, `sed` ni expansiones `${ }`).
+Este set contiene ejercicios rapidos para practicar los mismos conceptos que se trabajan en Actividades y en la hoja de comandos.
 
 ## Resumen rapido
 
