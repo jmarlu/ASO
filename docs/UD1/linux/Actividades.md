@@ -162,10 +162,9 @@
       - Requiere que estén instalados `openssh-server`, `ssh` y `sshpass` en la máquina que ejecuta el script.  
       - Archivos de entrada: `hosts.txt` (un host por línea) y `usuarios.txt` (un usuario por línea).  
       - Para cada host:  
-      - Conecta como root usando `sshpass` (solo para entornos de laboratorio).  
-      - Elimina el usuario si existe (`userdel -rf`).  
-      - Crea de nuevo el usuario con `useradd -m`.  
-      - Recuerda que en entornos reales se recomienda autenticación por claves, contraseñas robustas y control detallado de errores.
+            - Conecta como root usando `sshpass` (solo para entornos de laboratorio).  
+            - Elimina el usuario si existe (`userdel -rf`).  
+            - Crea de nuevo el usuario con `useradd -m`.  
+            - Recuerda que en entornos reales se recomienda autenticación por claves, contraseñas robustas y control detallado de errores.
 
-!!! warning
-    **Todas las actividades son obligatorias.** Cuando un ejercicio solicite un script, entrega el fichero `.sh`. En el resto de casos documenta la resolución con capturas (PDF). Aunque solo entregues un archivo, comprímelo antes de subirlo.
+

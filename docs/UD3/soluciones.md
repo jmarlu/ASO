@@ -182,6 +182,7 @@ flowchart LR
 ---
 
 ### 9. Arquitectura con réplica
+
 Diseña  una arquitectura con **slapd maestro** y **réplica**, 3 aplicaciones cliente (una de solo lectura), y señala **qué peticiones** van al maestro y cuáles a la réplica. Añade una nota sobre **TLS** y **ACL**.
 
 ## 10. Endurece el laboratorio Docker con TLS (solución)
@@ -194,17 +195,18 @@ Diseña  una arquitectura con **slapd maestro** y **réplica**, 3 aplicaciones c
    ```bash
    openssl req -x509 -newkey rsa:4096 -days 365 \
      -keyout certs/ca.key -out certs/ca.crt -nodes \
-     -subj "/C=ES/ST=Andalucia/O=ASIR2X/CN=CA OpenLDAP"
+     -subj "/C=ES/ST=Valencia/O=ASIR2X/CN=CA OpenLDAP"
 
    openssl req -new -newkey rsa:4096 -keyout certs/asir.local.key \
      -out certs/asir.local.csr -nodes \
-     -subj "/C=ES/ST=Andalucia/O=ASIR2X/CN=asir.local"
+     -subj "/C=ES/ST=Valencia/O=ASIR2X/CN=asir.local"
 
    openssl x509 -req -in certs/asir.local.csr -CA certs/ca.crt -CAkey certs/ca.key \
      -CAcreateserial -out certs/asir.local.crt -days 365 -sha256 \
      -extfile <(printf "subjectAltName=DNS:asir.local,IP:127.0.0.1")
    ```
    Entrega `certs/ca.crt` (y opcionalmente `asir.local.crt`) a los clientes; la clave `asir.local.key` permanece solo en el servidor.
+
 3. **`docker-compose.yml`**  
    ```yaml
    services:

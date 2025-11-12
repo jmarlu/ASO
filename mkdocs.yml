@@ -24,6 +24,7 @@ nav:
         - Break y Continue: ./UD1/linux/Break.md
         - Actividades: ./UD1/linux/Actividades.md
       #  - Soluciones de Actividades: ./UD1/linux/Soluciones_Actividades.md
+        - Actividades Scripts_refuerzo: ./UD1/linux/Scripts_refuerzo.md
     - Windows:
       - Introducción: ./UD1/windows/021_IntroducciónPwSh.md
       - Comandos: ./UD1/windows/comandos.md
@@ -48,7 +49,7 @@ nav:
       - Introducción a LDAP: ./UD3/teoria.md
       - OpenLDAP en Docker: ./UD3/docker-openldap.md
       - PAM en Linux: ./UD3/pam.md
-      - Servicios de Autenticación: ./UD3/LDAP/ServiciosAutenticacion.md
+      - Servicios de Autenticación: ./UD3/ServiciosAutenticacion.md
       - Integración de Servicios con LDAP: ./UD3/LDAP/IntegracionServiciosLDAP.md
       - Actividades: ./UD3/actividades.md
       #- soluciones: ./UD3/soluciones.md

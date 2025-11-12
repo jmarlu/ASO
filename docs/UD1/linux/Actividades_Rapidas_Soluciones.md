@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Soluciones - Actividades Rápidas (UD1 Linux)
 
 Este documento recoge posibles soluciones para las actividades rápidas incluidas al final de cada ficha teórica. Las propuestas son orientativas; puedes adaptarlas según tus necesidades o las de tus alumnos.

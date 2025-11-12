@@ -2,7 +2,7 @@
 
 > "Pluggable Authentication Modules" (PAM) es la capa que traduce las peticiones de autenticación de las aplicaciones en llamadas a los mecanismos que realmente validan a los usuarios.
 
-## ¿Por qué debería importarte co?
+## ¿Qué aporta PAM?
 
 - **Separación de responsabilidades**: las aplicaciones delegan la autenticación y tú solo tocas las pilas PAM.  
 - **Flexibilidad**: puedes añadir LDAP, Kerberos o un segundo factor sin reprogramar ningún servicio.  
@@ -11,16 +11,19 @@
 
 PIENSA EN PAM como una **centralita**: las llamadas (peticiones de login) llegan al operador (libpam) y este las redirige al departamento adecuado (módulos) según un guion (fichero en `/etc/pam.d/servicio`).
 
+
 ```mermaid
-flowchart LR
-    Usuario -->|credenciales| Servicio[Servicio PAM-aware<br>(sshd, sudo, gdm...)]
-    Servicio --> libpam[libpam]
-    libpam -->|lee pila| Config[/etc/pam.d/servicio]
+graph LR
+    Usuario -->|credenciales| Servicio[ServicioPAM-aware <br> sshd, sudo, gdm...];
+    Servicio --> libpam[libpam];
+    libpam -->|lee pila| Config['/etc/pam.d/servicio'];
     libpam --> Modulos{Pila de módulos}
     Modulos --> Backend[Backends: /etc/shadow, LDAP, Kerberos, MFA...]
     Backend --> Resultado{Éxito / Fallo}
     Resultado --> Servicio
     Servicio --> Usuario
+
+
 ```
 
 ## Componentes y flujo de trabajo
@@ -61,18 +64,19 @@ Cada línea de configuración en `/etc/pam.d/<servicio>` define:
 ```
 
 - **Tipos**:
-  - `auth`: valida credenciales (contraseña, token, llave pública).
-  - `account`: comprueba políticas de acceso (vigencia de la cuenta, horarios, grupos).
-  - `password`: gestiona el cambio o sincronización de contraseñas.
-  - `session`: tareas que ocurren al abrir o cerrar sesión (montar directorios, registrar eventos).
-- **Controles** (deciden qué hacer con el resultado):
-  - `required`: debe pasar; aunque falle, se siguen evaluando módulos para no dar pistas al usuario.
-  - `requisite`: si falla, detiene la pila inmediatamente y corta el acceso.
-  - `sufficient`: si pasa y no hubo fallos previos, finaliza la pila con éxito.
-  - `optional`: se ejecuta, pero su resultado solo cuenta si es el único módulo del tipo.
-  - `include`: inserta otra pila (frecuente en `common-auth` de Debian o `system-auth` de Red Hat).
 
-**Truco mental:** lee de arriba abajo y pregúntate “¿qué pasa si el módulo falla?”; la palabra clave del control te lo dice.
+    - `auth`: valida credenciales (contraseña, token, llave pública).
+    - `account`: comprueba políticas de acceso (vigencia de la cuenta, horarios, grupos).
+    - `password`: gestiona el cambio o sincronización de contraseñas.
+    - `session`: tareas que ocurren al abrir o cerrar sesión (montar directorios, registrar eventos).
+    
+- **Controles** (deciden qué hacer con el resultado):
+    - `required`: debe pasar; aunque falle, se siguen evaluando módulos para no dar pistas al usuario.
+    - `requisite`: si falla, detiene la pila inmediatamente y corta el acceso.
+    - `sufficient`: si pasa y no hubo fallos previos, finaliza la pila con éxito.
+    - `optional`: se ejecuta, pero su resultado solo cuenta si es el único módulo del tipo.
+    - `include`: inserta otra pila (frecuente en `common-auth` de Debian o `system-auth` de Red Hat).
+
 
 ## Dónde se configura PAM
 
@@ -104,7 +108,7 @@ Los archivos `common-*` suelen contener la integración con SSSD o LDAP, de form
 - **Restricción por origen**: `pam_access.so` bloquea logins desde determinados hosts o redes.
 
 ```mermaid
-flowchart TD
+graph LR
     subgraph Pila auth
         A[pam_unix.so<br>required]
         B[pam_sss.so<br>sufficient]

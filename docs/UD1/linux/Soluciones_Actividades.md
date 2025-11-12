@@ -263,7 +263,7 @@ fi
 
 read -r -p "Introduce una IP: " ip
 
-if [[ -z $ip ]]; then
+if [[ -z $ip && $ip=~[0-9]{1,3}\.){3}[0-9]{1,3} ]]; then
   echo "Debes introducir una dirección IP o un dominio." >&2
   exit 1
 fi
@@ -302,7 +302,7 @@ esac
 
 read -r -p "Introduce una ruta absoluta: " ruta
 
-if [[ -z $ruta ]]; then
+if [[ -z $ruta && $ruta=~ ^\/ ]]; then
   echo "Debes introducir una ruta." >&2
   exit 1
 fi
@@ -427,7 +427,8 @@ esac
 ```bash
 #!/bin/bash
 
-if [[ $# -ne 1 ]]; then
+
+if [[ $# -ne 1 || ! $ip=~[0-9]{1,3}\.){3}[0-9]{1,3} ]]; then
   echo "Debes indicar una IP o dominio como argumento." >&2
   exit 1
 fi
@@ -447,15 +448,37 @@ EOF
   read -r -p "Opción: " opcion
 
   case $opcion in
-    1) ping -c 4 "$ip" ;;
-    2) command -v tracepath >/dev/null || { echo "tracepath no está disponible." >&2; continue; }
-       tracepath "$ip" ;;
-    3) command -v nslookup >/dev/null || { echo "nslookup no está disponible." >&2; continue; }
-       nslookup "$ip" ;;
-    4) command -v whois >/dev/null || { echo "whois no está disponible." >&2; continue; }
-       whois "$ip" ;;
-    5) echo "Fin del programa."; exit 0 ;;
-    *) echo "OPCIÓN DESCONOCIDA" >&2 ;;
+    1)
+      ping -c 4 "$ip"
+      ;;
+    2)
+      if ! command -v tracepath >/dev/null; then
+        echo "tracepath no está disponible." >&2
+        continue
+      fi
+      tracepath "$ip"
+      ;;
+    3)
+      if ! command -v nslookup >/dev/null; then
+        echo "nslookup no está disponible." >&2
+        continue
+      fi
+      nslookup "$ip"
+      ;;
+    4)
+      if ! command -v whois >/dev/null; then
+        echo "whois no está disponible." >&2
+        continue
+      fi
+      whois "$ip"
+      ;;
+    5)
+      echo "Fin del programa."
+      exit 0
+      ;;
+    *)
+      echo "OPCIÓN DESCONOCIDA" >&2
+      ;;
   esac
 done
 ```
@@ -485,7 +508,7 @@ while (( intentos < max_intentos )); do
     continue
   fi
 
-  if grep -P "^\Q$usuario\E\t\Q$contrasena\E$" "$archivo" >/dev/null; then
+  if grep -qxF "$usuario"$'\t'"$contrasena' "$archivo" >/dev/null; then
     echo "Bienvenido $usuario"
     exit 0
   else
@@ -522,7 +545,7 @@ EOF
         read -r -p "Usuario: " usuario
         read -r -s -p "Contraseña: " contrasena
         echo
-        if grep -P "^\Q$usuario\E \Q$contrasena\E$" "$archivo" >/dev/null; then
+        if grep -qxF "$usuario"$'\t'"$contrasena' "$archivo" >/dev/null; then
           echo "Bienvenido $usuario"
           exit 0
         else
@@ -544,7 +567,7 @@ EOF
         continue
       fi
 
-      if grep -P "^\Q$nuevo\E " "$archivo" >/dev/null; then
+      if grep -x +"$nuevo" "$archivo" >/dev/null; then
         echo "El usuario ya existe."
         continue
       fi
@@ -586,7 +609,7 @@ Ejecución ejemplo: `bash ./ejemploContinue.sh 3`
 
 ```bash
 #!/bin/bash
-
+IFS=
 if [[ $# -ne 1 ]]; then
   echo "Debes indicar el número de días como argumento." >&2
   exit 1
@@ -600,7 +623,7 @@ if [[ ! -f $archivo ]]; then
   exit 1
 fi
 
-while IFS= read -r usuario; do
+while  read -r usuario; do
   [[ -z $usuario ]] && continue
   if id "$usuario" >/dev/null 2>&1; then
     chage -M "$dias" "$usuario"
@@ -630,11 +653,11 @@ if ! [[ $filas =~ ^[0-9]+$ && $columnas =~ ^[0-9]+$ ]]; then
 fi
 
 for (( i=1; i<=filas; i++ )); do
-  linea=""
-  for (( j=1; j<=columnas; j++ )); do
-    linea+="* "
+  linea="*"
+  for (( j=2; j<=columnas; j++ )); do
+    linea+=" *"
   done
-  echo "${linea% }"
+  echo "$linea"
 done
 ```
 
@@ -665,56 +688,65 @@ done
 ls -l "$directorio"
 ```
 
+
+
 ### Actividad 2. Mover o copiar por extensión (`gestiona_ext.sh`)
 
 ```bash
 #!/bin/bash
 
-if [[ $# -ne 3 ]]; then
-  echo "Uso: $0 extension directorio_origen directorio_destino" >&2
-  exit 1
+if [ $# -ne 3 ]; then
+    echo "Uso: $0 extension directorio_origen directorio_destino" >&2
+    exit 1
 fi
 
 extension=$1
 origen=$2
 destino=$3
 
-if [[ ! -d $origen || ! -d $destino ]]; then
-  echo "Los argumentos segundo y tercero deben ser directorios." >&2
-  exit 1
+# Verificar que los directorios existen
+if [ ! -d "$origen" ] || [ ! -d "$destino" ]; then
+    echo "Los argumentos segundo y tercero deben ser directorios." >&2
+    exit 1
 fi
 
 read -r -p "¿Deseas mover o copiar? [mover/copiar]: " accion
 
-shopt -s nullglob
-ficheros=("$origen"/*."$extension")
+# Buscar archivos con find y almacenar resultado
+archivos=$(find "$origen" -maxdepth 1 -name "*.$extension" -type f)
 
-if [[ ${#ficheros[@]} -eq 0 ]]; then
-  echo "No se encontraron ficheros con extensión .$extension en $origen."
-  exit 0
+if [ -z "$archivos" ]; then
+    echo "No se encontraron ficheros con extensión .$extension en $origen"
+    exit 0
 fi
 
 case $accion in
-  mover)
-    mv "${ficheros[@]}" "$destino"/
-    echo "Ficheros movidos correctamente."
-    ;;
-  copiar)
-    cp "${ficheros[@]}" "$destino"/
-    echo "Ficheros copiados correctamente."
-    ;;
-  *)
-    echo "Acción no válida." >&2
-    exit 1
-    ;;
+    mover)
+        for archivo in $archivos; do
+            mv "$archivo" "$destino/"
+            echo "Movido: $archivo"
+        done
+        echo "Ficheros movidos correctamente."
+        ;;
+    copiar)
+        for archivo in $archivos; do
+            cp "$archivo" "$destino/"
+            echo "Copiado: $archivo"
+        done
+        echo "Ficheros copiados correctamente."
+        ;;
+    *)
+        echo "Acción no válida." >&2
+        exit 1
+        ;;
 esac
 ```
 
 ### Actividad 3. Alerta de capacidad (`alerta_equipos.sh`)
 
-```bash
+```bash Title="con while"
 #!/bin/bash
-
+IFS=
 if [[ $# -ne 1 ]]; then
   echo "Uso: $0 capacidad_minima" >&2
   exit 1
@@ -734,6 +766,40 @@ while read -r ip nombre disco ram; do
     echo "ALERTA: $nombre ($ip) tiene ${disco}GB libres (< ${minimo}GB)."
   fi
 done < "$archivo"
+
+```
+```bash title="con For"
+#!/bin/bash
+
+if [[ $# -ne 1 ]]; then
+  echo "Uso: $0 capacidad_minima" >&2
+  exit 1
+fi
+
+minimo=$1
+archivo="equipos.txt"
+
+if [[ ! -f $archivo ]]; then
+  echo "No existe el fichero $archivo" >&2
+  exit 1
+fi
+
+# Almacenamos el contenido del archivo en una variable
+equipos=$(cat "$archivo")
+
+# Iteramos sobre cada línea usando for
+for linea in $equipos; do
+    # Extraemos los campos usando cut
+    ip=$(echo "$linea" | cut -d' ' -f1)
+    nombre=$(echo "$linea" | cut -d' ' -f2)
+    disco=$(echo "$linea" | cut -d' ' -f3)
+    ram=$(echo "$linea" | cut -d' ' -f4)
+
+    # Verificamos si el disco está por debajo del mínimo
+    if (( disco < minimo )); then
+        echo "ALERTA: $nombre ($ip) tiene ${disco}GB libres (< ${minimo}GB)."
+    fi
+done
 ```
 
 ### Actividad 4. Creación remota de usuarios (`creaUsuarios.sh`)
@@ -763,3 +829,71 @@ done < "$hosts"
 ```
 
 > ℹ️ En entornos reales conviene usar autenticación con claves, cifrado de contraseñas y gestionar errores individualmente.
+
+### Actividad 5. Creación remota con claves (`creaUsuariosClaves.sh`)
+
+```bash
+#!/bin/bash
+
+set -euo pipefail
+
+hosts="hosts.txt"
+usuarios="usuarios.txt"
+clave_publica="${1:-clave.pub}"
+clave_admin="${HOME}/.ssh/lab_admin"
+clave_pruebas="${clave_publica%.pub}"
+
+if [[ ! -f $hosts || ! -f $usuarios ]]; then
+  echo "Deben existir los ficheros hosts.txt y usuarios.txt" >&2
+  exit 1
+fi
+
+if [[ ! -f $clave_publica ]]; then
+  echo "No encuentro la clave pública a desplegar: $clave_publica" >&2
+  exit 1
+fi
+
+if [[ ! -f $clave_admin ]]; then
+  echo "No encuentro la clave privada administrativa: $clave_admin" >&2
+  echo "Ejecuta: ssh-keygen -t ed25519 -f \"$clave_admin\"" >&2
+  exit 1
+fi
+
+llave_publica=$(<"$clave_publica")
+
+while read -r host; do
+  [[ -z $host ]] && continue
+  while read -r usuario; do
+    [[ -z $usuario ]] && continue
+    ssh -i "$clave_admin" \
+        -o BatchMode=yes \
+        -o StrictHostKeyChecking=accept-new \
+        root@"$host" bash -s <<EOF
+set -e
+userdel -rf "$usuario" 2>/dev/null || true
+useradd -m "$usuario"
+install -d -m 700 -o "$usuario" -g "$usuario" "/home/$usuario/.ssh"
+cat <<'__KEY__' > "/home/$usuario/.ssh/authorized_keys"
+$llave_publica
+__KEY__
+chown -R "$usuario:$usuario" "/home/$usuario/.ssh"
+chmod 600 "/home/$usuario/.ssh/authorized_keys"
+EOF
+
+    if [[ -f $clave_pruebas ]]; then
+      if ssh -i "$clave_pruebas" \
+             -o BatchMode=yes \
+             -o StrictHostKeyChecking=accept-new \
+             "$usuario@$host" "echo OK" >/dev/null 2>&1; then
+        echo "[$host] Usuario $usuario operativo con acceso por clave."
+      else
+        echo "[$host] Usuario $usuario creado pero la verificación por clave falló." >&2
+      fi
+    else
+      echo "[$host] Usuario $usuario configurado. Omisión de verificación (clave privada $clave_pruebas no encontrada)."
+    fi
+  done < "$usuarios"
+done < "$hosts"
+```
+
+> ✅ Antes de lanzar el script importa la clave pública `lab_admin.pub` en la cuenta `root` de cada host con `ssh-copy-id`. Si proporcionas la clave privada asociada a `clave.pub`, el propio guion comprobará que cada usuario puede autenticarse sin contraseña.

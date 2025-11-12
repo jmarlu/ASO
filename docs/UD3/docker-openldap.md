@@ -97,6 +97,9 @@ Comandos básicos:
 
 ```
 ~/openldap-lab/
+├── datos/
+│   ├── ldap/
+│   └── slapd.d/
 ├── docker-compose.yml
 ```
 
@@ -113,9 +116,12 @@ services:
       LDAP_ORGANISATION: "ASIR2X"
       LDAP_DOMAIN: "asir.local"
       LDAP_ADMIN_PASSWORD: "admin123"
-      LDAP_TLS: "false" (Desactiva la validación por certificado)
+      LDAP_TLS: "false"  # Desactiva la validación por certificado
     ports:
       - "389:389"
+    volumes:
+      - ./datos/ldap:/var/lib/ldap
+      - ./datos/slapd.d:/etc/ldap/slapd.d
     restart: unless-stopped
 
   phpldapadmin:
@@ -134,27 +140,31 @@ services:
 ```
 
 
-> Warning: cuando experimentes con TLS, replicación u otras opciones avanzadas ese estado queda persistido en `./datos/slapd.d`. Si desactivas la característica, elimina o renombra la carpeta `datos/` antes de levantar de nuevo el stack (`docker compose down && rm -rf datos` o `mv datos datos_backup`) para regenerar una configuración limpia.
+> Warning: cuando experimentes con TLS, replicación u otras opciones avanzadas ese estado queda persistido en `./datos/slapd.d` y en la base de datos bajo `./datos/ldap`. Si desactivas la característica, elimina o renombra la carpeta `datos/` antes de levantar de nuevo el stack (`docker compose down && rm -rf datos` o `mv datos datos_backup`) para regenerar una configuración limpia.
 
 
 
 ## 6. Pasos para arrancar el laboratorio
 
 1. Crear directorio y copiar los archivos anteriores.
-2. Ajustar variables: dominio (`LDAP_DOMAIN`), contraseña admin, entradas en el LDIF.
-3. Lanzar los servicios:
+2. Crear las carpetas para los volúmenes persistentes:
+   ```bash
+   mkdir -p datos/ldap datos/slapd.d
+   ```
+3. Ajustar variables: dominio (`LDAP_DOMAIN`), contraseña admin, entradas en el LDIF.
+4. Lanzar los servicios:
    ```bash
    docker compose up -d
    ```
-4. Comprobar estado:
+5. Comprobar estado:
    ```bash
    docker compose ps
    docker compose logs -f openldap
    ```
-5. Acceder a phpLDAPadmin desde el navegador en `http://IP_VM:8080`.  
+6. Acceder a phpLDAPadmin desde el navegador en `http://IP_VM:8080`.  
    - **Login DN:** `cn=admin,dc=asir,dc=local`  
    - **Password:** la que definiste como `LDAP_ADMIN_PASSWORD`.
-6. Probar desde la línea de comandos del host:
+7. Probar desde la línea de comandos del host:
    ```bash
    ldapsearch -x -H ldap://localhost:389 -b "dc=asir,dc=local" "(objectClass=*)"
    ```
@@ -183,6 +193,7 @@ Aprender a gestionar un servicio LDAP ejecutándose en Docker, comprendiendo las
 !!! info "Sintaxis general"
     ```bash
     ldapadd -x -H ldap://127.0.0.1:389 -D "cn=admin,dc=asir,dc=local" -w admin123 -f base.ldif
+    ldapadd -x -H ldap://127.0.0.1:389 -D "cn=admin,dc=asir,dc=local" -w admin123 -f userOrgs.ldif
     ```
 
 **Opciones más comunes**
@@ -206,10 +217,22 @@ objectClass: dcObject
 objectClass: organization
 o: ASIR2X
 dc: asir
+```
+```ldif title="userOrgs.ldif"
 
 dn: ou=Usuarios,dc=asir,dc=local
 objectClass: organizationalUnit
 ou: Usuarios
+
+dn: cn=profesor,ou=Usuarios,dc=asir,dc=local
+objectClass: inetOrgPerson
+cn: profesor
+sn: Demo
+uid: profesor
+mail: profesor@asir.local
+userPassword: 123
+
+
 ```
 
 **Salida esperada:**

@@ -36,17 +36,13 @@ Crea un DIT para `dc=empresa,dc=com` con:
 ### 4. LDIF de altas y cambios
 Crea `altas.ldif` con OU+2 usuarios.  
 Crea `cambios.ldif` con **add** de un atributo y **replace** de otro.  
-Ejecuta:
-```bash
-ldapadd   -x -H ldap://127.0.0.1 -D "cn=admin,dc=empresa,dc=com" -W -f altas.ldif
-ldapmodify -x -H ldap://127.0.0.1 -D "cn=admin,dc=empresa,dc=com" -W -f cambios.ldif
-```
+
 
 ### 5. Búsquedas con base, alcance y filtros
 
 1) Devuelve **solo** la entrada base (alcance `base`).  
 2) Lista **hijos directos** de `ou=Usuarios` (alcance `one`).  
-3) Encuentra en **todo el subárbol** a usuarios con `sn=Lopez` (alcance `sub`).  
+3) Encuentra en **todo el subárbol** a usuarios con `sn=Lopez`(esto depende de tu usuario) (alcance `sub`).  
 4) Filtro combinado: `inetOrgPerson` de Ventas **o** Soporte cuyo `cn` empiece por `M`.
 
 ---
