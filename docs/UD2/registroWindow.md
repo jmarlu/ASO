@@ -97,7 +97,7 @@ reg add Clave /v NombreValor /t TipoDato /d Dato
 Así, se podría introducir la información del ejemplo anterior del siguiente modo:
 
 ```Powershell title="Ejemplo del comando reg"
-reg add hkcu\software\MiAplicacion /v Titulo /t REG_SZ /d “Mi aplicación v 1.0”
+reg add hkcu\software\MiAplicacion /v Titulo /t REG_SZ /d "Mi aplicación v 1.0"
 ```
 
 Y la segunda clave:

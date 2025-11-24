@@ -32,59 +32,75 @@ chmod +x doble.sh
 ./doble.sh texto   # debe mostrar error
 ```
 
-## Ejercicio 2 · `inventario_grupos.sh`
+## Ejercicio 2 · `inventario_usuarios.sh`
 ```bash
 #!/bin/bash
 
+# Script: inventario_usuarios.sh
+# Propósito: Crear un inventario de usuarios a partir de un fichero
+# Uso: ./inventario_usuarios.sh fichero_usuarios
+
 if [[ $# -ne 1 ]]; then
-  echo "Uso: $0 fichero_grupos" >&2
+  echo "Uso: $0 fichero_usuarios" >&2
   exit 1
 fi
 
-fichero=$1
+archivo=$1
 
-if [[ ! -f $fichero ]]; then
-  echo "No existe el fichero $fichero" >&2
+if [[ ! -f $archivo ]]; then
+  echo "ERROR: El fichero '$archivo' no existe." >&2
   exit 1
 fi
 
-fallos=0
+usuarios_inexistentes=0
 
-echo -e "Grupo\tGID\tTotal\tMiembros"
-while IFS= read -r grupo; do
-  [[ -z $grupo ]] && continue
-  echo "$grupo" | grep -q '^#' && continue
-  linea=$(getent group "$grupo")
-  if [[ -z $linea ]]; then
-    echo "Grupo $grupo no existe" >&2
-    ((fallos++))
+echo "========================================================================="
+echo "Usuario              UID        Num.Grupos      Grupos"
+echo "========================================================================="
+
+OLDIFS=$IFS
+IFS=$'\n'
+for linea in $(cat "$archivo"); do
+  [[ -z "${linea// }" ]] && continue
+  [[ $linea =~ ^# ]] && continue
+
+  usuario=$(echo "$linea" | cut -d' ' -f1)
+
+  if ! getent passwd "$usuario" >/dev/null 2>&1; then
+    echo "AVISO: El usuario '$usuario' no existe." >&2
+    usuarios_inexistentes=1
     continue
   fi
-  gid=$(echo "$linea" | cut -d: -f3)
-  miembros=$(echo "$linea" | cut -d: -f4)
-  if [[ -z $miembros ]]; then
-    total_miembros=0
-    miembros="(sin miembros)"
-  else
-    total_miembros=$(echo "$miembros" | tr ',' '\n' | grep -c .)
-  fi
-  echo -e "$grupo\t$gid\t$total_miembros\t$miembros"
-done < "$fichero"
 
-if [[ $fallos -gt 0 ]]; then
+  uid=$(getent passwd "$usuario" | cut -d':' -f3)
+
+  grupos=$(groups "$usuario" 2>/dev/null)
+  grupos_limpio=$(echo "$grupos" | cut -d':' -f2)
+  num_grupos=$(echo "$grupos_limpio" | wc -w)
+
+  echo "$usuario                ${uid}         ${num_grupos}              ${grupos_limpio}"
+done
+
+IFS=$OLDIFS
+
+echo "========================================================================="
+
+if [[ $usuarios_inexistentes -eq 1 ]]; then
   exit 1
+else
+  exit 0
 fi
 ```
-Prueba:
+Prueba rápida:
 ```
-cat > grupos.txt <<'LISTA'
-# grupos
-sudo
-video
-inexistente
+cat > usuarios.txt <<'LISTA'
+# cuentas a revisar
+root
+daemon
+nadie
 LISTA
-chmod +x inventario_grupos.sh
-./inventario_grupos.sh grupos.txt
+chmod +x inventario_usuarios.sh
+./inventario_usuarios.sh usuarios.txt
 ```
 
 ## Ejercicio 3 · `alertas_equipos.sh`
@@ -115,12 +131,14 @@ while read -r ip nombre disco ram; do
   ((linea_num++))
   [[ -z $ip ]] && continue
   echo "$ip" | grep -q '^#' && continue
-  if ! [[ $disco =~ ^[0-9]+$ ]]; then
-    echo "Línea $linea_num: valor de disco no válido" >&2
+  # Los valores del disco vienen con el sufijo GB (p.ej., 20GB)
+  if ! echo "$disco" | grep -Eq '^[0-9]+GB$'; then
+    echo "Línea $linea_num: valor de disco no válido (usa formato 20GB)" >&2
     continue
   fi
-  if (( disco < umbral )); then
-    echo "ALERTA: $nombre ($ip) tiene ${disco}GB libres (< ${umbral}GB)"
+  disco_num=$(echo "$disco" | grep -oE '^[0-9]+')
+  if (( disco_num < umbral )); then
+    echo "ALERTA: $nombre ($ip) tiene ${disco} libres (< ${umbral}GB)"
     ((alertas++))
   fi
 done < "$fichero"
@@ -130,8 +148,8 @@ echo "Resumen: $alertas equipos bajo el umbral"
 Prueba:
 ```
 cat > equipos.txt <<'EQS'
-10.0.0.5 srv01 20 8
-10.0.0.6 srv02 80 16
+10.0.0.5 srv01 20GB 8
+10.0.0.6 srv02 80GB 16
 # línea ignorada
 EQS
 chmod +x alertas_equipos.sh

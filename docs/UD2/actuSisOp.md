@@ -11,39 +11,49 @@ Hay que tener en cuenta que un SOR **no se puede reiniciar a la ligera,** ya que
 
 Con más o menos diferencias, todas las versiones modernas de los sistemas operativos de Microsoft tienen habilitada esta característica por defecto. Es conveniente revisar la configuración de estas actualizaciones para dar prioridad a las que Microsoft cataloga como críticas ante cualesquieras otras.
 
-En **Ubuntu Server** también se dispone de una herramienta similar a ésta pero que se gestiona a través del terminal. Una vez más se deberá acceder a un fichero de texto y modificarlo. Este fichero es `/etc/apt/apt.d.conf.d/10perodic` y tendrá el siguiente contenido:
+En **Ubuntu Server** también se dispone de una herramienta similar a ésta pero que se gestiona a través del terminal. A continuación se muestra el flujo en orden para dejar activadas las actualizaciones automáticas centradas en seguridad.
+
+### Paso 1: configurar periodicidad básica
+
+Edita `/etc/apt/apt.conf.d/10periodic` con este contenido:
 
 ```bash title="Contenido del fichero 10periodic"
-APT::Periodic::Update-Package-Lists “1”;
-APT::Periodic::Download-Upgradeable-Packages “0”;
-APT::Periodic::AutocleanInterval “7”;
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Download-Upgradeable-Packages "0";
+APT::Periodic::AutocleanInterval "7";
 
 
 ```
 
-Para activar las actualizaciones automáticas será necesario modificar la línea `APT::Periodic::Download-Upgradeable-Packages` cambiando el 0 por un 1. Con esto se activarán las actualizaciones automáticas en Ubuntu Server.
+Para activar la descarga automática cambia la línea `APT::Periodic::Download-Upgradeable-Packages` a `"1"`.
 
-Pero esta configuración descargará todos los paquetes disponibles en el repositorio de Ubuntu, y tal vez no sea buena idea colapsar al servidor con actualizaciones de escaso interés. Existe una aplicación que permite seleccionar las actualizaciones que son necesarias instalar y cuales no. Es necesario instalar la aplicación unattended-upgrades
+### Paso 2: instalar unattended-upgrades
+
+Separa la descarga de la instalación con la herramienta unattended-upgrades:
 
 ```bash title="Instalación de unattended-upgrades"
 sudo apt-get install unattended-upgrades
 ```
 
-Tras la instalación se dispondrá de un nuevo fichero de configuración que permitirá administrar los repositorios desde los cuales se van a recibir actualizaciones así como los paquetes que es necesario instalar. A estos últimos se los denomina Blacklist (lista negra). Se dispondrá por tanto de gran flexibilidad para determinar qué paquetes y de dónde se deben instalar de forma desatendida.
-Aparece este fichero `/etc/apt/apt.conf.d/50unattended-upgrades`, el cual contiene, entre otro, el siguiente texto:
+### Paso 3: permitir solo seguridad
+
+Tras la instalación aparece `/etc/apt/apt.conf.d/50unattended-upgrades`. Habilita únicamente el origen de seguridad:
 
 ```bash title="Contenido del fichero de configuración"
 // Automatically upgrade packages from these (origin:archive) pairs
 Unattended-Upgrade::Allowed-Origins {
-“${distro_id}:${distro_codename}-security”;
-// “${distro_id}:${distro_codename}-updates”;
-// “${distro_id}:${distro_codename}-proposed”;
-// “${distro_id}:${distro_codename}-backports”;
+"${distro_id}:${distro_codename}-security";
+// "${distro_id}:${distro_codename}-updates";
+// "${distro_id}:${distro_codename}-proposed";
+// "${distro_id}:${distro_codename}-backports";
 };
 ```
 
-Estas líneas hacen referencia a diferentes tipos de actualizaciones. Para descargar e instalar de forma desatendida alguno de estos tipos de actualizaciones, bastará con descomentar la línea eliminando la doble barra al inicio de la misma.
+Estas líneas hacen referencia a diferentes tipos de actualizaciones. Para añadir otros orígenes, elimina `//` al inicio, pero comienza solo con seguridad.
 
-Tanto `${distro_id} como ${distro_codename}` son variables de entorno del sistema Ubuntu de esta forma se crea un único fichero de configuración para cualquier versión del kernel.
+## Comprobación y buenas prácticas
 
-Es buena práctica instalar por defecto todas las actualizaciones que los desarrolladores del sistema operativo marquen como de **seguridad o críticas**, dejando a la elección del administrador del sistema informático el resto de actualizaciones.
+- Comprueba el estado de unattended-upgrades: `sudo systemctl status unattended-upgrades`.
+- Revisa el log de ejecución: `/var/log/unattended-upgrades/unattended-upgrades.log`.
+- Mantén comentadas `updates` y `backports` hasta validarlo en laboratorio.
+- Planifica ventanas de mantenimiento y, en servidores críticos, configura un nodo de respaldo antes de aplicar reinicios necesarios.

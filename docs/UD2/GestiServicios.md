@@ -23,16 +23,13 @@ Además de este completo software, Microsoft Windows 10 Professional dispone de 
 
 En los sistemas operativos basados en **GNU/Linux** se dispone de varias herramientas basadas en CLI para realizar la administración de servicios, denominados demonios en terminología Unix. Cuando se configura un demonio en GNU/Linux se crean scripts para controlar su carga y descarga de memoria principal.
 
-Hay diferentes sistemas de arranque según la distribución , como init System V,
-upstart y el sistema de arranque de Mac OS X , pero systemd es que se está imponiendo en todas ellas.
-
-En systemd, el concepto de nivel de ejecución ya sólo existe para la compatibilidad con System V. Es decir los servicios se inicien de forma automática durante el arranque del sistema. Según el nivel se arrancan unos servicios o otros.
+Hay diferentes sistemas de arranque según la distribución (init System V, upstart, launchd en macOS), pero **systemd** es el que se está imponiendo en casi todas ellas. En systemd el concepto de nivel de ejecución existe solo por compatibilidad; hoy se trabaja con objetivos (targets) y servicios que se activan de forma declarativa.
 
 ## Unidades objetivo y servicios
 
 El componente básico de systemd es la unidad o unit. Existen varias: servicios, sockets, periféricos, objetivos, etc. Un **objetivo** es básicamente el punto de sincronización entre unidades en espera. De este modo, dispondrá, por ejemplo, de unidades objetivo correspondientes a cada nivel de ejecución, pero puede llamarlas como quieras.
 
-Las objetivos o los servicios que deben ser gestionados por el sistema durante el arranque están en `/etc/system/system`, en forma de enlaces simbólicos o copias. Que se encuentran en `/lib/systemd/system`
+Las objetivos o los servicios que deben ser gestionados por el sistema durante el arranque están en `/etc/systemd/system`, en forma de enlaces simbólicos o copias. El catálogo de unidades proviene de `/lib/systemd/system`.
 
 Los servicios acaban con el sufijo **.service**. Vamos a ver el contenidos de estos ficheros:
 
@@ -168,3 +165,49 @@ JOB    = Pending job for the unit.
 To show all installed unit files use 'systemctl list-unit-files'.
 
 ```
+
+## Ejemplo práctico paso a paso: nginx
+
+1. Instala nginx desde repositorios:
+
+```
+sudo apt update
+sudo apt install nginx
+```
+
+2. Comprueba estado y puerto:
+
+```
+systemctl status nginx
+ss -tnlp | grep nginx
+```
+
+3. Deshabilita el arranque automático:
+
+```
+sudo systemctl disable nginx
+```
+
+4. (Opcional) Override de servicio:
+
+```
+sudo systemctl edit nginx
+```
+
+Añade en `/etc/systemd/system/nginx.service.d/override.conf`:
+
+```
+[Service]
+ExecStart=
+ExecStart=/usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf
+```
+
+5. Recarga y valida:
+
+```
+sudo systemctl daemon-reload
+sudo systemctl stop nginx
+sudo systemctl status nginx
+```
+
+Este flujo cubre lo pedido en la Actividad de nginx en LXD (detener y evitar arranque).

@@ -32,10 +32,10 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin
 
 # run-parts
 
-01 \* \* \* _ root run-parts /etc/cron.hourly
-02 4 _ \* _ root run-parts /etc/cron.daily
-22 4 _ _ 0 root run-parts /etc/cron.weekly
-42 4 1 _ \* root run-parts /etc/cron.monthly
+01 * * * * root run-parts /etc/cron.hourly
+02 4 * * * root run-parts /etc/cron.daily
+22 4 * * 0 root run-parts /etc/cron.weekly
+42 4 1 * * root run-parts /etc/cron.monthly
 
 ```
 
@@ -59,31 +59,31 @@ Después de estas dos variables, se establecen las tareas que se van a ejecutar,
 El uso de las cinco primeras columnas puede ser un tanto lioso al principio. Para aclarar conceptos se usarán algunos ejemplos.
 
 ```bash title="Ejemplos de momentos de ejecución"
-1 \* \* \* _ Se ejecuta al minuto 1 de cada hora de todos los días
-15 8 _ \* _ A las 8:15 de cada día
-0 17 _ \* 0 A las 17:00 todos los domingos
-5 \* _ Sun Cada minuto de 5:00 a 5:59 todos los domingos
-45 19 1 _ _ A las 19:45 del primer día de cada mes
-1 _ 20 7 _ Al minuto 1 de cada hora del 20 de julio
-10 1 _ 12 1 A las 1:10 todos los lunes de diciembre
-0 12 16 _ Wen Al mediodía de los días 16 de cada mes y que sea Miércoles
-30 9 20 7 4 A las 9:30 del día 20 de julio y que sean jueves
-30 9 20 7 _ A las 9:30 del día 20 de julio sin importar el día de la semana
-20 \* \* _ 6 Al minuto 20 de cada hora de los sábados
-20 _ _ 1 6 Al minuto 20 de cada hora de los sábados de enero
+1 * * * *     # Se ejecuta al minuto 1 de cada hora de todos los días
+15 8 * * *    # A las 8:15 de cada día
+0 17 * * 0    # A las 17:00 todos los domingos
+5 * * * Sun   # Cada minuto de 5:00 a 5:59 todos los domingos
+45 19 1 * *   # A las 19:45 del primer día de cada mes
+1 * 20 7 *    # Al minuto 1 de cada hora del 20 de julio
+10 1 * 12 1   # A las 1:10 todos los lunes de diciembre
+0 12 16 * Wed # Al mediodía de los días 16 de cada mes y que sea miércoles
+30 9 20 7 4   # A las 9:30 del día 20 de julio y que sea jueves
+30 9 20 7 *   # A las 9:30 del día 20 de julio sin importar el día de la semana
+20 * * * 6    # Al minuto 20 de cada hora de los sábados
+20 * * 1 6    # Al minuto 20 de cada hora de los sábados de enero
 
 ```
 
 También es posible especificar listas en los campos. Las listas pueden estar expresadas en una comalista o a través de guiones. cron, de igual manera soporta incrementos en las listas, que se indican de la siguiente manera:
 
 ```bash title="Ejemplos de momentos de ejecución"
-59 11 _ 1-3 1,2,3,4,5   A las 11:59 de lunes a viernes, de enero a marzo
-45 _ 10-25 _ 6-7  Al minuto 45 de todas las horas de los días 10 al 25 de todos los meses del día los sábados o domingos
-10,30,50 \* \* _ 1,3,5  En el minuto 10, 30 y 50 de todas las horas de los días lunes, miércoles y viernes
-_/15 10-14 \* \* _  Cada quince minutos de las 10:00 a las 14:00
-_ 12 1-10/2 2,8 _   Cada minuto de la hora 12 en los días 1,3,5,7 y 9 de febrero y agosto. (el incremento en el tercer campo es de 2 y comienza a partir de 1)
-0 \_/5 1-10,15,20-23 \* 3 Cada 5 horas de los días 1 al 10, el día 15 y del día 20 al 23 de cada mes y que el día sea miércoles
-3/3 2/4 2 2 2 Cada 3 minutos empezando por el minuto 3 (3,6,9...) de las horas 2, 6, 10, 14, 18 y 22 (cada 4 horas empezando en la hora 2) del día 2 de febrero y que sea martes
+59 11 * 1-3 1-5               # A las 11:59 de lunes a viernes, de enero a marzo
+45 * 10-25 * 6,7             # Al minuto 45 de todas las horas de los días 10 al 25 de cada mes, sábados o domingos
+10,30,50 * * * 1,3,5         # Minuto 10, 30 y 50 de todas las horas los lunes, miércoles y viernes
+*/15 10-14 * * *             # Cada quince minutos de las 10:00 a las 14:00
+* 12 1-10/2 2,8 *            # Cada minuto de la hora 12 en los días 1,3,5,7 y 9 de febrero y agosto
+0 */5 1-10,15,20-23 * 3      # Cada 5 horas de los días 1-10, 15 y 20-23 de cada mes y que el día sea miércoles
+3/3 2/4 2 2 2                # Cada 3 minutos desde el minuto 3 en horas 2,6,10,14,18,22 del día 2 de febrero que sea martes
 ```
 
 Como se puede apreciar en el último ejemplo la tarea cron que estuviera asignada a esta línea, sólo se ejecutaría si cumple con los cinco criterios, es decir, siempre es un AND que sólo resulta verdadero si todas las condiciones son ciertas.
@@ -94,6 +94,17 @@ GNU/Linux es un sistema multiusuario y cron es de las aplicaciones que soporta e
 
 El uso de crontab es `crontab -e` este comando abrirá el editor de texto ( Editor Vi) por defecto con un archivo vacío y donde el usuario especificará las tareas que desea programar, y que se guardará automáticamente como `/var/spool/cron/crontabs/usuario.` Hay que tener en cuenta que si existe esta nueva lista de tareas programadas serán dos las que serán comprobadas en cada minuto por el demonio cron: la del usuario recién creada y la del sistema vista con anterioridad.
 
+## Ejemplo rápido: copia horaria con cron (GNU/Linux)
+
+- Objetivo: copiar `/mnt/datos/` a `/mnt/respaldo/` cada hora como root.
+- Línea recomendada en `sudo crontab -e`:
+
+```
+0 * * * * /usr/bin/rsync -a --delete /mnt/datos/ /mnt/respaldo/ >> /var/log/rsync-backup.log 2>&1
+```
+
+Tras añadirla, valida con `sudo journalctl -u cron` o revisa el log generado.
+
 ## Systemd timers
 
 Los temporizadores son una forma opcional de programar tareas en el sistema operativo.
@@ -102,7 +113,7 @@ A continuación se muestran dos ejemplos, uno con crontab anterior y otro con sy
 crear una tarea programada que guarde información de fecha en el archivo /tmp/date cada 10 minutos.
 
 ```bash title="Ejemplo con crontab"
-*/10 **** /usr/bin/date >> /tmp/date
+*/10 * * * * /usr/bin/date >> /tmp/date
 
 ```
 
@@ -143,3 +154,48 @@ OnCalendar=*:0/10
   Wed 2023-10-04 13:32:32 CEST 1h 4min left  Tue 2023-10-03 12:16:38 CEST 24h ago      apt-daily-upgrade.timer      apt-daily-upgrade.service
   Wed 2023-10-04 16:44:22 CEST 4h 16min left Tue 2023-10-03 12:31:34 CEST 23h ago      motd-news.timer              motd-news.service
   ```
+
+## Ejemplo completo con systemd timer (GNU/Linux)
+
+Para cumplir la actividad de copia diaria de `/var/log` con systemd:
+
+`/etc/systemd/system/backup-logs.service`
+
+```
+[Unit]
+Description=Copia y empaqueta /var/log
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/tar -czf /home/%u/copia_de_seguridad/backup.tar.gz /var/log
+```
+
+`/etc/systemd/system/backup-logs.timer`
+
+```
+[Unit]
+Description=Ejecución diaria de backup-logs
+
+[Timer]
+OnCalendar=*-*-* 02:30:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+```
+
+Activa y prueba:
+
+```
+sudo systemctl daemon-reload
+sudo systemctl enable --now backup-logs.timer
+systemctl list-timers backup-logs.timer
+```
+
+## Programador de tareas en Windows (resumen accionable)
+
+- Crear tarea avanzada (`Crear tarea...`) con descripción y marcar "Ejecutar tanto si el usuario inició sesión como si no".
+- Desencadenador: programar (por ejemplo, diario 02:30).
+- Acción: ruta a `powershell.exe -File C:\Scripts\backup.ps1` o al ejecutable deseado.
+- Condiciones: ajustar energía/red según sea servidor o portátil.
+- Comprobar Historial tras la primera ejecución y exportar la tarea (`.xml`) como respaldo.

@@ -1,4 +1,4 @@
-## Instalación/desinstalación de software en GNU/Linux
+# Instalación/desinstalación de software en GNU/Linux
 
 Los sistemas basados en GNU/Linux también disponen de varias formas de administrar software; desde repositorios a través de Internet, desde los gestores de aplicaciones de cada distribución (muy parecidas a la Tienda de Microsoft) o directamente desde un paquete de instalación.
 
@@ -143,3 +143,11 @@ dpkg -l
 ```
 
 Este comando genera un listado debidamente formateado en columnas que indicarán el estado del programa (si está instalado o requiere de alguna acción añadida), el nombre, la versión, la arquitectura y una breve descripción del mismo.
+
+## Ejemplo guiado: instalación y verificación con apt
+
+1. Actualiza índices: `sudo apt update`.
+2. Instala nginx: `sudo apt install nginx`.
+3. Comprueba dependencias resueltas automáticamente y el servicio: `systemctl status nginx`.
+4. Si necesitas desinstalar y limpiar configuración: `sudo apt purge nginx && sudo apt autoremove`.
+5. Relaciona este flujo con las actividades (instalar nginx en LXC y gestionar su servicio con systemd).

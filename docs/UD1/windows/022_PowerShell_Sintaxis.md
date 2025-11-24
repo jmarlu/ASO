@@ -23,7 +23,7 @@
 - Para poder ejecutar este script, será necesario acompañarlo de un parámetro del siguiente modo.
 
 ```PowerShell
-./Script.ps1 "Fº Javier Hernández Illán"
+./Script.ps1 "Pepe"
 ```
 
 - Para entender por completo el ejemplo anterior, será necesario ver como PowerShell maneja las **variables**.

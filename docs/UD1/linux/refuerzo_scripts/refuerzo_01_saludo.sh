@@ -8,9 +8,9 @@
 read -rp "?Como te llamas? " nombre
 if [ -z "$nombre" ]
 then
-  nombre="companero"
+  nombre=$USER
+else
+  echo -e "Hola, $nombre.\t .Hoy es $(date '+%A %d/%m/%Y')\n Estas en $(pwd)."
+
 fi
 
-echo "Hola, $nombre."
-echo "Hoy es $(date '+%A %d/%m/%Y')."
-echo "Estas en $(pwd) con el usuario $(whoami)."

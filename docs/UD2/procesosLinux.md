@@ -55,7 +55,7 @@ Para reanudar el proceso lo tenemos que poner en primer plano con el comando `fg
 
 ```bash title="A primer plano "
 fg
-sleep100
+sleep 100
 ```
 
 Con el comando `bg` un job parado para iniciarlo de nuevo en segundo plano.
@@ -142,3 +142,12 @@ sleep 100&
 [1]+  Terminado (killed)      sleep 100
 
 ```
+
+## Monitorización y ajuste de prioridades
+
+- `top`/`htop`: visualizan procesos en tiempo real y permiten enviar señales o cambiar prioridades.
+- `ps aux --sort=-%cpu | head`: lista rápida de procesos que más CPU consumen.
+- `nice` y `renice`: ajustan la prioridad (valor de niceness) de procesos nuevos o existentes.
+  - Lanzar con menor prioridad: `nice -n 10 comando`.
+  - Cambiar un proceso en ejecución: `sudo renice 5 -p <PID>`.
+- `/proc/<PID>/` expone información detallada del proceso (límites, ficheros abiertos, memoria) útil para diagnósticos.

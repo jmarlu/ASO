@@ -695,7 +695,7 @@ ls -l "$directorio"
 ```bash
 #!/bin/bash
 
-if [ $# -ne 3 ]; then
+if [[ $# -ne 3 ]]; then
     echo "Uso: $0 extension directorio_origen directorio_destino" >&2
     exit 1
 fi
@@ -705,20 +705,21 @@ origen=$2
 destino=$3
 
 # Verificar que los directorios existen
-if [ ! -d "$origen" ] || [ ! -d "$destino" ]; then
+if [[ ! -d "$origen" ]] || [[ ! -d "$destino" ]]; then
     echo "Los argumentos segundo y tercero deben ser directorios." >&2
     exit 1
 fi
 
-read -r -p "¿Deseas mover o copiar? [mover/copiar]: " accion
 
 # Buscar archivos con find y almacenar resultado
 archivos=$(find "$origen" -maxdepth 1 -name "*.$extension" -type f)
 
-if [ -z "$archivos" ]; then
+if [[ -z "$archivos" ]]; then
     echo "No se encontraron ficheros con extensión .$extension en $origen"
     exit 0
 fi
+
+read -r -p "¿Deseas mover o copiar? [mover/copiar]: " accion
 
 case $accion in
     mover)
@@ -751,6 +752,10 @@ if [[ $# -ne 1 ]]; then
   echo "Uso: $0 capacidad_minima" >&2
   exit 1
 fi
+if ! [[ $minimo =~ ^[0-9]+$ ]]; then
+  echo "ERROR: La capacidad mínima debe ser un número entero positivo." >&2
+  exit 1
+fi
 
 minimo=$1
 archivo="equipos.txt"
@@ -759,6 +764,8 @@ if [[ ! -f $archivo ]]; then
   echo "No existe el fichero $archivo" >&2
   exit 1
 fi
+
+IFS=
 
 while read -r ip nombre disco ram; do
   [[ -z $ip ]] && continue
@@ -769,6 +776,7 @@ done < "$archivo"
 
 ```
 ```bash title="con For"
+
 #!/bin/bash
 
 if [[ $# -ne 1 ]]; then
@@ -777,6 +785,11 @@ if [[ $# -ne 1 ]]; then
 fi
 
 minimo=$1
+if ! [[ $minimo =~ ^[0-9]+$ ]]; then
+  echo "ERROR: La capacidad mínima debe ser un número entero positivo." >&2
+  exit 1
+fi
+
 archivo="equipos.txt"
 
 if [[ ! -f $archivo ]]; then
@@ -784,22 +797,32 @@ if [[ ! -f $archivo ]]; then
   exit 1
 fi
 
-# Almacenamos el contenido del archivo en una variable
-equipos=$(cat "$archivo")
+# Iteramos con for sobre las líneas del fichero
+# Usamos IFS=$'\n' y desactivamos globbing para que cada elemento sea una línea completa
+OLDIFS=$IFS
+IFS=$'\n'
+for linea in $(cat "$archivo"); do
+  # Ignorar líneas vacías y comentarios
+  [[ -z "${linea// }" ]] && continue
+  [[ $linea =~ ^# ]] && continue
 
-# Iteramos sobre cada línea usando for
-for linea in $equipos; do
-    # Extraemos los campos usando cut
-    ip=$(echo "$linea" | cut -d' ' -f1)
-    nombre=$(echo "$linea" | cut -d' ' -f2)
-    disco=$(echo "$linea" | cut -d' ' -f3)
-    ram=$(echo "$linea" | cut -d' ' -f4)
+  # Extraemos: IP;NOMBRE;DISCO;RAM
+  ip=$(echo "$linea" | cut -d';' -f1)
+  nombre=$(echo "$linea" | cut -d';' -f2)
+  disco_num=$(echo "$linea" | cut -d';' -f3)
+  ram_num=$(echo "$linea" | cut -d';' -f4)
+  
+ 
 
-    # Verificamos si el disco está por debajo del mínimo
-    if (( disco < minimo )); then
-        echo "ALERTA: $nombre ($ip) tiene ${disco}GB libres (< ${minimo}GB)."
-    fi
+  echo "IP: $ip  Nombre: $nombre  Disco: ${disco_num}GB  RAM: ${ram_num}GB"
+
+  if (( disco_num < minimo )); then
+    echo "ALERTA: $nombre ($ip) tiene ${disco_num}GB libres (< ${minimo}GB)."
+  fi
 done
+IFS=$OLDIFS
+
+
 ```
 
 ### Actividad 4. Creación remota de usuarios (`creaUsuarios.sh`)

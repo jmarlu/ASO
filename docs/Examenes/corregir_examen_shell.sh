@@ -9,7 +9,7 @@ usage() {
 Uso: corregir_examen_shell.sh <directorio_entregas> [--csv salida.csv]
 
 Cada entrega debe estar en un subdirectorio (por ejemplo, entregas/alumno01)
-que incluya los scripts doble.sh, inventario_grupos.sh y alertas_equipos.sh.
+que incluya los scripts doble.sh, inventario_usuarios.sh y alertas_equipos.sh.
 El script ejecuta pruebas básicas y genera puntuaciones parciales.
 EOF
 }
@@ -122,47 +122,73 @@ run_doble_tests() {
 
 run_inventario_tests() {
   local script_path=$1
-  local grupos_ok=$2
-  local grupos_mix=$3
+  local usuarios_ok=$2
+  local usuarios_mix=$3
 
   score_inventario=0
   feedback_inventario=()
 
   if [[ ! -f $script_path ]]; then
-    feedback_inventario+=("inventario_grupos.sh no encontrado")
+    feedback_inventario+=("inventario_usuarios.sh no encontrado")
     return
   fi
 
-  add_points score_inventario 0.5
+  add_points score_inventario 0.25
 
   if [[ -x $script_path ]]; then
-    add_points score_inventario 0.5
+    add_points score_inventario 0.25
   else
-    feedback_inventario+=("inventario_grupos.sh no tiene permiso de ejecución")
+    feedback_inventario+=("inventario_usuarios.sh no tiene permiso de ejecución")
   fi
 
-  local output
-  if output=$(bash "$script_path" "$grupos_ok" 2>&1); then
-    add_points score_inventario 0.75
-    if grep -q "root" <<<"$output" && grep -q "daemon" <<<"$output"; then
+  local output status
+  output=$(bash "$script_path" "$usuarios_ok" 2>&1)
+  status=$?
+  if [[ $status -eq 0 ]]; then
+    add_points score_inventario 1.0
+    if grep -Eq '^Usuario[[:space:]]+UID[[:space:]]+Num\.Grupos[[:space:]]+Grupos$' <<<"$output"; then
       add_points score_inventario 0.75
     else
-      feedback_inventario+=("inventario_grupos.sh no lista todos los grupos esperados")
+      feedback_inventario+=("La cabecera debe incluir Usuario, UID, NumGrupos y Grupos en ese orden")
+    fi
+    if grep -Eq '^root[[:space:]]+[0-9]+[[:space:]]+[0-9]+[[:space:]]+.+$' <<<"$output"; then
+      add_points score_inventario 0.75
+    else
+      feedback_inventario+=("No aparece la fila esperada para root con UID y grupos")
+    fi
+    if grep -Eq '^daemon[[:space:]]+[0-9]+[[:space:]]+[0-9]+[[:space:]]+.+$' <<<"$output"; then
+      add_points score_inventario 0.75
+    else
+      feedback_inventario+=("No aparece la fila esperada para daemon con el formato correcto")
+    fi
+    local data_rows
+    data_rows=$(grep -E '^[[:alnum:]_.-]+[[:space:]]+[0-9]+[[:space:]]+[0-9]+[[:space:]]+' <<<"$output" | wc -l | tr -d ' ')
+    if [[ $data_rows -ge 2 ]]; then
+      add_points score_inventario 0.75
+    else
+      feedback_inventario+=("La tabla debería incluir al menos dos filas de datos (root y daemon)")
     fi
   else
-    feedback_inventario+=("inventario_grupos.sh falla con un fichero válido")
+    feedback_inventario+=("inventario_usuarios.sh falla con un fichero válido ($usuarios_ok)")
   fi
 
-  if bash "$script_path" "$grupos_ok.noexiste" >/dev/null 2>&1; then
-    feedback_inventario+=("inventario_grupos.sh debería detectar ficheros inexistentes")
+  if bash "$script_path" "$usuarios_ok.noexiste" >/dev/null 2>&1; then
+    feedback_inventario+=("inventario_usuarios.sh debería detectar ficheros inexistentes")
   else
-    add_points score_inventario 1
+    add_points score_inventario 0.25
   fi
 
-  if bash "$script_path" "$grupos_mix" >/dev/null 2>&1; then
-    feedback_inventario+=("inventario_grupos.sh debería devolver código 1 si algún grupo no existe")
+  output=$(bash "$script_path" "$usuarios_mix" 2>&1)
+  status=$?
+  if [[ $status -ne 0 ]]; then
+    add_points score_inventario 0.15
+    if grep -Eq 'AVISO:.*no existe' <<<"$output"; then
+      add_points score_inventario 0.10
+    else
+      feedback_inventario+=("Cuando un usuario falta debe avisar con 'AVISO: <usuario> no existe'")
+    fi
   else
-    add_points score_inventario 0.5
+    feedback_inventario+=("inventario_usuarios.sh debería devolver código 1 si algún usuario no existe")
   fi
 }
 
@@ -178,10 +204,10 @@ run_alertas_tests() {
     return
   fi
 
-  add_points score_alertas 0.5
+  add_points score_alertas 0.25
 
   if [[ -x $script_path ]]; then
-    add_points score_alertas 0.5
+    add_points score_alertas 0.25
   else
     feedback_alertas+=("alertas_equipos.sh sin permiso de ejecución")
   fi
@@ -203,7 +229,7 @@ run_alertas_tests() {
   local output
   if output=$(bash "./$script_name" 40 2>&1); then
     if grep -q "srv01" <<<"$output" && grep -q "srv03" <<<"$output"; then
-      add_points score_alertas 1.5
+      add_points score_alertas 0.75
     else
       feedback_alertas+=("alertas_equipos.sh no genera alertas para los equipos esperados")
     fi
@@ -212,7 +238,7 @@ run_alertas_tests() {
     if [[ $resumen =~ ([0-9]+) ]]; then
       local total="${BASH_REMATCH[1]}"
       if [[ $total -eq 2 ]]; then
-        add_points score_alertas 1
+        add_points score_alertas 1.25
       else
         feedback_alertas+=("Resumen indica $total alertas y se esperaban 2")
       fi
@@ -259,7 +285,7 @@ mapfile -t STUDENT_DIRS < <(find "$SUBMISSIONS" -mindepth 1 -maxdepth 1 -type d 
 
 [[ ${#STUDENT_DIRS[@]} -gt 0 ]] || { echo "No se encontraron subdirectorios en $SUBMISSIONS" >&2; exit 1; }
 
-printf "%-25s %5s %5s %5s %6s  %s\n" "Alumno" "E1/1" "E2/4" "E3/5" "Total" "Observaciones"
+printf "%-25s %5s %5s %5s %6s  %s\n" "Alumno" "E1/1" "E2/5" "E3/4" "Total" "Observaciones"
 printf "%-25s %5s %5s %5s %6s  %s\n" "-------------------------" "-----" "-----" "-----" "------" "-----------------------------"
 
 for dir in "${STUDENT_DIRS[@]}"; do
@@ -270,18 +296,18 @@ for dir in "${STUDENT_DIRS[@]}"; do
     cp -R "$dir"/. "$workdir"/
   fi
 
-  local_grupos_ok="$workdir/grupos_ok.txt"
-  local_grupos_mix="$workdir/grupos_mix.txt"
-  cat > "$local_grupos_ok" <<'EOF'
+  local_usuarios_ok="$workdir/usuarios_ok.txt"
+  local_usuarios_mix="$workdir/usuarios_mix.txt"
+  cat > "$local_usuarios_ok" <<'EOF'
 # fichero de prueba
 root
 
 daemon
 EOF
 
-  cat > "$local_grupos_mix" <<'EOF'
+  cat > "$local_usuarios_mix" <<'EOF'
 root
-grupo_inexistente__aso
+usuario_inexistente__aso
 EOF
 
   local_equipos="$workdir/equipos_muestra.txt"
@@ -292,7 +318,7 @@ EOF
 EOF
 
   run_doble_tests "$workdir/doble.sh"
-  run_inventario_tests "$workdir/inventario_grupos.sh" "$local_grupos_ok" "$local_grupos_mix"
+  run_inventario_tests "$workdir/inventario_usuarios.sh" "$local_usuarios_ok" "$local_usuarios_mix"
   run_alertas_tests "$workdir/alertas_equipos.sh" "$local_equipos"
 
   total=$(awk -v a="$score_doble" -v b="$score_inventario" -v c="$score_alertas" 'BEGIN {printf "%.2f", a + b + c}')

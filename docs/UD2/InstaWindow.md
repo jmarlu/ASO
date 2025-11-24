@@ -1,4 +1,4 @@
-Instalación/desinstalación de aplicaciones en Microsoft Windows
+# Instalación/desinstalación de aplicaciones en Microsoft Windows
 
 La instalación y desinstalación de programas en los sistemas operativos Microsoft Windows no presenta misterio alguno, debido a que la mayoría vienen acompañadas de un asistente que dirige los pasos del usuario a través del proceso. En numerosas ocasiones, los programas cuentan con un desinstalador que lanza otro asistente para la eliminación del software. Si no es así, Microsoft Windows cuenta con la utilidad <span class="menu">Configuración</span> → <span class="menu">Aplicaciones</span>, la cual permite la desinstalación de software.
 ![Tienda de Microsoft Windows 10](./img/1000000000000CE100000B514E3C853501BA4914.jpg)
@@ -10,6 +10,19 @@ Hay que tener en cuenta el modo de instalación de estas aplicaciones que, en ge
 - introduce en el registro información necesaria para el correcto funcionamiento de la aplicación. Información como el origen del software, la versión, ubicación de los accesos directos en los diferentes menús de Microsoft Windows 10 entre otra.
 - registra los archivos DLL (Dinamic Library Link) que la aplicación debe utilizar.
 
-Cuando se instala una aplicación en Microsoft Windows 10 queda “ligada” al sistema y no es posible copiar la carpeta de instalación y llevarla a otro equipo, ya que necesitaría el resto información contenida en el registro o ficheros DLL específicos.
+Cuando se instala una aplicación en Microsoft Windows 10 queda "ligada" al sistema y no es posible copiar la carpeta de instalación y llevarla a otro equipo, ya que necesitaría el resto información contenida en el registro o ficheros DLL específicos.
 
 Desde hace algún tiempo existe una tendencia a crear aplicaciones desvinculadas del sistema operativo, conteniendo toda la información necesaria en la carpeta en la que se ubica el programa. Son los denominados **programas portables** y muchos de ellos usan tecnología de virtualización para emular ciertas características del sistema operativo, pero sin interferir en él.
+
+## Instalación automatizada
+
+- **MSI/EXE con modificadores**: `msiexec /i app.msi /qn` para instalación silenciosa. Muchos ejecutables soportan `/quiet` o `/norestart`.
+- **Winget** (Windows 10/11 actual): `winget install --id Mozilla.Firefox -e --silent`. Útil para scripts o despliegues masivos.
+- **PowerShell**: módulos como `PackageManagement` o `Chocolatey` permiten declarar dependencias y versiones.
+- **Políticas de grupo (GPO)**: para escenarios de dominio, despliegue asignado/publicado de paquetes MSI.
+
+## Buenas prácticas de desinstalación
+
+- Usa siempre el desinstalador proporcionado o `Configuración → Aplicaciones`.
+- Para scripts, `winget uninstall --id ...` o `Get-Package | Uninstall-Package`.
+- Verifica restos en ProgramData y perfil de usuario; documenta los cambios si la app tocó el registro para enlazar con `registroWindow.md`.
