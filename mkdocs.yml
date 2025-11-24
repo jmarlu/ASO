@@ -5,9 +5,9 @@ nav:
  # - Recordatorio de Commandos:
      # - linux: ./recordatorios/commandosLinux.md
      # - windows: ./recordatorios/commandosWindows.md
-  - Examenes:
+#  - Examenes:
     #- Examen comandos: ./Examenes/Examen de comandos.md
-    - Examen scripts: ./Examenes/Examen_shell_scripting.md  
+    #- Examen scripts: ./Examenes/Examen_shell_scripting.md  
   - UD1-Shell Scripting:
     - Linux:
         - Creación de Scripts: ./UD1/linux/Scripts.md
