@@ -1,4 +1,4 @@
-# Instalación/desinstalación de software en GNU/Linux
+# Instalación/desinstalación de software en GNU/Linux (Ubuntu/Debian)
 
 Los sistemas basados en GNU/Linux también disponen de varias formas de administrar software; desde repositorios a través de Internet, desde los gestores de aplicaciones de cada distribución (muy parecidas a la Tienda de Microsoft) o directamente desde un paquete de instalación.
 
@@ -25,7 +25,7 @@ Son los gestores de paquetes y cada distribución posee una distinta. Los gestor
 Los repositorios que GNU/Linux utiliza se configuran a través de PPA (Personal Package Archive) los cuales permiten a los desarrolladores distribuir software sin necesidad de esperar a que se actualicen los propios de cada distribución. Existen dos formas de añadir uno del que descargar software:
 
 - en modo **GUI** (Guide User Interface) a través del Gestor de Paquetes añadiendo el nuevo repositorio en Origenes de software.
-- en modo **CLI** (Command Line Interface) con la aplicación apt-get.
+- en modo **CLI** (Command Line Interface) con la aplicación apt/apt-get.
 
 Se centrará la explicación en la segunda forma ya que la primera es autoexplicativa.
 
@@ -34,12 +34,7 @@ Se centrará la explicación en la segunda forma ya que la primera es autoexplic
 Este programa se usa de una forma muy intuitiva
 
 ```bash title="Sintaxis de apt-get"
- apt-get <opciones> acción <paquete1> [<paquete2>... <paquete N>]
-
-
-
-
-
+apt-get <opciones> acción <paquete1> [<paquete2>... <paquete N>]
 ```
 
 En donde algunas de las opciones más importantes son:
@@ -96,7 +91,6 @@ add-apt-repository ppa:danielrichter2007/grub-customizer
 Con esta instrucción se añade el repositorio a la lista. Cuando se necesite la instalación de un software al programa de instalación buscará, además, también en este repositorio. Si lo que se necesita es eliminar un repositorio, se usará la opción `–-remove` de la siguiente manera
 
 ```bash title="Ejemplo de  add-apt-repository"
-
 add-apt-repository --remove ppa:danielrichter2007/grub-customizer
 ```
 
@@ -112,7 +106,6 @@ Además de estos dos modos, GNU/Linux dispone de una tercera forma de instalaci�
 
 ```bash title="Sintaxis de dpkg"
 dpkg <opciones> <acción> <fichero-paquete>
-
 ```
 
 Las acciones que son posibles a través de este comando son:
@@ -125,14 +118,12 @@ Las acciones que son posibles a través de este comando son:
 De este modo, para instalar un programa usamos el comando `dpkg` de la siguiente manera:
 
 ```bash title="Ejemplo de dpkg"
-
-  dpkg -i nombre-paquete.deb
+dpkg -i nombre-paquete.deb
 ```
 
 Para desinstalar un paquete
 
 ```bash title="Ejemplo de dpkg"
-
 dpkg -r nombre-paquete.deb
 ```
 
@@ -151,3 +142,64 @@ Este comando genera un listado debidamente formateado en columnas que indicarán
 3. Comprueba dependencias resueltas automáticamente y el servicio: `systemctl status nginx`.
 4. Si necesitas desinstalar y limpiar configuración: `sudo apt purge nginx && sudo apt autoremove`.
 5. Relaciona este flujo con las actividades (instalar nginx en LXC y gestionar su servicio con systemd).
+
+## Flujo recomendado en Ubuntu/Debian
+
+- Refrescar índices y listar actualizables:
+
+```bash
+sudo apt update
+sudo apt list --upgradable
+```
+
+- Actualizar paquetes instalados:
+
+```bash
+sudo apt upgrade
+# Para aceptar nuevas dependencias/remociones, usar: sudo apt full-upgrade
+```
+
+- Instalar un paquete y revisar dependencias:
+
+```bash
+sudo apt install nginx
+apt-cache depends nginx
+```
+
+- Consultar archivos y metadatos de un paquete instalado:
+
+```bash
+dpkg -L nginx
+dpkg -s nginx
+```
+
+- Limpiar caché y paquetes huérfanos:
+
+```bash
+sudo apt autoremove
+sudo apt clean
+```
+
+## PPA y llaves
+
+- Añadir PPA:
+
+```bash
+sudo add-apt-repository ppa:danielrichter2007/grub-customizer
+sudo apt update
+```
+
+- Eliminar PPA:
+
+```bash
+sudo add-apt-repository --remove ppa:danielrichter2007/grub-customizer
+sudo apt update
+```
+
+- Claves GPG modernas: si necesitas añadir una clave manualmente, evita `apt-key` (deprecado). Descarga la clave y guárdala en `/etc/apt/trusted.gpg.d/`:
+
+```bash
+curl -fsSL https://example.com/key.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/vendor.gpg
+```
+
+Luego añade el repo en `/etc/apt/sources.list.d/vendor.list` con la opción `signed-by=/etc/apt/trusted.gpg.d/vendor.gpg`.

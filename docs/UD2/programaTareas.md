@@ -192,6 +192,13 @@ sudo systemctl enable --now backup-logs.timer
 systemctl list-timers backup-logs.timer
 ```
 
+## Notas específicas en Ubuntu
+
+- Sincronía horaria: instala y habilita `chrony` (`sudo apt install chrony`). Comprueba con `chronyc tracking` y `chronyc sources`. Un cron con reloj desajustado puede ejecutar en momentos inesperados.
+- Crontab por usuario: `crontab -e` usa `/var/spool/cron/crontabs/usuario`. Añade `PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin` y, si quieres correo, `MAILTO=tu@dominio` al inicio.
+- at: para tareas one-shot, instala `at` (`sudo apt install at`) y usa `echo "comando" | at 02:30`.
+- systemd timers en Ubuntu funcionan igual; `systemctl list-timers` muestra próximos disparos. Usa `OnCalendar=` (ej. `OnCalendar=Mon..Fri 03:00`) o relativos (`OnBootSec=5min`, `OnUnitActiveSec=1h`). Añade `Persistent=true` para ejecutar lo pendiente tras un apagado.
+
 ## Programador de tareas en Windows (resumen accionable)
 
 - Crear tarea avanzada (`Crear tarea...`) con descripción y marcar "Ejecutar tanto si el usuario inició sesión como si no".

@@ -23,7 +23,7 @@ Además de este completo software, Microsoft Windows 10 Professional dispone de 
 
 En los sistemas operativos basados en **GNU/Linux** se dispone de varias herramientas basadas en CLI para realizar la administración de servicios, denominados demonios en terminología Unix. Cuando se configura un demonio en GNU/Linux se crean scripts para controlar su carga y descarga de memoria principal.
 
-Hay diferentes sistemas de arranque según la distribución (init System V, upstart, launchd en macOS), pero **systemd** es el que se está imponiendo en casi todas ellas. En systemd el concepto de nivel de ejecución existe solo por compatibilidad; hoy se trabaja con objetivos (targets) y servicios que se activan de forma declarativa.
+Hay diferentes sistemas de arranque según la distribución (init System V, upstart, launchd en macOS), pero **systemd** es el que se está imponiendo en casi todas ellas. En systemd el concepto de nivel de ejecución existe solo por compatibilidad; hoy se trabaja con objetivos (targets) y servicios que se activan de forma declarativa. En Ubuntu también se usa systemd.
 
 ## Unidades objetivo y servicios
 
@@ -107,22 +107,16 @@ systemctl
 
 ```
 
-```bash title="Ejemplo, acciones de systemctl  "
-Parada y reinicio de unidades
-#
- systemctl
- stop cups.service
-#
- systemctl
- start cups.service
-#
- systemctl
- restart cups.service
-#
- systemctl
- reload cups.service
+```bash title="Ejemplo, acciones de systemctl"
+# Parada y reinicio de unidades
+systemctl stop cups.service
+systemctl start cups.service
+systemctl restart cups.service
+systemctl reload cups.service
 
-
+# Consulta de estado con logs recientes
+systemctl status cups.service --no-pager
+journalctl -u cups.service -n 20 --no-pager
 ```
 
 El siguiente comando indica cuáles son las unidades objetivo activas:
@@ -211,3 +205,13 @@ sudo systemctl status nginx
 ```
 
 Este flujo cubre lo pedido en la Actividad de nginx en LXD (detener y evitar arranque).
+
+## Otros comandos útiles de systemd (Ubuntu)
+
+- Mapear targets vs runlevels: `systemctl list-units --type=target` y `systemctl get-default`.
+- Ver dependencias y tiempos de arranque: `systemd-analyze blame` y `systemd-analyze critical-chain`.
+- Ver unidades y su estado habilitado/deshabilitado: `systemctl list-unit-files --type=service`.
+- Ver contenido efectivo de una unidad y sus drop-ins: `systemctl cat nginx`.
+- Crear overrides sin tocar el fichero original: `sudo systemctl edit nginx` genera `/etc/systemd/system/nginx.service.d/override.conf`.
+- Forzar recarga de definiciones tras cambios: `sudo systemctl daemon-reload`.
+- Logs: `journalctl -u nombre.service --since "-10m"` (añade `-f` para seguir en tiempo real). En Ubuntu el journal persiste si se habilita `/var/log/journal` (directorio creado y permisos correctos).

@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 # Herramienta rápida para autocorregir el examen de shell scripting.
 
-set -euo pipefail
-export LC_ALL=C
+# Mantenemos -u y pipefail, pero evitamos -e para que los fallos en los scripts
+# del alumnado no aborten la corrección completa.
+set -uo pipefail
+export LC_NUMERIC=C
+SCRIPT_TIMEOUT="${SCRIPT_TIMEOUT:-10}"  # segundos máximo para cada script del alumno
 
 usage() {
   cat <<'EOF'
@@ -95,7 +98,7 @@ run_doble_tests() {
   expected=$(awk -v v="$ok_input" 'BEGIN {printf "%.4f", v*2}')
 
   local output
-  if output=$(bash "$script_path" "$ok_input" 2>&1); then
+  if output=$(timeout "$SCRIPT_TIMEOUT" bash "$script_path" "$ok_input" 2>&1); then
     local numeric
     numeric=$(grep -Eo '[-+]?[0-9]+([.][0-9]+)?' <<<"$output" | tail -n1 || true)
     if [[ -n $numeric ]]; then
@@ -113,7 +116,7 @@ run_doble_tests() {
     feedback_doble+=("doble.sh falla con un argumento válido ($ok_input)")
   fi
 
-  if bash "$script_path" "texto" >/dev/null 2>&1; then
+  if timeout "$SCRIPT_TIMEOUT" bash "$script_path" "texto" >/dev/null 2>&1; then
     feedback_doble+=("doble.sh debería rechazar argumentos no numéricos")
   else
     add_points score_doble 0.5
@@ -142,7 +145,7 @@ run_inventario_tests() {
   fi
 
   local output status
-  output=$(bash "$script_path" "$usuarios_ok" 2>&1)
+  output=$(timeout "$SCRIPT_TIMEOUT" bash "$script_path" "$usuarios_ok" 2>&1)
   status=$?
   if [[ $status -eq 0 ]]; then
     add_points score_inventario 1.0
@@ -172,13 +175,13 @@ run_inventario_tests() {
     feedback_inventario+=("inventario_usuarios.sh falla con un fichero válido ($usuarios_ok)")
   fi
 
-  if bash "$script_path" "$usuarios_ok.noexiste" >/dev/null 2>&1; then
+  if timeout "$SCRIPT_TIMEOUT" bash "$script_path" "$usuarios_ok.noexiste" >/dev/null 2>&1; then
     feedback_inventario+=("inventario_usuarios.sh debería detectar ficheros inexistentes")
   else
     add_points score_inventario 0.25
   fi
 
-  output=$(bash "$script_path" "$usuarios_mix" 2>&1)
+  output=$(timeout "$SCRIPT_TIMEOUT" bash "$script_path" "$usuarios_mix" 2>&1)
   status=$?
   if [[ $status -ne 0 ]]; then
     add_points score_inventario 0.15
@@ -227,7 +230,7 @@ run_alertas_tests() {
   cp "$equipos_sample" equipos.txt
 
   local output
-  if output=$(bash "./$script_name" 40 2>&1); then
+  if output=$(timeout "$SCRIPT_TIMEOUT" bash "./$script_name" 40 2>&1); then
     if grep -q "srv01" <<<"$output" && grep -q "srv03" <<<"$output"; then
       add_points score_alertas 0.75
     else
@@ -249,13 +252,13 @@ run_alertas_tests() {
     feedback_alertas+=("alertas_equipos.sh falla con datos correctos")
   fi
 
-  if bash "./$script_name" foo >/dev/null 2>&1; then
+  if timeout "$SCRIPT_TIMEOUT" bash "./$script_name" foo >/dev/null 2>&1; then
     feedback_alertas+=("alertas_equipos.sh debería rechazar umbrales no enteros")
   else
     add_points score_alertas 0.5
   fi
 
-  if output=$(bash "./$script_name" 10 2>&1); then
+  if output=$(timeout "$SCRIPT_TIMEOUT" bash "./$script_name" 10 2>&1); then
     if grep -q "Resumen: 0" <<<"$output"; then
       add_points score_alertas 0.5
     else
@@ -265,7 +268,7 @@ run_alertas_tests() {
 
   rm -f equipos.tmp 2>/dev/null || true
   if mv equipos.txt equipos.tmp 2>/dev/null; then
-    if bash "./$script_name" 40 >/dev/null 2>&1; then
+    if timeout "$SCRIPT_TIMEOUT" bash "./$script_name" 40 >/dev/null 2>&1; then
       feedback_alertas+=("alertas_equipos.sh debería fallar si falta equipos.txt")
     else
       add_points score_alertas 0.5
@@ -290,6 +293,7 @@ printf "%-25s %5s %5s %5s %6s  %s\n" "-------------------------" "-----" "-----"
 
 for dir in "${STUDENT_DIRS[@]}"; do
   workdir=$(mktemp -d)
+  echo $workdir
   if command -v rsync >/dev/null 2>&1; then
     rsync -a "$dir"/ "$workdir"/ >/dev/null
   else

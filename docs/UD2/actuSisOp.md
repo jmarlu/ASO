@@ -57,3 +57,5 @@ Estas líneas hacen referencia a diferentes tipos de actualizaciones. Para añad
 - Revisa el log de ejecución: `/var/log/unattended-upgrades/unattended-upgrades.log`.
 - Mantén comentadas `updates` y `backports` hasta validarlo en laboratorio.
 - Planifica ventanas de mantenimiento y, en servidores críticos, configura un nodo de respaldo antes de aplicar reinicios necesarios.
+- Para aplicar manualmente con control: `sudo apt update && sudo apt upgrade` (o `sudo apt full-upgrade` si hay cambios de dependencias). Lista pendientes de seguridad con `sudo unattended-upgrades --dry-run -d`.
+- Limpieza: `sudo apt autoremove` elimina paquetes huérfanos y `sudo apt clean` borra la caché de `.deb`.

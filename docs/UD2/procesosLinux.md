@@ -94,6 +94,18 @@ ps -u root
 
 Nos muestra información de los procesos pertenecientes a root. Como podemos ver, no nos muestra tantas columnas.
 
+### Visualización interactiva (top/htop)
+
+- `top` viene instalado por defecto y permite ordenar dinámicamente con `<` y `>`, cambiar la columna de orden con `x` (resalta), ver CPUs individuales con `1`, y alternar barras CPU/mem con `t` y `m`. Salir con `q`.
+- `htop` (instálalo con `sudo apt install htop`) añade búsqueda con `/`, scroll con cursor y `F9` para enviar señales.
+- Interpreta la carga: la sección superior muestra `load average` a 1/5/15 minutos. En un sistema con N cores, carga ≈ N significa uso completo sin colas; mucho mayor implica CPU saturada.
+
+### Prioridades y afinidades
+
+- `nice -n 10 comando`: lanza con menor prioridad (valor positivo aumenta niceness).
+- `sudo renice -n 5 -p <PID>`: ajusta niceness de un proceso en ejecución.
+- Afinidad por CPU (opcional): `taskset -cp 0,1 <PID>` en Ubuntu.
+
 ## Parada de un proceso/señales
 
 El comando kill no es obligatoriamente destruir o terminar un proceso, sino mandar señales a los procesos.
