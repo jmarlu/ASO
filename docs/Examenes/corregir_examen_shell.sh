@@ -32,6 +32,13 @@ add_points() {
   printf -v "$var_name" "%s" "$result"
 }
 
+ensure_executable() {
+  local path=$1
+  [[ -f $path ]] || return 1
+  [[ -x $path ]] && return 0
+  chmod u+x "$path" 2>/dev/null
+}
+
 SUBMISSIONS=""
 CSV_PATH=""
 
@@ -89,8 +96,11 @@ run_doble_tests() {
     return
   fi
 
-  if [[ ! -x $script_path ]]; then
-    feedback_doble+=("doble.sh sin permisos de ejecución (se lanzó con bash)")
+  local had_exec_perm=1
+  [[ -x $script_path ]] || had_exec_perm=0
+  ensure_executable "$script_path"
+  if [[ $had_exec_perm -eq 0 ]]; then
+    feedback_doble+=("doble.sh no tenía permiso de ejecución; se corrigió para las pruebas")
   fi
 
   local ok_input=4.5
@@ -136,12 +146,16 @@ run_inventario_tests() {
     return
   fi
 
+  local had_exec_perm=1
+  [[ -x $script_path ]] || had_exec_perm=0
+  ensure_executable "$script_path"
+
   add_points score_inventario 0.25
 
-  if [[ -x $script_path ]]; then
+  if [[ $had_exec_perm -eq 1 ]]; then
     add_points score_inventario 0.25
   else
-    feedback_inventario+=("inventario_usuarios.sh no tiene permiso de ejecución")
+    feedback_inventario+=("inventario_usuarios.sh no tenía permiso de ejecución; se corrigió para las pruebas")
   fi
 
   local output status
@@ -207,12 +221,16 @@ run_alertas_tests() {
     return
   fi
 
+  local had_exec_perm=1
+  [[ -x $script_path ]] || had_exec_perm=0
+  ensure_executable "$script_path"
+
   add_points score_alertas 0.25
 
-  if [[ -x $script_path ]]; then
+  if [[ $had_exec_perm -eq 1 ]]; then
     add_points score_alertas 0.25
   else
-    feedback_alertas+=("alertas_equipos.sh sin permiso de ejecución")
+    feedback_alertas+=("alertas_equipos.sh no tenía permiso de ejecución; se corrigió para las pruebas")
   fi
 
   local script_dir
@@ -316,9 +334,9 @@ EOF
 
   local_equipos="$workdir/equipos_muestra.txt"
   cat > "$local_equipos" <<'EOF'
-10.0.0.5 srv01 20 8
-10.0.0.6 srv02 80 16
-10.0.0.7 srv03 35 32
+10.0.0.5 srv01 20GB 8
+10.0.0.6 srv02 80GB 16
+10.0.0.7 srv03 35GB 32
 EOF
 
   run_doble_tests "$workdir/doble.sh"
