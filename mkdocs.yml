@@ -35,11 +35,12 @@ nav:
       #- Actividades: ./UD1/windows/Actividades.md
   
   - UD2.Administración procesos y Servicios:
-      #- Instalación en Windows: ./UD2/InstaWindow.md
+      - Instalación en Windows: ./UD2/InstaWindow.md
       - Instalación en Linux: ./UD2/InstaLinux.md
       - Gestión de procesos: ./UD2/procesosLinux.md
       - Gestión de Servicios: ./UD2/GestiServicios.md
       - Programación de Tareas: ./UD2/programaTareas.md
+      - Contenedores lxc: ./UD2/contenedoresLXC.md
       - Actualización del Sistema: ./UD2/actuSisOp.md
       - Registro de Windows: ./UD2/registroWindow.md
       - Actividades: ./UD2/Actividades.md
