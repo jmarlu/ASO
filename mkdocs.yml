@@ -40,7 +40,7 @@ nav:
       - Gestión de procesos: ./UD2/procesosLinux.md
       - Gestión de Servicios: ./UD2/GestiServicios.md
       - Programación de Tareas: ./UD2/programaTareas.md
-      - Contenedores lxc: ./UD2/contenedoresLXC.md
+      - Contenedores lxd/lxc: ./UD2/ContenedoresLXC.md
       - Actualización del Sistema: ./UD2/actuSisOp.md
       - Registro de Windows: ./UD2/registroWindow.md
       - Actividades: ./UD2/Actividades.md

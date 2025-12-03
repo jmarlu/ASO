@@ -129,6 +129,10 @@ Ahora con systemd
   ExecStart=/usr/bin/sh -c '/usr/bin/date >> /tmp/date'
   ```
 
+Los eventos de  OnCalendar utilizan el siguiente formato :
+
+`DayOfWeek Year-Month-Day Hour:Minute:Second`
+
 - Luego creemos un archivo de temporizador /etc/systemd/system/date.timer con el siguiente contenido
 
 ```bash title="Contenido del temporizador"
