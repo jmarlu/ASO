@@ -108,7 +108,44 @@ graph TD
 
 ---
 
-## 3. Búsquedas LDAP: base, alcance y filtros
+## 3. ACL en LDAP (slapd)
+
+Las **ACL** de OpenLDAP controlan **quién** puede hacer **qué** sobre **qué** datos. Se evalúan en orden, de arriba abajo, y la primera que encaja decide.
+
+### 3.1 Piezas clave
+- **Ámbito**: `to *`, a una base DN (`to dn.base="dc=empresa,dc=com"`), a un subárbol (`dn.subtree=...`) o a atributos concretos (`attrs=userPassword,loginShell`).
+- **Quién**: `by` con identidades (`dn.exact=`, `group.exact=`, `anonymous`, `users`, `self`, `*`).
+- **Permisos**: `none`, `auth`, `compare`, `search`, `read`, `write`, `manage`. Se pueden combinar (`read,write`).
+- **Orden**: la primera regla coincidente aplica; deja una regla final de “cierre” para evitar fugas.
+
+### 3.2 Ejemplos típicos (config dinámica `cn=config`)
+```ldif
+# 1) Solo admins gestionan todo
+olcAccess: {0}to * by dn.exact="cn=admin,dc=empresa,dc=com" manage by * break
+
+# 2) Los usuarios pueden leer todo el árbol salvo contraseñas
+olcAccess: {1}to * by users read by anonymous auth
+olcAccess: {2}to attrs=userPassword by self write by anonymous auth by * none
+
+# 3) Grupo de Helpdesk puede modificar teléfono/mail
+olcAccess: {3}to attrs=telephoneNumber,mail by group.exact="cn=helpdesk,ou=Grupos,dc=empresa,dc=com" write by * break
+```
+
+Notas rápidas:
+- En `cn=config`, los índices `{0}`, `{1}`… marcan el orden. Edita con `ldapmodify` contra `cn=config`.
+- Usa `ldapsearch -LLL -b cn=config olcAccess` para revisar la ACL efectiva.
+- Prueba con `ldapwhoami -x -D "uid=alumno,ou=Usuarios,dc=empresa,dc=com" -W` y luego operaciones `ldapsearch/ldapmodify` para validar permisos.
+
+### 3.3 Flujo de cambio seguro
+1) **Exporta** configuración actual: `slapcat -b cn=config | grep olcAccess`.  
+2) **Planifica** reglas de más específico a más genérico.  
+3) **Aplica** con LDIF y `ldapmodify` sobre `cn=config`.  
+4) **Valida** con usuarios reales (self, anónimo, grupo).  
+5) **Documenta** en un comentario/README del laboratorio qué reglas hay y por qué.
+
+---
+
+## 4. Búsquedas LDAP: base, alcance y filtros
 
 Cuando ejecutamos un `search` estamos diciendo al servidor qué parte del árbol queremos examinar y qué condiciones deben cumplir las entradas que devuelva. Piensa en tres preguntas:
 
@@ -133,7 +170,7 @@ graph TD
     Resultado --> Cliente
 ```
 
-### 3.1 Scope y filtros en acción
+### 4.1 Scope y filtros en acción
 | Scope | ¿Qué abarca? | Ejemplo de uso |
 |-------|--------------|----------------|
 | `base` | Solo la entrada del *base DN* | Leer atributos de `cn=admin,dc=empresa,dc=com` |
@@ -168,4 +205,3 @@ Los filtros se pueden anidar: `(&(objectClass=person)(|(sn=Lopez)(sn=Perez)))` d
 
 
 ---
-

@@ -254,3 +254,52 @@ Diseña  una arquitectura con **slapd maestro** y **réplica**, 3 aplicaciones c
    openssl s_client -connect localhost:636 -CAfile certs/ca.crt
    ```
    Guarda las salidas de `ldapsearch` y `openssl s_client` para adjuntarlas como evidencia.
+
+---
+
+# 🔒 Soluciones guía – ACL en LDAP (Bloque 2)
+
+## 10. Leer ACL actuales
+- Orden típico devuelto por `olcAccess` (ejemplo):
+  1) `{0}to * by dn.exact="cn=admin,dc=empresa,dc=com" manage by * break`  
+  2) `{1}to attrs=userPassword by self write by anonymous auth by * none`  
+  3) `{2}to * by users read by anonymous auth`
+- Resumen: admin gestiona todo; usuarios autenticados leen; anónimo solo puede autenticarse.
+
+## 11. Self-service seguro
+LDIF ejemplo:
+```ldif
+dn: olcDatabase={1}mdb,cn=config
+changetype: modify
+add: olcAccess
+olcAccess: {3}to attrs=mail,telephoneNumber by self write by users read by * none
+```
+Validación: `ldapmodify` del usuario cambia `mail` ok; modificar `userPassword` devuelve `Insufficient access (50)`.
+
+## 12. Lectura para apps, escritura solo admins
+LDIF ejemplo (reemplaza DN/base por la de tu lab):
+```ldif
+dn: olcDatabase={1}mdb,cn=config
+changetype: modify
+add: olcAccess
+olcAccess: {0}to * by dn.exact="cn=admin,dc=empresa,dc=com" manage by * break
+olcAccess: {1}to attrs=userPassword by self write by anonymous auth by * none
+olcAccess: {2}to dn.subtree="ou=Aplicaciones,dc=empresa,dc=com" by group.exact="cn=app-rw,ou=Grupos,dc=empresa,dc=com" write by users read by * none
+olcAccess: {3}to * by users read by anonymous auth by * none
+```
+Salida esperada de `ldapsearch -b cn=config olcAccess` debe mostrar estos índices en orden.
+
+## 13. Auditoría mínima (bash)
+```bash
+#!/usr/bin/env bash
+set -e
+BACKUP=backup-$(date +%F_%H%M)-olcAccess.ldif
+echo "# Backup de olcAccess" > "$BACKUP"
+ldapsearch -LLL -Y EXTERNAL -H ldapi:/// -b cn=config olcAccess >> "$BACKUP"
+
+ldapmodify -Y EXTERNAL -H ldapi:/// -f cambios-acl.ldif
+
+echo "# Orden tras aplicar" 
+ldapsearch -LLL -Y EXTERNAL -H ldapi:/// -b cn=config olcAccess | grep '^olcAccess'
+```
+Ejecución: `chmod +x audit-acl.sh && ./audit-acl.sh`. Adjunta el backup generado y la salida final.

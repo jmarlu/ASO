@@ -69,3 +69,31 @@ En la carpeta del laboratorio:
 - Monta los certificados en `openldap` mediante `docker-compose.yml`, habilita `LDAP_TLS`, fuerza conexiones cifradas y ajusta `phpLDAPadmin` para servir por HTTPS.
 - Demuestra la configuración con dos capturas de comandos: `ldapsearch` contra `ldaps://` y `openssl s_client` mostrando el certificado emitido por tu CA.
 
+---
+
+# 🔒 Bloque 2: ACL en LDAP (slapd)
+
+### 10. Lee y entiende las ACL actuales
+- Con `ldapsearch -LLL -Y EXTERNAL -H ldapi:/// -b cn=config olcAccess` documenta el orden y efecto de cada regla.
+- Resume en 4 líneas quién puede hacer qué y qué pasa con el acceso anónimo.
+
+### 11. Self-service seguro
+Aplica una ACL que permita a cada usuario modificar **solo** sus atributos `mail` y `telephoneNumber`, pero no `userPassword`. Valida con:
+- `ldapwhoami` de un usuario normal.
+- `ldapmodify` cambiando su `mail` (debe funcionar).
+- `ldapmodify` cambiando `userPassword` (debe fallar).
+
+### 12. Lectura para aplicaciones, escritura solo para admins
+Define ACL que cumplan:
+- `cn=admin,dc=empresa,dc=com` → `manage` sobre todo.
+- Grupo `cn=app-rw,ou=Grupos,dc=empresa,dc=com` → `write` solo en `ou=Aplicaciones,dc=empresa,dc=com`.
+- Usuarios autenticados (`users`) → `read` sobre el árbol completo excepto `userPassword`.
+- Anónimo (`anonymous`) → solo `auth`.
+Entrega el LDIF aplicado y la salida de `ldapsearch` con las ACL ordenadas.
+
+### 13. Auditoría mínima
+Crea un script/bloque de comandos que:
+- Haga backup de `olcAccess` (`slapcat -b cn=config | grep olcAccess`).
+- Aplique un LDIF de cambio.
+- Compruebe con `ldapsearch` que el orden `{0},{1},...` es el esperado.
+Incluye el script y un ejemplo de ejecución en el laboratorio Docker.

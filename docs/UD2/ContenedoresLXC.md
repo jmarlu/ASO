@@ -12,14 +12,19 @@ Objetivo: que el alumnado entienda qué son los contenedores ligeros en Linux, c
 
 ## 1. Instalación y primer contenedor (LXD)
 
-En Ubuntu/Debian:
+En Ubuntu es preferible usar el snap oficial (te mantiene en la rama `5.21/stable` del proyecto):
 
 ```bash
-sudo apt update
-sudo apt install -y lxd
+sudo snap install lxd
+sudo lxd --version            # debe mostrar 5.21.x si sigues la rama estable actual
+sudo snap refresh lxd --channel=5.21/stable
 ```
 
-Inicializa LXD (configura bridge y storage; acepta valores por defecto salvo que tengas requisitos):
+En Debian o distros sin snap, usa el paquete `lxd` del repositorio (o el tarball publicado por Canonical si no hay paquete).
+
+Inicializa LXD (configura bridge y storage; acepta valores por defecto salvo que tengas requisitos). Las dos preguntas críticas:
+- Storage pool: si no tienes disco para ZFS/LVM, elige `dir` para empezar; en producción mejor ZFS o LVM thin.
+- Red: crea un bridge gestionado (`lxdbr0`) salvo que quieras unirlo a un bridge existente del host.
 
 ```bash
 sudo lxd init
@@ -36,15 +41,24 @@ Verificaciones guiadas (alumno):
 - Dentro: `lxc exec web01 -- hostname`, `lxc exec web01 -- ip a`, `lxc exec web01 -- ps -ef | head`.
 - Detener/arrancar: `lxc stop web01`, `lxc start web01`.
 
-## 2. Red básica (bridge por defecto)
+## 2. Imágenes y perfiles básicos
+
+- Lista remotas y catálogos disponibles: `lxc remote list`, `lxc image list images: | head`.
+- Ver qué aplica el perfil por defecto: `lxc profile show default` (incluye la interfaz en `lxdbr0` y el disco root).
+- Ajustar tamaño del disco root del perfil por defecto (útil para ejercicios): `lxc profile set default root.size 10GB`.
+- Crear contenedores con otro perfil: `lxc launch images:ubuntu/22.04 test --profile default --profile lab`.
+- Inspección de configuración final de un contenedor: `lxc config show web01 --expanded`.
+
+## 3. Red básica (bridge por defecto)
 
 - LXD crea `lxdbr0` (NAT) en el init; comprueba con `ip a` en el host.
 - Dentro del contenedor, la interfaz suele ser `eth0` con IP privada (default 10.XXX).
 - Prueba de conectividad:
   - Desde host: `ping -c2 <IP_contenedor>`.
   - Desde contenedor: `lxc exec web01 -- ping -c2 8.8.8.8` y `lxc exec web01 -- ping -c2 <IP_host>`.
+  - Ver redes gestionadas por LXD: `lxc network list` y detalles con `lxc network show lxdbr0`.
 
-## 3. Servicios dentro del contenedor
+## 4. Servicios dentro del contenedor
 
 Ejemplo: instalar y gestionar nginx .
 
@@ -67,7 +81,9 @@ Para impedir arranque automático dentro del contenedor:
 lxc exec web01 -- systemctl disable nginx
 ```
 
-## 4. Autostart del contenedor
+En caso de no querer usar `systemd` dentro (contenedor mínimo), ejecuta procesos con `lxc exec web01 -- bash` y lanza servicios en foreground para pruebas rápidas.
+
+## 5. Autostart del contenedor
 
 Habilitar que el contenedor arranque con el host:
 
@@ -82,7 +98,7 @@ Verificar:
 lxc list   # columna AUTOSTART debe mostrar YES si se incluye con --columns=ns4t
 ```
 
-## 5. Límites de recursos (cgroups)
+## 6. Límites de recursos (cgroups)
 
 Ejemplos con LXD:
 
@@ -99,7 +115,7 @@ lxc restart web01
 lxc config get web01 limits.memory
 ```
 
-## 6. Snapshots y backups
+## 7. Snapshots y backups
 
 - Snapshot (copy-on-write):
 
@@ -121,7 +137,9 @@ lxc export web01 web01-backup.tar.gz
 lxc import web01-backup.tar.gz
 ```
 
-## 7. Seguridad y buenas prácticas
+- Copiar/mover entre hosts LXD: añadir un remoto (`lxc remote add backup <IP>`) y `lxc copy web01 backup:web01` (usa certificados).
+
+## 8. Seguridad y buenas prácticas
 
 - LXD usa contenedores no privilegiados por defecto; mantén esa configuración.
 - Usa perfiles para bind mounts y redes:
@@ -140,8 +158,9 @@ lxc profile apply web01 default,lab
 ```
 
 - Minimiza superficie: instala solo lo necesario en el contenedor y no mezcles servicios sin relación.
+- Para depurar, mira logs con `lxc monitor --type=logging` y `lxc info web01 --show-log`.
 
-## 8. Limpieza
+## 9. Limpieza
 
 ```bash
 lxc stop web01

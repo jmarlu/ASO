@@ -46,3 +46,8 @@ Objetivo: aplicar administración de software, servicios y tareas programadas en
    - Descarga el script de Moodle, concédelo con `chmod 777 script.sh` (explica por qué no es buena práctica y qué permiso usarías realmente).
    - Añade en `sudo crontab -e`: `* * * * * ~/Escritorio/script.sh`. Explica qué significa cada asterisco y ajusta para ejecutarse cada minuto entre las 8 y las 20 todos los días. Confirma con `systemctl list-timers` si optas por un timer equivalente.
    - Verifica funcionamiento y adjunta salida de `grep script.sh /var/log/syslog` o similar.
+3. **Laboratorio LXD (multi-perfil, límites y backup)**
+   - Inicializa LXD (usa `dir` si no tienes ZFS) y crea dos perfiles: `default` (red NAT en `lxdbr0`, disco root 10GB) y `lab` (añade un NIC a una red nueva `redlab` 10.50.0.0/24). Aplica ambos al contenedor `lab01`.
+   - En `lab01`: instala `nginx`, fija `limits.memory` a 512MB y `limits.cpu` a 1. Muestra `lxc config show lab01 --expanded` y valida los límites tras reiniciar.
+   - Crea un snapshot `pre-cambio`, modifica la página por defecto de nginx y restaura el snapshot; demuestra que vuelve al estado inicial. Luego exporta el contenedor (`lxc export lab01 lab01.tar.gz`) y documenta el reimportado con otro nombre.
+   - Evidencias mínimas: `lxc profile show default/lab`, `lxc network list` y `lxc network show lxdbr0/redlab`, `lxc list` con IPs, `lxc info lab01 --show-log` si hubo errores, capturas de `curl` desde el host antes y después de la restauración.
