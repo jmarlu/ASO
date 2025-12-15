@@ -49,6 +49,23 @@ Verificaciones guiadas (alumno):
 - Crear contenedores con otro perfil: `lxc launch images:ubuntu/22.04 test --profile default --profile lab`.
 - Inspección de configuración final de un contenedor: `lxc config show web01 --expanded`.
 
+### Ver imágenes remotas y lanzarlas
+
+Guía rápida (catálogo oficial en https://documentation.ubuntu.com/lxd/stable-5.21/images/):
+
+- Remotos disponibles: `lxc remote list` (el catálogo grande es `images:`; Ubuntu tiene también `ubuntu:` y `ubuntu-daily:`).
+- Listado filtrado por SO/arquitectura para no tragarse todo: `lxc image list images: ubuntu --columns=alst --format=table` o `lxc image list images: debian --columns=alst architecture=$(uname -m)`.
+- Toma el alias de la columna `ALIASES` y lánzalo directamente: `lxc launch images:ubuntu/24.04 lab01` o `lxc launch images:debian/12 lab-deb`.
+- Si quieres VM en lugar de contenedor: `lxc launch images:ubuntu/24.04 vm01 --vm`. Para ver solo imágenes aptas para VM añade `--vm` al listado: `lxc image list images: ubuntu --vm`.
+
+### Diferencia entre `lxc init` y `lxc launch`
+
+Referencia rápida de la guía oficial: https://documentation.ubuntu.com/lxd/stable-5.21/howto/instances_create/
+
+- `lxc init <remoto:imagen> <nombre>` crea la instancia pero no la arranca; es útil si quieres ajustar config antes del primer boot (perfiles, límites, dispositivos). Ejemplo: `lxc init images:ubuntu/24.04 base01` y luego `lxc config set base01 limits.memory 1GB` antes de `lxc start base01`.
+- `lxc launch <remoto:imagen> <nombre>` es un atajo que hace init + start en un paso, así que el contenedor queda corriendo inmediatamente. Ejemplo: `lxc launch images:ubuntu/24.04 web01`.
+- Regla práctica: usa `launch` para laboratorios rápidos y `init` cuando quieras personalizar antes de arrancar o preparar una imagen base.
+
 ## 3. Red básica (bridge por defecto)
 
 - LXD crea `lxdbr0` (NAT) en el init; comprueba con `ip a` en el host.
