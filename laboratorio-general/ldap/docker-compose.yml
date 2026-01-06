@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  openldap:
+    image: osixia/openldap:1.5.0
+    container_name: ldap-lab
+    restart: unless-stopped
+    environment:
+      LDAP_ORGANISATION: "Laboratorio ASO"
+      LDAP_DOMAIN: "laboratorio.local"
+      LDAP_BASE_DN: "dc=laboratorio,dc=local"
+      LDAP_ADMIN_PASSWORD: "admin"
+      LDAP_CONFIG_PASSWORD: "admin"
+      LDAP_TLS: "true"
+      LDAP_TLS_CRT_FILENAME: "ldap.crt"
+      LDAP_TLS_KEY_FILENAME: "ldap.key"
+      LDAP_TLS_CA_CRT_FILENAME: "ca.crt"
+      LDAP_TLS_VERIFY_CLIENT: "never"
+    command: ["--copy-service"]
+    ports:
+      - "389:389"   # sin TLS
+    volumes:
+      - ./bootstrap.ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom/bootstrap.ldif:ro
+      - ./certs:/container/service/slapd/assets/certs:ro
+      - ldap_data:/var/lib/ldap
+      - ldap_config:/etc/ldap/slapd.d
+
+volumes:
+  ldap_data:
+  ldap_config:

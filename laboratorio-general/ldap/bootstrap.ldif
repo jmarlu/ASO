@@ -1,0 +1,70 @@
+dn: ou=People,dc=laboratorio,dc=local
+objectClass: organizationalUnit
+ou: People
+description: Cuentas de usuario
+
+dn: ou=Groups,dc=laboratorio,dc=local
+objectClass: organizationalUnit
+ou: Groups
+description: Grupos POSIX y de acceso
+
+dn: cn=profesores,ou=Groups,dc=laboratorio,dc=local
+objectClass: top
+objectClass: posixGroup
+cn: profesores
+gidNumber: 30000
+description: Profesores con sudo y acceso global a homes
+memberUid: profesor
+
+dn: cn=alumnos,ou=Groups,dc=laboratorio,dc=local
+objectClass: top
+objectClass: posixGroup
+cn: alumnos
+gidNumber: 30001
+description: Alumnos estándar
+memberUid: alumno1
+
+dn: cn=grupo_datos,ou=Groups,dc=laboratorio,dc=local
+objectClass: top
+objectClass: posixGroup
+cn: grupo_datos
+gidNumber: 30002
+description: Compartida Samba para profesores y alumnos
+memberUid: profesor
+memberUid: alumno1
+
+dn: uid=profesor,ou=People,dc=laboratorio,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+cn: Profesor
+sn: Profesor
+givenName: Profesor
+uid: profesor
+mail: profesor@laboratorio.local
+uidNumber: 20000
+gidNumber: 30000
+homeDirectory: /home/profesor
+loginShell: /bin/bash
+userPassword: Profesor123
+shadowLastChange: 0
+shadowMax: 99999
+shadowWarning: 7
+
+dn: uid=alumno1,ou=People,dc=laboratorio,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+cn: Alumno1
+sn: Alumno
+givenName: Alumno1
+uid: alumno1
+mail: alumno1@laboratorio.local
+uidNumber: 20001
+gidNumber: 30001
+homeDirectory: /home/alumno1
+loginShell: /bin/bash
+userPassword: Alumno123
+shadowLastChange: 0
+shadowMax: 99999
+shadowWarning: 7

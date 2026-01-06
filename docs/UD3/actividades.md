@@ -63,11 +63,85 @@ Explica **cuándo** usarías **DSML** en lugar de LDIF en un entorno real y dibu
 
 ## Nivel 4 – Escenario profesional
 
-### 9. Endurece el laboratorio Docker con TLS
+### 9. Montaje del escenario y diagrama de red
+Reproduce el siguiente esquema y úsalo como guía del laboratorio:
+
+```mermaid
+flowchart LR
+  subgraph LAB[Red privada 10.50.0.0/24]
+    S[VM-SERVIDOR 10.50.0.10\nDocker OpenLDAP]
+    C[VM-CLIENTE 10.50.0.20]
+    S -->|LDAP 389 StartTLS| C
+  end
+```
+
+**Pasos detallados (red y VMs):**
+1. Crea una red privada en VirtualBox: `10.50.0.0/24`.
+2. Crea dos VMs Ubuntu:
+   - VM-SERVIDOR: `10.50.0.10`
+   - VM-CLIENTE: `10.50.0.20`
+3. Configura el adaptador 2 de cada VM en **Host-Only** (la red privada) y deja el adaptador 1 en **NAT** para Internet.
+4. Asigna IP fija en cada VM (netplan):
+   - VM-SERVIDOR: interfaz Host-Only con `10.50.0.10/24`
+   - VM-CLIENTE: interfaz Host-Only con `10.50.0.20/24`
+5. Comprueba conectividad:
+   - En la VM-CLIENTE: `ping -c 4 10.50.0.10`
+   - En la VM-SERVIDOR: `ping -c 4 10.50.0.20`
+6. Comprueba que el puerto LDAP está accesible:
+   - En la VM-CLIENTE: `nc -zv 10.50.0.10 389` (o `telnet 10.50.0.10 389`)
+
+**Entrega:** captura del diagrama, IPs configuradas y salida de los pings/puerto 389.
+
+### 10. TLS/StartTLS en OpenLDAP (Docker)
 En la carpeta del laboratorio:
-- Genera una **CA interna** y firma un certificado para `asir.local` (incluye SAN con el host/IP que uses).
-- Monta los certificados en `openldap` mediante `docker-compose.yml`, habilita `LDAP_TLS`, fuerza conexiones cifradas y ajusta `phpLDAPadmin` para servir por HTTPS.
-- Demuestra la configuración con dos capturas de comandos: `ldapsearch` contra `ldaps://` y `openssl s_client` mostrando el certificado emitido por tu CA.
+1. Crea una carpeta `certs/` junto al `docker-compose.yml`.
+2. Genera una CA interna:
+   ```bash
+   openssl req -x509 -newkey rsa:2048 -sha256 -days 3650 -nodes \
+     -keyout certs/ca.key -out certs/ca.crt -subj "/CN=LDAP Lab CA"
+   ```
+3. Crea clave y CSR del servidor (CN con la IP o el nombre):
+   ```bash
+   openssl req -newkey rsa:2048 -nodes \
+     -keyout certs/ldap.key -out certs/ldap.csr -subj "/CN=10.50.0.10"
+   ```
+4. Añade SAN con IP/hostname:
+   ```bash
+   cat > certs/ldap.ext <<'EOF'
+   subjectAltName = IP:10.50.0.10, DNS:vm-servidor
+   EOF
+   ```
+5. Firma el certificado con la CA:
+   ```bash
+   openssl x509 -req -in certs/ldap.csr -CA certs/ca.crt -CAkey certs/ca.key \
+     -CAcreateserial -out certs/ldap.crt -days 3650 -sha256 -extfile certs/ldap.ext
+   ```
+6. Ajusta permisos:
+   ```bash
+   chmod 600 certs/ldap.key certs/ca.key
+   ```
+7. Modifica `docker-compose.yml` (OpenLDAP):
+   - `LDAP_TLS=true`
+   - `LDAP_TLS_CRT_FILENAME=ldap.crt`
+   - `LDAP_TLS_KEY_FILENAME=ldap.key`
+   - `LDAP_TLS_CA_CRT_FILENAME=ca.crt`
+   - `LDAP_TLS_VERIFY_CLIENT=never`
+   - Volumen: `./certs:/container/service/slapd/assets/certs:ro`
+8. **Reinicia limpio** para aplicar TLS:
+   ```bash
+   docker compose down -v
+   docker compose up -d
+   ```
+9. Verifica StartTLS desde la VM-CLIENTE:
+   ```bash
+   ldapsearch -x -ZZ -H ldap://10.50.0.10:389 \
+     -D "cn=admin,dc=asir,dc=local" -w admin123 \
+     -b "dc=asir,dc=local" "(uid=*)" dn
+   openssl s_client -connect 10.50.0.10:389 -starttls ldap
+   ```
+10. (Opcional) publica `636:636` y prueba `ldaps://10.50.0.10:636`.
+
+**Entrega:** comandos de generación de certificados, fragmento del `docker-compose.yml`, y salidas de `ldapsearch -ZZ` y `openssl s_client`.
 
 ---
 

@@ -5,17 +5,17 @@
 - Entrega única por actividad (PDF/MD) con capturas que demuestren cada paso.
 - Incluye comandos usados, configuración aplicada y validación (estado de servicios, logs, salidas de `systemctl` o `reg query`).
 - Rúbrica orientativa: 40 % exactitud técnica, 30 % documentación clara y reproducible, 20 % validación, 10 % orden y limpieza.
-- Actividades 1 y 2 son obligatorias; Actividades 3 son de refuerzo/extra.
 
-## Actividad 1 (obligatoria)
+
+## Actividad 1 
 
 Objetivo: practicar procesos, servicios y cron/systemd según la teoría (Ubuntu como referencia).
 
-1. Completa en Aules la **Relación 3-I de tareas y procesos**: usa `top` o `htop` (teclas 1/x/t/m) para mostrar PID, estado y carga (`load average`), y comenta brevemente un ajuste de prioridad con `nice` o `renice`.
-2. Completa en Aules la **Relación 3-II de instalación**: ejemplo de instalación y desinstalación con `apt`/`apt-get` (incluye `apt-cache depends` y `dpkg -L paquete` en la evidencia).
-3. Completa en Aules la **Relación 3-III de servicios**: escoge un servicio en Linux y otro en Windows; en Linux muestra `systemctl status --no-pager` y `journalctl -u ... -n 10`, indicando cómo lo detendrías/activarías.
+1. Completa en Aules la **Cuestionario de tareas y procesos**: usa `top` o `htop` (teclas 1/x/t/m) para mostrar PID, estado y carga (`load average`), y comenta brevemente un ajuste de prioridad con `nice` o `renice`.
+2. Completa en Aules la **Cuestionario de instalación**: ejemplo de instalación y desinstalación con `apt`/`apt-get` (incluye `apt-cache depends` y `dpkg -L paquete` en la evidencia).
+3. Completa en Aules la **Cuestionario de servicios**: escoge un servicio en Linux y otro en Windows; en Linux muestra `systemctl status --no-pager` y `journalctl -u ... -n 10`, indicando cómo lo detendrías/activarías.
 
-## Actividad 2 (obligatoria)
+## Actividad 2 
 
 Objetivo: aplicar administración de software, servicios y tareas programadas en ambos sistemas.
 
@@ -43,7 +43,7 @@ Objetivo: aplicar administración de software, servicios y tareas programadas en
       - Cambios: desactivar notificaciones UAC, añadir `notepad.exe` al inicio, mover carpetas especiales a otra partición, deshabilitar USB.
       - Evidencia antes/después desde RegEdit o `reg add/reg query`, más verificación funcional.
 
-## Actividades 3 (refuerzo)
+## Actividades 3
 
 1. **Conversión de paquetes**
       - Descarga Firefox en formato RPM en Ubuntu Desktop, conviértelo con `alien -d`, instala el `.deb` y comenta por qué convertir. Indica dos métodos alternativos de instalación (snap/apt) y cómo consultar archivos instalados con `dpkg -L`.
@@ -52,7 +52,7 @@ Objetivo: aplicar administración de software, servicios y tareas programadas en
       - Añade en `sudo crontab -e`: `* * * * * ~/Escritorio/script.sh`. Explica qué significa cada asterisco y ajusta para ejecutarse cada minuto  entre las 8 y las 20 todos los días. Confirma con `systemctl list-timers` si optas por un timer equivalente.
       - Verifica funcionamiento y adjunta salida de `grep script.sh /var/log/syslog` o similar.
 3. **Laboratorio LXD (multi-perfil, límites y backup)**
-      - Inicializa LXD (usa `dir` si no tienes ZFS) y crea dos perfiles: `default` (red NAT en `lxdbr0`, disco root 10GB) y `lab` (añade un NIC a  una red nueva `redlab` 10.50.0.0/24). Aplica ambos al contenedor `lab01`.
+      - Inicializa LXD y crea dos perfiles: `default` (red NAT en `lxdbr0`, disco root 10GB) y `lab` (añade un NIC a  una red nueva `redlab` 10.50.0.0/24). Aplica ambos al contenedor `lab01`.
       - En `lab01`: instala `nginx`, fija `limits.memory` a 512MB y `limits.cpu` a 1. Muestra `lxc config show lab01 --expanded` y valida los   límites tras reiniciar.
       - Crea un snapshot `pre-cambio`, modifica la página por defecto de nginx y restaura el snapshot; demuestra que vuelve al estado inicial. Luego exporta el contenedor (`lxc export lab01 lab01.tar.gz`) y documenta el reimportado con otro nombre.
       - Evidencias mínimas: `lxc profile show default/lab`, `lxc network list` y `lxc network show lxdbr0/redlab`, `lxc list` con IPs, `lxc info lab01 --show-log` si hubo errores, capturas de `curl` desde el host antes y después de la restauración.

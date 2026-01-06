@@ -1,0 +1,54 @@
+LDAP_HOST  = ENV.fetch("LDAP_HOST", "10.50.0.10")
+LDAP_PORT  = ENV.fetch("LDAP_PORT", "389")
+LDAP_BASE  = ENV.fetch("LDAP_BASE", "dc=laboratorio,dc=local")
+LDAP_BIND  = ENV.fetch("LDAP_BINDDN", "cn=admin,dc=laboratorio,dc=local")
+LDAP_PASS  = ENV.fetch("LDAP_BINDPW", "admin")
+
+Vagrant.configure("2") do |config|
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    config.vbguest.auto_update = false
+  end
+
+  config.vm.box = "ubuntu/jammy64"
+
+  # Carpeta compartida para ver los ficheros del host desde la VM (GUI/File Manager)
+  config.vm.synced_folder "..", "/srv/hostshare",
+    type: "rsync",
+    rsync__auto: true,
+    rsync__rsync_path: "sudo rsync"
+
+  config.vm.define "servidor" do |servidor|
+    servidor.vm.hostname = "vm-servidor"
+    servidor.vm.network "private_network", ip: "10.50.0.10"
+
+    servidor.vm.provider "virtualbox" do |vb|
+      vb.cpus = 2
+      vb.memory = 3072
+      vb.gui = false
+      vb.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
+    end
+
+    servidor.vm.provision "shell", path: "provision-server.sh"
+  end
+
+  config.vm.define "cliente" do |cliente|
+    cliente.vm.hostname = "vm-cliente"
+    cliente.vm.network "private_network", ip: "10.50.0.20"
+
+    cliente.vm.provider "virtualbox" do |vb|
+      vb.cpus = 2
+      vb.memory = 4096
+      vb.gui = true
+    end
+
+    cliente.vm.provision "shell",
+      path: "provision.sh",
+      env: {
+        "LDAP_HOST" => LDAP_HOST,
+        "LDAP_PORT" => LDAP_PORT,
+        "LDAP_BASE" => LDAP_BASE,
+        "LDAP_BINDDN" => LDAP_BIND,
+        "LDAP_BINDPW" => LDAP_PASS
+      }
+  end
+end

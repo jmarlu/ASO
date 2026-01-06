@@ -1,15 +1,21 @@
-# 🗂️ ACL en sistemas de ficheros (GNU/Linux)
 
-> “Compartir sin romper la seguridad: mismo recurso, permisos granulados.”
+# Permisos especiales en Linux (SUID, SGID, sticky bit)
+- Objetivo: entender que los bits especiales cambian el comportamiento de permisos y ver un ejemplo practico de cada uno.
+- Resultado esperado: saber identificar SUID/SGID/sticky en un `ls -l` y explicar su impacto en un entorno multiusuario.
 
-## Permisos especiales en Linux (SUID, SGID, sticky bit)
+## Requisitos previos (para las pruebas)
+- Sistema Linux con permisos de sudo.
+- Paquete `acl` instalado (para `getfacl`/`setfacl`).
+  - `sudo apt install acl`
 - **SUID (setuid, 4xxx)**: un binario se ejecuta con el **UID del dueño**. Ej: `passwd` es SUID de root.
 - **SGID (setgid, 2xxx)** en binarios: ejecuta con **GID del dueño**. En directorios: nuevos ficheros heredan el **grupo** del directorio.
 - **Sticky bit (1xxx)** en directorios: solo el dueño del fichero (o root) puede borrarlo, aunque otros tengan permisos de escritura. Ej: `/tmp`.
 
-### Pruebas rápidas (Ubuntu)
+## Pruebas rápidas (Ubuntu)
 1. **SUID**:
    ```bash
+   # Nota: en algunos sistemas /tmp monta con "nosuid".
+   # Si falla, usa /usr/local/bin en lugar de /tmp.
    sudo cp /bin/ping /tmp/ping-suid
    sudo chown root:root /tmp/ping-suid
    sudo chmod 4755 /tmp/ping-suid
@@ -19,14 +25,14 @@
    *Recuerda limpiar*: `sudo rm /tmp/ping-suid`.
 2. **SGID en directorio** (herencia de grupo):
    ```bash
-   sudo groupadd compartida
+   sudo groupadd grupo_datos
    sudo mkdir /tmp/sgid-demo
-   sudo chown root:compartida /tmp/sgid-demo
+   sudo chown root:grupo_datos /tmp/sgid-demo
    sudo chmod 2775 /tmp/sgid-demo   # rwsrwsr-x (s en group)
-   sudo usermod -aG compartida $(whoami)   # añade tu usuario al grupo
-   newgrp compartida                       # activa el grupo en esta shell
+   sudo usermod -aG grupo_datos $(whoami)  # añade tu usuario al grupo
+   newgrp grupo_datos                       # activa el grupo en esta shell
    touch /tmp/sgid-demo/archivo
-   ls -l /tmp/sgid-demo/archivo     # grupo debe ser 'compartida'
+   ls -l /tmp/sgid-demo/archivo     # grupo debe ser 'grupo_datos'
    ```
 3. **Sticky bit**:
    ```bash
@@ -39,6 +45,10 @@
    ```
    *Limpieza*: `sudo rm -r /tmp/sgid-demo /tmp/sticky-demo`.
 
+# 🗂️ ACL en sistemas de ficheros (GNU/Linux)
+
+> “Compartir sin romper la seguridad: mismo recurso, permisos granulados.”
+
 ## 1. Qué son y cuándo usarlas
 - **ACL (Access Control Lists)** amplían el modelo `ugo` de UNIX permitiendo permisos por **usuario** y **grupo** adicionales.
 - Útiles en **recursos compartidos** (NFS/Samba/Nextcloud): varios equipos/proyectos con permisos diferentes sobre el mismo árbol.
@@ -48,6 +58,7 @@
 - Sistemas de ficheros típicos (`ext4`, `xfs`, `btrfs`) soportan ACL. En `ext4`, la opción `acl` suele venir por defecto.
 - Comprueba con:
   ```bash
+  findmnt -no SOURCE /     # ver dispositivo real (ej. /dev/sda2)
   mount | grep ext4 | head -n1   # ver opciones (acl)
   tune2fs -l /dev/sdXN | grep features  # debe incluir "acl"
   ```
@@ -58,8 +69,8 @@
 - **Añadir/modificar**: `setfacl -m u:usuario:rwx archivo` | `setfacl -m g:grupo:rx dir`
 - **Eliminar entrada**: `setfacl -x u:usuario archivo`
 - **Reset completo** (a modo unix clásico): `setfacl -b ruta`
-- **Default ACL** (para herencia en directorios): `setfacl -m d:u:usuario:rwX proyecto/`
-- **Recursivo**: `setfacl -R -m g:equipo:rwX proyecto/`
+- **Default ACL** (para herencia en directorios): `setfacl -m d:u:usuario:rwX compartida/`
+- **Recursivo**: `setfacl -R -m g:grupo_datos:rwX compartida/`
 - **Máscara**: `mask` limita permisos efectivos. Tras añadir muchas entradas, usa `setfacl -m m::rwx dir` si quieres que se apliquen completas.
 
 ### Parámetros frecuentes de `setfacl`
@@ -75,7 +86,7 @@
 
 ### La máscara en ACL POSIX
 - Define el **máximo** de permisos efectivos para todas las entradas **que no sean el dueño** (grupos y usuarios adicionales).
-- Si añades `u:luis:rwx` pero la `mask::r-x`, Luis solo tendrá `r-x` hasta que subas la máscara.
+- Si añades `u:alumno1:rwx` pero la `mask::r-x`, alumno1 solo tendrá `r-x` hasta que subas la máscara.
 - Comandos útiles:
   ```bash
   getfacl archivo            # ver mask
@@ -83,55 +94,69 @@
   ```
 - Al modificar ACL, la máscara puede bajar automáticamente; revisa tras cambios.
 
-## 4. Patrón típico en un recurso compartido
-1. Crear directorio y dueño base (p. ej. `root:proyecto`).
-2. Ajustar permisos POSIX a 2770 (setgid para heredar grupo): `chmod 2770 proyecto`.
-3. Default ACL para que nuevos ficheros hereden:  
-   `setfacl -m d:g:equipo:rwX -m d:u:luis:rwX -m d:u:ana:rX proyecto`
-4. ACL explícita en el árbol existente:  
-   `setfacl -R -m g:equipo:rwX -m u:luis:rwX -m u:ana:rX proyecto`
-5. Validar: `getfacl proyecto | head`.
+### Permisos efectivos y su impacto en Samba/NFS
+- **Permiso efectivo = (ACL) ∩ (mask) ∩ (modo POSIX)**. Si la máscara recorta, el usuario perderá escritura aunque la ACL diga `rwX`.
+- **Samba**: el acceso final es la intersección de `valid users`/`read only` del share y los permisos del FS (ACL/posix). Si el FS deniega, Samba deniega.
+- **NFS**: el servidor aplica las ACL y el cliente solo ve el resultado. Con `sec=sys`, los UID/GID deben coincidir para que el permiso sea correcto.
 
-### Ejemplo guiado en Ubuntu (prueba rápida)
-1. Prepara usuarios/grupo:
+### Checkpoint didactico (antes de Samba/NFS)
+- Si el alumnado recuerda solo 3 ideas:
+  1. `mask` recorta permisos efectivos.
+  2. `default ACL` define herencia en directorios.
+  3. `setgid` en directorios fuerza el grupo en nuevos ficheros.
+- Flujo mental: crear directorio -> permisos POSIX -> setgid -> ACL explicita -> default ACL -> comprobar con `getfacl`.
+
+## 4. Patron tipico en un recurso compartido
+1. Crear directorio y propietario base (p. ej. `root:grupo_datos`).
+2. Ajustar permisos POSIX a 2770 (setgid para heredar grupo): `chmod 2770 compartida`.
+3. Default ACL para que nuevos ficheros hereden:  
+   `setfacl -m d:g:grupo_datos:rwX -m d:u:profesor:rwX -m d:u:alumno1:rwX compartida`
+4. ACL explicita en el arbol existente:  
+   `setfacl -R -m g:grupo_datos:rwX -m u:profesor:rwX -m u:alumno1:rwX compartida`
+5. Validar: `getfacl compartida | head`.
+
+### Ejemplo guiado en Ubuntu (prueba rapida)
+1. Si no tienes LDAP, prepara usuarios/grupo locales:
    ```bash
-   sudo groupadd equipo
-   sudo useradd -m -G equipo luis
-   sudo useradd -m ana
+   sudo groupadd grupo_datos
+   sudo useradd -m -G grupo_datos profesor
+   sudo useradd -m -G grupo_datos alumno1
    ```
 2. Crea el recurso y aplica permisos base:
    ```bash
-   sudo mkdir -p /srv/proyecto
-   sudo chown root:equipo /srv/proyecto
-   sudo chmod 2770 /srv/proyecto   # setgid para heredar grupo equipo
+   sudo mkdir -p /srv/compartida
+   sudo chown root:grupo_datos /srv/compartida
+   sudo chmod 2770 /srv/compartida   # setgid para heredar grupo
    ```
 3. Añade ACL (explícitas y por defecto):
    ```bash
-   sudo setfacl -R -m g:equipo:rwX -m u:luis:rwX -m u:ana:rX /srv/proyecto
-   sudo setfacl -R -m d:g:equipo:rwX -m d:u:luis:rwX -m d:u:ana:rX /srv/proyecto
+   sudo setfacl -R -m g:grupo_datos:rwX -m u:profesor:rwX -m u:alumno1:rwX /srv/compartida
+   sudo setfacl -R -m d:g:grupo_datos:rwX -m d:u:profesor:rwX -m d:u:alumno1:rwX /srv/compartida
    ```
 4. Comprueba la máscara (si ves permisos recortados, ajusta):
    ```bash
-   getfacl /srv/proyecto
-   sudo setfacl -m m::rwx /srv/proyecto   # opcional si la mask quedó baja
+   getfacl /srv/compartida
+   sudo setfacl -m m::rwx /srv/compartida   # opcional si la mask quedo baja
    ```
 5. Valida herencia y acceso:
    ```bash
-   sudo -u luis touch /srv/proyecto/ok-luis   # debe crear
-   sudo -u ana  touch /srv/proyecto/ok-ana    # debe fallar en escritura (solo rX)
-   sudo -u ana  ls /srv/proyecto              # puede leer/listar
+   sudo -u alumno1 touch /srv/compartida/ok-alumno1   # debe crear
+   sudo -u profesor touch /srv/compartida/ok-profesor # debe crear
    ```
 6. Revisión final:
    ```bash
-   ls -ld /srv/proyecto       # debe mostrar g+s y "+"
-   getfacl /srv/proyecto
+   ls -ld /srv/compartida       # debe mostrar g+s y "+"
+   getfacl /srv/compartida
    ```
-7. Limpieza opcional: `sudo setfacl -bR /srv/proyecto` (vuelve al modo POSIX clásico).
+7. Limpieza opcional: `sudo setfacl -bR /srv/compartida` (vuelve al modo POSIX clasico).
 
-## 5. Notas de integración
-- **NFSv4**: usa su propio modelo de ACL; si exportas NFS clásico, exporta con `--manage-gids` y conserva ACL POSIX en el servidor.
-- **Samba**: respeta ACL POSIX; si usas `vfs_acl_xattr`, documenta la diferencia. Tras aplicar ACL, haz `testparm` y prueba desde un cliente.
-- **umask**: afecta creación inicial; las default ACL corrigen herencia, pero conviene un `umask 002` en servicios compartidos.
+## 5. Notas de integración (ACL, Samba y NFS)
+- **ACL POSIX**: amplían rwx. La entrada `mask` limita los permisos efectivos de grupo y entradas ACL adicionales; si la `mask` es `r--`, una ACL `rwX` queda en solo lectura.
+- **Default ACL**: se heredan en nuevos ficheros/directorios. Sin default ACL, heredan solo el modo POSIX.
+- **umask**: afecta a la creación inicial; las default ACL corrigen herencia, pero un `umask 007/027` puede seguir recortando permisos si no hay default ACL.
+- **NFS**: el servidor aplica permisos/ACL y el cliente solo ve el resultado. En `sec=sys` todo depende de UID/GID; si no coinciden, fallara el acceso.
+- **NFSv4**: puede usar ACL propias. En este laboratorio usamos ACL POSIX en el servidor y exportamos con `acl` para mantener comportamiento uniforme.
+- **Samba**: traduce ACL POSIX a ACL estilo Windows. Con `vfs_acl_xattr` y `inherit permissions = yes` se respetan las ACL del FS; valida con `testparm` y una prueba real desde cliente.
 
 ---
 
@@ -157,8 +182,8 @@ sudo apt install nfs-common          # cliente
 - El FS debe soportar ACL POSIX si quieres herencia/permisos granulares.
 - `/etc/exports` ejemplo:
   ```
-  /srv/compartida 10.0.0.0/24(rw,sync,subtree_check,acl,root_squash,fsid=0)
-  /home/usuarios  10.0.0.0/24(rw,sync,subtree_check,acl,root_squash)
+  /srv/compartida 10.50.0.0/24(rw,sync,subtree_check,acl,root_squash,fsid=0)
+  /home/usuarios  10.50.0.0/24(rw,sync,subtree_check,acl,root_squash)
   ```
   - `root_squash`: root del cliente no es root en servidor.
   - `acl`: exporta respetando ACL POSIX.
@@ -174,15 +199,9 @@ sudo apt install nfs-common          # cliente
 - Rendimiento: usa `async` solo si aceptas riesgo; `rsize/wsize` altos (64K) en clientes modernos; red rápida.
 - Integración LDAP: el servidor debe ver los mismos UID/GID (nsswitch/sssd). El cliente solo necesita la resolución de nombres si monta con `sec=sys`; con Kerberos, ticket válido.
 
-## 3. Nextcloud
-- Plataforma de ficheros colaborativos (WebDAV) con apps móviles y web.
-- Instalación rápida (Ubuntu): `sudo snap install nextcloud` o stack LAMP+PHP-FPM.
-- Permisos de ficheros: datos bajo `data/`, dueño `www-data`, `chmod 750`.
-- Autenticación LDAP: app "LDAP user and group backend", usa la CA de tu lab TLS.
-- Almacenamiento externo: apunta a rutas locales o montadas (NFS/SMB). Las ACL del FS mandan; Nextcloud controla comparticiones lógicas encima.
 
-## 4. Samba (SMB/CIFS)
-### 4.1 Instalación y configuración mínima
+## 3. Samba (SMB/CIFS)
+### 3.1 Instalacion y configuracion minima
 ```bash
 sudo apt install samba
 ```
@@ -200,7 +219,7 @@ sudo apt install samba
   read only = no
   create mask = 0660
   directory mask = 2770
-  valid users = @equipo
+  valid users = @grupo_datos
 
 [homes]
   browseable = no
@@ -209,18 +228,30 @@ sudo apt install samba
   directory mask = 0700
 ```
 - `acl_xattr` guarda ACL compatibles con clientes Windows; hereda las ACL POSIX si el FS las soporta.
-### 4.2 Integración de permisos
-- Usa grupos LDAP para `valid users` y combina con ACL en el FS (`chmod 2770`, `setfacl -m d:g:equipo:rwX /srv/compartida`).
+### 3.2 Integracion de permisos
+- Usa grupos LDAP para `valid users` y combina con ACL en el FS. La regla es doble: **Samba filtra por grupo** y **el sistema de ficheros aplica permisos/ACL**. Si falla cualquiera, se deniega el acceso.
+  - `valid users = @grupo_datos` permite entrar solo a miembros del grupo LDAP.
+  - `chmod 2770` asegura setgid (herencia de grupo) y bloquea a “otros”.
+  - `setfacl -m d:g:grupo_datos:rwX` asegura que lo nuevo herede escritura para el grupo.
+  - `setfacl -m g:grupo_datos:rwX` aplica escritura al directorio existente.
+  - La `mask` puede recortar permisos; si ves recorte, sube la mascara con `setfacl -m m::rwx`.
 - Cuotas: configúralas en el FS (`setquota`); Samba puede informar de ellas a los clientes.
 - Autenticación: `security = user` (local) o `security = ads` si unes a AD. Con LDAP externo, usa backend de cuentas vía `winbind` o `sssd` para resolver UID/GID coherentes.
 - Seguridad de transporte: `server signing = mandatory` en redes hostiles; `smb encrypt = required` si quieres cifrado en tránsito (SMB3).
 - Resolución de nombres: evita `wins`; usa DNS o IP directa. Prueba con `smbclient -L //filesrv -U usuario`.
 - Perfiles/Homes: la sección `[homes]` sirve directorios personales con 0700. Si usas perfiles móviles, ajusta cuotas y paths UNC (`\\filesrv\homes`).
 
-## 5. Integración en el laboratorio
-- LDAP en Docker (con TLS) sigue siendo la fuente de identidad.
-- Fileserver en LXD: `sssd` + `pam_mkhomedir` para resolver LDAP y crear homes (`/home/usuarios/%u` con 0700).
-- Recursos:
-  - Compartida: `/srv/compartida`, `root:equipo`, `chmod 2770`, default ACL para el grupo.
-  - Exportar por NFS o Samba según el cliente; Nextcloud opcional como puerta web.
-- Validación típica: `getent passwd alumno`, `su - alumno` crea home; `touch /srv/compartida/ok` solo si pertenece a `equipo`; acceso NFS/SMB respeta esas ACL; si Nextcloud apunta al mismo FS, los cambios se ven en todos lados.
+### 3.3 Puesta en marcha y pruebas rapidas
+- Instala servidor y cliente: `sudo apt install samba samba-client` (en RHEL/Fedora: `dnf -y install samba samba-client`).
+- Servicio: `sudo systemctl enable --now smbd nmbd` (activa NetBIOS para entornos mixtos); revisa sintaxis con `testparm`.
+- Usuarios Samba: crea credencial local con `sudo pdbedit -a usuario` (o `smbpasswd -a`); deben existir en el sistema/LDAP.
+- Pruebas desde el servidor: `smbclient -L //filesrv -U usuario` para ver compartidos y `smbclient //filesrv/compartida -U usuario` para verificar acceso.
+- Para limitar superficie, en `[global]` añade `interfaces = lo eth0` y, si procede, `bind interfaces only = yes`.
+
+
+## 4. Nextcloud
+- Plataforma de ficheros colaborativos (WebDAV) con apps móviles y web.
+- Instalación rápida (Ubuntu): `sudo snap install nextcloud` o stack LAMP+PHP-FPM.
+- Permisos de ficheros: datos bajo `data/`, dueño `www-data`, `chmod 750`.
+- Autenticación LDAP: app "LDAP user and group backend", usa la CA de tu lab TLS.
+- Almacenamiento externo: apunta a rutas locales o montadas (NFS/SMB). Las ACL del FS mandan; Nextcloud controla comparticiones lógicas encima.
