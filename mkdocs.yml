@@ -53,6 +53,10 @@ nav:
       - Integración de Servicios con LDAP: ./UD3/LDAP/IntegracionServiciosLDAP.md
       - Actividades: ./UD3/actividades.md
       #- soluciones: ./UD3/soluciones.md
+  - UD4.Integración de sistemas operativos en red:
+      - Teoria: ./UD4/teoria.md
+      - Actividades: ./UD4/actividades.md
+     
 theme:
   name: material
   icon:
