@@ -3,6 +3,35 @@
 - Objetivo: entender que los bits especiales cambian el comportamiento de permisos y ver un ejemplo practico de cada uno.
 - Resultado esperado: saber identificar SUID/SGID/sticky en un `ls -l` y explicar su impacto en un entorno multiusuario.
 
+## Idea clave
+Los bits especiales son tres banderas adicionales al `rwx` clasico. Modifican **quien** ejecuta un programa o **quien** puede borrar en un directorio. Se representan con el primer digito del modo en octal:
+
+- `4xxx` SUID, `2xxx` SGID, `1xxx` sticky.
+- Ejemplo: `4755` equivale a `rwsr-xr-x`.
+
+## Como se ven en `ls -l`
+- SUID aparece en el permiso de **usuario**: `s` si hay ejecucion (`rws`), `S` si no hay ejecucion.
+- SGID aparece en el permiso de **grupo**: `s` / `S`.
+- Sticky aparece en el permiso de **otros**: `t` si hay ejecucion, `T` si no hay ejecucion.
+
+## Comportamiento resumido
+- **SUID (setuid, 4xxx)** en **binarios**: se ejecutan con el **UID del dueño** del fichero. Ejemplo clasico: `passwd` (permite escribir `/etc/shadow`).
+- **SGID (setgid, 2xxx)**:
+  - En **binarios**: se ejecutan con el **GID del dueño**.
+  - En **directorios**: los nuevos ficheros heredan el **grupo** del directorio (no del usuario creador).
+- **Sticky bit (1xxx)** en **directorios**: solo el dueño del fichero (o root) puede borrarlo/renombrarlo aunque otros tengan escritura. Ejemplo: `/tmp`.
+
+## Comandos utiles
+- Ver permisos: `ls -l` y `stat -c "%a %n" ruta`.
+- Buscar bits especiales:
+  - SUID: `find / -perm -4000 -type f 2>/dev/null`
+  - SGID: `find / -perm -2000 -type f 2>/dev/null`
+  - Sticky en directorios: `find / -perm -1000 -type d 2>/dev/null`
+
+## Nota de seguridad
+- SUID/SGID en binarios permiten **escalar privilegios**; deben usarse solo en binarios confiables y con permisos estrictos.
+- En sistemas con `/tmp` montado con `nosuid`, los binarios SUID alli **no** elevan privilegios.
+
 ## Requisitos previos (para las pruebas)
 - Sistema Linux con permisos de sudo.
 - Paquete `acl` instalado (para `getfacl`/`setfacl`).
@@ -20,7 +49,25 @@
    sudo chown root:root /tmp/ping-suid
    sudo chmod 4755 /tmp/ping-suid
    ls -l /tmp/ping-suid    # rwsr-xr-x (s en user)
-   /tmp/ping-suid -c1 127.0.0.1   # funciona sin sudo porque eleva a root
+   id -u                         # UID real (tu usuario)
+   /tmp/ping-suid -c1 127.0.0.1   # EUID esperado: 0 (root)
+   ```
+   Verificacion real de UID/GID efectivos con un binario propio:
+   ```bash
+   cat > /tmp/ruid.c <<'EOF'
+   #include <stdio.h>
+   #include <unistd.h>
+   int main(void) {
+     printf("ruid=%d euid=%d rgid=%d egid=%d\n",
+            getuid(), geteuid(), getgid(), getegid());
+     return 0;
+   }
+   EOF
+   gcc /tmp/ruid.c -o /tmp/ruid
+   /tmp/ruid                 # ruid=TU_UID euid=TU_UID
+   sudo chown root:root /tmp/ruid
+   sudo chmod 4755 /tmp/ruid
+   /tmp/ruid                 # ruid=TU_UID euid=0
    ```
    *Recuerda limpiar*: `sudo rm /tmp/ping-suid`.
 2. **SGID en directorio** (herencia de grupo):
@@ -31,6 +78,7 @@
    sudo chmod 2775 /tmp/sgid-demo   # rwsrwsr-x (s en group)
    sudo usermod -aG grupo_datos $(whoami)  # añade tu usuario al grupo
    newgrp grupo_datos                       # activa el grupo en esta shell
+   id -g -n                                 # GID efectivo de la shell
    touch /tmp/sgid-demo/archivo
    ls -l /tmp/sgid-demo/archivo     # grupo debe ser 'grupo_datos'
    ```
@@ -39,6 +87,7 @@
    sudo mkdir /tmp/sticky-demo
    sudo chmod 1777 /tmp/sticky-demo   # rwxrwxrwt (t)
    sudo touch /tmp/sticky-demo/f1
+   sudo -u nobody id -u -n            # UID efectivo: nobody
    sudo -u nobody touch /tmp/sticky-demo/f2
    sudo -u nobody rm /tmp/sticky-demo/f1   # debe FALLAR (no es dueño)
    sudo -u nobody rm /tmp/sticky-demo/f2   # debe funcionar (es dueño)

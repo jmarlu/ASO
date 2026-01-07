@@ -82,10 +82,10 @@ Elementos clave del YAML:
   - `depends_on`: orden de arranque entre servicios.
 
 Comandos básicos:
-  - `docker compose up -d` → crea/arranca los servicios.
-  - `docker compose ps` → estado.
-  - `docker compose logs -f servicio` → logs.
-  - `docker compose down` → detiene y elimina contenedores, pero respeta volúmenes.
+   - `docker compose up -d` → crea/arranca los servicios.
+   - `docker compose ps` → estado.
+   - `docker compose logs -f servicio` → logs.
+   - `docker compose down` → detiene y elimina contenedores, pero respeta volúmenes.
 
 > Desde Docker 20.10 el plugin oficial se invoca como `docker compose` (con espacio). Asegúrate de no usar la sintaxis antigua `docker-compose`.
 
@@ -140,7 +140,9 @@ services:
 ```
 
 
-> Warning: cuando experimentes con TLS, replicación u otras opciones avanzadas ese estado queda persistido en `./datos/slapd.d` y en la base de datos bajo `./datos/ldap`. Si desactivas la característica, elimina o renombra la carpeta `datos/` antes de levantar de nuevo el stack (`docker compose down && rm -rf datos` o `mv datos datos_backup`) para regenerar una configuración limpia.
+!!! Warning:
+
+      cuando experimentes con TLS, replicación u otras opciones avanzadas ese estado queda persistido en `./datos/slapd.d` y en la base de datos bajo `./datos/ldap`. Si desactivas la característica, elimina o renombra la carpeta `datos/` antes de levantar de nuevo el stack (`docker compose down && rm -rf datos` o `mv datos datos_backup`) para regenerar una configuración limpia.
 
 
 
@@ -148,6 +150,7 @@ services:
 
 1. Crear directorio y copiar los archivos anteriores.
 2. Crear las carpetas para los volúmenes persistentes:
+
    ```bash
    mkdir -p datos/ldap datos/slapd.d
    ```

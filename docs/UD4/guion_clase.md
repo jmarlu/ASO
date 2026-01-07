@@ -109,6 +109,11 @@ user:profesor:rw-
 default:user:alumno1:rw-
 ```
 Pausa aqui para explicar `mask` y `default ACL` con la salida de `getfacl`.
+Explicacion breve:
+- La `mask` es el **tope de permisos efectivos** para grupos y usuarios adicionales. Si la ACL dice `user:alumno1:rwx` pero `mask::r-x`, alumno1 queda en `r-x`.
+- La `mask` **no** afecta al propietario (`user::`) ni a `other::`; solo recorta entradas de grupo y ACL adicionales.
+- La `default ACL` se **hereda** en nuevos ficheros y directorios creados dentro del directorio.
+- Sin `default ACL`, los nuevos ficheros heredan solo el modo POSIX (y el `setgid` si existe).
 
 3. Prueba manual de mascara
 ```bash

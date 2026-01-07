@@ -3,7 +3,7 @@ set -euo pipefail
 
 CONTAINER_SERVER="ud4-lab"
 CONTAINER_CLIENT="ud4-client"
-IMAGE="images:ubuntu/22.04"
+IMAGE="ubuntu:24.04"
 LAB_ROOT="/srv/aso-ud4"
 GROUP="grupo_datos"
 USER_PROF="profesor"
