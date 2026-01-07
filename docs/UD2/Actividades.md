@@ -48,7 +48,7 @@ Objetivo: aplicar administración de software, servicios y tareas programadas en
 1. **Conversión de paquetes**
       - Descarga Firefox en formato RPM en Ubuntu Desktop, conviértelo con `alien -d`, instala el `.deb` y comenta por qué convertir. Indica dos métodos alternativos de instalación (snap/apt) y cómo consultar archivos instalados con `dpkg -L`.
 2. **Programación de script en cron**
-      - Descarga el script de Moodle, concédelo con `chmod 777 script.sh` (explica por qué no es buena práctica y qué permiso usarías realmente).
+      - Crea un script sencilllo y  con `chmod 777 script.sh` (explica por qué no es buena práctica y qué permiso usarías realmente).
       - Añade en `sudo crontab -e`: `* * * * * ~/Escritorio/script.sh`. Explica qué significa cada asterisco y ajusta para ejecutarse cada minuto  entre las 8 y las 20 todos los días. Confirma con `systemctl list-timers` si optas por un timer equivalente.
       - Verifica funcionamiento y adjunta salida de `grep script.sh /var/log/syslog` o similar.
 3. **Laboratorio LXD (multi-perfil, límites y backup)**
