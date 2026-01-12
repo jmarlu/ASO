@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Guion de clase UD4 - Permisos especiales, ACL y recursos compartidos
 
 ## Objetivo de la sesion

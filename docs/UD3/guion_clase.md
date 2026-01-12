@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Guion de clase UD3 - LDAP y servicios de directorio
 
 ## Objetivo de la sesion
