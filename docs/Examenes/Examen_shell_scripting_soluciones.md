@@ -1,8 +1,10 @@
-# Soluciones guía · Examen Shell Scripting (UD1)
 ---
 search:
   exclude: true
 ---
+
+# Soluciones guía · Examen Shell Scripting (UD1)
+
 Cada propuesta utiliza únicamente herramientas vistas en clase (bash, bc, cut, tr, grep). Ajusta rutas y datos a tu entorno antes de ejecutar.
 
 ## Ejercicio 1 · `doble.sh`

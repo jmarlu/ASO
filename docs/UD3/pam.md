@@ -77,6 +77,13 @@ Cada línea de configuración en `/etc/pam.d/<servicio>` define:
     - `optional`: se ejecuta, pero su resultado solo cuenta si es el único módulo del tipo.
     - `include`: inserta otra pila (frecuente en `common-auth` de Debian o `system-auth` de Red Hat).
 
+| Flag         | Éxito               | Fallo             | Continúa |
+| ------------ | ------------------- | ----------------- | -------- |
+| `required`   | cuenta              | cuenta (recuerda) | Sí       |
+| `requisite`  | cuenta              | aborta            | No       |
+| `sufficient` | **éxito inmediato** | ignorado          | Sí       |
+| `optional`   | solo si es el único | ignorado          | Sí       |
+
 
 ## Dónde se configura PAM
 
