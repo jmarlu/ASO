@@ -50,7 +50,6 @@ nav:
       - OpenLDAP en Docker: ./UD3/docker-openldap.md
       - PAM en Linux: ./UD3/pam.md
       - Servicios de Autenticación: ./UD3/ServiciosAutenticacion.md
-      - Integración de Servicios con LDAP: ./UD3/LDAP/IntegracionServiciosLDAP.md
       - Actividades: ./UD3/actividades.md
       #- soluciones: ./UD3/soluciones.md
   - UD4.Integración de sistemas operativos en red:

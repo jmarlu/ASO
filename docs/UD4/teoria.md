@@ -134,6 +134,7 @@ Los bits especiales son tres banderas adicionales al `rwx` clasico. Modifican **
 - Permisos: `r` lectura, `w` escritura, `x` ejecución; `X` aplica `x` solo si es directorio o ya tenía `x`.
 
 ### La máscara en ACL POSIX
+
 - Define el **máximo** de permisos efectivos para todas las entradas **que no sean el dueño** (grupos y usuarios adicionales).
 - Si añades `u:alumno1:rwx` pero la `mask::r-x`, alumno1 solo tendrá `r-x` hasta que subas la máscara.
 - Comandos útiles:
@@ -148,11 +149,13 @@ Los bits especiales son tres banderas adicionales al `rwx` clasico. Modifican **
 - **Samba**: el acceso final es la intersección de `valid users`/`read only` del share y los permisos del FS (ACL/posix). Si el FS deniega, Samba deniega.
 - **NFS**: el servidor aplica las ACL y el cliente solo ve el resultado. Con `sec=sys`, los UID/GID deben coincidir para que el permiso sea correcto.
 
-### Checkpoint didactico (antes de Samba/NFS)
-- Si el alumnado recuerda solo 3 ideas:
-  1. `mask` recorta permisos efectivos.
-  2. `default ACL` define herencia en directorios.
-  3. `setgid` en directorios fuerza el grupo en nuevos ficheros.
+### Checkpoint (antes de Samba/NFS)
+- Hay que recordar solo 3 ideas:
+
+    1. `mask` recorta permisos efectivos.
+    2. `default ACL` define herencia en directorios.
+    3. `setgid` en directorios fuerza el grupo en nuevos ficheros.
+
 - Flujo mental: crear directorio -> permisos POSIX -> setgid -> ACL explicita -> default ACL -> comprobar con `getfacl`.
 
 ## 4. Patron tipico en un recurso compartido
