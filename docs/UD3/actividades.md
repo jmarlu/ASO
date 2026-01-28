@@ -1,6 +1,7 @@
 # 🔧 Actividades – Bloque 1: Conceptos Fundamentales de LDAP
 
 > Todas las actividades se pueden resolver con los conceptos y ejemplos de la **Teoría**.
+> Convención en actividades: usa `dc=empresa,dc=local` salvo que se indique lo contrario (las prácticas guiadas usan `dc=asir,dc=local`).
 
 ---
 
@@ -27,7 +28,7 @@ graph TD
 
 ### 3. Diseña tu DIT (empresa)
 
-Crea un DIT para `dc=empresa,dc=com` con:
+Crea un DIT para `dc=empresa,dc=local` con:
 
 - `ou=Usuarios`, `ou=Departamentos` (Ventas/Soporte), `ou=Grupos`.
 - 4 usuarios `inetOrgPerson` y 2 grupos (`groupOfNames` con `member:` DN).
@@ -147,25 +148,25 @@ En la carpeta del laboratorio:
 
 # 🔒 Bloque 2: ACL en LDAP (slapd)
 
-### 10. Lee y entiende las ACL actuales
+### 11. Lee y entiende las ACL actuales
 - Con `ldapsearch -LLL -Y EXTERNAL -H ldapi:/// -b cn=config olcAccess` documenta el orden y efecto de cada regla.
 - Resume en 4 líneas quién puede hacer qué y qué pasa con el acceso anónimo.
 
-### 11. Self-service seguro
+### 12. Self-service seguro
 Aplica una ACL que permita a cada usuario modificar **solo** sus atributos `mail` y `telephoneNumber`, pero no `userPassword`. Valida con:
 - `ldapwhoami` de un usuario normal.
 - `ldapmodify` cambiando su `mail` (debe funcionar).
 - `ldapmodify` cambiando `userPassword` (debe fallar).
 
-### 12. Lectura para aplicaciones, escritura solo para admins
+### 13. Lectura para aplicaciones, escritura solo para admins
 Define ACL que cumplan:
-- `cn=admin,dc=empresa,dc=com` → `manage` sobre todo.
-- Grupo `cn=app-rw,ou=Grupos,dc=empresa,dc=com` → `write` solo en `ou=Aplicaciones,dc=empresa,dc=com`.
+- `cn=admin,dc=empresa,dc=local` → `manage` sobre todo.
+- Grupo `cn=app-rw,ou=Grupos,dc=empresa,dc=local` → `write` solo en `ou=Aplicaciones,dc=empresa,dc=local`.
 - Usuarios autenticados (`users`) → `read` sobre el árbol completo excepto `userPassword`.
 - Anónimo (`anonymous`) → solo `auth`.
 Entrega el LDIF aplicado y la salida de `ldapsearch` con las ACL ordenadas.
 
-### 13. Auditoría mínima
+### 14. Auditoría mínima
 Crea un script/bloque de comandos que:
 - Haga backup de `olcAccess` (`slapcat -b cn=config | grep olcAccess`).
 - Aplique un LDIF de cambio.

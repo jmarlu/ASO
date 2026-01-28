@@ -10,6 +10,7 @@
 - Diseñar la red host-only o bridge necesaria para que la máquina virtual del alumno llegue al contenedor LDAP que corre en el host.
 - Configurar en la VM el inicio de sesión mediante `sssd`/`pam_sss.so`, de forma que **solo existan cuentas remotas en LDAP**.
 - Validar el flujo completo: alta de usuarios en LDAP → login en la VM → servicio funcionando con identidad centralizada.
+- **Requisito previo**: haber completado la actividad de **TLS/StartTLS** en OpenLDAP (certificados generados y servicio verificado). Esta práctica **exige** conexión segura con certificado.
 
 ---
 
@@ -27,7 +28,7 @@ graph TD
     VM -->|PAM/SSSD| C
 ```
 
-- El contenedor LDAP vive en la máquina física del alumno y expone el puerto `389` en el propio host (`network_mode: host` o `ports: ['389:389']`).
+- El contenedor LDAP vive en la máquina física del alumno y expone el puerto `389` en el propio host (`network_mode: host` o `ports: ['389:389']`). Si se usa **LDAPS**, expón también `636`.
 - La VM alcanza el servicio LDAP a través de la red Host-Only (`vboxnet0`) cuyo gateway habitual es la IP del host (`192.168.56.1`).
 - Todas las altas, bajas y cambios de contraseña se realizan sobre el contenedor; la VM no almacena cuentas locales salvo `root`.
 
@@ -59,12 +60,14 @@ graph TD
    
      
       ```
-      - Exponer el puerto LDAP hacia el host:  
+      - Exponer el puerto LDAP hacia el host (StartTLS por 389; si usas LDAPS, abre 636):  
       ```yaml
       services:
          openldap:
             ports:
             - "389:389"
+            # Opcional si usas ldaps://
+            - "636:636"
       ```
    - Solo si se necesita una red Docker aparte, usar una subred distinta a la de VirtualBox (por ejemplo `172.18.0.0/24`) y documentar el enrutamiento o el NAT que permita a la VM alcanzarla.
 3. **Trabajos Iniciales**
@@ -106,6 +109,12 @@ graph TD
       ```
 
       - Realizar un `ldapsearch` conjunto para verificar que el usuario `profesor` está disponible antes de pasar a la VM.
+      - **Verificación TLS**: comprueba StartTLS desde el host (debe funcionar antes de seguir):
+        ```bash
+        ldapsearch -x -ZZ -H ldap://192.168.56.1:389 \
+          -D "cn=admin,dc=asir,dc=local" -w admin123 \
+          -b "dc=asir,dc=local" "(uid=profesor)" dn
+        ```
 
 ---
 
@@ -117,9 +126,9 @@ graph TD
       - Adaptador 1: NAT para acceder a Internet (actualizaciones).  
 
 !!! Warning end "Te salva la vida"
-
-    - Activa la cuenta `root` y mantén toda la práctica abierta en una terminal.
-    - Crea uno o varios clones de la máquina virtual antes de empezar.
+      
+      - Activa la cuenta `root` y mantén toda la práctica abierta en una terminal.
+      - Crea uno o varios clones de la máquina virtual antes de empezar.
 
 
        
@@ -130,7 +139,15 @@ graph TD
       sudo apt update && sudo apt install sssd libnss-sss libpam-sss ldap-utils pamtester sssd-tools
       ```
 
-   3. **Crear `/etc/sssd/sssd.conf`**
+   3. **Instalar el certificado de la CA en la VM**
+
+      Copia `ca.crt` (generada en la actividad TLS/StartTLS) a la VM y confía en ella:
+      ```bash
+      sudo cp ca.crt /usr/local/share/ca-certificates/ldap-lab-ca.crt
+      sudo update-ca-certificates
+      ```
+
+   4. **Crear `/etc/sssd/sssd.conf`**
       
       ```ini
             # Configuración global de SSSD: define qué servicios expone y contra qué dominios trabaja.
@@ -171,12 +188,12 @@ graph TD
             ldap_uri = ldap://192.168.56.1:389
             # DN base desde el que se empezarán las búsquedas de usuarios y grupos.
             ldap_search_base = dc=asir,dc=local
-            # Desactivamos STARTTLS porque este laboratorio usa LDAP en claro.
-            ldap_id_use_start_tls = false
-            # SSSD no exigirá certificado TLS válido (coherente con el escenario sin TLS).
-            ldap_tls_reqcert = never
-            # Permitimos autenticación sin cifrado; solo para entornos de prácticas (no usar en producción).
-            ldap_auth_disable_tls_never_use_in_production = True
+            # Exigimos STARTTLS en este laboratorio (con certificado válido).
+            ldap_id_use_start_tls = true
+            # La CA del laboratorio se instala en el sistema (update-ca-certificates).
+            ldap_tls_cacert = /etc/ssl/certs/ca-certificates.crt
+            # Rechaza certificados no válidos.
+            ldap_tls_reqcert = demand
 
             # DN y contraseña del usuario con el que SSSD consulta el directorio.
             ldap_default_bind_dn = cn=admin,dc=asir,dc=local
@@ -211,11 +228,11 @@ graph TD
             sudo systemctl enable --now sssd
       ```
 
-4. **Integrar NSS**
+5. **Integrar NSS**
       - Edita `/etc/nsswitch.conf` y añade `sss` tras `compat systemd` en las bases `passwd`, `group` y `shadow`.  
       - Comprueba con `getent passwd profesor` que la identificación se resuelve desde LDAP.
 
-5. **Configurar PAM**
+6. **Configurar PAM**
     - Lanza `sudo pam-auth-update` y asegúrate de que los perfiles **Unix authentication** y **SSSD** quedan marcados.
     - Edita `/etc/pam.d/common-auth` para que pruebe primero las cuentas locales y, si no existen, reutilice la misma contraseña con SSSD:  
       ```pam
@@ -224,19 +241,34 @@ graph TD
       auth    requisite                         pam_deny.so
       auth    required                          pam_permit.so
       ```
-      Con `use_first_pass` no se vuelve a preguntar la contraseña cuando `pam_unix` marca `user_unknown`.
+      Explicación rápida del flujo:
+      - **Usuario local válido**: `pam_unix.so` devuelve éxito → se **salta** la línea de SSSD (`success=1`) y se permite seguir.
+      - **Usuario no local**: `pam_unix.so` devuelve `user_unknown` → `default=ignore` hace que se pruebe SSSD.
+      - **Usuario LDAP válido**: `pam_sss.so` autentica y, al ser `sufficient`, termina con éxito.
+      - **Credenciales inválidas**: cae en `pam_deny.so` (corta la pila) y se deniega.
+      Nota: con `use_first_pass` no se vuelve a preguntar la contraseña si ya se introdujo.
     - Ajusta `/etc/pam.d/common-account` para que los usuarios locales se validen primero y los desconocidos pasen a SSSD:  
       ```pam
         account [success=ok new_authtok_reqd=done user_unknown=ignore default=bad]   pam_unix.so
         account [success=ok default=die]                                 pam_sss.so
         account required                                                        pam_permit.so
       ```
-      Si el usuario no está en `/etc/passwd`, el control pasa a SSSD; si tampoco está en LDAP, `default=die` deniega la sesión.
+      Explicación rápida del flujo:
+      - **Usuario local**: `pam_unix.so` devuelve `success=ok` y continúa.
+      - **Usuario no local**: `user_unknown=ignore` hace que se pruebe `pam_sss.so`.
+      - **Usuario LDAP válido**: `pam_sss.so` devuelve `success=ok`; se permite la sesión.
+      - **Usuario inexistente**: `pam_sss.so` no valida y `default=die` bloquea.
+      Qué significan los controles de la primera línea (explicación conceptual):
+      - **success=ok**: si la comprobación local es correcta, se sigue sin bloquear.
+      - **new_authtok_reqd=done**: si la cuenta exige cambio de contraseña, se considera resuelto en esta fase.
+      - **user_unknown=ignore**: si el usuario no existe localmente, se ignora el fallo y se pasa al siguiente módulo.
+      - **default=bad**: cualquier otro resultado se considera fallo.
     - En `/etc/pam.d/common-session`, habilita la sesión remota y la creación automática del directorio `home`:  
       ```pam
       session required          pam_mkhomedir.so skel=/etc/skel/ umask=0022
       ```
-    - Reinicia los servicios que usan PAM (por ejemplo `sudo systemctl restart sshd`), si no lo tienes instalalo y valida con `su - profesor`, manteniendo otra consola con `root` local.
+      Esto crea `/home/<usuario>` al primer login LDAP y evita fallos por “home inexistente”.
+    - Reinicia los servicios que usan PAM (por ejemplo `sudo systemctl restart sshd`). Si no lo tienes, instálalo y valida con `su - profesor`, manteniendo otra consola con `root` local.
 
 
 
@@ -244,9 +276,9 @@ graph TD
 
 ## Fase 3: pruebas y explotación
 
-1. **Consultar el directorio desde la VM**  
+1. **Consultar el directorio desde la VM (StartTLS obligatorio)**  
    ```bash
-   ldapsearch -H ldap://192.168.56.1 -x -D "cn=profesor,ou=Usuarios,dc=asir,dc=local" -W -b "ou=Usuarios,dc=asir,dc=local" "(uid=profesor)"
+   ldapsearch -H ldap://192.168.56.1 -x -ZZ -D "cn=profesor,ou=Usuarios,dc=asir,dc=local" -W -b "ou=Usuarios,dc=asir,dc=local" "(uid=profesor)"
    ```
    Verifica que la VM puede llegar al contenedor y que la entrada `profesor` existe.
 
@@ -309,7 +341,12 @@ graph TD
 4. **Conectividad contra LDAP**
    ```bash
    nc -vz 192.168.56.1 389
-   ldapsearch -H ldap://192.168.56.1 -x -b "dc=asir,dc=local" "(uid=profesor)"
+   ldapsearch -H ldap://192.168.56.1 -x -ZZ -b "dc=asir,dc=local" "(uid=profesor)"
+   ```
+   Si usas LDAPS:
+   ```bash
+   nc -vz 192.168.56.1 636
+   ldapsearch -H ldaps://192.168.56.1:636 -x -b "dc=asir,dc=local" "(uid=profesor)"
    ```
    Asegura que la VM alcanza el servidor y que el filtro devuelve resultados coherentes.
 
@@ -320,7 +357,7 @@ graph TD
 
 6. **Casos típicos y señales**
    - `GSSAPI Error` o `Authentication failed`: DN/contraseña errónea o usuario inexistente.
-   - `TLS: hostname does not match`: aparece si activas TLS sin configurar certificados; desactiva `ldap_id_use_start_tls` en este laboratorio.
+   - `TLS: hostname does not match`: aparece si el certificado no coincide con el hostname/IP del servidor; revisa el CN/SAN del certificado y vuelve a emitirlo si hace falta.
    - `Permission denied` tras autenticación correcta: asegúrate de que los directorios home existen y que `pam_mkhomedir` está activo.
 
 Documenta cada incidencia con la tríada **síntoma → comando de diagnóstico → solución aplicada** para que el alumnado entienda el razonamiento.
@@ -339,21 +376,13 @@ Documenta cada incidencia con la tríada **síntoma → comando de diagnóstico 
 
 ## Consideraciones de seguridad
 
-- Mientras se utilice `ldap://` sin TLS, todas las credenciales viajan en claro. Limita el laboratorio a la red Host-Only y bloquea cualquier puente hacia otras redes.
-- Deja anotado que TLS (`start_tls` o `ldaps://`) no forma parte de esta práctica; si se necesita en otro escenario, habrá que generar certificados y revisar `sssd.conf` con el equipo docente.
+- Este laboratorio **exige** TLS/StartTLS con certificado válido; no se permite `ldap://` en claro.
+- Limita el laboratorio a la red Host-Only y bloquea cualquier puente hacia otras redes.
 - Si el profesorado necesita acceder desde otra máquina, expón el puerto 389 únicamente mediante túneles (`ssh -L`) o redes controladas y registra esos accesos.
 - Mantén `PasswordAuthentication yes` solo el tiempo imprescindible; una vez probada la integración, fuerza autenticación con claves o añade MFA en PAM.
 
 ---
 
-## Entregables
-
-- Salida de `docker ps` y evidencia de que el host expone `389/tcp` (`ss -tlnp` o equivalente).
-- Ejecución de `ldapsearch`, `getent passwd profesor` e `id profesor` desde la VM.
-- Resultado de `ssh profesor@localhost` (creación del `home`) y de `pamtester sshd profesor authenticate` tras el cambio de contraseña.
-- Informe breve: incidencias encontradas, cómo se resolvió la conectividad y qué servicio se dejará listo para cuando se active NSS.
-
----
 
 ## Extensiones opcionales
 

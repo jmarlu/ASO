@@ -119,6 +119,8 @@ services:
       LDAP_TLS: "false"  # Desactiva la validación por certificado
     ports:
       - "389:389"
+      # Si usas LDAPS (TLS directo), expón también 636
+      # - "636:636"
     volumes:
       - ./datos/ldap:/var/lib/ldap
       - ./datos/slapd.d:/etc/ldap/slapd.d
