@@ -17,7 +17,8 @@ Guarda todos los comandos, salidas y ficheros solicitados dentro de esa carpeta.
 
 Entrega en Aules:
 1. En el contenedor, genera `~/examen_ud2_entrega.tar.gz` con la carpeta
-   `~/examen_ud2/`.
+   `~/examen_ud2/` usando:
+   - `tar -czf ~/examen_ud2_entrega.tar.gz -C ~ examen_ud2`
 2. Desde el host, descarga ese fichero con `lxc file pull`.
 3. Sube a Aules el fichero `examen_ud2_entrega.tar.gz`.
 
