@@ -9,35 +9,15 @@ search:
 ## Parte 1 - LXC
 
 ```bash
+# Ejercicio 1.1
 lxc launch ubuntu:24.04 ud1ud2-lab
+# Ejercicio 1.2
 lxc list
+# Ejercicio 1.3
 lxc exec ud1ud2-lab -- bash
+# Ejercicio 1.3
 mkdir -p ~/examen_ud1_ud2/{scripts,resultados,datos,cron}
-lxc info ud1ud2-lab > /tmp/lxc_info.txt
-exit
-cat <<'EOF' > /tmp/lxc_comandos.txt
-lxc launch ubuntu:24.04 ud1ud2-lab
-lxc list
-lxc exec ud1ud2-lab -- bash
-EOF
-cat /tmp/lxc_comandos.txt /tmp/lxc_info.txt > /tmp/lxc.txt
-lxc file push /tmp/lxc.txt ud1ud2-lab/root/examen_ud1_ud2/resultados/lxc.txt
-lxc snapshot ud1ud2-lab inicio
-lxc export ud1ud2-lab ~/ud1ud2-lab.tar.gz
-```
-
-## Parte 2 - Datos
-
-```bash
-cat <<'EOF' > ~/examen_ud1_ud2/datos/usuarios.txt
-# usuario:uid:shell
-root:0:/bin/bash
-daemon:1:/usr/sbin/nologin
-ana:1001:/bin/bash
-pedro:1002:/bin/zsh
-maria:1003:/bin/bash
-EOF
-
+# Ejercicio 1.7
 cat <<'EOF' > ~/examen_ud1_ud2/datos/equipos.txt
 # ip nombre disco ram
 10.0.0.10 srv01 20 4
@@ -45,9 +25,25 @@ cat <<'EOF' > ~/examen_ud1_ud2/datos/equipos.txt
 10.0.0.12 srv03 35 16
 10.0.0.13 srv04 120 32
 EOF
+exit
+# Ejercicio 1.4
+{
+cat <<'EOF'
+lxc launch ubuntu:24.04 ud1ud2-lab
+lxc list
+lxc exec ud1ud2-lab -- bash
+EOF
+  lxc info ud1ud2-lab
+} > /tmp/lxc.txt
+# Ejercicio 1.4
+lxc file push /tmp/lxc.txt ud1ud2-lab/root/examen_ud1_ud2/resultados/lxc.txt
+# Ejercicio 1.6
+lxc snapshot ud1ud2-lab inicio
+# Ejercicio 1.8
+lxc export ud1ud2-lab ~/ud1ud2-lab.tar.gz
 ```
 
-## Parte 3 - Script principal: alertas de equipos
+## Parte 2 - Script principal: alertas de equipos
 
 `~/examen_ud1_ud2/scripts/alertas_equipos.sh`:
 
@@ -99,61 +95,84 @@ echo "Resumen: $n_discos alertas disco, $n_ram avisos RAM, $n_err errores"
 Ejecucion:
 
 ```bash
+# Ejercicio 2.10
 chmod u+x ~/examen_ud1_ud2/scripts/alertas_equipos.sh
+# Ejercicio 2.9
 ~/examen_ud1_ud2/scripts/alertas_equipos.sh 40 > ~/examen_ud1_ud2/resultados/alertas.txt
+# Ejercicio 2.10
 cat ~/examen_ud1_ud2/scripts/alertas_equipos.sh > ~/examen_ud1_ud2/resultados/alertas_script.txt
 ```
 
-## Parte 4 - Paqueteria
+## Parte 3 - Paqueteria y actualizaciones
 
 ```bash
 {
+  # Ejercicio 3.1
   echo "apt update"
   apt update
+  # Ejercicio 3.2
   echo "apt install -y htop nginx"
   apt install -y htop nginx
+  # Ejercicio 3.3 (paquetes con "ssh")
   echo "dpkg -l | grep -i ssh"
   dpkg -l | grep -i ssh
+  # Ejercicio 3.3 (/bin/bash pertenece a...)
   echo "dpkg -S /bin/bash"
   dpkg -S /bin/bash
+  # Ejercicio 3.3 (ficheros del paquete nginx)
   echo "dpkg -L nginx"
   dpkg -L nginx
+  # Ejercicio 3.3 (limpiar huerfanos)
   echo "apt autoremove -y"
   apt autoremove -y
 } > ~/examen_ud1_ud2/resultados/paqueteria.txt
 ```
 
-## Parte 5 - Servicios
+## Parte 4 - Servicios systemd
 
 ```bash
 {
+  # Ejercicio 4.1
   systemctl status nginx --no-pager
+  # Ejercicio 4.2
   systemctl disable --now nginx
+  # Ejercicio 4.2
   systemctl status nginx --no-pager
+  # Ejercicio 4.3
   journalctl -u nginx -n 20 --no-pager
+  # Ejercicio 4.4
   systemctl get-default
 } > ~/examen_ud1_ud2/resultados/servicios.txt
 ```
 
-## Parte 6 - Procesos
+## Parte 5 - Procesos y señales
 
 ```bash
+# Ejercicio 5.1
 sleep 900 &
 pid=$!
 {
+  # Ejercicio 5.1
   echo "PID: $pid"
+  # Ejercicio 5.2
   ps -o pid,ni,cmd -p "$pid"
+  # Ejercicio 5.2
   renice +5 -p "$pid"
+  # Ejercicio 5.2
   ps -o pid,ni,cmd -p "$pid"
+  # Ejercicio 5.3
   kill -TERM "$pid"
+  # Ejercicio 5.3
   ps -p "$pid" || true
 } > ~/examen_ud1_ud2/resultados/procesos.txt
 ```
 
-## Parte 7 - Programacion de tareas
+## Parte 6 - Programacion de tareas
 
 ```bash
+# Ejercicio 6.1
 (crontab -l 2>/dev/null; echo "*/10 * * * * date >> $HOME/examen_ud1_ud2/cron/fechas.log") | crontab -
+# Ejercicio 6.2
 crontab -l > ~/examen_ud1_ud2/cron/crontab.txt
 ```
 
@@ -183,7 +202,26 @@ WantedBy=timers.target
 ```
 
 ```bash
+# Ejercicio 6.3
 systemctl --user daemon-reload
+# Ejercicio 6.3
 systemctl --user enable --now mi-uptime.timer
+# Ejercicio 6.3
 systemctl --user list-timers | rg "mi-uptime.timer" > ~/examen_ud1_ud2/resultados/timers.txt
+```
+
+## Entrega final
+
+Dentro del contenedor:
+
+```bash
+# Entrega 1
+tar -czf ~/examen_ud1_ud2_entrega.tar.gz -C ~ examen_ud1_ud2
+```
+
+Desde el host:
+
+```bash
+# Entrega 2
+lxc file pull ud1ud2-lab/root/examen_ud1_ud2_entrega.tar.gz .
 ```

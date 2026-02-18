@@ -1,7 +1,25 @@
 # 🔧 Actividades – Bloque 1: Conceptos Fundamentales de LDAP
 
-> Todas las actividades se pueden resolver con los conceptos y ejemplos de la **Teoría**.
-> Convención en actividades: usa `dc=empresa,dc=local` salvo que se indique lo contrario (las prácticas guiadas usan `dc=asir,dc=local`).
+!!! Warning
+
+
+    **Requisito obligatorio para superar la práctica:** debes iniciar sesión (login) en la **VM-CLIENTE** conectada al servidor LDAP antes de ejecutar las pruebas..
+    Si no se realiza login en la VM-CLIENTE, la práctica **no será superada**.
+    En todas las capturas debe verse claramente el **usuario** desde el que se lanzan los comandos, para poder corroborar la autoría.
+
+    Todas las actividades se pueden resolver con los conceptos y ejemplos de la **Teoría**.
+    Convención en actividades: usa `dc=empresa,dc=local` salvo que se indique lo contrario (las prácticas guiadas usan `dc=asir,dc=local`).
+
+---
+
+## 🔐 Bloque 2 – Conexión y login en cliente LDAP
+
+En este punto, es el momento de conectarse desde la **VM-CLIENTE** al entorno del servidor LDAP y realizar el **login** con el usuario de trabajo.
+
+- Debes iniciar sesión en la VM-CLIENTE antes de ejecutar cualquier comando de práctica.
+- Verifica que el login se realiza contra el servidor LDAP configurado.
+- Si no haces login correctamente, la práctica se considerará no superada.
+- En las capturas debe verse el usuario autenticado que lanza los comandos para validar autoría.
 
 ---
 
@@ -146,7 +164,19 @@ En la carpeta del laboratorio:
 
 ---
 
-# 🔒 Bloque 2: ACL en LDAP (slapd)
+## 🔐 Bloque 2 – Conexión y login en cliente LDAP
+
+En este punto, es el momento de conectarse desde la **VM-CLIENTE** al entorno del servidor LDAP y realizar el **login** con el usuario de trabajo.
+
+- Debes iniciar sesión en la VM-CLIENTE antes de ejecutar cualquier comando de práctica.
+- Es imprescindible leer previamente la sección de teoría **Servicios de autentificación** y comprender la **pila PAM**
+- Verifica que el login se realiza contra el servidor LDAP configurado.
+- Si no haces login correctamente, la práctica se considerará no superada.
+- En las capturas debe verse el usuario autenticado que lanza los comandos para validar autoría.
+
+---
+
+# 🔒 Bloque 3: ACL en LDAP (slapd)
 
 ### 11. Lee y entiende las ACL actuales
 - Con `ldapsearch -LLL -Y EXTERNAL -H ldapi:/// -b cn=config olcAccess` documenta el orden y efecto de cada regla.

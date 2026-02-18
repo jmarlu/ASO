@@ -75,7 +75,7 @@ Los bits especiales son tres banderas adicionales al `rwx` clasico. Modifican **
    sudo groupadd grupo_datos
    sudo mkdir /tmp/sgid-demo
    sudo chown root:grupo_datos /tmp/sgid-demo
-   sudo chmod 2775 /tmp/sgid-demo   # rwsrwsr-x (s en group)
+   sudo chmod 2775 /tmp/sgid-demo   # drwxrwsr-x (s en group)
    sudo usermod -aG grupo_datos $(whoami)  # añade tu usuario al grupo
    newgrp grupo_datos                       # activa el grupo en esta shell
    id -g -n                                 # GID efectivo de la shell
@@ -91,6 +91,7 @@ Los bits especiales son tres banderas adicionales al `rwx` clasico. Modifican **
    sudo -u nobody touch /tmp/sticky-demo/f2
    sudo -u nobody rm /tmp/sticky-demo/f1   # debe FALLAR (no es dueño)
    sudo -u nobody rm /tmp/sticky-demo/f2   # debe funcionar (es dueño)
+   sudo -u $(whoami) rm /tmp/sticky-demo/f2 #debe fallar (no eres dueño de f2)
    ```
    *Limpieza*: `sudo rm -r /tmp/sgid-demo /tmp/sticky-demo`.
 
@@ -132,6 +133,67 @@ Los bits especiales son tres banderas adicionales al `rwx` clasico. Modifican **
 - `-n` / `--no-mask`: no recalcula la máscara (cuidado, puede dejar ACL inefectivas si la máscara queda baja).
 - `--set`: reemplaza todas las entradas con una lista nueva (útil para definir de cero).
 - Permisos: `r` lectura, `w` escritura, `x` ejecución; `X` aplica `x` solo si es directorio o ya tenía `x`.
+
+### Default ACL en detalle (herencia real)
+
+- Una ACL "normal" (`u:ana:rw-`) afecta al objeto actual.
+- Una `default ACL` (`d:u:ana:rwX`) solo tiene efecto en directorios y se copia a lo nuevo que se cree dentro.
+- Si no defines `default ACL`, cada archivo nuevo nace con permisos desde `umask` y modo POSIX, no desde ACL heredada.
+
+Ejemplo minimo:
+```bash
+sudo mkdir -p /srv/acl-demo
+sudo chown root:grupo_datos /srv/acl-demo
+sudo chmod 2770 /srv/acl-demo
+sudo setfacl -m d:g:grupo_datos:rwX -m d:u:profesor:rwX /srv/acl-demo
+getfacl /srv/acl-demo
+```
+
+Salida esperada (resumen):
+```text
+default:user::rwx
+default:user:profesor:rwx
+default:group:grupo_datos:rwx
+default:mask::rwx
+default:other::---
+```
+
+Comprobacion de herencia:
+```bash
+sudo -u profesor touch /srv/acl-demo/fichero.txt
+sudo -u profesor mkdir /srv/acl-demo/carpeta
+getfacl /srv/acl-demo/fichero.txt
+getfacl /srv/acl-demo/carpeta
+```
+
+Que debes ver:
+- En `fichero.txt`, `profesor` y `grupo_datos` tendran `rw-` (sin `x`).
+- En `carpeta`, `profesor` y `grupo_datos` tendran `rwx`.
+- Conclusión: la herencia viene de `default:*` del directorio padre.
+
+### Por que aparece `X` mayuscula
+
+- `x` minuscula siempre intenta poner ejecucion.
+- `X` mayuscula es "ejecucion condicional":
+  - Se aplica siempre a directorios.
+  - En archivos normales, solo se aplica si ese archivo ya tenia `x`.
+- Se usa en ACL recursivas para no convertir documentos en ejecutables por error.
+
+Ejemplo practico (`x` vs `X`):
+```bash
+sudo mkdir -p /srv/x-demo
+sudo touch /srv/x-demo/a.txt
+sudo chmod 644 /srv/x-demo/a.txt
+sudo setfacl -m u:alumno1:rwX /srv/x-demo/a.txt
+getfacl /srv/x-demo/a.txt | grep alumno1
+sudo setfacl -m u:alumno1:rwx /srv/x-demo/a.txt
+getfacl /srv/x-demo/a.txt | grep alumno1
+```
+
+Interpretacion:
+- Con `rwX`, `a.txt` queda en `rw-` para `alumno1`.
+- Con `rwx`, `a.txt` pasa a `rwx`.
+- En directorios, tanto `x` como `X` suelen acabar dando acceso de travesia, pero `X` evita permisos de ejecucion innecesarios en archivos.
 
 ### La máscara en ACL POSIX
 

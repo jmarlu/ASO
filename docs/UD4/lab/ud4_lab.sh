@@ -46,7 +46,7 @@ setup() {
   fi
 
   lxc exec "$CONTAINER_SERVER" -- apt-get update -y
-  lxc exec "$CONTAINER_SERVER" -- apt-get install -y acl samba samba-common-bin nfs-kernel-server nfs-common snapd curl
+  lxc exec "$CONTAINER_SERVER" -- apt-get install -y acl samba samba-common-bin nfs-kernel-server nfs-common snapd curl sudo
   lxc exec "$CONTAINER_SERVER" -- systemctl enable --now smbd nmbd nfs-kernel-server snapd
 
   lxc exec "$CONTAINER_SERVER" -- bash -c "groupadd -f '$GROUP'"
