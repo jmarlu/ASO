@@ -1,0 +1,39 @@
+::Pregunta ACS1:: 
+Comprueba el estado del servicio systemd-networkd.
+{=systemctl status systemd-networkd}
+
+::Pregunta ACS2::
+Detén y vuelve a iniciar el servicio systemd-networkd.
+{=sudo systemctl stop systemd-networkd && sudo systemctl start systemd-networkd}
+
+::Pregunta ACS3::
+Configura el demonio systemd-networkd para que se inicie durante el arranque y después deshabilítalo.
+{=sudo systemctl enable systemd-networkd && sudo systemctl disable systemd-networkd}
+
+::Pregunta ACS4::
+Comprueba si systemd-networkd está habilitado en el arranque.
+{=systemctl is-enabled systemd-networkd}
+
+::Pregunta ACS5::
+Lista solo las unidades de tipo servicio que están cargadas actualmente.
+{=systemctl list-units --type=service}
+
+::Pregunta ACS6::
+Lista todas las unidades conocidas por systemd, estén o no activas.
+{=systemctl list-unit-files}
+
+::Pregunta ACS7::
+Tras modificar un fichero .service, ¿qué comando recarga la configuración de systemd?
+{=sudo systemctl daemon-reload}
+
+::Pregunta ACS8::
+Muestra los últimos 20 registros del servicio nginx.
+{=journalctl -u nginx -n 20}
+
+::Pregunta ACS9::
+¿Qué comando muestra los temporizadores activos y su próxima ejecución?
+{=systemctl list-timers}
+
+::Pregunta ACS10::
+¿Qué comando devuelve el objetivo (target) que se usa por defecto al arrancar?
+{=systemctl get-default}
