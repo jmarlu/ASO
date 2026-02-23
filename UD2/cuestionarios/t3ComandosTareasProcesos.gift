@@ -1,0 +1,59 @@
+::Pregunta AC1:: 
+Da permisos de ejecución recursivos a todos los ficheros de $HOME. La salida estándar va a res1, los errores a err2 y el comando debe ejecutarse en segundo plano.
+{=chmod -R a+x "$HOME" >res1 2>err2 &}
+
+::Pregunta AC2::
+Almacena la información detallada de todos los procesos del sistema en el fichero procesos_1 ordenados por nombre de comando.
+{=ps -eo pid,user,cmd --sort=cmd >procesos_1}
+
+::Pregunta AC3::
+Lanza en segundo plano un proceso que espere 60 minutos y comprueba que sigue activo.
+{=sleep 60m & ; pgrep -af "sleep 60m"}
+
+::Pregunta AC4::
+Localiza el PID del proceso sleep anterior y elimínalo con SIGTERM. Investiga el uso de pkill.
+{=pkill -TERM -f "sleep 60m"}
+
+::Pregunta AC5::
+Programa con at que mañana a las 20:10 se liste en res1 el contenido de los ficheros de $HOME mayores de 1K. Investiga cómo funciona at.
+{=echo "find $HOME -type f -size +1k -exec ls -lh {} + >$HOME/res1" | at 20:10 tomorrow}
+
+::Pregunta AC6::
+Programa con at que el día 30 del mes en curso a las 20:00 se copien los ficheros de /home/guest mayores de 1M a /tmp, enviando errores a /tmp/errores_copia sin sobrescribir. Consulta la ayuda de at.
+{=echo "find /home/guest -type f -size +1M -exec cp {} /tmp \\; 2>>/tmp/errores_copia" | at 20:00 30.$(date +%m)}
+
+::Pregunta AC7::
+Muestra la cola de trabajos pendientes de at.
+{=atq}
+
+::Pregunta AC8::
+Crea con cron una tarea que los viernes a las 22:00 añada el estado de la memoria en memoria_2.
+{=echo "0 22 * * 5 free -h >> /home/guest/memoria_2" | crontab -}
+
+::Pregunta AC9::
+Configura con cron que cada día a las 8:00 se guarde en /root/usuarios_conectados quién se ha conectado.
+{=echo "0 8 * * * last -a >> /root/usuarios_conectados" | sudo crontab -}
+
+::Pregunta AC10::
+Crea con cron una tarea cada 10 minutos que guarde la lista de procesos ordenados por tiempo de ejecución en /root/procesos.
+{=echo "*/10 * * * * ps -eo pid,etimes,cmd --sort=-etimes >> /root/procesos" | sudo crontab -}
+
+::Pregunta AC11::
+Muestra un monitor interactivo con la información detallada de los procesos que se están ejecutando.
+{=top}
+
+::Pregunta AC12::
+Muestra la jerarquía de procesos en forma de árbol.
+{=pstree -p}
+
+::Pregunta AC13::
+Lanza un proceso en segundo plano que espere 1 hora y envíale después una señal SIGTERM.
+{=sleep 1h & ; kill -TERM \$!}
+
+::Pregunta AC14::
+Muestra en pantalla la información detallada de todos los procesos del usuario root.
+{=ps -fU root}
+
+::Pregunta AC15::
+Muestra los PID de todas las consolas de texto (TTY) activas.
+{=ps -eo pid,tty,cmd | grep -E "tty[0-9]"}

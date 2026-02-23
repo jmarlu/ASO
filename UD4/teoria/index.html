@@ -1,0 +1,2889 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://example.com/UD4/teoria/">
+      
+      
+        <link rel="prev" href="../../UD3/actividades/">
+      
+      
+        <link rel="next" href="../actividades/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Teoria - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+  
+  
+    
+      
+      
+    
+  
+  
+  <style>:root{--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M0%202.75C0%201.784.784%201%201.75%201h12.5c.966%200%201.75.784%201.75%201.75v10.5A1.75%201.75%200%200%201%2014.25%2015H1.75A1.75%201.75%200%200%201%200%2013.25Zm1.75-.25a.25.25%200%200%200-.25.25v10.5c0%20.138.112.25.25.25h12.5a.25.25%200%200%200%20.25-.25V2.75a.25.25%200%200%200-.25-.25ZM7.25%208a.75.75%200%200%201-.22.53l-2.25%202.25a.749.749%200%200%201-1.275-.326.75.75%200%200%201%20.215-.734L5.44%208%203.72%206.28a.749.749%200%200%201%20.326-1.275.75.75%200%200%201%20.734.215l2.25%202.25c.141.14.22.331.22.53m1.5%201.5h3a.75.75%200%200%201%200%201.5h-3a.75.75%200%200%201%200-1.5%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#permisos-especiales-en-linux-suid-sgid-sticky-bit" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Teoria
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD1-Shell Scripting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD1-Shell Scripting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creación de Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Aritmetica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aritmetica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Comparadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comparadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/IF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estructura IF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Operadores_Binarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operadores Binarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Argumentos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Argumentos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Case/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Esructura CASE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/While_Until/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Esructura WHILE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/For/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Esructura FOR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Break/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Break y Continue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Scripts_refuerzo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades Scripts_refuerzo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/windows/021_Introducci%C3%B3nPwSh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/windows/comandos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comandos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/windows/Manejo%20resultados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manejo de Resultados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/windows/022_PowerShell_Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sintaxis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/windows/023_PowerShell_ControlFlujo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control de flujo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/windows/024_PowerShell_VectoresFunciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vectores y funciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD2.Administración procesos y Servicios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD2.Administración procesos y Servicios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/InstaWindow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalación en Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/InstaLinux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalación en Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/procesosLinux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestión de procesos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/GestiServicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestión de Servicios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/programaTareas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programación de Tareas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/ContenedoresLXC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contenedores lxd/lxc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/actuSisOp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actualización del Sistema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/registroWindow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registro de Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/Actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD3.Servicios de Directorio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD3.Servicios de Directorio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD3/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción a LDAP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD3/docker-openldap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenLDAP en Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD3/pam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAM en Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD3/ServiciosAutenticacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Servicios de Autenticación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD3/actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD4.Integración de sistemas operativos en red
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD4.Integración de sistemas operativos en red
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#idea-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Idea clave
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-se-ven-en-ls-l" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como se ven en ls -l
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comportamiento-resumido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comportamiento resumido
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comandos-utiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comandos utiles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nota-de-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nota de seguridad
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-previos-para-las-pruebas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requisitos previos (para las pruebas)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pruebas-rapidas-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pruebas rápidas (Ubuntu)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acl-en-sistemas-de-ficheros-gnulinux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗂️ ACL en sistemas de ficheros (GNU/Linux)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-son-y-cuando-usarlas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Qué son y cuándo usarlas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-soporte-y-montaje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Soporte y montaje
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-comandos-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Comandos clave
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Comandos clave">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parametros-frecuentes-de-setfacl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parámetros frecuentes de setfacl
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-acl-en-detalle-herencia-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Default ACL en detalle (herencia real)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-aparece-x-mayuscula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que aparece X mayuscula
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-mascara-en-acl-posix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La máscara en ACL POSIX
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permisos-efectivos-base-posixacl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permisos efectivos (base POSIX/ACL)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkpoint-antes-de-sambanfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checkpoint (antes de Samba/NFS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-patron-tipico-en-un-recurso-compartido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Patron tipico en un recurso compartido
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Patron tipico en un recurso compartido">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-guiado-en-ubuntu-escenario-guion-de-clase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo guiado en Ubuntu (escenario guion de clase)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-notas-de-integracion-acl-samba-y-nfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Notas de integración (ACL, Samba y NFS)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Notas de integración (ACL, Samba y NFS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-capa-de-sistema-de-ficheros-posix-acl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Capa de sistema de ficheros (POSIX + ACL)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-capa-samba-smbcifs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Capa Samba (SMB/CIFS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-puesta-en-marcha-y-pruebas-rapidas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Puesta en marcha y pruebas rapidas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-comprobacion-guiada-samba-acl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Comprobacion guiada (Samba + ACL)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-capa-nfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Capa NFS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-ejemplo-guiado-ud4-lab-ud4-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 Ejemplo guiado (ud4-lab -&gt; ud4-client)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-orden-mental-para-depurar-un-permission-denied" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 Orden mental para depurar un "Permission denied"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58-errores-tipicos-de-laboratorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 Errores tipicos de laboratorio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos-compartidos-en-entornos-heterogeneos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌐 Recursos compartidos en entornos heterogéneos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-escenarios-heterogeneos-y-protocolos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Escenarios heterogéneos y protocolos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-nfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. NFS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. NFS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-instalacion-basica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Instalación básica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-exportacion-y-opciones-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Exportación y opciones clave
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-cliente-y-montaje-automatico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Cliente y montaje automático
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-consideraciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Consideraciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-samba-smbcifs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Samba (SMB/CIFS)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Samba (SMB/CIFS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-instalacion-y-configuracion-minima" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Instalacion y configuracion minima
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-integracion-de-permisos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Integracion de permisos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-nextcloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Nextcloud
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="permisos-especiales-en-linux-suid-sgid-sticky-bit">Permisos especiales en Linux (SUID, SGID, sticky bit)</h1>
+<ul>
+<li>Objetivo: entender que los bits especiales cambian el comportamiento de permisos y ver un ejemplo practico de cada uno.</li>
+<li>Resultado esperado: saber identificar SUID/SGID/sticky en un <code>ls -l</code> y explicar su impacto en un entorno multiusuario.</li>
+</ul>
+<h2 id="idea-clave">Idea clave</h2>
+<p>Los bits especiales son tres banderas adicionales al <code>rwx</code> clasico. Modifican <strong>quien</strong> ejecuta un programa o <strong>quien</strong> puede borrar en un directorio. Se representan con el primer digito del modo en octal:</p>
+<ul>
+<li><code>4xxx</code> SUID, <code>2xxx</code> SGID, <code>1xxx</code> sticky.</li>
+<li>Ejemplo: <code>4755</code> equivale a <code>rwsr-xr-x</code>.</li>
+</ul>
+<h2 id="como-se-ven-en-ls-l">Como se ven en <code>ls -l</code></h2>
+<ul>
+<li>SUID aparece en el permiso de <strong>usuario</strong>: <code>s</code> si hay ejecucion (<code>rws</code>), <code>S</code> si no hay ejecucion.</li>
+<li>SGID aparece en el permiso de <strong>grupo</strong>: <code>s</code> / <code>S</code>.</li>
+<li>Sticky aparece en el permiso de <strong>otros</strong>: <code>t</code> si hay ejecucion, <code>T</code> si no hay ejecucion.</li>
+</ul>
+<h2 id="comportamiento-resumido">Comportamiento resumido</h2>
+<ul>
+<li><strong>SUID (setuid, 4xxx)</strong> en <strong>binarios</strong>: se ejecutan con el <strong>UID del dueño</strong> del fichero. Ejemplo clasico: <code>passwd</code> (permite escribir <code>/etc/shadow</code>).</li>
+<li><strong>SGID (setgid, 2xxx)</strong>:</li>
+<li>En <strong>binarios</strong>: se ejecutan con el <strong>GID del dueño</strong>.</li>
+<li>En <strong>directorios</strong>: los nuevos ficheros heredan el <strong>grupo</strong> del directorio (no del usuario creador).</li>
+<li><strong>Sticky bit (1xxx)</strong> en <strong>directorios</strong>: solo el dueño del fichero (o root) puede borrarlo/renombrarlo aunque otros tengan escritura. Ejemplo: <code>/tmp</code>.</li>
+</ul>
+<h2 id="comandos-utiles">Comandos utiles</h2>
+<ul>
+<li>Ver permisos: <code>ls -l</code> y <code>stat -c "%a %n" ruta</code>.</li>
+<li>Buscar bits especiales:</li>
+<li>SUID: <code>find / -perm -4000 -type f 2&gt;/dev/null</code></li>
+<li>SGID: <code>find / -perm -2000 -type f 2&gt;/dev/null</code></li>
+<li>Sticky en directorios: <code>find / -perm -1000 -type d 2&gt;/dev/null</code></li>
+</ul>
+<h2 id="nota-de-seguridad">Nota de seguridad</h2>
+<ul>
+<li>SUID/SGID en binarios permiten <strong>escalar privilegios</strong>; deben usarse solo en binarios confiables y con permisos estrictos.</li>
+<li>En sistemas con <code>/tmp</code> montado con <code>nosuid</code>, los binarios SUID alli <strong>no</strong> elevan privilegios.</li>
+</ul>
+<h2 id="requisitos-previos-para-las-pruebas">Requisitos previos (para las pruebas)</h2>
+<ul>
+<li>Sistema Linux con permisos de sudo.</li>
+<li>Paquete <code>acl</code> instalado (para <code>getfacl</code>/<code>setfacl</code>).</li>
+<li><code>sudo apt install acl</code></li>
+<li><strong>SUID (setuid, 4xxx)</strong>: un binario se ejecuta con el <strong>UID del dueño</strong>. Ej: <code>passwd</code> es SUID de root.</li>
+<li><strong>SGID (setgid, 2xxx)</strong> en binarios: ejecuta con <strong>GID del dueño</strong>. En directorios: nuevos ficheros heredan el <strong>grupo</strong> del directorio.</li>
+<li><strong>Sticky bit (1xxx)</strong> en directorios: solo el dueño del fichero (o root) puede borrarlo, aunque otros tengan permisos de escritura. Ej: <code>/tmp</code>.</li>
+</ul>
+<h2 id="pruebas-rapidas-ubuntu">Pruebas rápidas (Ubuntu)</h2>
+<ol>
+<li><strong>SUID</strong>:
+   <div class="highlight"><pre><span></span><code><span class="c1"># Nota: en algunos sistemas /tmp monta con &quot;nosuid&quot;.</span>
+<span class="c1"># Si falla, usa /usr/local/bin en lugar de /tmp.</span>
+sudo<span class="w"> </span>cp<span class="w"> </span>/bin/ping<span class="w"> </span>/tmp/ping-suid
+sudo<span class="w"> </span>chown<span class="w"> </span>root:root<span class="w"> </span>/tmp/ping-suid
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">4755</span><span class="w"> </span>/tmp/ping-suid
+ls<span class="w"> </span>-l<span class="w"> </span>/tmp/ping-suid<span class="w">    </span><span class="c1"># rwsr-xr-x (s en user)</span>
+id<span class="w"> </span>-u<span class="w">                         </span><span class="c1"># UID real (tu usuario)</span>
+/tmp/ping-suid<span class="w"> </span>-c1<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w">   </span><span class="c1"># EUID esperado: 0 (root)</span>
+</code></pre></div>
+   Verificacion real de UID/GID efectivos con un binario propio:
+   <div class="highlight"><pre><span></span><code>cat<span class="w"> </span>&gt;<span class="w"> </span>/tmp/ruid.c<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
+<span class="s">#include &lt;stdio.h&gt;</span>
+<span class="s">#include &lt;unistd.h&gt;</span>
+<span class="s">int main(void) {</span>
+<span class="s">  printf(&quot;ruid=%d euid=%d rgid=%d egid=%d\n&quot;,</span>
+<span class="s">         getuid(), geteuid(), getgid(), getegid());</span>
+<span class="s">  return 0;</span>
+<span class="s">}</span>
+<span class="s">EOF</span>
+gcc<span class="w"> </span>/tmp/ruid.c<span class="w"> </span>-o<span class="w"> </span>/tmp/ruid
+/tmp/ruid<span class="w">                 </span><span class="c1"># ruid=TU_UID euid=TU_UID</span>
+sudo<span class="w"> </span>chown<span class="w"> </span>root:root<span class="w"> </span>/tmp/ruid
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">4755</span><span class="w"> </span>/tmp/ruid
+/tmp/ruid<span class="w">                 </span><span class="c1"># ruid=TU_UID euid=0</span>
+</code></pre></div>
+   <em>Recuerda limpiar</em>: <code>sudo rm /tmp/ping-suid</code>.</li>
+<li><strong>SGID en directorio</strong> (herencia de grupo):
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>groupadd<span class="w"> </span>grupo_datos
+sudo<span class="w"> </span>mkdir<span class="w"> </span>/tmp/sgid-demo
+sudo<span class="w"> </span>chown<span class="w"> </span>root:grupo_datos<span class="w"> </span>/tmp/sgid-demo
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">2775</span><span class="w"> </span>/tmp/sgid-demo<span class="w">   </span><span class="c1"># drwxrwsr-x (s en group)</span>
+sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>grupo_datos<span class="w"> </span><span class="k">$(</span>whoami<span class="k">)</span><span class="w">  </span><span class="c1"># añade tu usuario al grupo</span>
+newgrp<span class="w"> </span>grupo_datos<span class="w">                       </span><span class="c1"># activa el grupo en esta shell</span>
+id<span class="w"> </span>-g<span class="w"> </span>-n<span class="w">                                 </span><span class="c1"># GID efectivo de la shell</span>
+touch<span class="w"> </span>/tmp/sgid-demo/archivo
+ls<span class="w"> </span>-l<span class="w"> </span>/tmp/sgid-demo/archivo<span class="w">     </span><span class="c1"># grupo debe ser &#39;grupo_datos&#39;</span>
+</code></pre></div></li>
+<li><strong>Sticky bit</strong>:
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>/tmp/sticky-demo
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">1777</span><span class="w"> </span>/tmp/sticky-demo<span class="w">   </span><span class="c1"># rwxrwxrwt (t)</span>
+sudo<span class="w"> </span>touch<span class="w"> </span>/tmp/sticky-demo/f1
+sudo<span class="w"> </span>-u<span class="w"> </span>nobody<span class="w"> </span>id<span class="w"> </span>-u<span class="w"> </span>-n<span class="w">            </span><span class="c1"># UID efectivo: nobody</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>nobody<span class="w"> </span>touch<span class="w"> </span>/tmp/sticky-demo/f2
+sudo<span class="w"> </span>-u<span class="w"> </span>nobody<span class="w"> </span>rm<span class="w"> </span>/tmp/sticky-demo/f1<span class="w">   </span><span class="c1"># debe FALLAR (no es dueño)</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>nobody<span class="w"> </span>rm<span class="w"> </span>/tmp/sticky-demo/f2<span class="w">   </span><span class="c1"># debe funcionar (es dueño)</span>
+sudo<span class="w"> </span>-u<span class="w"> </span><span class="k">$(</span>whoami<span class="k">)</span><span class="w"> </span>rm<span class="w"> </span>/tmp/sticky-demo/f2<span class="w"> </span><span class="c1">#debe fallar (no eres dueño de f2)</span>
+</code></pre></div>
+   <em>Limpieza</em>: <code>sudo rm -r /tmp/sgid-demo /tmp/sticky-demo</code>.</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>“Compartir sin romper la seguridad: mismo recurso, permisos granulados.”</p>
+</div>
+<h2 id="acl-en-sistemas-de-ficheros-gnulinux">🗂️ ACL en sistemas de ficheros (GNU/Linux)</h2>
+<h2 id="1-que-son-y-cuando-usarlas">1. Qué son y cuándo usarlas</h2>
+<ul>
+<li><strong>ACL (Access Control Lists)</strong> amplían el modelo <code>ugo</code> de UNIX permitiendo permisos por <strong>usuario</strong> y <strong>grupo</strong> adicionales.</li>
+<li>Útiles en <strong>recursos compartidos</strong> (NFS/Samba/Nextcloud): varios equipos/proyectos con permisos diferentes sobre el mismo árbol.</li>
+<li>Indicios: <code>ls -l</code> muestra <code>+</code> (<code>drwxrwxr-x+</code>); <code>getfacl</code> lista las entradas.</li>
+</ul>
+<h2 id="2-soporte-y-montaje">2. Soporte y montaje</h2>
+<ul>
+<li>Sistemas de ficheros típicos (<code>ext4</code>, <code>xfs</code>, <code>btrfs</code>) soportan ACL. En <code>ext4</code>, la opción <code>acl</code> suele venir por defecto.</li>
+<li>Comprueba con:
+  <div class="highlight"><pre><span></span><code>findmnt<span class="w"> </span>-no<span class="w"> </span>SOURCE<span class="w"> </span>/<span class="w">     </span><span class="c1"># ver dispositivo real (ej. /dev/sda2)</span>
+mount<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ext4<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n1<span class="w">   </span><span class="c1"># ver opciones (acl)</span>
+tune2fs<span class="w"> </span>-l<span class="w"> </span>/dev/sdXN<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>features<span class="w">  </span><span class="c1"># debe incluir &quot;acl&quot;</span>
+</code></pre></div></li>
+<li>Si faltan, monta con <code>-o acl</code> o añade <code>acl</code> en <code>/etc/fstab</code> y remonta (<code>mount -o remount,acl /punto</code>).</li>
+</ul>
+<h2 id="3-comandos-clave">3. Comandos clave</h2>
+<ul>
+<li><strong>Listar</strong>: <code>getfacl ruta</code></li>
+<li><strong>Añadir/modificar</strong>: <code>setfacl -m u:usuario:rwx archivo</code> | <code>setfacl -m g:grupo:rx dir</code></li>
+<li><strong>Eliminar entrada</strong>: <code>setfacl -x u:usuario archivo</code></li>
+<li><strong>Reset completo</strong> (a modo unix clásico): <code>setfacl -b ruta</code></li>
+<li><strong>Default ACL</strong> (para herencia en directorios): <code>setfacl -m d:u:usuario:rwX compartida/</code></li>
+<li><strong>Recursivo</strong>: <code>setfacl -R -m g:grupo_datos:rwX compartida/</code></li>
+<li><strong>Máscara</strong>: <code>mask</code> limita permisos efectivos. Tras añadir muchas entradas, usa <code>setfacl -m m::rwx dir</code> si quieres que se apliquen completas.</li>
+</ul>
+<h3 id="parametros-frecuentes-de-setfacl">Parámetros frecuentes de <code>setfacl</code></h3>
+<ul>
+<li><code>-m</code> / <code>--modify</code>: añade o cambia entradas. Sintaxis <code>tipo:identidad:permisos</code> donde <code>tipo</code> es <code>u</code> (usuario), <code>g</code> (grupo), <code>m</code> (mask), <code>o</code> (otros) o <code>d:</code> para default.</li>
+<li><code>-x</code> / <code>--remove</code>: elimina entradas concretas (<code>setfacl -x u:ana archivo</code>).</li>
+<li><code>-b</code> / <code>--remove-all</code>: borra todas las ACL de la ruta.</li>
+<li><code>-R</code> / <code>--recursive</code>: aplica en todo el árbol descendente.</li>
+<li><code>-d</code>: prefijo para default ACL en directorios (<code>d:u:luis:rwX</code>).</li>
+<li><code>-k</code>: elimina las default ACL.</li>
+<li><code>-n</code> / <code>--no-mask</code>: no recalcula la máscara (cuidado, puede dejar ACL inefectivas si la máscara queda baja).</li>
+<li><code>--set</code>: reemplaza todas las entradas con una lista nueva (útil para definir de cero).</li>
+<li>Permisos: <code>r</code> lectura, <code>w</code> escritura, <code>x</code> ejecución; <code>X</code> aplica <code>x</code> solo si es directorio o ya tenía <code>x</code>.</li>
+</ul>
+<h3 id="default-acl-en-detalle-herencia-real">Default ACL en detalle (herencia real)</h3>
+<ul>
+<li>Una ACL "normal" (<code>u:ana:rw-</code>) afecta al objeto actual.</li>
+<li>Una <code>default ACL</code> (<code>d:u:ana:rwX</code>) solo tiene efecto en directorios y se copia a lo nuevo que se cree dentro.</li>
+<li>Si no defines <code>default ACL</code>, cada archivo nuevo nace con permisos desde <code>umask</code> y modo POSIX, no desde ACL heredada.</li>
+</ul>
+<p>Ejemplo minimo:
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/srv/acl-demo
+sudo<span class="w"> </span>chown<span class="w"> </span>root:grupo_datos<span class="w"> </span>/srv/acl-demo
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">2770</span><span class="w"> </span>/srv/acl-demo
+sudo<span class="w"> </span>setfacl<span class="w"> </span>-m<span class="w"> </span>d:g:grupo_datos:rwX<span class="w"> </span>-m<span class="w"> </span>d:u:profesor:rwX<span class="w"> </span>/srv/acl-demo
+getfacl<span class="w"> </span>/srv/acl-demo
+</code></pre></div></p>
+<p>Salida esperada (resumen):
+<div class="highlight"><pre><span></span><code>default:user::rwx
+default:user:profesor:rwx
+default:group:grupo_datos:rwx
+default:mask::rwx
+default:other::---
+</code></pre></div></p>
+<p>Comprobacion de herencia:
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>-u<span class="w"> </span>profesor<span class="w"> </span>touch<span class="w"> </span>/srv/acl-demo/fichero.txt
+sudo<span class="w"> </span>-u<span class="w"> </span>profesor<span class="w"> </span>mkdir<span class="w"> </span>/srv/acl-demo/carpeta
+getfacl<span class="w"> </span>/srv/acl-demo/fichero.txt
+getfacl<span class="w"> </span>/srv/acl-demo/carpeta
+</code></pre></div></p>
+<p>Que debes ver:
+- En <code>fichero.txt</code>, <code>profesor</code> y <code>grupo_datos</code> tendran <code>rw-</code> (sin <code>x</code>).
+- En <code>carpeta</code>, <code>profesor</code> y <code>grupo_datos</code> tendran <code>rwx</code>.
+- Conclusión: la herencia viene de <code>default:*</code> del directorio padre.</p>
+<h3 id="por-que-aparece-x-mayuscula">Por que aparece <code>X</code> mayuscula</h3>
+<ul>
+<li><code>x</code> minuscula siempre intenta poner ejecucion.</li>
+<li><code>X</code> mayuscula es "ejecucion condicional":</li>
+<li>Se aplica siempre a directorios.</li>
+<li>En archivos normales, solo se aplica si ese archivo ya tenia <code>x</code>.</li>
+<li>Se usa en ACL recursivas para no convertir documentos en ejecutables por error.</li>
+</ul>
+<p>Ejemplo practico (<code>x</code> vs <code>X</code>):
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/srv/x-demo
+sudo<span class="w"> </span>touch<span class="w"> </span>/srv/x-demo/a.txt
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">644</span><span class="w"> </span>/srv/x-demo/a.txt
+sudo<span class="w"> </span>setfacl<span class="w"> </span>-m<span class="w"> </span>u:alumno1:rwX<span class="w"> </span>/srv/x-demo/a.txt
+getfacl<span class="w"> </span>/srv/x-demo/a.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>alumno1
+sudo<span class="w"> </span>setfacl<span class="w"> </span>-m<span class="w"> </span>u:alumno1:rwx<span class="w"> </span>/srv/x-demo/a.txt
+getfacl<span class="w"> </span>/srv/x-demo/a.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>alumno1
+</code></pre></div></p>
+<p>Interpretacion:
+- Con <code>rwX</code>, <code>a.txt</code> queda en <code>rw-</code> para <code>alumno1</code>.
+- Con <code>rwx</code>, <code>a.txt</code> pasa a <code>rwx</code>.
+- En directorios, tanto <code>x</code> como <code>X</code> suelen acabar dando acceso de travesia, pero <code>X</code> evita permisos de ejecucion innecesarios en archivos.</p>
+<h3 id="la-mascara-en-acl-posix">La máscara en ACL POSIX</h3>
+<ul>
+<li>Define el <strong>máximo</strong> de permisos efectivos para todas las entradas <strong>que no sean el dueño</strong> (grupos y usuarios adicionales).</li>
+<li>Si añades <code>u:alumno1:rwx</code> pero la <code>mask::r-x</code>, alumno1 solo tendrá <code>r-x</code> hasta que subas la máscara.</li>
+<li>Comandos útiles:
+  <div class="highlight"><pre><span></span><code>getfacl<span class="w"> </span>archivo<span class="w">            </span><span class="c1"># ver mask</span>
+setfacl<span class="w"> </span>-m<span class="w"> </span>m::rwx<span class="w"> </span>archivo<span class="w">  </span><span class="c1"># ajustar máscara</span>
+</code></pre></div></li>
+<li>Al modificar ACL, la máscara puede bajar automáticamente; revisa tras cambios.</li>
+</ul>
+<h3 id="permisos-efectivos-base-posixacl">Permisos efectivos (base POSIX/ACL)</h3>
+<ul>
+<li>Regla rapida: <strong>permiso efectivo = ACL ∩ mask ∩ POSIX</strong> (para grupo y entradas ACL adicionales; en el propietario no aplica <code>mask</code>).</li>
+<li>No basta con "tener una ACL": para escribir en un archivo dentro de un directorio necesitas:</li>
+<li>permiso de escritura en el archivo, y</li>
+<li>permiso de travesia (<code>x</code>) en el directorio.</li>
+</ul>
+<p>Casos tipicos (con ejemplo):</p>
+<ol>
+<li><strong>ACL permite, pero <code>mask</code> recorta</strong>
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>touch<span class="w"> </span>/srv/demo.txt
+sudo<span class="w"> </span>chown<span class="w"> </span>root:grupo_datos<span class="w"> </span>/srv/demo.txt
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">660</span><span class="w"> </span>/srv/demo.txt
+sudo<span class="w"> </span>setfacl<span class="w"> </span>-m<span class="w"> </span>u:alumno1:rwx<span class="w"> </span>/srv/demo.txt
+sudo<span class="w"> </span>setfacl<span class="w"> </span>-m<span class="w"> </span>m::r-x<span class="w"> </span>/srv/demo.txt
+getfacl<span class="w"> </span>/srv/demo.txt
+</code></pre></div>
+   Resultado esperado:</li>
+<li>Veras <code>user:alumno1:rwx    #effective:r-x</code>.</li>
+<li>
+<p><code>alumno1</code> podra leer, pero no escribir.</p>
+</li>
+<li>
+<p><strong>Archivo con permisos correctos, pero sin <code>x</code> en el directorio</strong>
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/srv/sin_travesia
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span>/srv/sin_travesia
+sudo<span class="w"> </span>setfacl<span class="w"> </span>-m<span class="w"> </span>u:alumno1:r--<span class="w"> </span>/srv/sin_travesia
+sudo<span class="w"> </span>touch<span class="w"> </span>/srv/sin_travesia/f.txt
+sudo<span class="w"> </span>setfacl<span class="w"> </span>-m<span class="w"> </span>u:alumno1:rw-<span class="w"> </span>/srv/sin_travesia/f.txt
+sudo<span class="w"> </span>-u<span class="w"> </span>alumno1<span class="w"> </span>cat<span class="w"> </span>/srv/sin_travesia/f.txt
+</code></pre></div>
+   Resultado esperado:</p>
+</li>
+<li>
+<p>Falla por falta de travesia del directorio (<code>x</code> en <code>/srv/sin_travesia</code>), aunque el archivo tenga ACL valida.</p>
+</li>
+<li>
+<p><strong>Sin entrada ACL especifica, manda <code>group::</code>/<code>other::</code></strong>
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>touch<span class="w"> </span>/srv/base.txt
+sudo<span class="w"> </span>chown<span class="w"> </span>root:grupo_datos<span class="w"> </span>/srv/base.txt
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">640</span><span class="w"> </span>/srv/base.txt
+getfacl<span class="w"> </span>/srv/base.txt
+</code></pre></div>
+   Resultado esperado:</p>
+</li>
+<li>Si <code>alumno1</code> no es dueño ni tiene entrada <code>user:alumno1:*</code>, su acceso dependera de si entra por grupo (<code>group::</code>) o por otros (<code>other::</code>).</li>
+</ol>
+<p>Nota didactica:
+- Los casos de Samba y NFS se tratan despues, en la seccion de integracion, cuando ya se han explicado ambos servicios.</p>
+<h3 id="checkpoint-antes-de-sambanfs">Checkpoint (antes de Samba/NFS)</h3>
+<ul>
+<li>
+<p>Hay que recordar solo 3 ideas:</p>
+<ol>
+<li><code>mask</code> recorta permisos efectivos.</li>
+<li><code>default ACL</code> define herencia en directorios.</li>
+<li><code>setgid</code> en directorios fuerza el grupo en nuevos ficheros.</li>
+</ol>
+</li>
+<li>
+<p>Flujo mental: crear directorio -&gt; permisos POSIX -&gt; setgid -&gt; ACL explicita -&gt; default ACL -&gt; comprobar con <code>getfacl</code>.</p>
+</li>
+</ul>
+<h2 id="4-patron-tipico-en-un-recurso-compartido">4. Patron tipico en un recurso compartido</h2>
+<ol>
+<li>Crear directorio y propietario base (p. ej. <code>root:grupo_datos</code>).</li>
+<li>Ajustar permisos POSIX a 2770 (setgid para heredar grupo): <code>chmod 2770 compartida</code>.</li>
+<li>Default ACL para que nuevos ficheros hereden:<br />
+<code>setfacl -m d:g:grupo_datos:rwX -m d:u:profesor:rwX -m d:u:alumno1:rwX compartida</code></li>
+<li>ACL explicita en el arbol existente:<br />
+<code>setfacl -R -m g:grupo_datos:rwX -m u:profesor:rwX -m u:alumno1:rwX compartida</code></li>
+<li>Validar: <code>getfacl compartida | head</code>.</li>
+</ol>
+<h3 id="ejemplo-guiado-en-ubuntu-escenario-guion-de-clase">Ejemplo guiado en Ubuntu (escenario guion de clase)</h3>
+<ol>
+<li>Si no tienes LDAP, prepara usuarios/grupo locales:
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>groupadd<span class="w"> </span>grupo_datos
+sudo<span class="w"> </span>useradd<span class="w"> </span>-m<span class="w"> </span>-G<span class="w"> </span>grupo_datos<span class="w"> </span>profesor
+sudo<span class="w"> </span>useradd<span class="w"> </span>-m<span class="w"> </span>-G<span class="w"> </span>grupo_datos<span class="w"> </span>alumno1
+</code></pre></div></li>
+<li>Crea el recurso y aplica permisos base:
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/srv/aso-ud4/compartida
+sudo<span class="w"> </span>chown<span class="w"> </span>root:grupo_datos<span class="w"> </span>/srv/aso-ud4/compartida
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">2770</span><span class="w"> </span>/srv/aso-ud4/compartida<span class="w">   </span><span class="c1"># setgid para heredar grupo</span>
+</code></pre></div></li>
+<li>Añade ACL (explícitas y por defecto):
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>setfacl<span class="w"> </span>-R<span class="w"> </span>-m<span class="w"> </span>g:grupo_datos:rwX<span class="w"> </span>-m<span class="w"> </span>u:profesor:rwX<span class="w"> </span>-m<span class="w"> </span>u:alumno1:rwX<span class="w"> </span>/srv/aso-ud4/compartida
+sudo<span class="w"> </span>setfacl<span class="w"> </span>-R<span class="w"> </span>-m<span class="w"> </span>d:g:grupo_datos:rwX<span class="w"> </span>-m<span class="w"> </span>d:u:profesor:rwX<span class="w"> </span>-m<span class="w"> </span>d:u:alumno1:rwX<span class="w"> </span>/srv/aso-ud4/compartida
+</code></pre></div></li>
+<li>Comprueba la máscara (si ves permisos recortados, ajusta):
+   <div class="highlight"><pre><span></span><code>getfacl<span class="w"> </span>/srv/aso-ud4/compartida
+sudo<span class="w"> </span>setfacl<span class="w"> </span>-m<span class="w"> </span>m::rwx<span class="w"> </span>/srv/aso-ud4/compartida<span class="w">   </span><span class="c1"># opcional si la mask quedo baja</span>
+</code></pre></div></li>
+<li>Valida herencia y acceso:
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>-u<span class="w"> </span>alumno1<span class="w"> </span>touch<span class="w"> </span>/srv/aso-ud4/compartida/ok-alumno1<span class="w">   </span><span class="c1"># debe crear</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>profesor<span class="w"> </span>touch<span class="w"> </span>/srv/aso-ud4/compartida/ok-profesor<span class="w"> </span><span class="c1"># debe crear</span>
+</code></pre></div></li>
+<li>Revisión final:
+   <div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-ld<span class="w"> </span>/srv/aso-ud4/compartida<span class="w">       </span><span class="c1"># debe mostrar g+s y &quot;+&quot;</span>
+getfacl<span class="w"> </span>/srv/aso-ud4/compartida
+</code></pre></div></li>
+<li>Limpieza opcional: <code>sudo setfacl -bR /srv/aso-ud4/compartida</code> (vuelve al modo POSIX clasico).</li>
+</ol>
+<h2 id="5-notas-de-integracion-acl-samba-y-nfs">5. Notas de integración (ACL, Samba y NFS)</h2>
+<ul>
+<li>Escenario de referencia en esta seccion: <strong>guion de clase</strong> (<code>ud4-lab</code> / <code>ud4-client</code>, recurso <code>/srv/aso-ud4/compartida</code>).</li>
+<li>En integracion real hay <strong>tres capas</strong> que deben permitir a la vez:</li>
+<li><strong>Identidad</strong> (LDAP/SSSD): quien es el usuario y a que grupos pertenece.</li>
+<li><strong>Servicio</strong> (Samba o NFS): quien puede entrar al recurso compartido.</li>
+<li><strong>Sistema de ficheros</strong> (POSIX + ACL): que puede hacer dentro (leer/escribir/entrar).</li>
+<li>Si una capa deniega, el acceso final se deniega.</li>
+</ul>
+<h3 id="51-capa-de-sistema-de-ficheros-posix-acl">5.1 Capa de sistema de ficheros (POSIX + ACL)</h3>
+<ul>
+<li><strong>ACL POSIX</strong> amplian <code>ugo</code>; la entrada <code>mask</code> limita permisos efectivos de grupos y usuarios ACL adicionales.</li>
+<li><strong>Default ACL</strong> define herencia en lo nuevo; sin default ACL, herencia depende de modo POSIX + <code>umask</code>.</li>
+<li><strong><code>umask</code></strong> recorta al crear. Con <code>umask 077</code>, un archivo nuevo tiende a nacer cerrado para grupo/otros salvo que default ACL abra permisos.</li>
+<li>En escritura sobre archivos dentro de directorios recuerda:</li>
+<li>necesitas permisos sobre el archivo, y</li>
+<li>necesitas <code>x</code> (travesia) y normalmente <code>w</code> sobre el directorio.</li>
+</ul>
+<p>Comprobaciones utiles:
+<div class="highlight"><pre><span></span><code>namei<span class="w"> </span>-l<span class="w"> </span>/srv/aso-ud4/compartida/fichero.txt<span class="w">   </span><span class="c1"># revisa permisos por cada tramo del path</span>
+getfacl<span class="w"> </span>/srv/aso-ud4/compartida/fichero.txt<span class="w">    </span><span class="c1"># revisa ACL y mask efectiva</span>
+id<span class="w"> </span>alumno1<span class="w">                              </span><span class="c1"># revisa grupos efectivos</span>
+</code></pre></div></p>
+<h3 id="52-capa-samba-smbcifs">5.2 Capa Samba (SMB/CIFS)</h3>
+<ul>
+<li><strong>Samba</strong> es el servicio que implementa <strong>SMB/CIFS</strong> en Linux/Unix para compartir carpetas e impresoras en red (especialmente con clientes Windows).</li>
+<li>En practica, Samba publica el recurso compartido y aplica reglas de acceso al share; despues el sistema de ficheros Linux decide el permiso final sobre cada operacion.</li>
+<li>Orden real de evaluacion (que se comprueba primero):</li>
+<li><strong>Autenticacion SMB</strong>: usuario/contrasena validos.</li>
+<li><strong>Reglas del share en Samba</strong>: <code>valid users</code>, <code>read only</code>, <code>write list</code>, etc.<br />
+     Si falla aqui, no entras al recurso.</li>
+<li><strong>Permisos del sistema de ficheros (POSIX + ACL)</strong> en el servidor: kernel Linux, <code>mask</code>, ACL y permisos de travesia del path.<br />
+     Si falla aqui, entras al recurso pero operaciones como <code>put</code>/<code>mkdir</code> devuelven "Access denied".</li>
+<li>Resumen: Samba controla la <strong>puerta de entrada</strong>; el FS controla la <strong>operacion final</strong> sobre ficheros y directorios.</li>
+<li><strong>Parametros clave para este laboratorio</strong>:</li>
+<li><code>vfs objects = acl_xattr</code>: hace que Samba guarde metadatos ACL en atributos extendidos (<code>xattr</code>) para mantener compatibilidad con clientes Windows/SMB. Sin esto, es mas facil perder detalle de permisos al crear o modificar desde SMB.
+    Ejemplo didactico: un alumno crea un fichero por SMB y luego en servidor haces <code>getfacl /srv/aso-ud4/compartida/ok-alumno1</code>; debes ver ACL coherente con lo esperado en el recurso compartido.</li>
+<li><code>inherit permissions = yes</code>: cuando un cliente SMB crea algo, Samba intenta heredar permisos del directorio padre en lugar de aplicar solo valores por defecto. Esto ayuda a mantener colaboracion estable en carpetas compartidas con <code>setgid</code> y ACL por defecto.
+    Ejemplo rapido:<ul>
+<li>Padre: <code>chmod 2770 /srv/aso-ud4/compartida</code></li>
+<li>Cliente SMB: <code>mkdir prueba-herencia</code></li>
+<li>Servidor: <code>ls -ld /srv/aso-ud4/compartida/prueba-herencia</code> -&gt; debe conservar grupo del recurso y bit <code>g+s</code>.</li>
+</ul>
+</li>
+<li><code>create mask</code> (archivos) y <code>directory mask</code> (carpetas) son el "techo" de permisos al crear por SMB: aunque la ACL permita mas, Samba no creara por encima de esa mascara. Ejemplo: con <code>create mask = 0660</code> y <code>directory mask = 2770</code>, los ficheros nuevos no tendran permisos para <code>other</code> y las carpetas heredaran grupo (<code>setgid</code>).</li>
+</ul>
+<p>Diagnostico rapido Samba:
+<div class="highlight"><pre><span></span><code><span class="c1"># servidor (ud4-lab)</span>
+testparm<span class="w"> </span>-s
+sudo<span class="w"> </span>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">50</span><span class="w"> </span>/var/log/samba/log.smbd
+
+<span class="c1"># cliente (ud4-client)</span>
+smbclient<span class="w"> </span>//ud4-lab/compartida<span class="w"> </span>-U<span class="w"> </span>alumno1
+<span class="c1"># dentro: put /etc/hosts prueba.txt</span>
+</code></pre></div></p>
+<h3 id="53-puesta-en-marcha-y-pruebas-rapidas">5.3 Puesta en marcha y pruebas rapidas</h3>
+<ul>
+<li>Instala servidor y cliente: <code>sudo apt install samba samba-client</code> (en RHEL/Fedora: <code>dnf -y install samba samba-client</code>).</li>
+<li>Servicio: <code>sudo systemctl enable --now smbd nmbd</code> (activa NetBIOS para entornos mixtos); revisa sintaxis con <code>testparm</code>.</li>
+<li>Usuarios Samba: crea credencial local con <code>sudo pdbedit -a usuario</code> (o <code>smbpasswd -a</code>); deben existir en el sistema/LDAP.</li>
+<li>Pruebas desde cliente (o desde cualquier host con red al servidor): <code>smbclient -L //10.50.0.11 -U usuario</code> para ver compartidos y <code>smbclient //10.50.0.11/grupo_clase -U usuario</code> para verificar acceso.</li>
+<li>Para limitar superficie, en <code>[global]</code> añade <code>interfaces = lo eth0</code> y, si procede, <code>bind interfaces only = yes</code>.</li>
+</ul>
+<h3 id="54-comprobacion-guiada-samba-acl">5.4 Comprobacion guiada  (Samba + ACL)</h3>
+<p>Idea clave para la practica: Samba filtra por usuarios/grupos, pero el sistema de ficheros decide el permiso final.</p>
+<p>Marco mental rapido:
+1. Paso 1, autenticacion SMB: valida usuario/contrasena.
+2. Paso 2, reglas del share en Samba: <code>valid users</code>, <code>read only</code>, <code>write list</code>.
+3. Paso 3, Linux FS (POSIX + ACL): decide lectura/escritura/borrado real dentro del recurso.</p>
+<p>Resultado final:
+- Samba permite + FS permite -&gt; funciona.
+- Samba permite + FS deniega -&gt; veras <code>Access denied</code>.
+- Samba deniega -&gt; ni siquiera entras al share.</p>
+<ol>
+<li>En <code>ud4-lab</code>, configura un <code>smb.conf</code> minimo:
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;cat &gt;/etc/samba/smb.conf &lt;&lt;&#39;EOF&#39;</span>
+<span class="s2">[global]</span>
+<span class="s2">  workgroup = WORKGROUP</span>
+<span class="s2">  security = user</span>
+<span class="s2">  map to guest = never</span>
+<span class="s2">  vfs objects = acl_xattr</span>
+<span class="s2">  inherit permissions = yes</span>
+
+<span class="s2">[compartida]</span>
+<span class="s2">  path = /srv/aso-ud4/compartida</span>
+<span class="s2">  read only = no</span>
+<span class="s2">  create mask = 0660</span>
+<span class="s2">  directory mask = 2770</span>
+<span class="s2">  valid users = @grupo_datos</span>
+<span class="s2">EOF&quot;</span>
+</code></pre></div>
+Que debe comprobar el alumnado:</li>
+<li><code>read only = no</code> habilita escritura a nivel de share.</li>
+<li><code>valid users = @grupo_datos</code> solo deja entrar a miembros del grupo.</li>
+<li><code>map to guest = never</code> evita accesos anonimos por error: si el usuario no existe o la contrasena falla, Samba deniega el acceso en vez de entrar como <code>guest</code>.</li>
+<li>
+<p>Comprobacion rapida: prueba <code>smbclient //ud4-lab/compartida -U alumno1</code> con contrasena incorrecta; debe fallar con error de autenticacion.</p>
+</li>
+<li>
+<p>Crea usuario Samba y reinicia servicio:
+<div class="highlight"><pre><span></span><code>smbpasswd<span class="w"> </span>-a<span class="w"> </span>alumno1
+testparm
+systemctl<span class="w"> </span>restart<span class="w"> </span>smbd
+</code></pre></div>
+Usa una contrasena simple para demo (por ejemplo, <code>alumno1</code>).</p>
+</li>
+<li>
+<p>Desde <code>ud4-client</code>, prueba acceso al share:
+<div class="highlight"><pre><span></span><code>smbclient<span class="w"> </span>//ud4-lab/compartida<span class="w"> </span>-U<span class="w"> </span>alumno1
+</code></pre></div>
+Salida esperada:
+<div class="highlight"><pre><span></span><code>Try &quot;help&quot; to get a list of possible commands.
+smb: \&gt;
+</code></pre></div></p>
+</li>
+<li>
+<p>Prueba escritura y verificacion:
+<div class="highlight"><pre><span></span><code><span class="c1"># cliente (modo interactivo)</span>
+smbclient<span class="w"> </span>//ud4-lab/compartida<span class="w"> </span>-U<span class="w"> </span>alumno1
+</code></pre></div>
+Dentro de <code>smb: \&gt;</code>:
+<div class="highlight"><pre><span></span><code>put /etc/hosts ok-alumno1
+ls
+</code></pre></div>
+Nota:</p>
+</li>
+<li><code>put</code> es un comando interno de <code>smbclient</code> (no de la shell Linux).</li>
+<li>
+<p>Variante no interactiva:
+<div class="highlight"><pre><span></span><code>smbclient<span class="w"> </span>//ud4-lab/compartida<span class="w"> </span>-U<span class="w"> </span>alumno1<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;put /etc/hosts ok-alumno1; ls&quot;</span>
+</code></pre></div>
+En <code>ud4-lab</code>, comprueba:
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-l<span class="w"> </span>/srv/aso-ud4/compartida
+getfacl<span class="w"> </span>/srv/aso-ud4/compartida<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">20</span>
+</code></pre></div>
+Resultado esperado: <code>ok-alumno1</code> aparece tanto en <code>smbclient</code> como en <code>/srv/aso-ud4/compartida</code>.</p>
+</li>
+<li>
+<p>Microfallo guiado para entender <code>Access denied</code>:
+<div class="highlight"><pre><span></span><code><span class="c1"># servidor</span>
+setfacl<span class="w"> </span>-m<span class="w"> </span>m::r-x<span class="w"> </span>/srv/aso-ud4/compartida
+getfacl<span class="w"> </span>/srv/aso-ud4/compartida<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">20</span>
+</code></pre></div>
+En cliente (dentro de <code>smbclient</code>):
+<div class="highlight"><pre><span></span><code>put /etc/hosts falla-mask
+</code></pre></div>
+Salida esperada:
+<div class="highlight"><pre><span></span><code>NT_STATUS_ACCESS_DENIED
+</code></pre></div>
+Restaurar en servidor:
+<div class="highlight"><pre><span></span><code>setfacl<span class="w"> </span>-m<span class="w"> </span>m::rwx<span class="w"> </span>/srv/aso-ud4/compartida
+</code></pre></div></p>
+</li>
+</ol>
+<h3 id="55-capa-nfs">5.5 Capa NFS</h3>
+<ul>
+<li><strong>NFS</strong> (Network File System) permite montar en red un directorio remoto como si fuera local.</li>
+<li>Orden real de evaluacion en NFS (que se comprueba primero):</li>
+<li>El cliente monta una exportacion publicada por el servidor (<code>/etc/exports</code>).</li>
+<li>El servidor identifica al usuario segun el modo de seguridad (<code>sec=sys</code> usa UID/GID numericos).</li>
+<li>El kernel del servidor aplica permisos POSIX/ACL del directorio/archivo exportado.</li>
+<li>Consecuencia clave: en NFS no decide el cliente; decide siempre el servidor sobre su FS.</li>
+<li>Si cliente y servidor no mapean igual UID/GID en <code>sec=sys</code>, obtendras "Permission denied" aunque el nombre de usuario coincida.</li>
+<li><code>root_squash</code> evita que root del cliente sea root en servidor (buena practica).</li>
+<li>NFSv4 puede usar ACL nativas diferentes a POSIX ACL; en este laboratorio se prioriza comportamiento uniforme con ACL POSIX.</li>
+</ul>
+<p>Diagnostico rapido NFS:
+<div class="highlight"><pre><span></span><code><span class="c1"># servidor (donde se exporta la ruta)</span>
+exportfs<span class="w"> </span>-v
+
+<span class="c1"># cliente (donde montas la ruta remota)</span>
+showmount<span class="w"> </span>-e<span class="w"> </span>ud4-lab
+mount<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nfs
+
+<span class="c1"># comprobar identidad en ambos lados (servidor y cliente)</span>
+id<span class="w"> </span>alumno1
+getent<span class="w"> </span>passwd<span class="w"> </span>alumno1
+</code></pre></div></p>
+<h3 id="56-ejemplo-guiado-ud4-lab-ud4-client">5.6 Ejemplo guiado (ud4-lab -&gt; ud4-client)</h3>
+<p>Objetivo: compartir una carpeta en <code>ud4-lab</code>, montarla en <code>ud4-client</code> y validar escritura sin pararse a depurar en clase.</p>
+<ol>
+<li>
+<p>En <code>ud4-lab</code> (servidor), crea la carpeta y permisos base:
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/srv/aso-ud4/nfs-compartida
+sudo<span class="w"> </span>chown<span class="w"> </span>root:grupo_datos<span class="w"> </span>/srv/aso-ud4/nfs-compartida
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">2770</span><span class="w"> </span>/srv/aso-ud4/nfs-compartida
+sudo<span class="w"> </span>setfacl<span class="w"> </span>-m<span class="w"> </span>g:grupo_datos:rwx<span class="w"> </span>-m<span class="w"> </span>d:g:grupo_datos:rwx<span class="w"> </span>/srv/aso-ud4/nfs-compartida
+</code></pre></div></p>
+</li>
+<li>
+<p>Exporta la carpeta por NFS (ajusta la red a la IP real del cliente):
+<div class="highlight"><pre><span></span><code><span class="c1"># Si /etc/exports.d no existe, usa /etc/exports</span>
+sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/etc/exports.d
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;/srv/aso-ud4/nfs-compartida 10.233.242.0/24(rw,sync,root_squash,no_subtree_check,insecure)&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/exports.d/ud4-nfs.exports
+sudo<span class="w"> </span>exportfs<span class="w"> </span>-ra
+sudo<span class="w"> </span>exportfs<span class="w"> </span>-v<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nfs-compartida
+</code></pre></div></p>
+</li>
+<li>
+<p>En <code>ud4-client</code>, comprueba export y monta:
+<div class="highlight"><pre><span></span><code>showmount<span class="w"> </span>-e<span class="w"> </span>ud4-lab
+sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/ud4-nfs
+sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>nfs<span class="w"> </span>-o<span class="w"> </span><span class="nv">vers</span><span class="o">=</span><span class="m">4</span>,proto<span class="o">=</span>tcp<span class="w"> </span>ud4-lab:/srv/aso-ud4/nfs-compartida<span class="w"> </span>/mnt/ud4-nfs
+mount<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ud4-nfs
+</code></pre></div></p>
+</li>
+<li>
+<p>Prueba de escritura con usuario normal (no <code>root</code>, por <code>root_squash</code>):
+<div class="highlight"><pre><span></span><code>id<span class="w"> </span>alumno1
+su<span class="w"> </span>-<span class="w"> </span>alumno1
+<span class="nb">cd</span><span class="w"> </span>/mnt/ud4-nfs
+touch<span class="w"> </span>ok-alumno1
+ls<span class="w"> </span>-l<span class="w"> </span>/mnt/ud4-nfs
+</code></pre></div></p>
+</li>
+<li>
+<p>Verificacion final en servidor (<code>ud4-lab</code>):
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-l<span class="w"> </span>/srv/aso-ud4/nfs-compartida
+</code></pre></div>
+Resultado esperado: aparece <code>ok-alumno1</code> en cliente y en servidor (misma ruta remota).</p>
+</li>
+</ol>
+<p>Incidencias tipicas:</p>
+<ul>
+<li><code>showmount -e</code> vacio:<ul>
+<li>No se creo el fichero de export (<code>/etc/exports.d</code> inexistente) o no se recargo <code>exportfs -ra</code>.</li>
+</ul>
+</li>
+<li><code>mount.nfs: Operation not permitted</code>:<ul>
+<li>En LXC/LXD, ejecutar en el host (no dentro del contenedor):
+  <div class="highlight"><pre><span></span><code>lxc<span class="w"> </span>stop<span class="w"> </span>ud4-client
+lxc<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>ud4-client<span class="w"> </span>security.privileged<span class="w"> </span><span class="nb">true</span>
+lxc<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>ud4-client<span class="w"> </span>security.nesting<span class="w"> </span><span class="nb">true</span>
+lxc<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>ud4-client<span class="w"> </span>raw.lxc<span class="w"> </span><span class="s2">&quot;lxc.apparmor.profile=unconfined&quot;</span>
+lxc<span class="w"> </span>start<span class="w"> </span>ud4-client
+lxc<span class="w"> </span>config<span class="w"> </span>show<span class="w"> </span>ud4-client<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;security.privileged|security.nesting|raw.lxc&quot;</span>
+</code></pre></div></li>
+</ul>
+</li>
+<li>Reintentar en <code>ud4-client</code>:
+  <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mount<span class="w"> </span>-v<span class="w"> </span>-t<span class="w"> </span>nfs<span class="w"> </span>-o<span class="w"> </span><span class="nv">vers</span><span class="o">=</span><span class="m">4</span>,proto<span class="o">=</span>tcp<span class="w"> </span>ud4-lab:/srv/aso-ud4/nfs-compartida<span class="w"> </span>/mnt/ud4-nfs
+</code></pre></div></li>
+<li><code>cd</code>/<code>touch</code> devuelve <code>Permission denied</code> tras montar:<ul>
+<li>usuario en cliente no tiene el mismo UID/GID que en servidor (en NFS <code>sec=sys</code> mandan los numeros, no el nombre).</li>
+<li>se prueba como <code>root</code> y <code>root_squash</code> lo bloquea.</li>
+</ul>
+</li>
+</ul>
+<h3 id="57-orden-mental-para-depurar-un-permission-denied">5.7 Orden mental para depurar un "Permission denied"</h3>
+<ol>
+<li><strong>Identidad</strong>: <code>id usuario</code>, <code>getent passwd usuario</code>, <code>getent group grupo_datos</code>.</li>
+<li><strong>Servicio</strong>:<ul>
+<li>Samba: revisar <code>valid users</code>, <code>read only</code>, masks, <code>testparm</code>.</li>
+<li>NFS: revisar export (<code>exportfs -v</code>) y tipo de seguridad (<code>sec=sys</code>/Kerberos).</li>
+</ul>
+</li>
+<li><strong>FS</strong>: revisar <code>ls -ld</code>, <code>getfacl</code>, <code>mask</code>, <code>default ACL</code>, y permisos de travesia en todo el path.</li>
+<li><strong>Prueba minima reproducible</strong>: crear un archivo con el usuario real (<code>sudo -u usuario touch ...</code>) y repetir desde cliente.</li>
+</ol>
+<h3 id="58-errores-tipicos-de-laboratorio">5.8 Errores tipicos de laboratorio</h3>
+<ul>
+<li>ACL correcta en archivo, pero directorio sin <code>x</code> para ese usuario/grupo.</li>
+<li>ACL <code>rwX</code> configurada, pero <code>mask::r--</code> recorta escritura.</li>
+<li>Usuario permitido en Samba, pero no existe/mapea distinto en el host (<code>getent</code> falla).</li>
+<li><code>create mask</code> de Samba demasiado baja (por ejemplo <code>0640</code>) y rompe colaboracion.</li>
+<li>En NFS, UID/GID distintos entre cliente y servidor aunque el nombre de usuario coincida.</li>
+</ul>
+<hr />
+<h2 id="recursos-compartidos-en-entornos-heterogeneos">🌐 Recursos compartidos en entornos heterogéneos</h2>
+<blockquote>
+<p>"Un único directorio de identidades (LDAP), varios protocolos de acceso a ficheros."</p>
+</blockquote>
+<h2 id="1-escenarios-heterogeneos-y-protocolos">1. Escenarios heterogéneos y protocolos</h2>
+<ul>
+<li>Mixtos Linux/Windows/web. Objetivos: identidad centralizada, transporte eficiente y permisos coherentes.</li>
+<li>Protocolos habituales:</li>
+<li><strong>NFS</strong> (Unix-like): trabaja con UID/GID, ligero y rápido entre sistemas POSIX.</li>
+<li><strong>SMB/CIFS (Samba)</strong>: preferido en Windows, soportado en Linux/macOS; ACL estilo NTFS y funciones de dominio/compartidos.</li>
+<li><strong>WebDAV/Nextcloud</strong>: acceso por navegador/app, versiones y compartición fina; se apoya en almacenamiento local o remoto.</li>
+<li><strong>LDAP</strong> proporciona usuarios y grupos; los servicios de ficheros mapean esas identidades para aplicar permisos.</li>
+</ul>
+<h2 id="2-nfs">2. NFS</h2>
+<h3 id="21-instalacion-basica">2.1 Instalación básica</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># servidor NFS</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nfs-kernel-server
+
+<span class="c1"># cliente NFS</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nfs-common
+</code></pre></div>
+<h3 id="22-exportacion-y-opciones-clave">2.2 Exportación y opciones clave</h3>
+<ul>
+<li>El FS debe soportar ACL POSIX si quieres herencia/permisos granulares.</li>
+<li>En el <strong>servidor NFS</strong> (<code>10.50.0.11</code>), <code>/etc/exports</code> ejemplo:
+  <div class="highlight"><pre><span></span><code>/srv/grupo_clase 10.50.0.0/24(rw,sync,subtree_check,acl,root_squash,fsid=0)
+/home/usuarios  10.50.0.0/24(rw,sync,subtree_check,acl,root_squash)
+</code></pre></div></li>
+<li>Activar cambios y comprobar:<ul>
+<li><code>sudo exportfs -ra</code></li>
+<li><code>sudo exportfs -v</code></li>
+</ul>
+</li>
+<li><code>root_squash</code>: root del cliente no es root en servidor.</li>
+<li><code>acl</code>: exporta respetando ACL POSIX.</li>
+<li><code>fsid=0</code>: pseudo-root para NFSv4.</li>
+</ul>
+<h3 id="23-cliente-y-montaje-automatico">2.3 Cliente y montaje automático</h3>
+<ul>
+<li>En el <strong>cliente NFS</strong>:</li>
+<li>Manual: <code>mount -t nfs 10.50.0.11:/srv/grupo_clase /mnt/comp</code>.</li>
+<li><code>/etc/fstab</code>: <code>10.50.0.11:/srv/grupo_clase /mnt/comp nfs defaults,_netdev 0 0</code>.</li>
+<li><code>autofs</code>: <code>/etc/auto.master</code> + <code>/etc/auto.nfs</code> para montar bajo demanda.</li>
+</ul>
+<h3 id="24-consideraciones">2.4 Consideraciones</h3>
+<ul>
+<li>NFSv3: UID/GID sin firma; NFSv4 añade <code>idmapd</code> (mapa de nombres) y soporta Kerberos (<code>sec=krb5</code>, <code>krb5i</code>, <code>krb5p</code>).</li>
+<li>Sincroniza hora (NTP), comprueba <code>idmapd.conf</code> (dominio igual en cliente/servidor).</li>
+<li>Firewall: abre <code>2049/tcp/udp</code> (NFS) y puertos rpcbind (<code>111</code>). En NFSv4 puro puedes limitar a 2049.</li>
+<li>Rendimiento: usa <code>async</code> solo si aceptas riesgo; <code>rsize/wsize</code> altos (64K) en clientes modernos; red rápida.</li>
+<li>Integración LDAP: el servidor debe ver los mismos UID/GID (nsswitch/sssd). El cliente solo necesita la resolución de nombres si monta con <code>sec=sys</code>; con Kerberos, ticket válido.</li>
+</ul>
+<h2 id="3-samba-smbcifs">3. Samba (SMB/CIFS)</h2>
+<h3 id="31-instalacion-y-configuracion-minima">3.1 Instalacion y configuracion minima</h3>
+<p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>samba
+</code></pre></div>
+<code>/etc/samba/smb.conf</code> ejemplo:
+<div class="highlight"><pre><span></span><code><span class="k">[global]</span>
+<span class="w">  </span><span class="na">workgroup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">WORKGROUP</span>
+<span class="w">  </span><span class="na">security</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">user</span>
+<span class="w">  </span><span class="na">map to guest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">never</span>
+<span class="w">  </span><span class="na">vfs objects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">acl_xattr</span>
+<span class="w">  </span><span class="na">inherit permissions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">yes</span>
+
+<span class="k">[grupo_clase]</span>
+<span class="w">  </span><span class="na">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/srv/grupo_clase</span>
+<span class="w">  </span><span class="na">read only</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">no</span>
+<span class="w">  </span><span class="na">create mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0660</span>
+<span class="w">  </span><span class="na">directory mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2770</span>
+<span class="w">  </span><span class="na">valid users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">@grupo_datos</span>
+
+<span class="k">[homes]</span>
+<span class="w">  </span><span class="na">browseable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">no</span>
+<span class="w">  </span><span class="na">read only</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">no</span>
+<span class="w">  </span><span class="na">create mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0600</span>
+<span class="w">  </span><span class="na">directory mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0700</span>
+</code></pre></div>
+- <code>acl_xattr</code> guarda ACL compatibles con clientes Windows; hereda las ACL POSIX si el FS las soporta.
+- <code>map to guest = never</code> desactiva el mapeo automatico a invitado (<code>guest</code>) cuando hay fallos de autenticacion; obliga a usar credenciales validas.</p>
+<h3 id="32-integracion-de-permisos">3.2 Integracion de permisos</h3>
+<ul>
+<li>Usa grupos LDAP para <code>valid users</code> y combina con ACL en el FS. La regla es doble: <strong>Samba filtra por grupo</strong> y <strong>el sistema de ficheros aplica permisos/ACL</strong>. Si falla cualquiera, se deniega el acceso.</li>
+<li><code>valid users = @grupo_datos</code> permite entrar solo a miembros del grupo LDAP.</li>
+<li><code>chmod 2770</code> asegura setgid (herencia de grupo) y bloquea a “otros”.</li>
+<li><code>setfacl -m d:g:grupo_datos:rwX</code> asegura que lo nuevo herede escritura para el grupo.</li>
+<li><code>setfacl -m g:grupo_datos:rwX</code> aplica escritura al directorio existente.</li>
+<li>La <code>mask</code> puede recortar permisos; si ves recorte, sube la mascara con <code>setfacl -m m::rwx</code>.</li>
+<li>Cuotas: configúralas en el FS (<code>setquota</code>); Samba puede informar de ellas a los clientes.</li>
+<li>Autenticación: <code>security = user</code> (local) o <code>security = ads</code> si unes a AD. Con LDAP externo, usa backend de cuentas vía <code>winbind</code> o <code>sssd</code> para resolver UID/GID coherentes.</li>
+<li>Seguridad de transporte: <code>server signing = mandatory</code> en redes hostiles; <code>smb encrypt = required</code> si quieres cifrado en tránsito (SMB3).</li>
+<li>Resolución de nombres: evita <code>wins</code>; usa DNS o IP directa. Prueba con <code>smbclient -L //10.50.0.11 -U usuario</code>.</li>
+<li>Perfiles/Homes: la sección <code>[homes]</code> sirve directorios personales con 0700. Si usas perfiles móviles, ajusta cuotas y paths UNC (<code>\\10.50.0.11\homes</code>).</li>
+</ul>
+<h2 id="4-nextcloud">4. Nextcloud</h2>
+<ul>
+<li>Plataforma de ficheros colaborativos (WebDAV) con apps móviles y web.</li>
+<li>Instalación rápida (Ubuntu): <code>sudo snap install nextcloud</code> o stack LAMP+PHP-FPM.</li>
+<li>Permisos de ficheros: datos bajo <code>data/</code>, dueño <code>www-data</code>, <code>chmod 750</code>.</li>
+<li>Autenticación LDAP: app "LDAP user and group backend", usa la CA de tu lab TLS.</li>
+<li>Almacenamiento externo: apunta a rutas locales o montadas (NFS/SMB). Las ACL del FS mandan; Nextcloud controla comparticiones lógicas encima.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../../UD3/actividades/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Actividades">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Actividades
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../actividades/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Actividades">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Actividades
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.path", "navigation.footer", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotate", "content.code.copy", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

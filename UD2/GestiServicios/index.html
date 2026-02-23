@@ -1,0 +1,1970 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://example.com/UD2/GestiServicios/">
+      
+      
+        <link rel="prev" href="../procesosLinux/">
+      
+      
+        <link rel="next" href="../programaTareas/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Gestión de Servicios - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+  
+  
+    
+      
+      
+    
+  
+  
+  <style>:root{--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M0%202.75C0%201.784.784%201%201.75%201h12.5c.966%200%201.75.784%201.75%201.75v10.5A1.75%201.75%200%200%201%2014.25%2015H1.75A1.75%201.75%200%200%201%200%2013.25Zm1.75-.25a.25.25%200%200%200-.25.25v10.5c0%20.138.112.25.25.25h12.5a.25.25%200%200%200%20.25-.25V2.75a.25.25%200%200%200-.25-.25ZM7.25%208a.75.75%200%200%201-.22.53l-2.25%202.25a.749.749%200%200%201-1.275-.326.75.75%200%200%201%20.215-.734L5.44%208%203.72%206.28a.749.749%200%200%201%20.326-1.275.75.75%200%200%201%20.734.215l2.25%202.25c.141.14.22.331.22.53m1.5%201.5h3a.75.75%200%200%201%200%201.5h-3a.75.75%200%200%201%200-1.5%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gestion-de-los-servicios-y-demonios" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Gestión de Servicios
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD1-Shell Scripting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD1-Shell Scripting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creación de Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Aritmetica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aritmetica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Comparadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comparadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/IF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estructura IF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Operadores_Binarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operadores Binarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Argumentos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Argumentos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Case/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Esructura CASE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/While_Until/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Esructura WHILE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/For/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Esructura FOR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Break/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Break y Continue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Scripts_refuerzo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades Scripts_refuerzo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/windows/021_Introducci%C3%B3nPwSh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/windows/comandos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comandos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/windows/Manejo%20resultados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manejo de Resultados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/windows/022_PowerShell_Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sintaxis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/windows/023_PowerShell_ControlFlujo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control de flujo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/windows/024_PowerShell_VectoresFunciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vectores y funciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD2.Administración procesos y Servicios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD2.Administración procesos y Servicios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InstaWindow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalación en Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InstaLinux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalación en Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../procesosLinux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestión de procesos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestión de Servicios
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestión de Servicios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unidades-objetivo-y-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unidades objetivo y servicios
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acciones
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejemplo-practico-paso-a-paso-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo práctico paso a paso: nginx
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otros-comandos-utiles-de-systemd-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Otros comandos útiles de systemd (Ubuntu)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../programaTareas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programación de Tareas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ContenedoresLXC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contenedores lxd/lxc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../actuSisOp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actualización del Sistema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../registroWindow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registro de Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD3.Servicios de Directorio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD3.Servicios de Directorio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD3/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción a LDAP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD3/docker-openldap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenLDAP en Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD3/pam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAM en Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD3/ServiciosAutenticacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Servicios de Autenticación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD3/actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD4.Integración de sistemas operativos en red
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD4.Integración de sistemas operativos en red
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD4/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD4/actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="gestion-de-los-servicios-y-demonios">Gestión de los servicios y demonios</h1>
+<p>Para que el sistema operativo realice su trabajo, en ocasiones es necesario que disponga de programas que se ejecutan en segundo plano gestionando un recurso. Estos programas, conocidos como servicios o demonios en el entorno GNU/Linux, se mantienen a la espera a que algún proceso solicite uno de los servicios que ofrece. Por ejemplo, el servicio de red se sitúa entre la NIC y el proceso que necesite salir a Internet. En la mayoría de ocasiones, estos programas se ejecutan durante la carga del sistema operativo y son fundamentales para la gestión de los recursos que ofrece el sistema operativo, ya sean hardware o software.</p>
+<p>Los sistemas operativos de Microsoft disponen de una herramienta gráfica para la gestión de los servicios. Se accede a ella en <span class="menu">Inicio </span> → <span class="menu">Herramientas administrativas</span> → <span class="menu">Servicios</span> o escribiendo la palabra servicio en el buscador.</p>
+<p><img alt="Gestion de Servicios" src="../img/1000000000000C57000009D4D3FC1741DD6CB86E.jpg" /></p>
+<p>Cada uno de estos servicios puede configurarse de cuatro formas diferentes:</p>
+<ul>
+<li><strong>Deshabilitado</strong>, no es posible iniciar el servicio a través de otro servicio</li>
+<li><strong>Manual</strong>, no se inicia con el sistema, debe ser arrancado de forma manual</li>
+<li><strong>Automático</strong>, se inicia durante el proceso de arranque del sistema.</li>
+<li><strong>Automático</strong> (inicio retrasado), se inicia después de que todos los servicios del sistema se hayan cargado en memoria principal.</li>
+</ul>
+<p>A través de esta herramienta será posible controlar el estado del servicio, el fichero ejecutable que lo inicia, sus dependencias si las tuviera o qué acciones hay que realizar si el servicio fallase durante su inicio.</p>
+<p>Además de este completo software, Microsoft Windows 10 Professional dispone de una utilidad para la gestión de los servicios de inicio retrasado, aquellos que se inician cuando todos los servicios del sistema han sido cargados en memoria principal. Estos servicios suelen estar asociados a software instalado con posterioridad al sistema y que ejecutan una tarea muy específica. A través de la pestaña Inicio de la herramienta Administrador de tareas se controlan este tipo de servicios, aunque también es posible realizar esta configuración desde la herramienta anterior.</p>
+<p><img alt="Alt text" src="../img/100000000000052400000624BF20C776F2C2F1C4.jpg" /></p>
+<p><img alt="Alt text" src="../img/10000000000008500000076CB16054195BFD3926.jpg" /></p>
+<p>En los sistemas operativos basados en <strong>GNU/Linux</strong> se dispone de varias herramientas basadas en CLI para realizar la administración de servicios, denominados demonios en terminología Unix. Cuando se configura un demonio en GNU/Linux se crean scripts para controlar su carga y descarga de memoria principal.</p>
+<p>Hay diferentes sistemas de arranque según la distribución (init System V, upstart, launchd en macOS), pero <strong>systemd</strong> es el que se está imponiendo en casi todas ellas. En systemd el concepto de nivel de ejecución existe solo por compatibilidad; hoy se trabaja con objetivos (targets) y servicios que se activan de forma declarativa. En Ubuntu también se usa systemd.</p>
+<h2 id="unidades-objetivo-y-servicios">Unidades objetivo y servicios</h2>
+<p>El componente básico de systemd es la unidad o unit. Existen varias: servicios, sockets, periféricos, objetivos, etc. Un <strong>objetivo</strong> es básicamente el punto de sincronización entre unidades en espera. De este modo, dispondrá, por ejemplo, de unidades objetivo correspondientes a cada nivel de ejecución, pero puede llamarlas como quieras.</p>
+<p>Las objetivos o los servicios que deben ser gestionados por el sistema durante el arranque están en <code>/etc/systemd/system</code>, en forma de enlaces simbólicos o copias. El catálogo de unidades proviene de <code>/lib/systemd/system</code>.</p>
+<p>Los servicios acaban con el sufijo <strong>.service</strong>. Vamos a ver el contenidos de estos ficheros:</p>
+<div class="highlight"><span class="filename">contenido de ficheros.service</span><pre><span></span><code>/etc/systemd/system$<span class="w"> </span>cat<span class="w"> </span>syslog.service
+<span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>System<span class="w"> </span>Logging<span class="w"> </span>Service
+<span class="nv">Requires</span><span class="o">=</span>syslog.socket
+<span class="nv">Documentation</span><span class="o">=</span>man:rsyslogd<span class="o">(</span><span class="m">8</span><span class="o">)</span>
+<span class="nv">Documentation</span><span class="o">=</span>https://www.rsyslog.com/doc/
+
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">Type</span><span class="o">=</span>notify
+<span class="nv">ExecStart</span><span class="o">=</span>/usr/sbin/rsyslogd<span class="w"> </span>-n<span class="w"> </span>-iNONE
+<span class="nv">StandardOutput</span><span class="o">=</span>null
+<span class="nv">Restart</span><span class="o">=</span>on-failure
+
+<span class="c1"># Increase the default a bit in order to allow many simultaneous</span>
+<span class="c1"># files to be monitored, we might need a lot of fds.</span>
+<span class="nv">LimitNOFILE</span><span class="o">=</span><span class="m">16384</span>
+
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
+<span class="nv">Alias</span><span class="o">=</span>syslog.service
+</code></pre></div>
+<p>Si nos fijamos en la linea que tiene de <strong>WantedBy</strong>. Sirve para indicar que este servicio es necesario para el objetivo <strong>multi-user.target</strong> (lo que correspondrá por ejemplo al nivel 3 del init System V)</p>
+<p>Ahora vamos a ver el fichero .target de un objetivo.</p>
+<div class="highlight"><span class="filename">Fichero .target</span><pre><span></span><code>cat<span class="w"> </span>poweroff.target
+<span class="c1">#  SPDX-License-Identifier: LGPL-2.1+</span>
+<span class="c1">#</span>
+<span class="c1">#  This file is part of systemd.</span>
+<span class="c1">#</span>
+<span class="c1">#  systemd is free software; you can redistribute it and/or modify it</span>
+<span class="c1">#  under the terms of the GNU Lesser General Public License as published by</span>
+<span class="c1">#  the Free Software Foundation; either version 2.1 of the License, or</span>
+<span class="c1">#  (at your option) any later version.</span>
+
+<span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>Power-Off
+<span class="nv">Documentation</span><span class="o">=</span>man:systemd.special<span class="o">(</span><span class="m">7</span><span class="o">)</span>
+<span class="nv">DefaultDependencies</span><span class="o">=</span>no
+<span class="nv">Requires</span><span class="o">=</span>systemd-poweroff.service
+<span class="nv">After</span><span class="o">=</span>systemd-poweroff.service
+<span class="nv">AllowIsolate</span><span class="o">=</span>yes
+<span class="nv">JobTimeoutSec</span><span class="o">=</span>30min
+<span class="nv">JobTimeoutAction</span><span class="o">=</span>poweroff-force
+
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">Alias</span><span class="o">=</span>ctrl-alt-del.target
+</code></pre></div>
+<p>Nos fijamos en <strong>Requires</strong> y <strong>After</strong>. En este objetivo requiere (Requires) de un servicio en concreto y su ejecución después de la unidad que pone (After).</p>
+<h2 id="acciones">Acciones</h2>
+<p>El comando <code>systemctl</code> permite controlar la ejecución de servicios.</p>
+<div class="highlight"><span class="filename">Ejemplo, listado de unidades</span><pre><span></span><code>systemctl
+<span class="w">  </span>UNIT<span class="w">                                                                                      </span>LOAD<span class="w">   </span>ACTIVE<span class="w">     </span>SUB<span class="w">       </span>JOB<span class="w">   </span>DESCRIPTION<span class="w">                    </span>&gt;
+<span class="w">  </span>proc-sys-fs-binfmt_misc.automount<span class="w">                                                         </span>loaded<span class="w"> </span>active<span class="w">     </span>running<span class="w">         </span>Arbitrary<span class="w"> </span>Executable<span class="w"> </span>File<span class="w"> </span>Forma&gt;
+<span class="w">  </span>sys-bus-pci-drivers-nvidia.device<span class="w">                                                         </span>loaded<span class="w"> </span>active<span class="w">     </span>plugged<span class="w">         </span>/sys/bus/pci/drivers/nvidia<span class="w">    </span>&gt;
+<span class="w">  </span>sys-devices-pci0000:00-0000:00:02.0-drm-card0-card0<span class="se">\x</span>2deDP<span class="se">\x</span>2d1-intel_backlight.device<span class="w">    </span>loaded<span class="w"> </span>active<span class="w">     </span>plugged<span class="w">         </span>/sys/devices/pci0000:00/0000:00&gt;
+<span class="w">  </span>sys-devices-pci0000:00-0000:00:14.0-usb1-1<span class="se">\x</span>2d14-1<span class="se">\x</span>2d14:1.0-bluetooth-hci0.device<span class="w">        </span>loaded<span class="w"> </span>active<span class="w">     </span>plugged<span class="w">         </span>/sys/devices/pci0000:00/0000:00&gt;
+<span class="w">  </span>sys-devices-pci0000:00-0000:00:14.3-net-wlp0s20f3.device
+</code></pre></div>
+<div class="highlight"><span class="filename">Ejemplo, acciones de systemctl</span><pre><span></span><code><span class="c1"># Parada y reinicio de unidades</span>
+systemctl<span class="w"> </span>stop<span class="w"> </span>cups.service
+systemctl<span class="w"> </span>start<span class="w"> </span>cups.service
+systemctl<span class="w"> </span>restart<span class="w"> </span>cups.service
+systemctl<span class="w"> </span>reload<span class="w"> </span>cups.service
+
+<span class="c1"># Consulta de estado con logs recientes</span>
+systemctl<span class="w"> </span>status<span class="w"> </span>cups.service<span class="w"> </span>--no-pager
+journalctl<span class="w"> </span>-u<span class="w"> </span>cups.service<span class="w"> </span>-n<span class="w"> </span><span class="m">20</span><span class="w"> </span>--no-pager
+</code></pre></div>
+<p>El siguiente comando indica cuáles son las unidades objetivo activas:</p>
+<div class="highlight"><span class="filename">Ejemplo, unidades target</span><pre><span></span><code>systemctl<span class="w"> </span>list-units<span class="w"> </span>--type<span class="o">=</span>target
+<span class="w">  </span>UNIT<span class="w">                    </span>LOAD<span class="w">   </span>ACTIVE<span class="w">   </span>SUB<span class="w">    </span>JOB<span class="w">   </span>DESCRIPTION
+<span class="w">  </span>basic.target<span class="w">            </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>Basic<span class="w"> </span>System
+<span class="w">  </span>bluetooth.target<span class="w">        </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>Bluetooth
+<span class="w">  </span>cryptsetup.target<span class="w">       </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>Local<span class="w"> </span>Encrypted<span class="w"> </span>Volumes
+<span class="w">  </span>getty-pre.target<span class="w">        </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>Login<span class="w"> </span>Prompts<span class="w"> </span><span class="o">(</span>Pre<span class="o">)</span>
+<span class="w">  </span>getty.target<span class="w">            </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>Login<span class="w"> </span>Prompts
+<span class="w">  </span>graphical.target<span class="w">        </span>loaded<span class="w"> </span>inactive<span class="w"> </span>dead<span class="w">   </span>start<span class="w"> </span>Graphical<span class="w"> </span>Interface
+<span class="w">  </span>local-fs-pre.target<span class="w">     </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>Local<span class="w"> </span>File<span class="w"> </span>Systems<span class="w"> </span><span class="o">(</span>Pre<span class="o">)</span>
+<span class="w">  </span>local-fs.target<span class="w">         </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>Local<span class="w"> </span>File<span class="w"> </span>Systems
+<span class="w">  </span>multi-user.target<span class="w">       </span>loaded<span class="w"> </span>inactive<span class="w"> </span>dead<span class="w">   </span>start<span class="w"> </span>Multi-User<span class="w"> </span>System
+<span class="w">  </span>network-online.target<span class="w">   </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>Network<span class="w"> </span>is<span class="w"> </span>Online
+<span class="w">  </span>network.target<span class="w">          </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>Network
+<span class="w">  </span>nss-lookup.target<span class="w">       </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>Host<span class="w"> </span>and<span class="w"> </span>Network<span class="w"> </span>Name<span class="w"> </span>Lookups
+<span class="w">  </span>nss-user-lookup.target<span class="w">  </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>User<span class="w"> </span>and<span class="w"> </span>Group<span class="w"> </span>Name<span class="w"> </span>Lookups
+<span class="w">  </span>paths.target<span class="w">            </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>Paths
+<span class="w">  </span>remote-fs.target<span class="w">        </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>Remote<span class="w"> </span>File<span class="w"> </span>Systems
+<span class="w">  </span>slices.target<span class="w">           </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>Slices
+<span class="w">  </span>snapd.mounts-pre.target<span class="w"> </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>Mounting<span class="w"> </span>snaps
+<span class="w">  </span>snapd.mounts.target<span class="w">     </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>Mounted<span class="w"> </span>snaps
+<span class="w">  </span>sockets.target<span class="w">          </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>Sockets
+<span class="w">  </span>sound.target<span class="w">            </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>Sound<span class="w"> </span>Card
+<span class="w">  </span>swap.target<span class="w">             </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>Swap
+<span class="w">  </span>sysinit.target<span class="w">          </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>System<span class="w"> </span>Initialization
+<span class="w">  </span>time-set.target<span class="w">         </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>System<span class="w"> </span>Time<span class="w"> </span>Set
+<span class="w">  </span>time-sync.target<span class="w">        </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>System<span class="w"> </span>Time<span class="w"> </span>Synchronized
+<span class="w">  </span>timers.target<span class="w">           </span>loaded<span class="w"> </span>active<span class="w">   </span>active<span class="w">       </span>Timers
+
+<span class="nv">LOAD</span><span class="w">   </span><span class="o">=</span><span class="w"> </span>Reflects<span class="w"> </span>whether<span class="w"> </span>the<span class="w"> </span>unit<span class="w"> </span>definition<span class="w"> </span>was<span class="w"> </span>properly<span class="w"> </span>loaded.
+<span class="nv">ACTIVE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>The<span class="w"> </span>high-level<span class="w"> </span>unit<span class="w"> </span>activation<span class="w"> </span>state,<span class="w"> </span>i.e.<span class="w"> </span>generalization<span class="w"> </span>of<span class="w"> </span>SUB.
+<span class="nv">SUB</span><span class="w">    </span><span class="o">=</span><span class="w"> </span>The<span class="w"> </span>low-level<span class="w"> </span>unit<span class="w"> </span>activation<span class="w"> </span>state,<span class="w"> </span>values<span class="w"> </span>depend<span class="w"> </span>on<span class="w"> </span>unit<span class="w"> </span>type.
+<span class="nv">JOB</span><span class="w">    </span><span class="o">=</span><span class="w"> </span>Pending<span class="w"> </span>job<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>unit.
+
+<span class="m">25</span><span class="w"> </span>loaded<span class="w"> </span>units<span class="w"> </span>listed.<span class="w"> </span>Pass<span class="w"> </span>--all<span class="w"> </span>to<span class="w"> </span>see<span class="w"> </span>loaded<span class="w"> </span>but<span class="w"> </span>inactive<span class="w"> </span>units,<span class="w"> </span>too.
+To<span class="w"> </span>show<span class="w"> </span>all<span class="w"> </span>installed<span class="w"> </span>unit<span class="w"> </span>files<span class="w"> </span>use<span class="w"> </span><span class="s1">&#39;systemctl list-unit-files&#39;</span>.
+</code></pre></div>
+<h2 id="ejemplo-practico-paso-a-paso-nginx">Ejemplo práctico paso a paso: nginx</h2>
+<ol>
+<li>Instala nginx desde repositorios:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>sudo apt update
+sudo apt install nginx
+</code></pre></div>
+<ol>
+<li>Comprueba estado y puerto:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>systemctl status nginx
+ss -tnlp | grep nginx
+</code></pre></div>
+<ol>
+<li>Deshabilita el arranque automático:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>sudo systemctl disable nginx
+</code></pre></div>
+<ol>
+<li>(Opcional) Override de servicio:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>sudo systemctl edit nginx
+</code></pre></div>
+<p>Añade en <code>/etc/systemd/system/nginx.service.d/override.conf</code>:</p>
+<div class="highlight"><pre><span></span><code>[Service]
+ExecStart=
+ExecStart=/usr/sbin/nginx -g &#39;daemon off;&#39; -c /etc/nginx/nginx.conf
+</code></pre></div>
+<ol>
+<li>Recarga y valida:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>sudo systemctl daemon-reload
+sudo systemctl stop nginx
+sudo systemctl status nginx
+</code></pre></div>
+<p>Este flujo cubre lo pedido en la Actividad de nginx en LXD (detener y evitar arranque).</p>
+<h2 id="otros-comandos-utiles-de-systemd-ubuntu">Otros comandos útiles de systemd (Ubuntu)</h2>
+<ul>
+<li>Mapear targets vs runlevels: <code>systemctl list-units --type=target</code> y <code>systemctl get-default</code>.</li>
+<li>Ver dependencias y tiempos de arranque: <code>systemd-analyze blame</code> y <code>systemd-analyze critical-chain</code>.</li>
+<li>Ver unidades y su estado habilitado/deshabilitado: <code>systemctl list-unit-files --type=service</code>.</li>
+<li>Ver contenido efectivo de una unidad y sus drop-ins: <code>systemctl cat nginx</code>.</li>
+<li>Crear overrides sin tocar el fichero original: <code>sudo systemctl edit nginx</code> genera <code>/etc/systemd/system/nginx.service.d/override.conf</code>.</li>
+<li>Forzar recarga de definiciones tras cambios: <code>sudo systemctl daemon-reload</code>.</li>
+<li>Logs: <code>journalctl -u nombre.service --since "-10m"</code> (añade <code>-f</code> para seguir en tiempo real). En Ubuntu el journal persiste si se habilita <code>/var/log/journal</code> (directorio creado y permisos correctos).</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../procesosLinux/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Gestión de procesos">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Gestión de procesos
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../programaTareas/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Programación de Tareas">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Programación de Tareas
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.path", "navigation.footer", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotate", "content.code.copy", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

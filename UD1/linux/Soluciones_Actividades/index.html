@@ -1,0 +1,2602 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://example.com/UD1/linux/Soluciones_Actividades/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Soluciones y explicaciones de las actividades de shell scripting - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+  
+  
+    
+      
+      
+    
+  
+  
+  <style>:root{--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M0%202.75C0%201.784.784%201%201.75%201h12.5c.966%200%201.75.784%201.75%201.75v10.5A1.75%201.75%200%200%201%2014.25%2015H1.75A1.75%201.75%200%200%201%200%2013.25Zm1.75-.25a.25.25%200%200%200-.25.25v10.5c0%20.138.112.25.25.25h12.5a.25.25%200%200%200%20.25-.25V2.75a.25.25%200%200%200-.25-.25ZM7.25%208a.75.75%200%200%201-.22.53l-2.25%202.25a.749.749%200%200%201-1.275-.326.75.75%200%200%201%20.215-.734L5.44%208%203.72%206.28a.749.749%200%200%201%20.326-1.275.75.75%200%200%201%20.734.215l2.25%202.25c.141.14.22.331.22.53m1.5%201.5h3a.75.75%200%200%201%200%201.5h-3a.75.75%200%200%201%200-1.5%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#soluciones-y-explicaciones-de-las-actividades-de-shell-scripting" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../.." title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Soluciones y explicaciones de las actividades de shell scripting
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD1-Shell Scripting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD1-Shell Scripting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creación de Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Aritmetica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aritmetica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Comparadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comparadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estructura IF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Operadores_Binarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operadores Binarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Argumentos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Argumentos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Case/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Esructura CASE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../While_Until/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Esructura WHILE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../For/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Esructura FOR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Break/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Break y Continue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Scripts_refuerzo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades Scripts_refuerzo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/021_Introducci%C3%B3nPwSh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/comandos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comandos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/Manejo%20resultados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manejo de Resultados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/022_PowerShell_Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sintaxis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/023_PowerShell_ControlFlujo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control de flujo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/024_PowerShell_VectoresFunciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vectores y funciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD2.Administración procesos y Servicios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD2.Administración procesos y Servicios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UD2/InstaWindow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalación en Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UD2/InstaLinux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalación en Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UD2/procesosLinux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestión de procesos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UD2/GestiServicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestión de Servicios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UD2/programaTareas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programación de Tareas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UD2/ContenedoresLXC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contenedores lxd/lxc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UD2/actuSisOp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actualización del Sistema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UD2/registroWindow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registro de Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UD2/Actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD3.Servicios de Directorio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD3.Servicios de Directorio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UD3/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción a LDAP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UD3/docker-openldap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenLDAP en Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UD3/pam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAM en Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UD3/ServiciosAutenticacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Servicios de Autenticación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UD3/actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD4.Integración de sistemas operativos en red
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD4.Integración de sistemas operativos en red
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UD4/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UD4/actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="soluciones-y-explicaciones-de-las-actividades-de-shell-scripting">Soluciones y explicaciones de las actividades de shell scripting</h1>
+<p>Este documento recopila una propuesta de solución para cada actividad incluida en <code>docs/UD1/linux/Actividades.md</code>. Los guiones se han revisado para que sean robustos, fáciles de mantener y compatibles con distribuciones GNU/Linux actuales. Cuando un comando requiere privilegios elevados se indica expresamente.</p>
+<h2 id="introduccion">Introducción</h2>
+<h3 id="actividad-1-configuracion-del-script-micomando">Actividad 1. Configuración del script <code>micomando</code></h3>
+<p>Creamos el directorio <code>~/bin</code>, colocamos el script y añadimos la ruta al <code>PATH</code> del usuario (por ejemplo en <code>~/.bashrc</code>).</p>
+<h4 id="script-micomando">Script: <code>micomando</code></h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Ejecución de micomando&quot;</span>
+</code></pre></div>
+<h4 id="pasos-recomendados">Pasos recomendados</h4>
+<ul>
+<li><code>mkdir -p "$HOME/bin"</code> y guardar el script como <code>$HOME/bin/micomando</code>.</li>
+<li>Dar permisos de ejecución: <code>chmod u+x "$HOME/bin/micomando"</code>.</li>
+<li>Añadir al final de <code>~/.bashrc</code>: <code>export PATH="$HOME/bin:$PATH"</code>.</li>
+<li>Recargar la configuración (<code>source ~/.bashrc</code>) o abrir una sesión nueva.</li>
+</ul>
+<h3 id="actividad-2-scripts-de-saludo">Actividad 2. Scripts de saludo</h3>
+<h4 id="script-script1_1sh">Script: <code>Script1_1.sh</code></h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Bienvenido, introduce tu nombre y apellidos: &quot;</span><span class="w"> </span>fullname
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="nv">$fullname</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No se ha introducido ningún nombre.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Que tengas un próspero día </span><span class="nv">$fullname</span><span class="s2">&quot;</span>
+</code></pre></div>
+<h4 id="script-script1_1_2sh">Script: <code>Script1_1_2.sh</code></h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Inserta un nombre: &quot;</span><span class="w"> </span>nombre
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Inserta un apellido: &quot;</span><span class="w"> </span>apellido
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="nv">$nombre</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>-z<span class="w"> </span><span class="nv">$apellido</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Nombre y apellido son obligatorios.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Bienvenido </span><span class="nv">$nombre</span><span class="s2">, tu apellido es </span><span class="nv">$apellido</span><span class="s2">&quot;</span>
+</code></pre></div>
+<h3 id="actividad-3-alta-de-usuarios-script1_2sh">Actividad 3. Alta de usuarios (<code>Script1_2.sh</code>)</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$EUID</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Este script debe ejecutarse como root.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Inserta un nombre de usuario: &quot;</span><span class="w"> </span>usuario
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Inserta una ruta de directorio home: &quot;</span><span class="w"> </span>ruta_home
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Elige un shell de comandos [/bin/bash]: &quot;</span><span class="w"> </span>shell
+<span class="nv">shell</span><span class="o">=</span><span class="si">${</span><span class="nv">shell</span><span class="k">:-</span><span class="p">/bin/bash</span><span class="si">}</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="nv">$usuario</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>-z<span class="w"> </span><span class="nv">$ruta_home</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;El usuario y la ruta home son obligatorios.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>useradd<span class="w"> </span>&gt;/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;useradd no está disponible en el sistema.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span>getent<span class="w"> </span>passwd<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$usuario</span><span class="s2">&quot;</span><span class="w"> </span>&gt;/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span>useradd<span class="w"> </span>-m<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ruta_home</span><span class="s2">&quot;</span><span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$shell</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$usuario</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="nv">resultado</span><span class="o">=</span><span class="nv">$?</span>
+<span class="k">else</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;El usuario </span><span class="nv">$usuario</span><span class="s2"> ya existe.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$resultado</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usuario creado correctamente.&quot;</span>
+<span class="k">else</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No se pudo crear el usuario (código </span><span class="nv">$resultado</span><span class="s2">).&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="nv">$resultado</span>
+<span class="k">fi</span>
+</code></pre></div>
+<h3 id="actividad-4-interpretacion-de-comandos">Actividad 4. Interpretación de comandos</h3>
+<p>Se interpretan las once instrucciones solicitadas asumiendo que existen ficheros <code>f1</code>, <code>f2</code> y <code>f3</code>. El ítem 2 se interpreta como <code>echo \*</code>, corrigiendo el pequeño error tipográfico del enunciado.</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Salida orientativa</th>
+<th>Explicación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>echo *</code></td>
+<td><code>f1 f2 f3</code></td>
+<td>Expande el comodín <code>*</code> a todos los ficheros del directorio actual.</td>
+</tr>
+<tr>
+<td><code>echo \*</code></td>
+<td><code>*</code></td>
+<td>El <code>\</code> evita la expansión del comodín.</td>
+</tr>
+<tr>
+<td><code>echo "*"</code></td>
+<td><code>*</code></td>
+<td>Las comillas dobles bloquean la expansión de comodines.</td>
+</tr>
+<tr>
+<td><code>echo '\*'</code></td>
+<td><code>\*</code></td>
+<td>Las comillas simples muestran el texto literal, incluido el <code>\</code>.</td>
+</tr>
+<tr>
+<td><code>edad=20</code></td>
+<td><em>(sin salida)</em></td>
+<td>Asigna el valor <code>20</code> a la variable <code>edad</code>.</td>
+</tr>
+<tr>
+<td><code>echo $edad</code></td>
+<td><code>20</code></td>
+<td>Expande la variable <code>edad</code>.</td>
+</tr>
+<tr>
+<td><code>echo \$edad</code></td>
+<td><code>$edad</code></td>
+<td>Escapa el símbolo <code>$</code> para mostrarlo tal cual.</td>
+</tr>
+<tr>
+<td><code>echo "$edad"</code></td>
+<td><code>20</code></td>
+<td>Las comillas dobles permiten la expansión de variables.</td>
+</tr>
+<tr>
+<td><code>echo '$edad'</code></td>
+<td><code>$edad</code></td>
+<td>Las comillas simples impiden la expansión.</td>
+</tr>
+<tr>
+<td><code>echo "Tú eres $(logname) y tienes -&gt; $edad años"</code></td>
+<td><code>Tú eres usuario y tienes -&gt; 20 años</code></td>
+<td>Sustituye <code>$(logname)</code> por el usuario que ejecuta el script.</td>
+</tr>
+<tr>
+<td><code>echo Tú eres $(logname) y tienes -&gt; $edad años</code></td>
+<td><code>Tú eres usuario y tienes -&gt; 20 años</code></td>
+<td>Igual que el anterior, sin comillas porque no existen espacios en variables.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="actividad-5-comparacion-de-cadenas">Actividad 5. Comparación de cadenas</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nv">s1</span><span class="o">=</span>si
+<span class="nv">s2</span><span class="o">=</span>no
+<span class="nv">vacia</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="nv">arch1</span><span class="o">=</span>informe.pdf
+
+<span class="o">[[</span><span class="w"> </span><span class="nv">$s1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">$s2</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;s1 y s2 son iguales&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;s1 y s2 son diferentes&quot;</span>
+<span class="o">[[</span><span class="w"> </span><span class="nv">$s1</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="nv">$s2</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;s1 y s2 son distintos&quot;</span>
+<span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="nv">$vacia</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;vacia está vacía&quot;</span>
+<span class="o">[[</span><span class="w"> </span>-n<span class="w"> </span><span class="nv">$vacia</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;vacia no está vacía&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;vacia sigue vacía&quot;</span>
+</code></pre></div>
+<h3 id="actividad-6-comparaciones-numericas">Actividad 6. Comparaciones numéricas</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nv">num1</span><span class="o">=</span><span class="m">2</span>
+<span class="nv">num2</span><span class="o">=</span><span class="m">100</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$num1</span><span class="s2">&quot;</span><span class="w"> </span>-gt<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$num2</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[ ]: num1 es mayor que num2&quot;</span>
+<span class="k">else</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[ ]: num1 NO es mayor que num2&quot;</span>
+<span class="k">fi</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>num1<span class="w"> </span>-gt<span class="w"> </span>num2<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[[ ]]: num1 es mayor que num2&quot;</span>
+<span class="k">else</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[[ ]]: num1 NO es mayor que num2&quot;</span>
+<span class="k">fi</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span>num1<span class="w"> </span>&gt;<span class="w"> </span>num2<span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;(( )): num1 es mayor que num2&quot;</span>
+<span class="k">else</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;(( )): num1 NO es mayor que num2&quot;</span>
+<span class="k">fi</span>
+</code></pre></div>
+<h3 id="actividad-7-evaluacion-de-permisos">Actividad 7. Evaluación de permisos</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nv">archivo</span><span class="o">=</span>arch
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-x<span class="w"> </span><span class="nv">$archivo</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Permiso x no indicado&quot;</span>
+<span class="k">fi</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-x<span class="w"> </span><span class="nv">$archivo</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>!<span class="w"> </span>-w<span class="w"> </span><span class="nv">$archivo</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Permisos wx no indicados&quot;</span>
+<span class="k">fi</span>
+</code></pre></div>
+<h2 id="estructura-if">Estructura IF</h2>
+<h3 id="actividad-1-script_if_1sh">Actividad 1. <code>Script_IF_1.sh</code></h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Introduce un número: &quot;</span><span class="w"> </span>numero
+
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$numero</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span>^-?<span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>+$<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Debes introducir un entero.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">((</span><span class="w"> </span>numero<span class="w"> </span>%<span class="w"> </span><span class="nv">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;El número </span><span class="nv">$numero</span><span class="s2"> es par.&quot;</span>
+<span class="k">else</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;El número </span><span class="nv">$numero</span><span class="s2"> es impar.&quot;</span>
+<span class="k">fi</span>
+</code></pre></div>
+<h3 id="actividad-2-script_if_2sh">Actividad 2. <code>Script_IF_2.sh</code></h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Introduce el primer número: &quot;</span><span class="w"> </span>n1
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Introduce el segundo número: &quot;</span><span class="w"> </span>n2
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Introduce la operación (+, -, *, /): &quot;</span><span class="w"> </span>operacion
+
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$n1</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span>^-?<span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">(</span><span class="se">\.</span><span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">)</span>?$<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">$n2</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span>^-?<span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">(</span><span class="se">\.</span><span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">)</span>?$<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Los valores deben ser numéricos.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="k">case</span><span class="w"> </span><span class="nv">$operacion</span><span class="w"> </span><span class="k">in</span>
+<span class="w">  </span>+<span class="p">|</span>-<span class="p">|</span><span class="se">\*</span><span class="p">|</span>/<span class="o">)</span>
+<span class="w">    </span><span class="nv">resultado</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$n1</span><span class="s2"> </span><span class="nv">$operacion</span><span class="s2"> </span><span class="nv">$n2</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bc<span class="w"> </span>-l<span class="k">)</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Resultado: </span><span class="nv">$resultado</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="p">;;</span>
+<span class="w">  </span>*<span class="o">)</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Operación no soportada.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="w">    </span><span class="p">;;</span>
+<span class="k">esac</span>
+</code></pre></div>
+<h3 id="actividad-3-script_if_3sh">Actividad 3. <code>Script_IF_3.sh</code></h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Introduce el primer número: &quot;</span><span class="w"> </span>n1
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Introduce el segundo número: &quot;</span><span class="w"> </span>n2
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Introduce la operación (+, -, *, /): &quot;</span><span class="w"> </span>operacion
+
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$n1</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span>^-?<span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">(</span><span class="se">\.</span><span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">)</span>?$<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">$n2</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span>^-?<span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">(</span><span class="se">\.</span><span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>+<span class="o">)</span>?$<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Los valores deben ser numéricos.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="k">case</span><span class="w"> </span><span class="nv">$operacion</span><span class="w"> </span><span class="k">in</span>
+<span class="w">  </span>+<span class="p">|</span>-<span class="p">|</span><span class="se">\*</span><span class="p">|</span>/<span class="o">)</span>
+<span class="w">    </span><span class="nv">resultado</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$n1</span><span class="s2"> </span><span class="nv">$operacion</span><span class="s2"> </span><span class="nv">$n2</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bc<span class="w"> </span>-l<span class="k">)</span>
+<span class="w">    </span><span class="p">;;</span>
+<span class="w">  </span>*<span class="o">)</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Operación no soportada.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="w">    </span><span class="p">;;</span>
+<span class="k">esac</span>
+
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;¿Quieres decimales (s/n)? &quot;</span><span class="w"> </span>decimales
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$decimales</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;s&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$decimales</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;S&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Resultado: </span><span class="nv">$resultado</span><span class="s2">&quot;</span>
+<span class="k">elif</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$decimales</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;n&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">$decimales</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;N&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;Resultado: %.0f\n&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$resultado</span><span class="s2">&quot;</span>
+<span class="k">else</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No has seleccionado ninguna opción.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+</code></pre></div>
+<h3 id="actividad-4-script_if_4sh">Actividad 4. <code>Script_IF_4.sh</code></h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Introduce una IP: &quot;</span><span class="w"> </span>ip
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="nv">$ip</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">$ip</span><span class="o">=</span>~<span class="o">[</span><span class="m">0</span>-9<span class="o">]{</span><span class="m">1</span>,3<span class="o">}</span><span class="se">\.</span><span class="o">){</span><span class="m">3</span><span class="o">}[</span><span class="m">0</span>-9<span class="o">]{</span><span class="m">1</span>,3<span class="o">}</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Debes introducir una dirección IP o un dominio.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Selecciona una opción:&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1. ping&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;2. traceroute&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;3. whois&quot;</span>
+
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Opción: &quot;</span><span class="w"> </span>opcion
+
+<span class="k">case</span><span class="w"> </span><span class="nv">$opcion</span><span class="w"> </span><span class="k">in</span>
+<span class="w">  </span><span class="m">1</span><span class="o">)</span>
+<span class="w">    </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>ping<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;ping no está instalado.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span><span class="p">;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
+<span class="w">    </span>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ip</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="p">;;</span>
+<span class="w">  </span><span class="m">2</span><span class="o">)</span>
+<span class="w">    </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>traceroute<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;traceroute no está instalado.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span><span class="p">;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
+<span class="w">    </span>traceroute<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ip</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="p">;;</span>
+<span class="w">  </span><span class="m">3</span><span class="o">)</span>
+<span class="w">    </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>whois<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;whois no está instalado.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span><span class="p">;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
+<span class="w">    </span>whois<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ip</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="p">;;</span>
+<span class="w">  </span>*<span class="o">)</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No has seleccionado ninguna opción válida.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="w">    </span><span class="p">;;</span>
+<span class="k">esac</span>
+</code></pre></div>
+<h3 id="actividad-5-script_if_5sh">Actividad 5. <code>Script_IF_5.sh</code></h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Introduce una ruta absoluta: &quot;</span><span class="w"> </span>ruta
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="nv">$ruta</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">$ruta</span><span class="o">=</span>~<span class="w"> </span>^<span class="se">\/</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Debes introducir una ruta.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Información sobre </span><span class="nv">$ruta</span><span class="s2">&quot;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$ruta</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1. Es un directorio.&quot;</span>
+<span class="k">elif</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span><span class="nv">$ruta</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1. Es un fichero.&quot;</span>
+<span class="w">  </span><span class="o">[[</span><span class="w"> </span>-r<span class="w"> </span><span class="nv">$ruta</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;2. Tiene permisos de lectura.&quot;</span>
+<span class="w">  </span><span class="o">[[</span><span class="w"> </span>-w<span class="w"> </span><span class="nv">$ruta</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;3. Tiene permisos de escritura.&quot;</span>
+<span class="w">  </span><span class="o">[[</span><span class="w"> </span>-x<span class="w"> </span><span class="nv">$ruta</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;4. Tiene permisos de ejecución.&quot;</span>
+<span class="k">else</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1. No existe.&quot;</span>
+<span class="k">fi</span>
+</code></pre></div>
+<h2 id="argumentos">Argumentos</h2>
+<h3 id="actividad-1-informacion-de-fichero-scriptargs_2sh">Actividad 1. Información de fichero (<code>scriptArgs_2.sh</code>)</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;ERROR NÚMERO DE ARGUMENTOS INCORRECTO&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nv">archivo</span><span class="o">=</span><span class="nv">$1</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="nv">$archivo</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;EL ARGUMENTO DEBE SER UN FICHERO&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nv">propietario</span><span class="o">=</span><span class="k">$(</span>stat<span class="w"> </span>-c<span class="w"> </span>%U<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$archivo</span><span class="s2">&quot;</span><span class="k">)</span>
+<span class="nv">permisos</span><span class="o">=</span><span class="k">$(</span>stat<span class="w"> </span>-c<span class="w"> </span>%A<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$archivo</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-c<span class="w"> </span><span class="m">8</span>-10<span class="k">)</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;El propietario de </span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$archivo</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2"> es </span><span class="nv">$propietario</span><span class="s2"> y los permisos para el resto son </span><span class="nv">$permisos</span><span class="s2">&quot;</span>
+</code></pre></div>
+<h3 id="actividad-2-datos-de-usuario-scriptargs_3sh">Actividad 2. Datos de usuario (<code>scriptArgs_3.sh</code>)</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;ERROR, NÚMERO DE ARGUMENTOS INCORRECTOS&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nv">usuario</span><span class="o">=</span><span class="nv">$1</span>
+
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span>getent<span class="w"> </span>passwd<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$usuario</span><span class="s2">&quot;</span><span class="w"> </span>&gt;/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;El usuario </span><span class="nv">$usuario</span><span class="s2"> no existe.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nv">uid</span><span class="o">=</span><span class="k">$(</span>getent<span class="w"> </span>passwd<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$usuario</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d:<span class="w"> </span>-f3<span class="k">)</span>
+<span class="nv">shell</span><span class="o">=</span><span class="k">$(</span>getent<span class="w"> </span>passwd<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$usuario</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d:<span class="w"> </span>-f7<span class="k">)</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;El uid de </span><span class="nv">$usuario</span><span class="s2"> es </span><span class="nv">$uid</span><span class="s2"> y tiene el shell </span><span class="nv">$shell</span><span class="s2">&quot;</span>
+</code></pre></div>
+<h3 id="actividad-3-gestion-de-blacklist-blacklistsh">Actividad 3. Gestión de <code>blacklist</code> (<code>blacklist.sh</code>)</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nv">lista</span><span class="o">=</span><span class="s2">&quot;blacklist.txt&quot;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Debes pasar un nombre de usuario como argumento&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nv">usuario</span><span class="o">=</span><span class="nv">$1</span>
+
+touch<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$lista</span><span class="s2">&quot;</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Seleccione una opción&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1. Agregar usuario a blacklist&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;2. Eliminar usuario de blacklist&quot;</span>
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Opción: &quot;</span><span class="w"> </span>opcion
+
+<span class="k">case</span><span class="w"> </span><span class="nv">$opcion</span><span class="w"> </span><span class="k">in</span>
+<span class="w">  </span><span class="m">1</span><span class="o">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span>grep<span class="w"> </span>-qx<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$usuario</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$lista</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usuario ya bloqueado con anterioridad&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">      </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="w">    </span><span class="k">fi</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$usuario</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$lista</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span>id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$usuario</span><span class="s2">&quot;</span><span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span>usermod<span class="w"> </span>-L<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$usuario</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="k">fi</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usuario </span><span class="nv">$usuario</span><span class="s2"> bloqueado&quot;</span>
+<span class="w">    </span><span class="p">;;</span>
+<span class="w">  </span><span class="m">2</span><span class="o">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span>!<span class="w"> </span>grep<span class="w"> </span>-qx<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$usuario</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$lista</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;El usuario no estaba bloqueado.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">      </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="w">    </span><span class="k">fi</span>
+<span class="w">    </span>grep<span class="w"> </span>-vx<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$usuario</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$lista</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">lista</span><span class="si">}</span><span class="s2">.tmp&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mv<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">lista</span><span class="si">}</span><span class="s2">.tmp&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$lista</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span>id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$usuario</span><span class="s2">&quot;</span><span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span>usermod<span class="w"> </span>-U<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$usuario</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="k">fi</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usuario </span><span class="nv">$usuario</span><span class="s2"> desbloqueado&quot;</span>
+<span class="w">    </span><span class="p">;;</span>
+<span class="w">  </span>*<span class="o">)</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Opción no válida.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="w">    </span><span class="p">;;</span>
+<span class="k">esac</span>
+</code></pre></div>
+<h2 id="case-y-while">Case y While</h2>
+<h3 id="actividad-1-menu-de-red-menu_redsh">Actividad 1. Menú de red (<code>menu_red.sh</code>)</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>!<span class="w"> </span><span class="nv">$ip</span><span class="o">=</span>~<span class="o">[</span><span class="m">0</span>-9<span class="o">]{</span><span class="m">1</span>,3<span class="o">}</span><span class="se">\.</span><span class="o">){</span><span class="m">3</span><span class="o">}[</span><span class="m">0</span>-9<span class="o">]{</span><span class="m">1</span>,3<span class="o">}</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Debes indicar una IP o dominio como argumento.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nv">ip</span><span class="o">=</span><span class="nv">$1</span>
+
+<span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>cat<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">Seleccione una opción:</span>
+<span class="s">1. ping</span>
+<span class="s">2. tracepath</span>
+<span class="s">3. nslookup</span>
+<span class="s">4. whois</span>
+<span class="s">5. salir</span>
+<span class="s">EOF</span>
+
+<span class="w">  </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Opción: &quot;</span><span class="w"> </span>opcion
+
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nv">$opcion</span><span class="w"> </span><span class="k">in</span>
+<span class="w">    </span><span class="m">1</span><span class="o">)</span>
+<span class="w">      </span>ping<span class="w"> </span>-c<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ip</span><span class="s2">&quot;</span>
+<span class="w">      </span><span class="p">;;</span>
+<span class="w">    </span><span class="m">2</span><span class="o">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>tracepath<span class="w"> </span>&gt;/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;tracepath no está disponible.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">        </span><span class="k">continue</span>
+<span class="w">      </span><span class="k">fi</span>
+<span class="w">      </span>tracepath<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ip</span><span class="s2">&quot;</span>
+<span class="w">      </span><span class="p">;;</span>
+<span class="w">    </span><span class="m">3</span><span class="o">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>nslookup<span class="w"> </span>&gt;/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;nslookup no está disponible.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">        </span><span class="k">continue</span>
+<span class="w">      </span><span class="k">fi</span>
+<span class="w">      </span>nslookup<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ip</span><span class="s2">&quot;</span>
+<span class="w">      </span><span class="p">;;</span>
+<span class="w">    </span><span class="m">4</span><span class="o">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>whois<span class="w"> </span>&gt;/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;whois no está disponible.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">        </span><span class="k">continue</span>
+<span class="w">      </span><span class="k">fi</span>
+<span class="w">      </span>whois<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ip</span><span class="s2">&quot;</span>
+<span class="w">      </span><span class="p">;;</span>
+<span class="w">    </span><span class="m">5</span><span class="o">)</span>
+<span class="w">      </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Fin del programa.&quot;</span>
+<span class="w">      </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+<span class="w">      </span><span class="p">;;</span>
+<span class="w">    </span>*<span class="o">)</span>
+<span class="w">      </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;OPCIÓN DESCONOCIDA&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">      </span><span class="p">;;</span>
+<span class="w">  </span><span class="k">esac</span>
+<span class="k">done</span>
+</code></pre></div>
+<h3 id="actividad-2-validacion-con-usuarioslog-loginsh">Actividad 2. Validación con <code>usuarios.log</code> (<code>login.sh</code>)</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nv">max_intentos</span><span class="o">=</span><span class="m">3</span>
+<span class="nv">intentos</span><span class="o">=</span><span class="m">0</span>
+<span class="nv">archivo</span><span class="o">=</span><span class="s2">&quot;usuarios.log&quot;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="nv">$archivo</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No existe el fichero </span><span class="nv">$archivo</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="k">while</span><span class="w"> </span><span class="o">((</span><span class="w"> </span>intentos<span class="w"> </span>&lt;<span class="w"> </span>max_intentos<span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Usuario: &quot;</span><span class="w"> </span>usuario
+<span class="w">  </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-s<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Contraseña: &quot;</span><span class="w"> </span>contrasena
+<span class="w">  </span><span class="nb">echo</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="nv">$usuario</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>-z<span class="w"> </span><span class="nv">$contrasena</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usuario y contraseña son obligatorios.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">    </span><span class="o">((</span>intentos++<span class="o">))</span>
+<span class="w">    </span><span class="k">continue</span>
+<span class="w">  </span><span class="k">fi</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span>grep<span class="w"> </span>-qxF<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$usuario</span><span class="s2">&quot;</span><span class="s1">$&#39;\t&#39;</span><span class="s2">&quot;</span><span class="nv">$contrasena</span><span class="s2">&#39; &quot;</span><span class="nv">$archivo</span><span class="s2">&quot; &gt;/dev/null; then</span>
+<span class="s2">    echo &quot;</span>Bienvenido<span class="w"> </span><span class="nv">$usuario</span><span class="s2">&quot;</span>
+<span class="s2">    exit 0</span>
+<span class="s2">  else</span>
+<span class="s2">    echo &quot;</span>Credenciales<span class="w"> </span>incorrectas.<span class="s2">&quot;</span>
+<span class="s2">    ((intentos++))</span>
+<span class="s2">  fi</span>
+<span class="s2">done</span>
+
+<span class="s2">echo &quot;</span>Usuario<span class="w"> </span>Incorrecto<span class="s2">&quot;</span>
+<span class="s2">exit 1</span>
+</code></pre></div>
+<h3 id="actividad-3-menu-crearusuariossh">Actividad 3. Menú <code>CrearUsuarios.sh</code></h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nv">archivo</span><span class="o">=</span><span class="s2">&quot;cuentas.log&quot;</span>
+touch<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$archivo</span><span class="s2">&quot;</span>
+
+<span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>cat<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">a. Log in</span>
+<span class="s">b. Registrarse</span>
+<span class="s">c. Salir</span>
+<span class="s">EOF</span>
+
+<span class="w">  </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Selecciona una opción: &quot;</span><span class="w"> </span>opcion
+
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nv">$opcion</span><span class="w"> </span><span class="k">in</span>
+<span class="w">    </span>a<span class="p">|</span>A<span class="o">)</span>
+<span class="w">      </span><span class="nv">intentos</span><span class="o">=</span><span class="m">0</span>
+<span class="w">      </span><span class="k">while</span><span class="w"> </span><span class="o">((</span><span class="w"> </span>intentos<span class="w"> </span>&lt;<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">        </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Usuario: &quot;</span><span class="w"> </span>usuario
+<span class="w">        </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-s<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Contraseña: &quot;</span><span class="w"> </span>contrasena
+<span class="w">        </span><span class="nb">echo</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span>grep<span class="w"> </span>-qxF<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$usuario</span><span class="s2">&quot;</span><span class="s1">$&#39;\t&#39;</span><span class="s2">&quot;</span><span class="nv">$contrasena</span><span class="s2">&#39; &quot;</span><span class="nv">$archivo</span><span class="s2">&quot; &gt;/dev/null; then</span>
+<span class="s2">          echo &quot;</span>Bienvenido<span class="w"> </span><span class="nv">$usuario</span><span class="s2">&quot;</span>
+<span class="s2">          exit 0</span>
+<span class="s2">        else</span>
+<span class="s2">          echo &quot;</span>Login<span class="w"> </span>incorrecto.<span class="s2">&quot;</span>
+<span class="s2">          ((intentos++))</span>
+<span class="s2">        fi</span>
+<span class="s2">      done</span>
+<span class="s2">      echo &quot;</span>Se<span class="w"> </span>superó<span class="w"> </span>el<span class="w"> </span>número<span class="w"> </span>máximo<span class="w"> </span>de<span class="w"> </span>intentos.<span class="s2">&quot;</span>
+<span class="s2">      ;;</span>
+<span class="s2">    b|B)</span>
+<span class="s2">      read -r -p &quot;</span>Nuevo<span class="w"> </span>usuario:<span class="w"> </span><span class="s2">&quot; nuevo</span>
+<span class="s2">      read -r -s -p &quot;</span>Contraseña:<span class="w"> </span><span class="s2">&quot; pass1</span>
+<span class="s2">      echo</span>
+<span class="s2">      read -r -s -p &quot;</span>Repite<span class="w"> </span>la<span class="w"> </span>contraseña:<span class="w"> </span><span class="s2">&quot; pass2</span>
+<span class="s2">      echo</span>
+
+<span class="s2">      if [[ </span><span class="nv">$pass1</span><span class="s2"> != </span><span class="nv">$pass2</span><span class="s2"> ]]; then</span>
+<span class="s2">        echo &quot;</span>Contraseñas<span class="w"> </span>no<span class="w"> </span>coinciden.<span class="s2">&quot;</span>
+<span class="s2">        continue</span>
+<span class="s2">      fi</span>
+
+<span class="s2">      if grep -x +&quot;</span><span class="nv">$nuevo</span><span class="s2">&quot; &quot;</span><span class="nv">$archivo</span><span class="s2">&quot; &gt;/dev/null; then</span>
+<span class="s2">        echo &quot;</span>El<span class="w"> </span>usuario<span class="w"> </span>ya<span class="w"> </span>existe.<span class="s2">&quot;</span>
+<span class="s2">        continue</span>
+<span class="s2">      fi</span>
+
+<span class="s2">      echo &quot;</span><span class="nv">$nuevo</span><span class="w"> </span><span class="nv">$pass1</span><span class="s2">&quot; &gt;&gt; &quot;</span><span class="nv">$archivo</span><span class="s2">&quot;</span>
+<span class="s2">      echo &quot;</span>Usuario<span class="w"> </span>registrado<span class="w"> </span>correctamente.<span class="s2">&quot;</span>
+<span class="s2">      ;;</span>
+<span class="s2">    c|C)</span>
+<span class="s2">      echo &quot;</span>Saliendo...<span class="s2">&quot;</span>
+<span class="s2">      exit 0</span>
+<span class="s2">      ;;</span>
+<span class="s2">    *)</span>
+<span class="s2">      echo &quot;</span>OPCIÓN<span class="w"> </span>INCORRECTA<span class="s2">&quot;</span>
+<span class="s2">      ;;</span>
+<span class="s2">  esac</span>
+<span class="s2">done</span>
+</code></pre></div>
+<h2 id="for">For</h2>
+<h3 id="actividad-1-traza-de-ejemplocontinuesh">Actividad 1. Traza de <code>ejemploContinue.sh</code></h3>
+<p>Ejecución ejemplo: <code>bash ./ejemploContinue.sh 3</code></p>
+<table>
+<thead>
+<tr>
+<th>Iteración</th>
+<th>Valor de <code>i</code></th>
+<th><code>resto</code> (<code>i % 3</code>)</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td><code>continue</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td><code>continue</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+<td>Se muestra <code>3</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>1</td>
+<td><code>continue</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>5</td>
+<td>2</td>
+<td><code>continue</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>6</td>
+<td>0</td>
+<td>Se muestra <code>6</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td>7</td>
+<td>1</td>
+<td><code>continue</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td>8</td>
+<td>2</td>
+<td><code>continue</code></td>
+</tr>
+<tr>
+<td>9</td>
+<td>9</td>
+<td>0</td>
+<td>Se muestra <code>9</code></td>
+</tr>
+<tr>
+<td>10</td>
+<td>10</td>
+<td>1</td>
+<td><code>continue</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="actividad-2-expiracion-de-contrasenas-expirash">Actividad 2. Expiración de contraseñas (<code>expira.sh</code>)</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="nv">IFS</span><span class="o">=</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Debes indicar el número de días como argumento.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nv">dias</span><span class="o">=</span><span class="nv">$1</span>
+<span class="nv">archivo</span><span class="o">=</span><span class="s2">&quot;expira.log&quot;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="nv">$archivo</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No existe el fichero </span><span class="nv">$archivo</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="k">while</span><span class="w">  </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>usuario<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="nv">$usuario</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">continue</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span>id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$usuario</span><span class="s2">&quot;</span><span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>chage<span class="w"> </span>-M<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$dias</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$usuario</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Actualizada la caducidad de </span><span class="nv">$usuario</span><span class="s2"> a </span><span class="nv">$dias</span><span class="s2"> días.&quot;</span>
+<span class="w">  </span><span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;El usuario </span><span class="nv">$usuario</span><span class="s2"> no existe.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="k">fi</span>
+<span class="k">done</span><span class="w"> </span>&lt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$archivo</span><span class="s2">&quot;</span>
+</code></pre></div>
+<h3 id="actividad-3-tabla-con-asteriscos-tablash">Actividad 3. Tabla con asteriscos (<code>tabla.sh</code>)</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Uso: </span><span class="nv">$0</span><span class="s2"> filas columnas&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nv">filas</span><span class="o">=</span><span class="nv">$1</span>
+<span class="nv">columnas</span><span class="o">=</span><span class="nv">$2</span>
+
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$filas</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span>^<span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>+$<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">$columnas</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span>^<span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>+$<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Ambos argumentos deben ser enteros positivos.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="k">for</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">i</span><span class="o">=</span><span class="m">1</span><span class="p">;</span><span class="w"> </span>i&lt;<span class="o">=</span>filas<span class="p">;</span><span class="w"> </span>i++<span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nv">linea</span><span class="o">=</span><span class="s2">&quot;*&quot;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">j</span><span class="o">=</span><span class="m">2</span><span class="p">;</span><span class="w"> </span>j&lt;<span class="o">=</span>columnas<span class="p">;</span><span class="w"> </span>j++<span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="nv">linea</span><span class="o">+=</span><span class="s2">&quot; *&quot;</span>
+<span class="w">  </span><span class="k">done</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$linea</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
+<h2 id="for-in">For-in</h2>
+<h3 id="actividad-1-permisos-de-ejecucion-permisos_gxsh">Actividad 1. Permisos de ejecución (<code>permisos_gx.sh</code>)</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Uso: </span><span class="nv">$0</span><span class="s2"> directorio&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nv">directorio</span><span class="o">=</span><span class="nv">$1</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-d<span class="w"> </span><span class="nv">$directorio</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;El argumento debe ser un directorio.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="k">for</span><span class="w"> </span>fichero<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$directorio</span><span class="s2">&quot;</span>/*<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span><span class="nv">$fichero</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="k">continue</span>
+<span class="w">  </span>chmod<span class="w"> </span>g+x<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$fichero</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+
+ls<span class="w"> </span>-l<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$directorio</span><span class="s2">&quot;</span>
+</code></pre></div>
+<h3 id="actividad-2-mover-o-copiar-por-extension-gestiona_extsh">Actividad 2. Mover o copiar por extensión (<code>gestiona_ext.sh</code>)</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Uso: </span><span class="nv">$0</span><span class="s2"> extension directorio_origen directorio_destino&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nv">extension</span><span class="o">=</span><span class="nv">$1</span>
+<span class="nv">origen</span><span class="o">=</span><span class="nv">$2</span>
+<span class="nv">destino</span><span class="o">=</span><span class="nv">$3</span>
+
+<span class="c1"># Verificar que los directorios existen</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$origen</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$destino</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Los argumentos segundo y tercero deben ser directorios.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+
+<span class="c1"># Buscar archivos con find y almacenar resultado</span>
+<span class="nv">archivos</span><span class="o">=</span><span class="k">$(</span>find<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$origen</span><span class="s2">&quot;</span><span class="w"> </span>-maxdepth<span class="w"> </span><span class="m">1</span><span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.</span><span class="nv">$extension</span><span class="s2">&quot;</span><span class="w"> </span>-type<span class="w"> </span>f<span class="k">)</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$archivos</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No se encontraron ficheros con extensión .</span><span class="nv">$extension</span><span class="s2"> en </span><span class="nv">$origen</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+<span class="k">fi</span>
+
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;¿Deseas mover o copiar? [mover/copiar]: &quot;</span><span class="w"> </span>accion
+
+<span class="k">case</span><span class="w"> </span><span class="nv">$accion</span><span class="w"> </span><span class="k">in</span>
+<span class="w">    </span>mover<span class="o">)</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span>archivo<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$archivos</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">            </span>mv<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$archivo</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$destino</span><span class="s2">/&quot;</span>
+<span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Movido: </span><span class="nv">$archivo</span><span class="s2">&quot;</span>
+<span class="w">        </span><span class="k">done</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Ficheros movidos correctamente.&quot;</span>
+<span class="w">        </span><span class="p">;;</span>
+<span class="w">    </span>copiar<span class="o">)</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span>archivo<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$archivos</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">            </span>cp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$archivo</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$destino</span><span class="s2">/&quot;</span>
+<span class="w">            </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Copiado: </span><span class="nv">$archivo</span><span class="s2">&quot;</span>
+<span class="w">        </span><span class="k">done</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Ficheros copiados correctamente.&quot;</span>
+<span class="w">        </span><span class="p">;;</span>
+<span class="w">    </span>*<span class="o">)</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Acción no válida.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">        </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="w">        </span><span class="p">;;</span>
+<span class="k">esac</span>
+</code></pre></div>
+<h3 id="actividad-3-alerta-de-capacidad-alerta_equipossh">Actividad 3. Alerta de capacidad (<code>alerta_equipos.sh</code>)</h3>
+<p>```bash Title="con while"</p>
+<h1 id="binbash">!/bin/bash</h1>
+<p>IFS=
+if [[ $# -ne 1 ]]; then
+  echo "Uso: $0 capacidad_minima" &gt;&amp;2
+  exit 1
+fi
+if ! [[ <span class="arithmatex">\(minimo =~ ^[0-9]+\)</span> ]]; then
+  echo "ERROR: La capacidad mínima debe ser un número entero positivo." &gt;&amp;2
+  exit 1
+fi</p>
+<p>minimo=$1
+archivo="equipos.txt"</p>
+<p>if [[ ! -f $archivo ]]; then
+  echo "No existe el fichero $archivo" &gt;&amp;2
+  exit 1
+fi</p>
+<p>IFS=</p>
+<p>while read -r ip nombre disco ram; do
+  [[ -z $ip ]] &amp;&amp; continue
+  if (( disco &lt; minimo )); then
+    echo "ALERTA: <span class="arithmatex">\(nombre (\)</span>ip) tiene ${disco}GB libres (&lt; <span class="arithmatex">\({minimo}GB)."
+  fi
+done &lt; "\)</span>archivo"</p>
+<div class="highlight"><pre><span></span><code>```bash title=&quot;con For&quot;
+
+#!/bin/bash
+
+if [[ $# -ne 1 ]]; then
+  echo &quot;Uso: $0 capacidad_minima&quot; &gt;&amp;2
+  exit 1
+fi
+
+minimo=$1
+if ! [[ $minimo =~ ^[0-9]+$ ]]; then
+  echo &quot;ERROR: La capacidad mínima debe ser un número entero positivo.&quot; &gt;&amp;2
+  exit 1
+fi
+
+archivo=&quot;equipos.txt&quot;
+
+if [[ ! -f $archivo ]]; then
+  echo &quot;No existe el fichero $archivo&quot; &gt;&amp;2
+  exit 1
+fi
+
+# Iteramos con for sobre las líneas del fichero
+# Usamos IFS=$&#39;\n&#39; y desactivamos globbing para que cada elemento sea una línea completa
+OLDIFS=$IFS
+IFS=$&#39;\n&#39;
+for linea in $(cat &quot;$archivo&quot;); do
+  # Ignorar líneas vacías y comentarios
+  [[ -z &quot;${linea// }&quot; ]] &amp;&amp; continue
+  [[ $linea =~ ^# ]] &amp;&amp; continue
+
+  # Extraemos: IP;NOMBRE;DISCO;RAM
+  ip=$(echo &quot;$linea&quot; | cut -d&#39;;&#39; -f1)
+  nombre=$(echo &quot;$linea&quot; | cut -d&#39;;&#39; -f2)
+  disco_num=$(echo &quot;$linea&quot; | cut -d&#39;;&#39; -f3)
+  ram_num=$(echo &quot;$linea&quot; | cut -d&#39;;&#39; -f4)
+
+
+
+  echo &quot;IP: $ip  Nombre: $nombre  Disco: ${disco_num}GB  RAM: ${ram_num}GB&quot;
+
+  if (( disco_num &lt; minimo )); then
+    echo &quot;ALERTA: $nombre ($ip) tiene ${disco_num}GB libres (&lt; ${minimo}GB).&quot;
+  fi
+done
+IFS=$OLDIFS
+</code></pre></div>
+<h3 id="actividad-4-creacion-remota-de-usuarios-creausuariossh">Actividad 4. Creación remota de usuarios (<code>creaUsuarios.sh</code>)</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nv">hosts</span><span class="o">=</span><span class="s2">&quot;hosts.txt&quot;</span>
+<span class="nv">usuarios</span><span class="o">=</span><span class="s2">&quot;usuarios.txt&quot;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="nv">$hosts</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="nv">$usuarios</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Deben existir los ficheros hosts.txt y usuarios.txt&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-s<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;Introduce la contraseña de root para los hosts remotos: &quot;</span><span class="w"> </span>password
+<span class="nb">echo</span>
+
+<span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>host<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="nv">$host</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">continue</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>usuario<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="nv">$usuario</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">continue</span>
+<span class="w">    </span>sshpass<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$password</span><span class="s2">&quot;</span><span class="w"> </span>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">StrictHostKeyChecking</span><span class="o">=</span>no<span class="w"> </span>root@<span class="s2">&quot;</span><span class="nv">$host</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;userdel -rf \&quot;</span><span class="nv">$usuario</span><span class="s2">\&quot; 2&gt;/dev/null; useradd -m \&quot;</span><span class="nv">$usuario</span><span class="s2">\&quot;&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usuario </span><span class="nv">$usuario</span><span class="s2"> recreado en </span><span class="nv">$host</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="k">done</span><span class="w"> </span>&lt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$usuarios</span><span class="s2">&quot;</span>
+<span class="k">done</span><span class="w"> </span>&lt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$hosts</span><span class="s2">&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>ℹ️ En entornos reales conviene usar autenticación con claves, cifrado de contraseñas y gestionar errores individualmente.</p>
+</blockquote>
+<h3 id="actividad-5-creacion-remota-con-claves-creausuariosclavessh">Actividad 5. Creación remota con claves (<code>creaUsuariosClaves.sh</code>)</h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+
+<span class="nv">hosts</span><span class="o">=</span><span class="s2">&quot;hosts.txt&quot;</span>
+<span class="nv">usuarios</span><span class="o">=</span><span class="s2">&quot;usuarios.txt&quot;</span>
+<span class="nv">clave_publica</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="nv">clave</span><span class="p">.pub</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nv">clave_admin</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/.ssh/lab_admin&quot;</span>
+<span class="nv">clave_pruebas</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">clave_publica</span><span class="p">%.pub</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="nv">$hosts</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="nv">$usuarios</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Deben existir los ficheros hosts.txt y usuarios.txt&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="nv">$clave_publica</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No encuentro la clave pública a desplegar: </span><span class="nv">$clave_publica</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="nv">$clave_admin</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No encuentro la clave privada administrativa: </span><span class="nv">$clave_admin</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Ejecuta: ssh-keygen -t ed25519 -f \&quot;</span><span class="nv">$clave_admin</span><span class="s2">\&quot;&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nv">llave_publica</span><span class="o">=</span><span class="k">$(</span>&lt;<span class="s2">&quot;</span><span class="nv">$clave_publica</span><span class="s2">&quot;</span><span class="k">)</span>
+
+<span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>host<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="nv">$host</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">continue</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>usuario<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="nv">$usuario</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">continue</span>
+<span class="w">    </span>ssh<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$clave_admin</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>-o<span class="w"> </span><span class="nv">BatchMode</span><span class="o">=</span>yes<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>-o<span class="w"> </span><span class="nv">StrictHostKeyChecking</span><span class="o">=</span>accept-new<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>root@<span class="s2">&quot;</span><span class="nv">$host</span><span class="s2">&quot;</span><span class="w"> </span>bash<span class="w"> </span>-s<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">set -e</span>
+<span class="s">userdel -rf &quot;$usuario&quot; 2&gt;/dev/null || true</span>
+<span class="s">useradd -m &quot;$usuario&quot;</span>
+<span class="s">install -d -m 700 -o &quot;$usuario&quot; -g &quot;$usuario&quot; &quot;/home/$usuario/.ssh&quot;</span>
+<span class="s">cat &lt;&lt;&#39;__KEY__&#39; &gt; &quot;/home/$usuario/.ssh/authorized_keys&quot;</span>
+<span class="s">$llave_publica</span>
+<span class="s">__KEY__</span>
+<span class="s">chown -R &quot;$usuario:$usuario&quot; &quot;/home/$usuario/.ssh&quot;</span>
+<span class="s">chmod 600 &quot;/home/$usuario/.ssh/authorized_keys&quot;</span>
+<span class="s">EOF</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span><span class="nv">$clave_pruebas</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span>ssh<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$clave_pruebas</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-o<span class="w"> </span><span class="nv">BatchMode</span><span class="o">=</span>yes<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-o<span class="w"> </span><span class="nv">StrictHostKeyChecking</span><span class="o">=</span>accept-new<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span><span class="s2">&quot;</span><span class="nv">$usuario</span><span class="s2">@</span><span class="nv">$host</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;echo OK&quot;</span><span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[</span><span class="nv">$host</span><span class="s2">] Usuario </span><span class="nv">$usuario</span><span class="s2"> operativo con acceso por clave.&quot;</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[</span><span class="nv">$host</span><span class="s2">] Usuario </span><span class="nv">$usuario</span><span class="s2"> creado pero la verificación por clave falló.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">      </span><span class="k">fi</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">      </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[</span><span class="nv">$host</span><span class="s2">] Usuario </span><span class="nv">$usuario</span><span class="s2"> configurado. Omisión de verificación (clave privada </span><span class="nv">$clave_pruebas</span><span class="s2"> no encontrada).&quot;</span>
+<span class="w">    </span><span class="k">fi</span>
+<span class="w">  </span><span class="k">done</span><span class="w"> </span>&lt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$usuarios</span><span class="s2">&quot;</span>
+<span class="k">done</span><span class="w"> </span>&lt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$hosts</span><span class="s2">&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>✅ Antes de lanzar el script importa la clave pública <code>lab_admin.pub</code> en la cuenta <code>root</code> de cada host con <code>ssh-copy-id</code>. Si proporcionas la clave privada asociada a <code>clave.pub</code>, el propio guion comprobará que cada usuario puede autenticarse sin contraseña.</p>
+</blockquote>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "navigation.path", "navigation.footer", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotate", "content.code.copy", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

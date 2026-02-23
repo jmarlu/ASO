@@ -1,0 +1,61 @@
+::Pregunta ACI1:: 
+¿Cuál es el sufijo de un paquete binario en Debian/Ubuntu?
+{
+    =.deb
+    ~.rpm
+    ~.pkg
+    ~.zip
+}
+
+::Pregunta ACI2::
+Instala desde los repositorios el paquete alien.
+{=sudo apt update && sudo apt install alien}
+
+::Pregunta ACI3::
+¿Qué herramienta permite convertir paquetes RPM en Debian y viceversa?
+{
+    =alien
+    ~rpm2deb
+    ~deb2rpm 
+    ~tar
+}
+
+::Pregunta ACI4::
+Descarga un paquete nmap.rpm y conviértelo a .deb para instalarlo en Ubuntu.
+{=sudo alien -d nmap.rpm && sudo dpkg -i nmap*.deb}
+
+::Pregunta ACI5::
+¿Cómo listar los paquetes instalados que contengan la palabra passwd en su nombre?
+{=dpkg -l '*passwd*'}
+
+::Pregunta ACI6::
+¿Cómo saber a qué paquete pertenece el archivo /bin/bash?
+{=dpkg -S /bin/bash}
+
+::Pregunta ACI7::
+¿Qué comando permite ver los ficheros que instala el paquete nmap?
+{=dpkg -L nmap}
+
+::Pregunta ACI8::
+Ruta del fichero principal que define los repositorios APT (sin incluir los de .d).
+{=/etc/apt/sources.list}
+
+::Pregunta ACI9::
+Actualiza el índice local de paquetes desde los repositorios.
+{=sudo apt update}
+
+::Pregunta ACI10::
+Actualiza todos los paquetes instalados sin eliminar dependencias.
+{=sudo apt upgrade}
+
+::Pregunta ACI11::
+Realiza una actualización que pueda instalar o eliminar dependencias según las nuevas versiones.
+{=sudo apt full-upgrade}
+
+::Pregunta ACI12::
+Busca paquetes relacionados con nmap en los repositorios.
+{=apt search nmap =apt-cache search nmap}
+
+::Pregunta ACI13::
+Elimina un paquete junto con sus archivos de configuración.
+{=sudo apt purge nombre_paquete}

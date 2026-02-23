@@ -1,0 +1,9 @@
+# Fichero de ejemplo con usuarios del sistema
+# Prueba con usuarios que existen en tu sistema
+julio
+root
+# Este usuario no existe (comentario para prueba)
+usuarioinexistente
+www-data
+bin
+daemon

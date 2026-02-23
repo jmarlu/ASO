@@ -1,0 +1,5 @@
+/* Archivo extra.css para personalizaciones de MkDocs */
+
+:root {
+  --md-default-fg-color: #222;
+}

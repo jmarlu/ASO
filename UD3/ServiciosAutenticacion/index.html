@@ -1,0 +1,2233 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://example.com/UD3/ServiciosAutenticacion/">
+      
+      
+        <link rel="prev" href="../pam/">
+      
+      
+        <link rel="next" href="../actividades/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Servicios de Autenticación - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+  
+  
+    
+      
+      
+    
+  
+  
+  <style>:root{--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M0%202.75C0%201.784.784%201%201.75%201h12.5c.966%200%201.75.784%201.75%201.75v10.5A1.75%201.75%200%200%201%2014.25%2015H1.75A1.75%201.75%200%200%201%200%2013.25Zm1.75-.25a.25.25%200%200%200-.25.25v10.5c0%20.138.112.25.25.25h12.5a.25.25%200%200%200%20.25-.25V2.75a.25.25%200%200%200-.25-.25ZM7.25%208a.75.75%200%200%201-.22.53l-2.25%202.25a.749.749%200%200%201-1.275-.326.75.75%200%200%201%20.215-.734L5.44%208%203.72%206.28a.749.749%200%200%201%20.326-1.275.75.75%200%200%201%20.734.215l2.25%202.25c.141.14.22.331.22.53m1.5%201.5h3a.75.75%200%200%201%200%201.5h-3a.75.75%200%200%201%200-1.5%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#servicio-de-autenticacion-con-docker-y-maquinas-virtuales-por-alumno" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Servicios de Autenticación
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD1-Shell Scripting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD1-Shell Scripting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creación de Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Aritmetica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aritmetica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Comparadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comparadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/IF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estructura IF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Operadores_Binarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operadores Binarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Argumentos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Argumentos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Case/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Esructura CASE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/While_Until/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Esructura WHILE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/For/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Esructura FOR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Break/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Break y Continue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/linux/Scripts_refuerzo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades Scripts_refuerzo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/windows/021_Introducci%C3%B3nPwSh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/windows/comandos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comandos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/windows/Manejo%20resultados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manejo de Resultados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/windows/022_PowerShell_Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sintaxis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/windows/023_PowerShell_ControlFlujo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control de flujo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/windows/024_PowerShell_VectoresFunciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vectores y funciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD2.Administración procesos y Servicios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD2.Administración procesos y Servicios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/InstaWindow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalación en Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/InstaLinux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalación en Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/procesosLinux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestión de procesos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/GestiServicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestión de Servicios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/programaTareas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programación de Tareas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/ContenedoresLXC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contenedores lxd/lxc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/actuSisOp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actualización del Sistema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/registroWindow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registro de Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/Actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD3.Servicios de Directorio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD3.Servicios de Directorio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción a LDAP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker-openldap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenLDAP en Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAM en Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Servicios de Autenticación
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Servicios de Autenticación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-del-laboratorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivos del laboratorio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-propuesta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquitectura propuesta
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fase-1-levantar-el-servidor-ldap-en-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fase 1: levantar el servidor LDAP en Docker
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fase-2-preparacion-de-la-maquina-virtual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fase 2: preparación de la máquina virtual
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fase-3-pruebas-y-explotacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fase 3: pruebas y explotación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagnostico-y-resolucion-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagnóstico y resolución de errores
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitacora-de-incidencias-resueltas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bitácora de incidencias resueltas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consideraciones-de-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consideraciones de seguridad
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extensiones-opcionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extensiones opcionales
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD4.Integración de sistemas operativos en red
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD4.Integración de sistemas operativos en red
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD4/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD4/actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="servicio-de-autenticacion-con-docker-y-maquinas-virtuales-por-alumno">Servicio de autenticación con Docker y máquinas virtuales por alumno</h1>
+<blockquote>
+<p>Cada estudiante despliega su propio servidor OpenLDAP en Docker y lo usa como backend de autenticación para una máquina virtual Linux.</p>
+</blockquote>
+<hr />
+<h2 id="objetivos-del-laboratorio">Objetivos del laboratorio</h2>
+<ul>
+<li>Reutilizar el <code>docker-compose</code> de <code>docs/UD3/docker-openldap.md</code> para que <strong>cada alumno</strong> levante su propio directorio LDAP, manteniendo el dominio <code>asir.local</code> y la contraseña <code>admin123</code>.</li>
+<li>Diseñar la red host-only o bridge necesaria para que la máquina virtual del alumno llegue al contenedor LDAP que corre en el host.</li>
+<li>Configurar en la VM el inicio de sesión mediante <code>sssd</code>/<code>pam_sss.so</code>, de forma que <strong>solo existan cuentas remotas en LDAP</strong>.</li>
+<li>Validar el flujo completo: alta de usuarios en LDAP → login en la VM → servicio funcionando con identidad centralizada.</li>
+<li><strong>Requisito previo</strong>: haber completado la actividad de <strong>TLS/StartTLS</strong> en OpenLDAP (certificados generados y servicio verificado). Esta práctica <strong>exige</strong> conexión segura con certificado.</li>
+</ul>
+<hr />
+<h2 id="arquitectura-propuesta">Arquitectura propuesta</h2>
+<pre class="mermaid"><code>graph TD
+    subgraph Equipo del alumno
+        H[Host del alumno&lt;br&gt;Ubuntu Desktop] --&gt; C[Docker Compose  
+        OpenLDAP personal 
+        dc=asir,dc=local]
+        H --&gt; V[Hypervisor VirtualBox o KVM ]
+        V --&gt; VM[VM Linux laboratorio]
+    end
+    VM --&gt;|PAM/SSSD| C</code></pre>
+<ul>
+<li>El contenedor LDAP vive en la máquina física del alumno y expone el puerto <code>389</code> en el propio host (<code>network_mode: host</code> o <code>ports: ['389:389']</code>). Si se usa <strong>LDAPS</strong>, expón también <code>636</code>.</li>
+<li>La VM alcanza el servicio LDAP a través de la red Host-Only (<code>vboxnet0</code>) cuyo gateway habitual es la IP del host (<code>192.168.56.1</code>).</li>
+<li>Todas las altas, bajas y cambios de contraseña se realizan sobre el contenedor; la VM no almacena cuentas locales salvo <code>root</code>.</li>
+</ul>
+<hr />
+<!-- ## Preparación previa para el docente
+
+- Verificar que los equipos de los alumnos disponen de **Docker**, **Docker Compose** y **VirtualBox** (o `virt-manager`+KVM).
+- Entregar un paquete con:
+  - Plantilla `docker-compose.yml` de OpenLDAP ya configurada con `LDAP_DOMAIN=asir.local`, `LDAP_BASE_DN=dc=asir,dc=local` y `LDAP_ADMIN_PASSWORD=admin123`.
+- Ficheros LDIF ya utilizados en prácticas previas (por ejemplo, `users.ldif` con la cuenta `cn=profesor,ou=Usuarios,dc=asir,dc=local` y los alumnos ya dados de alta).
+  - Script de comprobación `check-ldap.sh` (usa `ldapsearch` contra el contenedor).
+- Acordar rangos de red host-only (ej. `192.168.56.0/24`) y reservar una IP por alumno para su contenedor (`ldap-alumnoX`). -->
+
+<hr />
+<h2 id="fase-1-levantar-el-servidor-ldap-en-docker">Fase 1: levantar el servidor LDAP en Docker</h2>
+<ol>
+<li><strong>Comprobar la red Host-Only</strong><ul>
+<li>Desde el host confirmar la existencia de <code>vboxnet0</code> y su rango (<code>192.168.56.0/24</code>).  </li>
+<li>La IP del host en esa red suele ser <code>192.168.56.1</code>. Anótala porque será la referencia dentro de la VM.</li>
+</ul>
+</li>
+<li><strong>Personalizar <code>docker-compose.yml</code></strong><ul>
+<li>Variables <code>.env</code> por alumno (solo cambia <code>LDAP_ORGANISATION</code> si se desea personalizar):<br />
+  <div class="highlight"><pre><span></span><code>LDAP_DOMAIN=asir.local
+LDAP_ORGANISATION=ASIR2X
+LDAP_BASE_DN=dc=asir,dc=local
+LDAP_ADMIN_PASSWORD=admin123
+</code></pre></div></li>
+<li>Exponer el puerto LDAP hacia el host (StartTLS por 389; si usas LDAPS, abre 636):<br />
+  <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">openldap</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;389:389&quot;</span>
+<span class="w">      </span><span class="c1"># Opcional si usas ldaps://</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;636:636&quot;</span>
+</code></pre></div></li>
+</ul>
+</li>
+<li>Solo si se necesita una red Docker aparte, usar una subred distinta a la de VirtualBox (por ejemplo <code>172.18.0.0/24</code>) y documentar el enrutamiento o el NAT que permita a la VM alcanzarla.</li>
+<li>
+<p><strong>Trabajos Iniciales</strong></p>
+<ul>
+<li>Arrancar los servicios: <code>docker compose up -d</code>.</li>
+<li>Importar los LDIF ya trabajados en prácticas anteriores (incluyen la cuenta <code>profesor</code> y los alumnos que cada equipo dio de alta). Si lo has realizado ya no lo tienes que volver otra vez. </li>
+<li><strong>Ejercicio</strong>: aplica <code>ldapmodify</code> con <code>add-posix-profesor.ldif</code> y <code>ldapadd</code> con <code>add-groups-and-posixgroup.ldif</code> (o crea un LDIF equivalente) para actualizar <code>cn=profesor</code> y <code>cn=asirusers</code> con los atributos POSIX (<code>uidNumber</code>, <code>gidNumber</code>, <code>homeDirectory</code>, <code>loginShell</code>, <code>memberUid</code>) exigidos por el laboratorio. Dado que los usuarios y grupos tienen que seguir la norma POSIX</li>
+</ul>
+<div class="highlight"><span class="filename">add-posix-profesor.ldif</span><pre><span></span><code>      dn: cn=profesor,ou=Usuarios,dc=asir,dc=local
+      changetype: modify
+      add: objectClass
+      objectClass: posixAccount
+      -
+      add: uidNumber
+      uidNumber: 10001
+      -
+      add: gidNumber
+      gidNumber: 10001
+      -
+      add: homeDirectory
+      homeDirectory: /home/profesor
+      -
+      add: loginShell
+      loginShell: /bin/bash
+</code></pre></div>
+<div class="highlight"><span class="filename">add-posix-group.ldif</span><pre><span></span><code>      dn: ou=Groups,dc=asir,dc=local
+      objectClass: organizationalUnit
+      ou: Groups
+
+      dn: cn=asirusers,ou=Groups,dc=asir,dc=local
+      objectClass: posixGroup
+      cn: asirusers
+      gidNumber: 10001
+</code></pre></div>
+<ul>
+<li>Realizar un <code>ldapsearch</code> conjunto para verificar que el usuario <code>profesor</code> está disponible antes de pasar a la VM.</li>
+<li><strong>Verificación TLS</strong>: comprueba StartTLS desde el host (debe funcionar antes de seguir):
+    <div class="highlight"><pre><span></span><code>ldapsearch<span class="w"> </span>-x<span class="w"> </span>-ZZ<span class="w"> </span>-H<span class="w"> </span>ldap://192.168.56.1:389<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-D<span class="w"> </span><span class="s2">&quot;cn=admin,dc=asir,dc=local&quot;</span><span class="w"> </span>-w<span class="w"> </span>admin123<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-b<span class="w"> </span><span class="s2">&quot;dc=asir,dc=local&quot;</span><span class="w"> </span><span class="s2">&quot;(uid=profesor)&quot;</span><span class="w"> </span>dn
+</code></pre></div></li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="fase-2-preparacion-de-la-maquina-virtual">Fase 2: preparación de la máquina virtual</h2>
+<ol>
+<li><strong>Configurar redes de la VM</strong><ul>
+<li>Adaptador 2: Host-Only <code>vboxnet0</code> (o puente interno) en <code>192.168.56.0/24</code>.</li>
+<li>IP estática en la VM: <code>192.168.56.100/24</code>, gateway sin definir, DNS el del aula.</li>
+<li>Adaptador 1: NAT para acceder a Internet (actualizaciones).  </li>
+</ul>
+</li>
+</ol>
+<div class="admonition warning end">
+<p class="admonition-title">Te salva la vida</p>
+<ul>
+<li>Activa la cuenta <code>root</code> y mantén toda la práctica abierta en una terminal.</li>
+<li>Crea uno o varios clones de la máquina virtual antes de empezar.</li>
+</ul>
+</div>
+<ol>
+<li>
+<p><strong>Instalar paquetes LDAP/SSSD</strong></p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>sssd<span class="w"> </span>libnss-sss<span class="w"> </span>libpam-sss<span class="w"> </span>ldap-utils<span class="w"> </span>pamtester<span class="w"> </span>sssd-tools
+</code></pre></div>
+</li>
+<li>
+<p><strong>Instalar el certificado de la CA en la VM</strong></p>
+<p>Copia <code>ca.crt</code> (generada en la actividad TLS/StartTLS) a la VM y confía en ella:
+  <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>cp<span class="w"> </span>ca.crt<span class="w"> </span>/usr/local/share/ca-certificates/ldap-lab-ca.crt
+sudo<span class="w"> </span>update-ca-certificates
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Crear <code>/etc/sssd/sssd.conf</code></strong></p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1"># Configuración global de SSSD: define qué servicios expone y contra qué dominios trabaja.</span>
+<span class="w">      </span><span class="k">[sssd]</span>
+<span class="w">      </span><span class="c1"># Publicamos los conectores NSS y PAM para que el sistema pueda resolver usuarios/grupos y autenticar.</span>
+<span class="w">      </span><span class="na">services</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">nss, pam</span>
+<span class="w">      </span><span class="c1"># Nombre lógico del dominio que gestionará SSSD (aparece en el resto de secciones).</span>
+<span class="w">      </span><span class="na">domains</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">asir</span>
+<span class="w">      </span><span class="c1"># Nivel máximo de depuración para ver qué ocurre internamente.</span>
+<span class="w">      </span><span class="na">debug_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">9</span>
+
+<span class="w">      </span><span class="c1"># Sección específica del servicio NSS (resolución de identidades).</span>
+<span class="w">      </span><span class="k">[nss]</span>
+<span class="w">      </span><span class="c1"># Activamos el mismo nivel de depuración para tener trazas completas al consultar usuarios/grupos.</span>
+<span class="w">      </span><span class="na">debug_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">9</span>
+
+<span class="w">      </span><span class="c1"># Sección del responder PAM (autenticación de usuarios).</span>
+<span class="w">      </span><span class="k">[pam]</span>
+<span class="w">      </span><span class="c1"># Mantenemos el nivel de depuración alto para seguir el flujo de login con detalle.</span>
+<span class="w">      </span><span class="na">debug_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">9</span>
+
+<span class="w">      </span><span class="c1"># Definición del dominio LDAP que vamos a consumir.</span>
+<span class="w">      </span><span class="k">[domain/asir]</span>
+<span class="w">      </span><span class="c1"># Indicamos que toda la información de identidades proviene de un servidor LDAP.</span>
+<span class="w">      </span><span class="na">id_provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ldap</span>
+<span class="w">      </span><span class="c1"># También delegamos la autenticación (bind) en LDAP.</span>
+<span class="w">      </span><span class="na">auth_provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ldap</span>
+<span class="w">      </span><span class="c1"># Permite cambiar contraseñas a través del mismo backend LDAP.</span>
+<span class="w">      </span><span class="na">chpass_provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ldap</span>
+<span class="w">      </span><span class="c1"># Guardamos en caché credenciales/entradas para poder trabajar sin conexión temporalmente.</span>
+<span class="w">      </span><span class="na">cache_credentials</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<span class="w">      </span><span class="c1"># Habilitamos la enumeración completa para que NSS pueda listar todos los usuarios/grupos.</span>
+<span class="w">      </span><span class="na">enumerate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<span class="w">      </span><span class="c1"># Elevamos la depuración del dominio para ver cada consulta que se lanza.</span>
+<span class="w">      </span><span class="na">debug_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">9</span>
+
+<span class="w">      </span><span class="c1"># URL del servidor LDAP al que conectarse (protocolo, host e IP y puerto).</span>
+<span class="w">      </span><span class="na">ldap_uri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ldap://192.168.56.1:389</span>
+<span class="w">      </span><span class="c1"># DN base desde el que se empezarán las búsquedas de usuarios y grupos.</span>
+<span class="w">      </span><span class="na">ldap_search_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">dc=asir,dc=local</span>
+<span class="w">      </span><span class="c1"># Exigimos STARTTLS en este laboratorio (con certificado válido).</span>
+<span class="w">      </span><span class="na">ldap_id_use_start_tls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+<span class="w">      </span><span class="c1"># La CA del laboratorio se instala en el sistema (update-ca-certificates).</span>
+<span class="w">      </span><span class="na">ldap_tls_cacert</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/etc/ssl/certs/ca-certificates.crt</span>
+<span class="w">      </span><span class="c1"># Rechaza certificados no válidos.</span>
+<span class="w">      </span><span class="na">ldap_tls_reqcert</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">demand</span>
+
+<span class="w">      </span><span class="c1"># DN y contraseña del usuario con el que SSSD consulta el directorio.</span>
+<span class="w">      </span><span class="na">ldap_default_bind_dn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">cn=admin,dc=asir,dc=local</span>
+<span class="w">      </span><span class="na">ldap_default_authtok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">admin123</span>
+
+<span class="w">      </span><span class="c1"># Indicamos qué tipo de objetos representan a los usuarios POSIX en el árbol.</span>
+<span class="w">      </span><span class="na">ldap_user_object_class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">posixAccount</span>
+<span class="w">      </span><span class="c1"># Unidad organizativa donde se almacenan los usuarios.</span>
+<span class="w">      </span><span class="na">ldap_user_search_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ou=Usuarios,dc=asir,dc=local</span>
+<span class="w">      </span><span class="c1"># Atributo que se usará como nombre de usuario (login).</span>
+<span class="w">      </span><span class="na">ldap_user_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">uid</span>
+<span class="w">      </span><span class="c1"># También usamos el uid como principal para UPN (si se solicita usuario@dominio).</span>
+<span class="w">      </span><span class="na">ldap_user_principal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">uid</span>
+<span class="w">      </span><span class="c1"># Atributos LDAP que aportan UID y GID numéricos POSIX.</span>
+<span class="w">      </span><span class="na">ldap_user_uid_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">uidNumber</span>
+<span class="w">      </span><span class="na">ldap_user_gid_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">gidNumber</span>
+<span class="w">      </span><span class="c1"># Ruta del directorio home y shell que se asignarán al iniciar sesión.</span>
+<span class="w">      </span><span class="na">ldap_user_home_directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">homeDirectory</span>
+<span class="w">      </span><span class="na">ldap_user_shell</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">loginShell</span>
+
+<span class="w">      </span><span class="c1"># Definimos la clase de objetos de grupo y la OU donde se guardan.</span>
+<span class="w">      </span><span class="na">ldap_group_object_class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">posixGroup</span>
+<span class="w">      </span><span class="na">ldap_group_search_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ou=Groups,dc=asir,dc=local</span>
+
+<span class="w">      </span><span class="c1"># Políticas de acceso: permitimos siempre el inicio de sesión a quienes existan en el directorio.</span>
+<span class="w">      </span><span class="na">access_provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">permit</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w">      </span>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/etc/sssd/sssd.conf
+<span class="w">      </span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>sssd
+</code></pre></div>
+</li>
+<li>
+<p><strong>Integrar NSS</strong></p>
+<ul>
+<li>Edita <code>/etc/nsswitch.conf</code> y añade <code>sss</code> tras <code>compat systemd</code> en las bases <code>passwd</code>, <code>group</code> y <code>shadow</code>.  </li>
+<li>Comprueba con <code>getent passwd profesor</code> que la identificación se resuelve desde LDAP.</li>
+</ul>
+</li>
+<li>
+<p><strong>Configurar PAM</strong></p>
+<ul>
+<li>Lanza <code>sudo pam-auth-update</code> y asegúrate de que los perfiles <strong>Unix authentication</strong> y <strong>SSSD</strong> quedan marcados.</li>
+<li>Edita <code>/etc/pam.d/common-auth</code> para que pruebe primero las cuentas locales y, si no existen, reutilice la misma contraseña con SSSD:<br />
+  <div class="highlight"><pre><span></span><code>auth    [success=1 default=ignore]        pam_unix.so nullok_secure
+auth    sufficient                        pam_sss.so use_first_pass
+auth    requisite                         pam_deny.so
+auth    required                          pam_permit.so
+</code></pre></div>
+  Explicación rápida del flujo:</li>
+<li><strong>Usuario local válido</strong>: <code>pam_unix.so</code> devuelve éxito → se <strong>salta</strong> la línea de SSSD (<code>success=1</code>) y se permite seguir.</li>
+<li><strong>Usuario no local</strong>: <code>pam_unix.so</code> devuelve <code>user_unknown</code> → <code>default=ignore</code> hace que se pruebe SSSD.</li>
+<li><strong>Usuario LDAP válido</strong>: <code>pam_sss.so</code> autentica y, al ser <code>sufficient</code>, termina con éxito.</li>
+<li><strong>Credenciales inválidas</strong>: cae en <code>pam_deny.so</code> (corta la pila) y se deniega.
+  Nota: con <code>use_first_pass</code> no se vuelve a preguntar la contraseña si ya se introdujo.</li>
+<li>Ajusta <code>/etc/pam.d/common-account</code> para que los usuarios locales se validen primero y los desconocidos pasen a SSSD:<br />
+  <div class="highlight"><pre><span></span><code>  account [success=ok new_authtok_reqd=done user_unknown=ignore default=bad]   pam_unix.so
+  account [success=ok default=die]                                 pam_sss.so
+  account required                                                        pam_permit.so
+</code></pre></div>
+  Explicación rápida del flujo:</li>
+<li><strong>Usuario local</strong>: <code>pam_unix.so</code> devuelve <code>success=ok</code> y continúa.</li>
+<li><strong>Usuario no local</strong>: <code>user_unknown=ignore</code> hace que se pruebe <code>pam_sss.so</code>.</li>
+<li><strong>Usuario LDAP válido</strong>: <code>pam_sss.so</code> devuelve <code>success=ok</code>; se permite la sesión.</li>
+<li><strong>Usuario inexistente</strong>: <code>pam_sss.so</code> no valida y <code>default=die</code> bloquea.
+  Qué significan los controles de la primera línea (explicación conceptual):</li>
+<li><strong>success=ok</strong>: si la comprobación local es correcta, se sigue sin bloquear.</li>
+<li><strong>new_authtok_reqd=done</strong>: si la cuenta exige cambio de contraseña, se considera resuelto en esta fase.</li>
+<li><strong>user_unknown=ignore</strong>: si el usuario no existe localmente, se ignora el fallo y se pasa al siguiente módulo.</li>
+<li><strong>default=bad</strong>: cualquier otro resultado se considera fallo.</li>
+<li>En <code>/etc/pam.d/common-session</code>, habilita la sesión remota y la creación automática del directorio <code>home</code>:<br />
+  <div class="highlight"><pre><span></span><code>session required          pam_mkhomedir.so skel=/etc/skel/ umask=0022
+</code></pre></div>
+  Esto crea <code>/home/&lt;usuario&gt;</code> al primer login LDAP y evita fallos por “home inexistente”.</li>
+<li>Reinicia los servicios que usan PAM (por ejemplo <code>sudo systemctl restart sshd</code>). Si no lo tienes, instálalo y valida con <code>su - profesor</code>, manteniendo otra consola con <code>root</code> local.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="fase-3-pruebas-y-explotacion">Fase 3: pruebas y explotación</h2>
+<ol>
+<li>
+<p><strong>Consultar el directorio desde la VM (StartTLS obligatorio)</strong><br />
+   <div class="highlight"><pre><span></span><code>ldapsearch<span class="w"> </span>-H<span class="w"> </span>ldap://192.168.56.1<span class="w"> </span>-x<span class="w"> </span>-ZZ<span class="w"> </span>-D<span class="w"> </span><span class="s2">&quot;cn=profesor,ou=Usuarios,dc=asir,dc=local&quot;</span><span class="w"> </span>-W<span class="w"> </span>-b<span class="w"> </span><span class="s2">&quot;ou=Usuarios,dc=asir,dc=local&quot;</span><span class="w"> </span><span class="s2">&quot;(uid=profesor)&quot;</span>
+</code></pre></div>
+   Verifica que la VM puede llegar al contenedor y que la entrada <code>profesor</code> existe.</p>
+</li>
+<li>
+<p><strong>Validar la resolución de identidades</strong><br />
+   <div class="highlight"><pre><span></span><code>getent<span class="w"> </span>passwd<span class="w"> </span>profesor
+</code></pre></div>
+   El resultado tiene que mostrar el UID/GID procedentes de LDAP.</p>
+</li>
+<li><strong>Probar autenticación PAM</strong><br />
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pamtester<span class="w"> </span>login<span class="w"> </span>profesor<span class="w"> </span>authenticate
+</code></pre></div>
+   Debe devolver <code>pam_sm_authenticate = PAM_SUCCESS</code>.</li>
+<li><strong>Abrir sesión real (con <code>su</code>)</strong><br />
+   <div class="highlight"><pre><span></span><code>su<span class="w"> </span>-<span class="w"> </span>profesor
+</code></pre></div>
+   Comprueba que se crea el directorio <code>/home/profesor</code> y que <code>id</code> muestra grupos de LDAP. Así validas el flujo completo de PAM en consola sin depender de <code>sshd</code>.<blockquote>
+<p><strong>Importante</strong>: mantén una consola abierta como <code>root</code> local por seguridad. Si la sesión con <code>su</code> falla por un error de PAM o SSSD, necesitarás esa terminal para recuperar el acceso al sistema.</p>
+</blockquote>
+</li>
+<li>
+<p><strong>Cambiar contraseña vía LDAP</strong>
+   <div class="highlight"><pre><span></span><code>ldappasswd<span class="w"> </span>-H<span class="w"> </span>ldap://192.168.56.1<span class="w"> </span>-x<span class="w"> </span>-D<span class="w"> </span><span class="s2">&quot;cn=profesor,ou=Usuarios,dc=asir,dc=local&quot;</span><span class="w"> </span>-W<span class="w"> </span>-S<span class="w"> </span><span class="s2">&quot;cn=profesor,ou=Usuarios,dc=asir,dc=local&quot;</span>
+</code></pre></div>
+   Repite <code>pamtester</code> y <code>su - profesor</code> con la nueva contraseña para comprobar la propagación.</p>
+</li>
+<li>
+<p><strong>Supervisar SSSD en tiempo real</strong><br />
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>journalctl<span class="w"> </span>-fu<span class="w"> </span>sssd
+sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/sssd/sssd_asir.log
+</code></pre></div>
+   Útil para diagnosticar retrasos en la autenticación. Si cambias datos en LDAP, fuerza limpieza de caché con <code>sudo sss_cache -E</code> antes de volver a probar.</p>
+</li>
+</ol>
+<hr />
+<h2 id="diagnostico-y-resolucion-de-errores">Diagnóstico y resolución de errores</h2>
+<ol>
+<li>
+<p><strong>Estado general de SSSD</strong>
+   <div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>status<span class="w"> </span>sssd
+sssctl<span class="w"> </span>domain-list
+sssctl<span class="w"> </span>domain-status<span class="w"> </span>asir
+</code></pre></div>
+   Confirma que el dominio aparece como <code>online</code> y sin <code>last error</code>.</p>
+</li>
+<li>
+<p><strong>Caché y enumeración</strong>
+   <div class="highlight"><pre><span></span><code>sss_cache<span class="w"> </span>-E
+getent<span class="w"> </span>passwd<span class="w"> </span>profesor
+getent<span class="w"> </span>group<span class="w"> </span>asirusers
+</code></pre></div>
+   Tras cambios en LDAP, limpia la caché y vuelve a consultar. Si <code>getent</code> no devuelve nada, revisa <code>ldap_user_search_base</code> y <code>enumerate</code>.</p>
+</li>
+<li>
+<p><strong>Pruebas PAM controladas</strong>
+   <div class="highlight"><pre><span></span><code>pamtester<span class="w"> </span>login<span class="w"> </span>profesor<span class="w"> </span>authenticate
+pamtester<span class="w"> </span>login<span class="w"> </span>profesor<span class="w"> </span>open_session
+</code></pre></div>
+   Permite reproducir el flujo de autenticación sin abrir una sesión interactiva. Si falla, consulta <code>/var/log/auth.log</code> y las trazas de SSSD.</p>
+</li>
+<li>
+<p><strong>Conectividad contra LDAP</strong>
+   <div class="highlight"><pre><span></span><code>nc<span class="w"> </span>-vz<span class="w"> </span><span class="m">192</span>.168.56.1<span class="w"> </span><span class="m">389</span>
+ldapsearch<span class="w"> </span>-H<span class="w"> </span>ldap://192.168.56.1<span class="w"> </span>-x<span class="w"> </span>-ZZ<span class="w"> </span>-b<span class="w"> </span><span class="s2">&quot;dc=asir,dc=local&quot;</span><span class="w"> </span><span class="s2">&quot;(uid=profesor)&quot;</span>
+</code></pre></div>
+   Si usas LDAPS:
+   <div class="highlight"><pre><span></span><code>nc<span class="w"> </span>-vz<span class="w"> </span><span class="m">192</span>.168.56.1<span class="w"> </span><span class="m">636</span>
+ldapsearch<span class="w"> </span>-H<span class="w"> </span>ldaps://192.168.56.1:636<span class="w"> </span>-x<span class="w"> </span>-b<span class="w"> </span><span class="s2">&quot;dc=asir,dc=local&quot;</span><span class="w"> </span><span class="s2">&quot;(uid=profesor)&quot;</span>
+</code></pre></div>
+   Asegura que la VM alcanza el servidor y que el filtro devuelve resultados coherentes.</p>
+</li>
+<li>
+<p><strong>Análisis de logs</strong></p>
+</li>
+<li><code>/var/log/sssd/sssd_asir.log</code>: negocia cada bind y búsqueda. Busca <code>ERR</code>, <code>Auth</code> o <code>LDAP</code> para ubicar fallos.</li>
+<li><code>/var/log/auth.log</code>: muestra la decisión final de PAM. Identifica módulos que rechazan la sesión.</li>
+<li>
+<p><code>journalctl -u sssd -u systemd-logind -u systemd-user-sessions</code>: cronología completa del arranque y de los accesos.</p>
+</li>
+<li>
+<p><strong>Casos típicos y señales</strong></p>
+</li>
+<li><code>GSSAPI Error</code> o <code>Authentication failed</code>: DN/contraseña errónea o usuario inexistente.</li>
+<li><code>TLS: hostname does not match</code>: aparece si el certificado no coincide con el hostname/IP del servidor; revisa el CN/SAN del certificado y vuelve a emitirlo si hace falta.</li>
+<li><code>Permission denied</code> tras autenticación correcta: asegúrate de que los directorios home existen y que <code>pam_mkhomedir</code> está activo.</li>
+</ol>
+<p>Documenta cada incidencia con la tríada <strong>síntoma → comando de diagnóstico → solución aplicada</strong> para que el alumnado entienda el razonamiento.</p>
+<hr />
+<h2 id="bitacora-de-incidencias-resueltas">Bitácora de incidencias resueltas</h2>
+<ul>
+<li><strong>Permisos de <code>/etc/sssd/sssd.conf</code></strong>: SSSD se negaba a levantar con <code>File permissions of /etc/sssd/sssd.conf are too open</code>. Se corrige dejando el fichero en <code>600</code> antes de iniciar el servicio.</li>
+<li><strong>Alcance de la IP del servidor LDAP</strong>: desde la VM, <code>ldap://192.168.56.1</code> fallaba cuando la red Host-Only no estaba activa. Se solventó comprobando la ruta (<code>ip route show</code>), renovando la interfaz (<code>sudo systemctl restart NetworkManager</code>) y, si era necesario, consultando la IP interna del contenedor <code>openldap</code> (<code>docker inspect</code>) para apuntar directamente a ella.</li>
+<li><strong><code>dbus</code> detenido en entornos sin systemd</strong>: al probar SSSD dentro de un contenedor ligero, aparecía <code>Failed to connect to the bus</code>. Se solucionó instalando <code>dbus</code> y lanzándolo manualmente (<code>service dbus start</code>) antes de arrancar <code>sssd</code>.</li>
+<li><strong>Sesiones que fallan tras reinicio</strong>: si se reinicia el servicio SSSD mientras hay sesiones abiertas, es común ver <code>System is offline</code> en los siguientes logins. Ejecuta <code>sssctl domain-status asir</code> para confirmar que vuelve a estar <code>online</code>, limpia caché (<code>sss_cache -E</code>) y reintenta.</li>
+<li><strong>Enumeración de grupos vacía</strong>: <code>getent group</code> devolvía lista vacía hasta habilitar <code>enumerate = True</code> en <code>sssd.conf</code> y reiniciar el servicio. Documenta este ajuste para el alumnado, ya que facilita diagnosticar pertenencias y permisos.</li>
+</ul>
+<hr />
+<h2 id="consideraciones-de-seguridad">Consideraciones de seguridad</h2>
+<ul>
+<li>Este laboratorio <strong>exige</strong> TLS/StartTLS con certificado válido; no se permite <code>ldap://</code> en claro.</li>
+<li>Limita el laboratorio a la red Host-Only y bloquea cualquier puente hacia otras redes.</li>
+<li>Si el profesorado necesita acceder desde otra máquina, expón el puerto 389 únicamente mediante túneles (<code>ssh -L</code>) o redes controladas y registra esos accesos.</li>
+<li>Mantén <code>PasswordAuthentication yes</code> solo el tiempo imprescindible; una vez probada la integración, fuerza autenticación con claves o añade MFA en PAM.</li>
+</ul>
+<hr />
+<h2 id="extensiones-opcionales">Extensiones opcionales</h2>
+<ul>
+<li>Añadir <strong>phpldapadmin</strong> en el mismo <code>docker-compose</code> para gestionar el directorio vía web.</li>
+<li>Configurar <strong>MFA</strong> en la VM añadiendo <code>pam_google_authenticator.so</code> tras <code>pam_sss.so</code>.</li>
+<li>Exponer LDAPS (<code>ldap://</code> → <code>ldaps://</code>) generando certificados propios con <code>mkcert</code>.</li>
+<li>Exportar la configuración con <strong>Ansible</strong> para recrearla en otro host del alumnado.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../pam/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: PAM en Linux">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                PAM en Linux
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../actividades/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Actividades">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Actividades
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.path", "navigation.footer", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotate", "content.code.copy", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
