@@ -95,15 +95,10 @@ Los bits especiales son tres banderas adicionales al `rwx` clasico. Modifican **
    ```
    *Limpieza*: `sudo rm -r /tmp/sgid-demo /tmp/sticky-demo`.
 
-## 🗂️ ACL en sistemas de ficheros (GNU/Linux)
+!!! info
+    “Compartir sin romper la seguridad: mismo recurso, permisos granulados.”
 
-> “Compartir sin romper la seguridad: mismo recurso, permisos granulados.”
-
-## Convencion de escenarios UD4
-- Para evitar confusion entre documentos, en UD4 se usan dos escenarios:
-  - **Guion de clase** (`docs/UD4/guion_clase.md`): servidor `ud4-lab`, cliente `ud4-client`, recurso `/srv/aso-ud4/compartida`, share SMB `compartida`.
-  - **Actividades evaluables** (`docs/UD4/actividades.md`): fileserver `10.50.0.11`, recurso `/srv/grupo_clase`, share SMB `grupo_clase`.
-- La logica de permisos es la misma en ambos; solo cambian nombres de host/ruta y el entorno de ejecucion.
+## 🗂️ ACL en sistemas de ficheros (GNU/Linux)  
 
 ## 1. Qué son y cuándo usarlas
 - **ACL (Access Control Lists)** amplían el modelo `ugo` de UNIX permitiendo permisos por **usuario** y **grupo** adicionales.
@@ -539,10 +534,11 @@ ls -l /srv/aso-ud4/nfs-compartida
 Resultado esperado: aparece `ok-alumno1` en cliente y en servidor (misma ruta remota).
 
 Incidencias tipicas:
+
 - `showmount -e` vacio:
-  - no se creo el fichero de export (`/etc/exports.d` inexistente) o no se recargo `exportfs -ra`.
+    - No se creo el fichero de export (`/etc/exports.d` inexistente) o no se recargo `exportfs -ra`.
 - `mount.nfs: Operation not permitted`:
-  - En LXC/LXD, ejecutar en el host (no dentro del contenedor):
+    - En LXC/LXD, ejecutar en el host (no dentro del contenedor):
   ```bash
   lxc stop ud4-client
   lxc config set ud4-client security.privileged true
@@ -556,14 +552,14 @@ Incidencias tipicas:
   sudo mount -v -t nfs -o vers=4,proto=tcp ud4-lab:/srv/aso-ud4/nfs-compartida /mnt/ud4-nfs
   ```
 - `cd`/`touch` devuelve `Permission denied` tras montar:
-  - usuario en cliente no tiene el mismo UID/GID que en servidor (en NFS `sec=sys` mandan los numeros, no el nombre).
-  - se prueba como `root` y `root_squash` lo bloquea.
+    - usuario en cliente no tiene el mismo UID/GID que en servidor (en NFS `sec=sys` mandan los numeros, no el nombre).
+    - se prueba como `root` y `root_squash` lo bloquea.
 
 ### 5.7 Orden mental para depurar un "Permission denied"
 1. **Identidad**: `id usuario`, `getent passwd usuario`, `getent group grupo_datos`.
 2. **Servicio**:
-   - Samba: revisar `valid users`, `read only`, masks, `testparm`.
-   - NFS: revisar export (`exportfs -v`) y tipo de seguridad (`sec=sys`/Kerberos).
+     - Samba: revisar `valid users`, `read only`, masks, `testparm`.
+     - NFS: revisar export (`exportfs -v`) y tipo de seguridad (`sec=sys`/Kerberos).
 3. **FS**: revisar `ls -ld`, `getfacl`, `mask`, `default ACL`, y permisos de travesia en todo el path.
 4. **Prueba minima reproducible**: crear un archivo con el usuario real (`sudo -u usuario touch ...`) y repetir desde cliente.
 
