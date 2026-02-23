@@ -207,9 +207,64 @@ Interpretacion:
 - Al modificar ACL, la máscara puede bajar automáticamente; revisa tras cambios.
 
 ### Permisos efectivos y su impacto en Samba/NFS
-- **Permiso efectivo = (ACL) ∩ (mask) ∩ (modo POSIX)**. Si la máscara recorta, el usuario perderá escritura aunque la ACL diga `rwX`.
-- **Samba**: el acceso final es la intersección de `valid users`/`read only` del share y los permisos del FS (ACL/posix). Si el FS deniega, Samba deniega.
-- **NFS**: el servidor aplica las ACL y el cliente solo ve el resultado. Con `sec=sys`, los UID/GID deben coincidir para que el permiso sea correcto.
+- Regla rapida: **permiso efectivo = ACL ∩ mask ∩ POSIX** (para grupo y entradas ACL adicionales; en el propietario no aplica `mask`).
+- No basta con "tener una ACL": para escribir en un archivo dentro de un directorio necesitas:
+  - permiso de escritura en el archivo, y
+  - permiso de travesia (`x`) en el directorio.
+
+Casos tipicos (con ejemplo):
+
+1. **ACL permite, pero `mask` recorta**
+   ```bash
+   sudo touch /srv/demo.txt
+   sudo chown root:grupo_datos /srv/demo.txt
+   sudo chmod 660 /srv/demo.txt
+   sudo setfacl -m u:alumno1:rwx /srv/demo.txt
+   sudo setfacl -m m::r-x /srv/demo.txt
+   getfacl /srv/demo.txt
+   ```
+   Resultado esperado:
+   - Veras `user:alumno1:rwx    #effective:r-x`.
+   - `alumno1` podra leer, pero no escribir.
+
+2. **Archivo con permisos correctos, pero sin `x` en el directorio**
+   ```bash
+   sudo mkdir -p /srv/sin_travesia
+   sudo chmod 700 /srv/sin_travesia
+   sudo setfacl -m u:alumno1:r-- /srv/sin_travesia
+   sudo touch /srv/sin_travesia/f.txt
+   sudo setfacl -m u:alumno1:rw- /srv/sin_travesia/f.txt
+   sudo -u alumno1 cat /srv/sin_travesia/f.txt
+   ```
+   Resultado esperado:
+   - Falla por falta de travesia del directorio (`x` en `/srv/sin_travesia`), aunque el archivo tenga ACL valida.
+
+3. **Sin entrada ACL especifica, manda `group::`/`other::`**
+   ```bash
+   sudo touch /srv/base.txt
+   sudo chown root:grupo_datos /srv/base.txt
+   sudo chmod 640 /srv/base.txt
+   getfacl /srv/base.txt
+   ```
+   Resultado esperado:
+   - Si `alumno1` no es dueño ni tiene entrada `user:alumno1:*`, su acceso dependera de si entra por grupo (`group::`) o por otros (`other::`).
+
+4. **Samba: el share permite, pero el FS deniega**
+   - Share:
+     - `valid users = @grupo_datos`
+     - `read only = no`
+   - FS:
+     - `mask::r--` o ACL sin `w` en `/srv/grupo_clase`.
+   Resultado esperado:
+   - `smbclient` autentica y entra al recurso, pero `put` falla con "Access denied".
+   - Causa: Samba autoriza entrada, pero quien decide la escritura final es el FS.
+
+5. **NFS (`sec=sys`): ACL correcta, UID/GID mal mapeado**
+   - En servidor, `alumno1` es UID 10501.
+   - En cliente, el mismo nombre `alumno1` se resuelve a UID distinto (o ni existe).
+   Resultado esperado:
+   - Operaciones devuelven "Permission denied" aunque en servidor parezca bien configurado.
+   - Causa: NFS clasico evalua UID/GID numericos, no el nombre visible.
 
 ### Checkpoint (antes de Samba/NFS)
 - Hay que recordar solo 3 ideas:
@@ -265,12 +320,72 @@ Interpretacion:
 7. Limpieza opcional: `sudo setfacl -bR /srv/compartida` (vuelve al modo POSIX clasico).
 
 ## 5. Notas de integración (ACL, Samba y NFS)
-- **ACL POSIX**: amplían rwx. La entrada `mask` limita los permisos efectivos de grupo y entradas ACL adicionales; si la `mask` es `r--`, una ACL `rwX` queda en solo lectura.
-- **Default ACL**: se heredan en nuevos ficheros/directorios. Sin default ACL, heredan solo el modo POSIX.
-- **umask**: afecta a la creación inicial; las default ACL corrigen herencia, pero un `umask 007/027` puede seguir recortando permisos si no hay default ACL.
-- **NFS**: el servidor aplica permisos/ACL y el cliente solo ve el resultado. En `sec=sys` todo depende de UID/GID; si no coinciden, fallara el acceso.
-- **NFSv4**: puede usar ACL propias. En este laboratorio usamos ACL POSIX en el servidor y exportamos con `acl` para mantener comportamiento uniforme.
-- **Samba**: traduce ACL POSIX a ACL estilo Windows. Con `vfs_acl_xattr` y `inherit permissions = yes` se respetan las ACL del FS; valida con `testparm` y una prueba real desde cliente.
+- En integracion real hay **tres capas** que deben permitir a la vez:
+  1. **Identidad** (LDAP/SSSD): quien es el usuario y a que grupos pertenece.
+  2. **Servicio** (Samba o NFS): quien puede entrar al recurso compartido.
+  3. **Sistema de ficheros** (POSIX + ACL): que puede hacer dentro (leer/escribir/entrar).
+- Si una capa deniega, el acceso final se deniega.
+
+### 5.1 Capa de sistema de ficheros (POSIX + ACL)
+- **ACL POSIX** amplian `ugo`; la entrada `mask` limita permisos efectivos de grupos y usuarios ACL adicionales.
+- **Default ACL** define herencia en lo nuevo; sin default ACL, herencia depende de modo POSIX + `umask`.
+- **`umask`** recorta al crear. Con `umask 077`, un archivo nuevo tiende a nacer cerrado para grupo/otros salvo que default ACL abra permisos.
+- En escritura sobre archivos dentro de directorios recuerda:
+  - necesitas permisos sobre el archivo, y
+  - necesitas `x` (travesia) y normalmente `w` sobre el directorio.
+
+Comprobaciones utiles:
+```bash
+namei -l /srv/grupo_clase/fichero.txt   # revisa permisos por cada tramo del path
+getfacl /srv/grupo_clase/fichero.txt    # revisa ACL y mask efectiva
+id alumno1                              # revisa grupos efectivos
+```
+
+### 5.2 Capa Samba (SMB/CIFS)
+- Samba aplica primero sus reglas de share (`valid users`, `read only`, `write list`, etc.).
+- Si Samba permite, **el kernel y el FS** vuelven a evaluar permisos POSIX/ACL. Por eso puedes autenticar bien y aun asi fallar al hacer `put`.
+- Parametros clave para este laboratorio:
+  - `vfs objects = acl_xattr`: conserva ACL compatibles con clientes SMB.
+  - `inherit permissions = yes`: ayuda a heredar permisos del directorio padre.
+  - `create mask` y `directory mask`: maximos de permisos que Samba crea; si son muy restrictivos, recortan lo que esperabas por ACL.
+
+Diagnostico rapido Samba:
+```bash
+testparm -s
+smbclient //10.50.0.11/grupo_clase -U alumno1
+# dentro: put /etc/hosts prueba.txt
+sudo tail -n 50 /var/log/samba/log.smbd
+```
+
+### 5.3 Capa NFS
+- NFS exporta el mismo FS; los permisos reales los decide el servidor.
+- En `sec=sys`, NFS evalua UID/GID numericos:
+  - si cliente y servidor no mapean igual al usuario, el acceso falla.
+- `root_squash` evita que root del cliente sea root en servidor (buena practica).
+- NFSv4 puede usar ACL nativas diferentes a POSIX ACL; en este laboratorio se prioriza comportamiento uniforme con ACL POSIX.
+
+Diagnostico rapido NFS:
+```bash
+exportfs -v
+showmount -e 10.50.0.11
+id alumno1
+getent passwd alumno1
+```
+
+### 5.4 Orden mental para depurar un "Permission denied"
+1. **Identidad**: `id usuario`, `getent passwd usuario`, `getent group grupo_datos`.
+2. **Servicio**:
+   - Samba: revisar `valid users`, `read only`, masks, `testparm`.
+   - NFS: revisar export (`exportfs -v`) y tipo de seguridad (`sec=sys`/Kerberos).
+3. **FS**: revisar `ls -ld`, `getfacl`, `mask`, `default ACL`, y permisos de travesia en todo el path.
+4. **Prueba minima reproducible**: crear un archivo con el usuario real (`sudo -u usuario touch ...`) y repetir desde cliente.
+
+### 5.5 Errores tipicos de laboratorio
+- ACL correcta en archivo, pero directorio sin `x` para ese usuario/grupo.
+- ACL `rwX` configurada, pero `mask::r--` recorta escritura.
+- Usuario permitido en Samba, pero no existe/mapea distinto en el host (`getent` falla).
+- `create mask` de Samba demasiado baja (por ejemplo `0640`) y rompe colaboracion.
+- En NFS, UID/GID distintos entre cliente y servidor aunque el nombre de usuario coincida.
 
 ---
 
