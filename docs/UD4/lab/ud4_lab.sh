@@ -40,14 +40,26 @@ container_exists() {
 setup() {
   ensure_lxd
   if container_exists "$CONTAINER_SERVER"; then
+    lxc stop -f "$CONTAINER_SERVER" >/dev/null 2>&1 || true
+    lxc config set "$CONTAINER_SERVER" security.nesting true
+    lxc config set "$CONTAINER_SERVER" security.privileged true
+    lxc config set "$CONTAINER_SERVER" linux.kernel_modules nfs,nfsd
     lxc start "$CONTAINER_SERVER" >/dev/null 2>&1 || true
   else
-    lxc launch "$IMAGE" "$CONTAINER_SERVER"
+    lxc launch "$IMAGE" "$CONTAINER_SERVER" \
+      -c security.nesting=true \
+      -c security.privileged=true \
+      -c linux.kernel_modules=nfs,nfsd
   fi
 
   lxc exec "$CONTAINER_SERVER" -- apt-get update -y
   lxc exec "$CONTAINER_SERVER" -- apt-get install -y acl samba samba-common-bin nfs-kernel-server nfs-common snapd curl sudo
-  lxc exec "$CONTAINER_SERVER" -- systemctl enable --now smbd nmbd nfs-kernel-server snapd
+  lxc exec "$CONTAINER_SERVER" -- mkdir -p /proc/fs/nfsd /var/lib/nfs/rpc_pipefs
+  lxc exec "$CONTAINER_SERVER" -- bash -c "mountpoint -q /proc/fs/nfsd || mount -t nfsd nfsd /proc/fs/nfsd || true"
+  lxc exec "$CONTAINER_SERVER" -- bash -c "mountpoint -q /var/lib/nfs/rpc_pipefs || mount -t rpc_pipefs sunrpc /var/lib/nfs/rpc_pipefs || true"
+  lxc exec "$CONTAINER_SERVER" -- systemctl enable --now smbd nmbd snapd
+  lxc exec "$CONTAINER_SERVER" -- systemctl enable nfs-kernel-server
+  lxc exec "$CONTAINER_SERVER" -- systemctl restart nfs-kernel-server || true
 
   lxc exec "$CONTAINER_SERVER" -- bash -c "groupadd -f '$GROUP'"
   lxc exec "$CONTAINER_SERVER" -- bash -c "id -u '$USER_PROF' >/dev/null 2>&1 || useradd -m -G '$GROUP' '$USER_PROF'"
@@ -58,6 +70,22 @@ setup() {
   lxc exec "$CONTAINER_SERVER" -- bash -c "chmod 2770 '$LAB_ROOT/compartida'"
 
   echo "Servidor preparado en '$CONTAINER_SERVER' con recursos en $LAB_ROOT"
+
+  local nfs_state fs_info
+  nfs_state="$(lxc exec "$CONTAINER_SERVER" -- systemctl is-active nfs-kernel-server 2>/dev/null || true)"
+  fs_info="$(lxc exec "$CONTAINER_SERVER" -- findmnt -T "$LAB_ROOT/compartida" -o FSTYPE,OPTIONS -n 2>/dev/null || true)"
+  if [[ "$nfs_state" != "active" ]]; then
+    echo "ERROR NFS: nfs-kernel-server no ha quedado activo en el contenedor."
+    echo "  - nfs-kernel-server: ${nfs_state:-desconocido}"
+    echo "  - FS de $LAB_ROOT/compartida: ${fs_info:-desconocido}"
+    echo "  - Diagnostico: lxc exec $CONTAINER_SERVER -- journalctl -u nfs-kernel-server -n 50 --no-pager"
+    echo "  - Sugerencia: ejecuta './docs/UD4/lab/ud4_lab.sh cleanup' y luego './docs/UD4/lab/ud4_lab.sh setup'."
+    exit 1
+  fi
+  if [[ "$fs_info" == *idmapped* || "$fs_info" == zfs* ]]; then
+    echo "AVISO: rootfs del contenedor en '${fs_info}'."
+    echo "  - NFS esta activo, pero si exportfs da error en tu host, revisa journal y perfil LXD."
+  fi
 }
 
 demo_acl() {

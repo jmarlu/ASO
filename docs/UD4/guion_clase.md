@@ -8,14 +8,25 @@ search:
 ## Objetivo de la sesion
 - Comprender SUID, SGID y sticky bit con ejemplos reales.
 - Manejar ACL POSIX y explicar la mascara y la herencia.
-- Conectar ACL con NFS/Samba/Nextcloud a nivel conceptual.
+- Conectar ACL con NFS/Samba a nivel conceptual y practico.
+
+## Alcance del guion (importante)
+- Este guion esta pensado para **clase guiada en contenedores LXD** (entorno rapido de aula).
+- La **practica evaluable UD4** es el laboratorio integrado de `docs/UD4/actividades.md` (flujo VM-SERVIDOR/VM-CLIENTE con LDAP/SSSD).
+- Equivalencia didactica:
+  - Guion de clase: valida conceptos y comandos base.
+  - Actividades UD4: valida integracion completa del escenario del curso.
+- Mapa rapido de nombres (coherencia con `docs/UD4/actividades.md`):
+  - En este guion: `ud4-lab:/srv/aso-ud4/compartida` (share `compartida`).
+  - En actividades: `10.50.0.11:/srv/grupo_clase` (share `grupo_clase`).
+  - Es el mismo patron tecnico (ACL + Samba/NFS); solo cambian nombres/rutas del entorno.
 
 ## Requisitos previos (5 min)
 - Sistema Linux con sudo.
 - LXD instalado e inicializado (laboratorio en contenedor).
   - Instalar: `sudo apt install lxd`
   - Inicializar: `sudo lxd init`
-- Los servicios (ACL, Samba, NFS, Nextcloud) se ejecutan dentro del contenedor.
+- Los servicios (ACL, Samba, NFS) se ejecutan dentro del contenedor.
 
 ## Material preparado en este repo
 - Script de laboratorio: `docs/UD4/lab/ud4_lab.sh`.
@@ -25,7 +36,7 @@ search:
 1. Introduccion y objetivos (5 min)
 2. SUID/SGID/Sticky con demo rapida (15 min)
 3. ACL POSIX y mascara (15 min)
-4. Puente a Samba/NFS/Nextcloud (10 min)
+4. Puente a Samba/NFS (10 min)
 5. Mini resumen y preguntas (5 min)
 
 ## Demo en directo (paso a paso)
@@ -56,6 +67,9 @@ Si quieres entrar en modo interactivo:
 ./docs/UD4/lab/ud4_lab.sh shell
 ./docs/UD4/lab/ud4_lab.sh shell-client
 ```
+Desde aqui, ejecuta los comandos del guion **directamente en shell**:
+- Bloques de servidor: en la shell de `ud4-lab`.
+- Bloques de cliente: en la shell de `ud4-client`.
 
 ### 1) SUID, SGID, sticky bit
 **Idea clave**: los bits especiales cambian el comportamiento del sistema de permisos.
@@ -66,20 +80,27 @@ Tu explicas:
 
 Alumnos ejecutan:
 ```bash
-# Nota: si /tmp tiene "nosuid", usa /usr/local/bin en lugar de /tmp.
-lxc exec ud4-lab -- cp /bin/ping /tmp/ping-suid
-lxc exec ud4-lab -- chown root:root /tmp/ping-suid
-lxc exec ud4-lab -- chmod 4755 /tmp/ping-suid
-lxc exec ud4-lab -- ls -l /tmp/ping-suid
-lxc exec ud4-lab -- bash -c "sudo -u alumno1 id -u"
-lxc exec ud4-lab -- bash -c "sudo -u alumno1 /tmp/ping-suid -c1 127.0.0.1"
-lxc exec ud4-lab -- rm /tmp/ping-suid
+# Demo robusta: compilamos un binario minimo para ver ruid/euid.
+apt-get update -y
+apt-get install -y gcc
+bash -c "cat >/tmp/ruid.c <<'EOF'
+#include <stdio.h>
+#include <unistd.h>
+int main(void){ printf(\"ruid=%d euid=%d\\n\", getuid(), geteuid()); return 0; }
+EOF"
+gcc /tmp/ruid.c -o /tmp/ruid
+sudo -u alumno1 /tmp/ruid     # ruid=UID_alumno1 euid=UID_alumno1
+chown root:root /tmp/ruid
+chmod 4755 /tmp/ruid
+ls -l /tmp/ruid
+sudo -u alumno1 /tmp/ruid     # ruid=UID_alumno1 euid=0
+rm -f /tmp/ruid /tmp/ruid.c
 ```
 Parada de verificacion (salida esperada):
 ```text
--rwsr-xr-x 1 root root ... /tmp/ping-suid
-<UID de alumno1, distinto de 0>
-1 packets transmitted, 1 received, 0% packet loss
+-rwsr-xr-x 1 root root ... /tmp/ruid
+ruid=<UID de alumno1> euid=<UID de alumno1>
+ruid=<UID de alumno1> euid=0
 ```
 Explica que el binario se ejecuta como root y por eso funciona sin sudo.
 
@@ -89,13 +110,13 @@ Tu explicas:
 
 Alumnos ejecutan:
 ```bash
-lxc exec ud4-lab -- groupadd -f grupo_datos
-lxc exec ud4-lab -- mkdir -p /tmp/sgid-demo
-lxc exec ud4-lab -- chown root:grupo_datos /tmp/sgid-demo
-lxc exec ud4-lab -- chmod 2775 /tmp/sgid-demo
-lxc exec ud4-lab -- usermod -aG grupo_datos alumno1
-lxc exec ud4-lab -- bash -c "sudo -u alumno1 touch /tmp/sgid-demo/archivo"
-lxc exec ud4-lab -- ls -l /tmp/sgid-demo/archivo
+groupadd -f grupo_datos
+mkdir -p /tmp/sgid-demo
+chown root:grupo_datos /tmp/sgid-demo
+chmod 2775 /tmp/sgid-demo
+usermod -aG grupo_datos alumno1
+sudo -u alumno1 touch /tmp/sgid-demo/archivo
+ls -l /tmp/sgid-demo/archivo
 ```
 Parada de verificacion (salida esperada):
 ```text
@@ -109,13 +130,13 @@ Tu explicas:
 
 Alumnos ejecutan:
 ```bash
-lxc exec ud4-lab -- mkdir -p /tmp/sticky-demo
-lxc exec ud4-lab -- chmod 1777 /tmp/sticky-demo
-lxc exec ud4-lab -- touch /tmp/sticky-demo/f1
-lxc exec ud4-lab -- bash -c "sudo -u nobody touch /tmp/sticky-demo/f2"
-lxc exec ud4-lab -- bash -c "sudo -u nobody rm /tmp/sticky-demo/f1"
-lxc exec ud4-lab -- bash -c "sudo -u nobody rm /tmp/sticky-demo/f2"
-lxc exec ud4-lab -- rm -r /tmp/sgid-demo /tmp/sticky-demo
+mkdir -p /tmp/sticky-demo
+chmod 1777 /tmp/sticky-demo
+touch /tmp/sticky-demo/f1
+sudo -u nobody touch /tmp/sticky-demo/f2
+sudo -u nobody rm /tmp/sticky-demo/f1
+sudo -u nobody rm /tmp/sticky-demo/f2
+rm -r /tmp/sgid-demo /tmp/sticky-demo
 ```
 Parada de verificacion (salida esperada):
 ```text
@@ -132,11 +153,11 @@ Tu explicas:
 
 Alumnos ejecutan:
 ```bash
-lxc exec ud4-lab -- bash -c "setfacl -R -m g:grupo_datos:rwX -m u:profesor:rwX -m u:alumno1:rwX /srv/aso-ud4/compartida"
-lxc exec ud4-lab -- bash -c "setfacl -R -m d:g:grupo_datos:rwX -m d:u:profesor:rwX -m d:u:alumno1:rwX /srv/aso-ud4/compartida"
-lxc exec ud4-lab -- bash -c "sudo -u alumno1 touch /srv/aso-ud4/compartida/ok-alumno1"
-lxc exec ud4-lab -- bash -c "sudo -u profesor touch /srv/aso-ud4/compartida/ok-profesor"
-lxc exec ud4-lab -- getfacl /srv/aso-ud4/compartida | head -n 25
+setfacl -R -m g:grupo_datos:rwX -m u:profesor:rwX -m u:alumno1:rwX /srv/aso-ud4/compartida
+setfacl -R -m d:g:grupo_datos:rwX -m d:u:profesor:rwX -m d:u:alumno1:rwX /srv/aso-ud4/compartida
+sudo -u alumno1 touch /srv/aso-ud4/compartida/ok-alumno1
+sudo -u profesor touch /srv/aso-ud4/compartida/ok-profesor
+getfacl /srv/aso-ud4/compartida | head -n 25
 ```
 Parada de verificacion (salida esperada):
 ```text
@@ -160,14 +181,14 @@ Tu explicas:
 
 Alumnos ejecutan:
 ```bash
-lxc exec ud4-lab -- mkdir -p /tmp/default-acl-demo
-lxc exec ud4-lab -- chown root:grupo_datos /tmp/default-acl-demo
-lxc exec ud4-lab -- chmod 2770 /tmp/default-acl-demo
-lxc exec ud4-lab -- setfacl -m d:g:grupo_datos:rwX -m d:u:alumno1:rwX /tmp/default-acl-demo
-lxc exec ud4-lab -- bash -c "sudo -u alumno1 touch /tmp/default-acl-demo/nota.txt"
-lxc exec ud4-lab -- bash -c "sudo -u alumno1 mkdir /tmp/default-acl-demo/carpeta"
-lxc exec ud4-lab -- getfacl /tmp/default-acl-demo/nota.txt | head -n 20
-lxc exec ud4-lab -- getfacl /tmp/default-acl-demo/carpeta | head -n 20
+mkdir -p /tmp/default-acl-demo
+chown root:grupo_datos /tmp/default-acl-demo
+chmod 2770 /tmp/default-acl-demo
+setfacl -m d:g:grupo_datos:rwX -m d:u:alumno1:rwX /tmp/default-acl-demo
+sudo -u alumno1 touch /tmp/default-acl-demo/nota.txt
+sudo -u alumno1 mkdir /tmp/default-acl-demo/carpeta
+getfacl /tmp/default-acl-demo/nota.txt | head -n 20
+getfacl /tmp/default-acl-demo/carpeta | head -n 20
 ```
 Parada de verificacion (salida esperada):
 ```text
@@ -190,9 +211,9 @@ Tu explicas:
 
 Alumnos ejecutan:
 ```bash
-lxc exec ud4-lab -- getfacl /srv/aso-ud4/compartida | head -n 20
-lxc exec ud4-lab -- setfacl -m m::r-x /srv/aso-ud4/compartida
-lxc exec ud4-lab -- getfacl /srv/aso-ud4/compartida | head -n 20
+getfacl /srv/aso-ud4/compartida | head -n 20
+setfacl -m m::r-x /srv/aso-ud4/compartida
+getfacl /srv/aso-ud4/compartida | head -n 20
 ```
 Parada de verificacion (salida esperada):
 ```text
@@ -205,13 +226,22 @@ Explica que la mascara recorta permisos efectivos aunque la ACL diga `rwx`.
 ### 3) Samba (SMB/CIFS) con permisos y ACL
 **Idea clave**: Samba filtra por usuarios/grupos, pero el FS decide el permiso final.
 
+Marco mental rapido (para explicar en 1 minuto):
+- **Paso 1 - Autenticacion SMB:** valida usuario/contrasena.
+- **Paso 2 - Reglas del share en Samba:** `valid users`, `read only`, `write list`.
+- **Paso 3 - Linux FS (POSIX + ACL):** decide lectura/escritura/borrado real dentro del recurso.
+- Resultado final:
+  - Samba permite + FS permite -> funciona.
+  - Samba permite + FS deniega -> veras `Access denied`.
+  - Samba deniega -> ni siquiera entras al share.
+
 1. Configurar `smb.conf` minimo en el servidor:
 Tu explicas:
 - "Samba puede permitir, pero si el FS/ACL deniega, el acceso final se deniega."
 
 Alumnos ejecutan:
 ```bash
-lxc exec ud4-lab -- bash -c "cat >/etc/samba/smb.conf <<'EOF'
+bash -c "cat >/etc/samba/smb.conf <<'EOF'
 [global]
   workgroup = WORKGROUP
   security = user
@@ -227,30 +257,88 @@ lxc exec ud4-lab -- bash -c "cat >/etc/samba/smb.conf <<'EOF'
   valid users = @grupo_datos
 EOF"
 ```
+Que significa cada directiva (resumen docente):
+- `read only = no`: habilita escritura a nivel de share.
+- `valid users = @grupo_datos`: solo miembros del grupo pueden autenticarse en ese recurso.
+- `create mask` / `directory mask`: permisos maximos al crear por SMB (si son bajos, recortan colaboracion).
+
 2. Crear usuario Samba y reiniciar servicio:
 Tu explicas:
 - "Primero alta en base Samba, luego validar config y reiniciar."
 
 Alumnos ejecutan:
 ```bash
-lxc exec ud4-lab -- smbpasswd -a alumno1
-lxc exec ud4-lab -- testparm
-lxc exec ud4-lab -- systemctl restart smbd
+smbpasswd -a alumno1
+testparm
+systemctl restart smbd
 ```
 Nota: en `smbpasswd` pon una contrasena simple para la demo (por ejemplo, `alumno1`).
-3. Probar desde el cliente:
+3. Probar desde el cliente (shell `ud4-client`):
 Alumnos ejecutan:
 ```bash
-lxc exec ud4-client -- smbclient //ud4-lab/compartida -U alumno1
+smbclient //ud4-lab/compartida -U alumno1
 ```
 Parada de verificacion (salida esperada):
 ```text
 Try "help" to get a list of possible commands.
 smb: \>
 ```
+4. Prueba de escritura y comprobacion en servidor:
+Alumnos ejecutan:
+```bash
+# en cliente: abrir sesion SMB interactiva
+smbclient //ud4-lab/compartida -U alumno1
+```
+Dentro del prompt `smb: \>` (esto ya no es la shell de Linux), ejecutar:
+```text
+put /etc/hosts ok-alumno1
+ls
+```
+Nota docente:
+- `put` **no se instala** como comando del sistema.
+- `put` es un comando interno de `smbclient`, igual que `ls`, `get`, `cd`, etc.
+- Si prefieres evitar modo interactivo, puedes hacerlo en una sola orden:
+```bash
+smbclient //ud4-lab/compartida -U alumno1 -c "put /etc/hosts ok-alumno1; ls"
+```
+```bash
+# en servidor (ud4-lab)
+ls -l /srv/aso-ud4/compartida
+getfacl /srv/aso-ud4/compartida | head -n 20
+```
+Parada de verificacion (salida esperada):
+```text
+ok-alumno1 aparece en smbclient y en /srv/aso-ud4/compartida
+```
+
+5. Microfallo guiado (opcional, 2 min) para entender "Access denied":
+Tu explicas:
+- "Ahora Samba deja entrar, pero el FS recorta escritura con la mask ACL."
+Alumnos ejecutan:
+```bash
+# servidor
+setfacl -m m::r-x /srv/aso-ud4/compartida
+getfacl /srv/aso-ud4/compartida | head -n 20
+```
+```bash
+# cliente (dentro de smbclient)
+put /etc/hosts falla-mask
+```
+Parada de verificacion (salida esperada):
+```text
+NT_STATUS_ACCESS_DENIED
+```
+```bash
+# servidor (restaurar)
+setfacl -m m::rwx /srv/aso-ud4/compartida
+```
 
 ### 4) NFS con export y cliente
 **Idea clave**: el servidor aplica ACL/UID/GID; el cliente solo ve el resultado.
+- Orden real de evaluacion (igual que en teoria):
+  1. El cliente monta una exportacion publicada por el servidor.
+  2. El servidor identifica al usuario (`sec=sys` usa UID/GID numericos).
+  3. El kernel del servidor aplica POSIX/ACL sobre la ruta exportada.
 
 1. Exportar en el servidor:
 Tu explicas:
@@ -258,29 +346,53 @@ Tu explicas:
 
 Alumnos ejecutan:
 ```bash
-lxc network show lxdbr0 | grep ipv4.address
-lxc exec ud4-lab -- bash -c "grep -q '^/srv/aso-ud4/compartida ' /etc/exports || echo '/srv/aso-ud4/compartida 10.0.0.0/24(rw,sync,subtree_check,acl,root_squash)' >> /etc/exports"
-lxc exec ud4-lab -- exportfs -ra
-lxc exec ud4-lab -- exportfs -v
+# Precheck: en algunos contenedores LXD (rootfs idmapped sobre zfs) NFS kernel-server no funciona.
+systemctl is-active nfs-kernel-server || true
+findmnt -T /srv/aso-ud4/compartida -o TARGET,SOURCE,FSTYPE,OPTIONS
+
+# Red real del contenedor (evita hardcodear 10.0.0.0/24)
+NET=$(ip -4 route show dev eth0 | awk '/proto kernel/ {print $1; exit}')
+echo "Red detectada: $NET"
+grep -q '^/srv/aso-ud4/compartida ' /etc/exports || echo "/srv/aso-ud4/compartida $NET(rw,sync,subtree_check,acl,root_squash)" >> /etc/exports
+exportfs -ra
+exportfs -v
 ```
-Si tu red LXD no es `10.0.0.0/24`, sustituye el prefijo por el que muestre `lxdbr0`.
+Si `systemctl is-active` devuelve `inactive` o `findmnt` muestra `idmapped`/`zfs`, el NFS kernel-server puede no ser viable en este contenedor.
+En ese caso, recrea el entorno con `./docs/UD4/lab/ud4_lab.sh cleanup` y `./docs/UD4/lab/ud4_lab.sh setup` (el script ya prepara el contenedor para NFS).
 Parada de verificacion (salida esperada):
 ```text
-/srv/aso-ud4/compartida 10.0.0.0/24(...)
+/srv/aso-ud4/compartida <tu_red>(...)
 ```
-2. Montar desde el cliente:
+2. Montar desde el cliente (shell `ud4-client`):
 Alumnos ejecutan:
 ```bash
-lxc exec ud4-client -- mkdir -p /mnt/comp
-lxc exec ud4-client -- mount -t nfs ud4-lab:/srv/aso-ud4/compartida /mnt/comp
-lxc exec ud4-client -- ls -la /mnt/comp
+mkdir -p /mnt/comp
+mount -t nfs ud4-lab:/srv/aso-ud4/compartida /mnt/comp
+ls -la /mnt/comp
 ```
 Parada de verificacion (salida esperada):
 ```text
 drwxrws---+ 2 root grupo_datos ...
 ```
 
-### 5) Nextcloud (demo rapida)
+3. Comprobacion rapida de diagnostico (coherente con teoria):
+Alumnos ejecutan:
+```bash
+# servidor (ud4-lab)
+exportfs -v
+
+# cliente (ud4-client)
+showmount -e ud4-lab
+mount | grep nfs
+
+# comprobar identidad en ambos lados
+id alumno1
+getent passwd alumno1
+```
+Mensaje docente:
+- Si UID/GID no cuadran entre cliente y servidor en `sec=sys`, habra "Permission denied" aunque el nombre de usuario sea el mismo.
+
+### 5) Nextcloud (demo opcional fuera de tiempo base)
 **Idea clave**: Nextcloud gestiona comparticion logica, pero el FS manda.
 
 1. Instalar en el servidor:
@@ -289,7 +401,7 @@ Tu explicas:
 
 Alumnos ejecutan:
 ```bash
-lxc exec ud4-lab -- snap install nextcloud
+snap install nextcloud
 ```
 Parada de verificacion (salida esperada):
 ```text
@@ -298,7 +410,7 @@ nextcloud ... installed
 2. Mostrar estado:
 Alumnos ejecutan:
 ```bash
-lxc exec ud4-lab -- nextcloud.status
+nextcloud.status
 ```
 Parada de verificacion (salida esperada):
 ```text
@@ -307,8 +419,8 @@ installed: true
 3. (Opcional) Crear usuario admin y mostrar acceso local:
 Alumnos ejecutan:
 ```bash
-lxc exec ud4-lab -- nextcloud.manual-install admin admin123
-lxc exec ud4-lab -- nextcloud.occ user:list
+nextcloud.manual-install admin admin123
+nextcloud.occ user:list
 ```
 Parada de verificacion (salida esperada):
 ```text
@@ -325,6 +437,7 @@ admin
 - En ACL, la `mask` manda sobre permisos efectivos.
 - `default ACL` define herencia; sin ella, solo heredan los permisos POSIX.
 - En servicios de red, el permiso final depende del sistema de ficheros.
+- Este guion usa LXD para practicar rapido; la entrega UD4 se valida con el laboratorio integrado de `actividades.md`.
 
 ## Preguntas rapidas para cerrar
 - Que diferencia hay entre SGID en binario y en directorio?

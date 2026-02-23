@@ -99,6 +99,12 @@ Los bits especiales son tres banderas adicionales al `rwx` clasico. Modifican **
 
 > “Compartir sin romper la seguridad: mismo recurso, permisos granulados.”
 
+## Convencion de escenarios UD4
+- Para evitar confusion entre documentos, en UD4 se usan dos escenarios:
+  - **Guion de clase** (`docs/UD4/guion_clase.md`): servidor `ud4-lab`, cliente `ud4-client`, recurso `/srv/aso-ud4/compartida`, share SMB `compartida`.
+  - **Actividades evaluables** (`docs/UD4/actividades.md`): fileserver `10.50.0.11`, recurso `/srv/grupo_clase`, share SMB `grupo_clase`.
+- La logica de permisos es la misma en ambos; solo cambian nombres de host/ruta y el entorno de ejecucion.
+
 ## 1. Qué son y cuándo usarlas
 - **ACL (Access Control Lists)** amplían el modelo `ugo` de UNIX permitiendo permisos por **usuario** y **grupo** adicionales.
 - Útiles en **recursos compartidos** (NFS/Samba/Nextcloud): varios equipos/proyectos con permisos diferentes sobre el mismo árbol.
@@ -206,7 +212,7 @@ Interpretacion:
   ```
 - Al modificar ACL, la máscara puede bajar automáticamente; revisa tras cambios.
 
-### Permisos efectivos y su impacto en Samba/NFS
+### Permisos efectivos (base POSIX/ACL)
 - Regla rapida: **permiso efectivo = ACL ∩ mask ∩ POSIX** (para grupo y entradas ACL adicionales; en el propietario no aplica `mask`).
 - No basta con "tener una ACL": para escribir en un archivo dentro de un directorio necesitas:
   - permiso de escritura en el archivo, y
@@ -249,22 +255,8 @@ Casos tipicos (con ejemplo):
    Resultado esperado:
    - Si `alumno1` no es dueño ni tiene entrada `user:alumno1:*`, su acceso dependera de si entra por grupo (`group::`) o por otros (`other::`).
 
-4. **Samba: el share permite, pero el FS deniega**
-   - Share:
-     - `valid users = @grupo_datos`
-     - `read only = no`
-   - FS:
-     - `mask::r--` o ACL sin `w` en `/srv/grupo_clase`.
-   Resultado esperado:
-   - `smbclient` autentica y entra al recurso, pero `put` falla con "Access denied".
-   - Causa: Samba autoriza entrada, pero quien decide la escritura final es el FS.
-
-5. **NFS (`sec=sys`): ACL correcta, UID/GID mal mapeado**
-   - En servidor, `alumno1` es UID 10501.
-   - En cliente, el mismo nombre `alumno1` se resuelve a UID distinto (o ni existe).
-   Resultado esperado:
-   - Operaciones devuelven "Permission denied" aunque en servidor parezca bien configurado.
-   - Causa: NFS clasico evalua UID/GID numericos, no el nombre visible.
+Nota didactica:
+- Los casos de Samba y NFS se tratan despues, en la seccion de integracion, cuando ya se han explicado ambos servicios.
 
 ### Checkpoint (antes de Samba/NFS)
 - Hay que recordar solo 3 ideas:
@@ -284,7 +276,7 @@ Casos tipicos (con ejemplo):
    `setfacl -R -m g:grupo_datos:rwX -m u:profesor:rwX -m u:alumno1:rwX compartida`
 5. Validar: `getfacl compartida | head`.
 
-### Ejemplo guiado en Ubuntu (prueba rapida)
+### Ejemplo guiado en Ubuntu (escenario guion de clase)
 1. Si no tienes LDAP, prepara usuarios/grupo locales:
    ```bash
    sudo groupadd grupo_datos
@@ -293,33 +285,34 @@ Casos tipicos (con ejemplo):
    ```
 2. Crea el recurso y aplica permisos base:
    ```bash
-   sudo mkdir -p /srv/compartida
-   sudo chown root:grupo_datos /srv/compartida
-   sudo chmod 2770 /srv/compartida   # setgid para heredar grupo
+   sudo mkdir -p /srv/aso-ud4/compartida
+   sudo chown root:grupo_datos /srv/aso-ud4/compartida
+   sudo chmod 2770 /srv/aso-ud4/compartida   # setgid para heredar grupo
    ```
 3. Añade ACL (explícitas y por defecto):
    ```bash
-   sudo setfacl -R -m g:grupo_datos:rwX -m u:profesor:rwX -m u:alumno1:rwX /srv/compartida
-   sudo setfacl -R -m d:g:grupo_datos:rwX -m d:u:profesor:rwX -m d:u:alumno1:rwX /srv/compartida
+   sudo setfacl -R -m g:grupo_datos:rwX -m u:profesor:rwX -m u:alumno1:rwX /srv/aso-ud4/compartida
+   sudo setfacl -R -m d:g:grupo_datos:rwX -m d:u:profesor:rwX -m d:u:alumno1:rwX /srv/aso-ud4/compartida
    ```
 4. Comprueba la máscara (si ves permisos recortados, ajusta):
    ```bash
-   getfacl /srv/compartida
-   sudo setfacl -m m::rwx /srv/compartida   # opcional si la mask quedo baja
+   getfacl /srv/aso-ud4/compartida
+   sudo setfacl -m m::rwx /srv/aso-ud4/compartida   # opcional si la mask quedo baja
    ```
 5. Valida herencia y acceso:
    ```bash
-   sudo -u alumno1 touch /srv/compartida/ok-alumno1   # debe crear
-   sudo -u profesor touch /srv/compartida/ok-profesor # debe crear
+   sudo -u alumno1 touch /srv/aso-ud4/compartida/ok-alumno1   # debe crear
+   sudo -u profesor touch /srv/aso-ud4/compartida/ok-profesor # debe crear
    ```
 6. Revisión final:
    ```bash
-   ls -ld /srv/compartida       # debe mostrar g+s y "+"
-   getfacl /srv/compartida
+   ls -ld /srv/aso-ud4/compartida       # debe mostrar g+s y "+"
+   getfacl /srv/aso-ud4/compartida
    ```
-7. Limpieza opcional: `sudo setfacl -bR /srv/compartida` (vuelve al modo POSIX clasico).
+7. Limpieza opcional: `sudo setfacl -bR /srv/aso-ud4/compartida` (vuelve al modo POSIX clasico).
 
 ## 5. Notas de integración (ACL, Samba y NFS)
+- Escenario de referencia en esta seccion: **guion de clase** (`ud4-lab` / `ud4-client`, recurso `/srv/aso-ud4/compartida`).
 - En integracion real hay **tres capas** que deben permitir a la vez:
   1. **Identidad** (LDAP/SSSD): quien es el usuario y a que grupos pertenece.
   2. **Servicio** (Samba o NFS): quien puede entrar al recurso compartido.
@@ -336,14 +329,21 @@ Casos tipicos (con ejemplo):
 
 Comprobaciones utiles:
 ```bash
-namei -l /srv/grupo_clase/fichero.txt   # revisa permisos por cada tramo del path
-getfacl /srv/grupo_clase/fichero.txt    # revisa ACL y mask efectiva
+namei -l /srv/aso-ud4/compartida/fichero.txt   # revisa permisos por cada tramo del path
+getfacl /srv/aso-ud4/compartida/fichero.txt    # revisa ACL y mask efectiva
 id alumno1                              # revisa grupos efectivos
 ```
 
 ### 5.2 Capa Samba (SMB/CIFS)
-- Samba aplica primero sus reglas de share (`valid users`, `read only`, `write list`, etc.).
-- Si Samba permite, **el kernel y el FS** vuelven a evaluar permisos POSIX/ACL. Por eso puedes autenticar bien y aun asi fallar al hacer `put`.
+- **Samba** es el servicio que implementa **SMB/CIFS** en Linux/Unix para compartir carpetas e impresoras en red (especialmente con clientes Windows).
+- En practica, Samba publica el recurso compartido y aplica reglas de acceso al share; despues el sistema de ficheros Linux decide el permiso final sobre cada operacion.
+- Orden real de evaluacion (que se comprueba primero):
+  1. **Autenticacion SMB**: usuario/contrasena validos.
+  2. **Reglas del share en Samba**: `valid users`, `read only`, `write list`, etc.  
+     Si falla aqui, no entras al recurso.
+  3. **Permisos del sistema de ficheros (POSIX + ACL)** en el servidor: kernel Linux, `mask`, ACL y permisos de travesia del path.  
+     Si falla aqui, entras al recurso pero operaciones como `put`/`mkdir` devuelven "Access denied".
+- Resumen: Samba controla la **puerta de entrada**; el FS controla la **operacion final** sobre ficheros y directorios.
 - Parametros clave para este laboratorio:
   - `vfs objects = acl_xattr`: conserva ACL compatibles con clientes SMB.
   - `inherit permissions = yes`: ayuda a heredar permisos del directorio padre.
@@ -351,23 +351,36 @@ id alumno1                              # revisa grupos efectivos
 
 Diagnostico rapido Samba:
 ```bash
+# servidor (ud4-lab)
 testparm -s
-smbclient //10.50.0.11/grupo_clase -U alumno1
-# dentro: put /etc/hosts prueba.txt
 sudo tail -n 50 /var/log/samba/log.smbd
+
+# cliente (ud4-client)
+smbclient //ud4-lab/compartida -U alumno1
+# dentro: put /etc/hosts prueba.txt
 ```
 
 ### 5.3 Capa NFS
-- NFS exporta el mismo FS; los permisos reales los decide el servidor.
-- En `sec=sys`, NFS evalua UID/GID numericos:
-  - si cliente y servidor no mapean igual al usuario, el acceso falla.
+- **NFS** (Network File System) permite montar en red un directorio remoto como si fuera local.
+- Orden real de evaluacion en NFS (que se comprueba primero):
+  1. El cliente monta una exportacion publicada por el servidor (`/etc/exports`).
+  2. El servidor identifica al usuario segun el modo de seguridad (`sec=sys` usa UID/GID numericos).
+  3. El kernel del servidor aplica permisos POSIX/ACL del directorio/archivo exportado.
+- Consecuencia clave: en NFS no decide el cliente; decide siempre el servidor sobre su FS.
+- Si cliente y servidor no mapean igual UID/GID en `sec=sys`, obtendras "Permission denied" aunque el nombre de usuario coincida.
 - `root_squash` evita que root del cliente sea root en servidor (buena practica).
 - NFSv4 puede usar ACL nativas diferentes a POSIX ACL; en este laboratorio se prioriza comportamiento uniforme con ACL POSIX.
 
 Diagnostico rapido NFS:
 ```bash
+# servidor (donde se exporta la ruta)
 exportfs -v
-showmount -e 10.50.0.11
+
+# cliente (donde montas la ruta remota)
+showmount -e ud4-lab
+mount | grep nfs
+
+# comprobar identidad en ambos lados (servidor y cliente)
 id alumno1
 getent passwd alumno1
 ```
@@ -404,22 +417,29 @@ getent passwd alumno1
 ## 2. NFS
 ### 2.1 Instalación básica
 ```bash
-sudo apt install nfs-kernel-server   # servidor
-sudo apt install nfs-common          # cliente
+# servidor NFS
+sudo apt install nfs-kernel-server
+
+# cliente NFS
+sudo apt install nfs-common
 ```
 ### 2.2 Exportación y opciones clave
 - El FS debe soportar ACL POSIX si quieres herencia/permisos granulares.
-- `/etc/exports` ejemplo:
+- En el **servidor NFS** (`10.50.0.11`), `/etc/exports` ejemplo:
   ```
-  /srv/compartida 10.50.0.0/24(rw,sync,subtree_check,acl,root_squash,fsid=0)
+  /srv/grupo_clase 10.50.0.0/24(rw,sync,subtree_check,acl,root_squash,fsid=0)
   /home/usuarios  10.50.0.0/24(rw,sync,subtree_check,acl,root_squash)
   ```
+  - Activar cambios y comprobar:
+    - `sudo exportfs -ra`
+    - `sudo exportfs -v`
   - `root_squash`: root del cliente no es root en servidor.
   - `acl`: exporta respetando ACL POSIX.
   - `fsid=0`: pseudo-root para NFSv4.
 ### 2.3 Cliente y montaje automático
-- Manual: `mount -t nfs filesrv:/srv/compartida /mnt/comp`.
-- `/etc/fstab`: `filesrv:/srv/compartida /mnt/comp nfs defaults,_netdev 0 0`.
+- En el **cliente NFS**:
+  - Manual: `mount -t nfs 10.50.0.11:/srv/grupo_clase /mnt/comp`.
+  - `/etc/fstab`: `10.50.0.11:/srv/grupo_clase /mnt/comp nfs defaults,_netdev 0 0`.
 - `autofs`: `/etc/auto.master` + `/etc/auto.nfs` para montar bajo demanda.
 ### 2.4 Consideraciones
 - NFSv3: UID/GID sin firma; NFSv4 añade `idmapd` (mapa de nombres) y soporta Kerberos (`sec=krb5`, `krb5i`, `krb5p`).
@@ -443,8 +463,8 @@ sudo apt install samba
   vfs objects = acl_xattr
   inherit permissions = yes
 
-[compartida]
-  path = /srv/compartida
+[grupo_clase]
+  path = /srv/grupo_clase
   read only = no
   create mask = 0660
   directory mask = 2770
@@ -467,14 +487,14 @@ sudo apt install samba
 - Cuotas: configúralas en el FS (`setquota`); Samba puede informar de ellas a los clientes.
 - Autenticación: `security = user` (local) o `security = ads` si unes a AD. Con LDAP externo, usa backend de cuentas vía `winbind` o `sssd` para resolver UID/GID coherentes.
 - Seguridad de transporte: `server signing = mandatory` en redes hostiles; `smb encrypt = required` si quieres cifrado en tránsito (SMB3).
-- Resolución de nombres: evita `wins`; usa DNS o IP directa. Prueba con `smbclient -L //filesrv -U usuario`.
-- Perfiles/Homes: la sección `[homes]` sirve directorios personales con 0700. Si usas perfiles móviles, ajusta cuotas y paths UNC (`\\filesrv\homes`).
+- Resolución de nombres: evita `wins`; usa DNS o IP directa. Prueba con `smbclient -L //10.50.0.11 -U usuario`.
+- Perfiles/Homes: la sección `[homes]` sirve directorios personales con 0700. Si usas perfiles móviles, ajusta cuotas y paths UNC (`\\10.50.0.11\homes`).
 
 ### 3.3 Puesta en marcha y pruebas rapidas
 - Instala servidor y cliente: `sudo apt install samba samba-client` (en RHEL/Fedora: `dnf -y install samba samba-client`).
 - Servicio: `sudo systemctl enable --now smbd nmbd` (activa NetBIOS para entornos mixtos); revisa sintaxis con `testparm`.
 - Usuarios Samba: crea credencial local con `sudo pdbedit -a usuario` (o `smbpasswd -a`); deben existir en el sistema/LDAP.
-- Pruebas desde el servidor: `smbclient -L //filesrv -U usuario` para ver compartidos y `smbclient //filesrv/compartida -U usuario` para verificar acceso.
+- Pruebas desde cliente (o desde cualquier host con red al servidor): `smbclient -L //10.50.0.11 -U usuario` para ver compartidos y `smbclient //10.50.0.11/grupo_clase -U usuario` para verificar acceso.
 - Para limitar superficie, en `[global]` añade `interfaces = lo eth0` y, si procede, `bind interfaces only = yes`.
 
 
