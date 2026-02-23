@@ -90,6 +90,8 @@ theme:
       accent: lime
 
 markdown_extensions:
+  - toc:
+      toc_depth: 1-6
   - meta
   - pymdownx.arithmatex:
       generic: true

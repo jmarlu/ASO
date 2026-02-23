@@ -359,8 +359,110 @@ sudo tail -n 50 /var/log/samba/log.smbd
 smbclient //ud4-lab/compartida -U alumno1
 # dentro: put /etc/hosts prueba.txt
 ```
+### 5.3 Puesta en marcha y pruebas rapidas
+- Instala servidor y cliente: `sudo apt install samba samba-client` (en RHEL/Fedora: `dnf -y install samba samba-client`).
+- Servicio: `sudo systemctl enable --now smbd nmbd` (activa NetBIOS para entornos mixtos); revisa sintaxis con `testparm`.
+- Usuarios Samba: crea credencial local con `sudo pdbedit -a usuario` (o `smbpasswd -a`); deben existir en el sistema/LDAP.
+- Pruebas desde cliente (o desde cualquier host con red al servidor): `smbclient -L //10.50.0.11 -U usuario` para ver compartidos y `smbclient //10.50.0.11/grupo_clase -U usuario` para verificar acceso.
+- Para limitar superficie, en `[global]` añade `interfaces = lo eth0` y, si procede, `bind interfaces only = yes`.
 
-### 5.3 Capa NFS
+### 5.4 Comprobacion guiada  (Samba + ACL)
+Idea clave para la practica: Samba filtra por usuarios/grupos, pero el sistema de ficheros decide el permiso final.
+
+Marco mental rapido:
+1. Paso 1, autenticacion SMB: valida usuario/contrasena.
+2. Paso 2, reglas del share en Samba: `valid users`, `read only`, `write list`.
+3. Paso 3, Linux FS (POSIX + ACL): decide lectura/escritura/borrado real dentro del recurso.
+
+Resultado final:
+- Samba permite + FS permite -> funciona.
+- Samba permite + FS deniega -> veras `Access denied`.
+- Samba deniega -> ni siquiera entras al share.
+
+1. En `ud4-lab`, configura un `smb.conf` minimo:
+```bash
+bash -c "cat >/etc/samba/smb.conf <<'EOF'
+[global]
+  workgroup = WORKGROUP
+  security = user
+  map to guest = never
+  vfs objects = acl_xattr
+  inherit permissions = yes
+
+[compartida]
+  path = /srv/aso-ud4/compartida
+  read only = no
+  create mask = 0660
+  directory mask = 2770
+  valid users = @grupo_datos
+EOF"
+```
+Que debe comprobar el alumnado:
+- `read only = no` habilita escritura a nivel de share.
+- `valid users = @grupo_datos` solo deja entrar a miembros del grupo.
+- `create mask` y `directory mask` limitan permisos al crear por SMB.
+
+2. Crea usuario Samba y reinicia servicio:
+```bash
+smbpasswd -a alumno1
+testparm
+systemctl restart smbd
+```
+Usa una contrasena simple para demo (por ejemplo, `alumno1`).
+
+3. Desde `ud4-client`, prueba acceso al share:
+```bash
+smbclient //ud4-lab/compartida -U alumno1
+```
+Salida esperada:
+```text
+Try "help" to get a list of possible commands.
+smb: \>
+```
+
+4. Prueba escritura y verificacion:
+```bash
+# cliente (modo interactivo)
+smbclient //ud4-lab/compartida -U alumno1
+```
+Dentro de `smb: \>`:
+```text
+put /etc/hosts ok-alumno1
+ls
+```
+Nota:
+- `put` es un comando interno de `smbclient` (no de la shell Linux).
+- Variante no interactiva:
+```bash
+smbclient //ud4-lab/compartida -U alumno1 -c "put /etc/hosts ok-alumno1; ls"
+```
+En `ud4-lab`, comprueba:
+```bash
+ls -l /srv/aso-ud4/compartida
+getfacl /srv/aso-ud4/compartida | head -n 20
+```
+Resultado esperado: `ok-alumno1` aparece tanto en `smbclient` como en `/srv/aso-ud4/compartida`.
+
+5. Microfallo guiado para entender `Access denied`:
+```bash
+# servidor
+setfacl -m m::r-x /srv/aso-ud4/compartida
+getfacl /srv/aso-ud4/compartida | head -n 20
+```
+En cliente (dentro de `smbclient`):
+```text
+put /etc/hosts falla-mask
+```
+Salida esperada:
+```text
+NT_STATUS_ACCESS_DENIED
+```
+Restaurar en servidor:
+```bash
+setfacl -m m::rwx /srv/aso-ud4/compartida
+```
+
+### 5.5 Capa NFS
 - **NFS** (Network File System) permite montar en red un directorio remoto como si fuera local.
 - Orden real de evaluacion en NFS (que se comprueba primero):
   1. El cliente monta una exportacion publicada por el servidor (`/etc/exports`).
@@ -385,7 +487,7 @@ id alumno1
 getent passwd alumno1
 ```
 
-### 5.4 Orden mental para depurar un "Permission denied"
+### 5.6 Orden mental para depurar un "Permission denied"
 1. **Identidad**: `id usuario`, `getent passwd usuario`, `getent group grupo_datos`.
 2. **Servicio**:
    - Samba: revisar `valid users`, `read only`, masks, `testparm`.
@@ -393,7 +495,7 @@ getent passwd alumno1
 3. **FS**: revisar `ls -ld`, `getfacl`, `mask`, `default ACL`, y permisos de travesia en todo el path.
 4. **Prueba minima reproducible**: crear un archivo con el usuario real (`sudo -u usuario touch ...`) y repetir desde cliente.
 
-### 5.5 Errores tipicos de laboratorio
+### 5.7 Errores tipicos de laboratorio
 - ACL correcta en archivo, pero directorio sin `x` para ese usuario/grupo.
 - ACL `rwX` configurada, pero `mask::r--` recorta escritura.
 - Usuario permitido en Samba, pero no existe/mapea distinto en el host (`getent` falla).
@@ -490,12 +592,7 @@ sudo apt install samba
 - Resolución de nombres: evita `wins`; usa DNS o IP directa. Prueba con `smbclient -L //10.50.0.11 -U usuario`.
 - Perfiles/Homes: la sección `[homes]` sirve directorios personales con 0700. Si usas perfiles móviles, ajusta cuotas y paths UNC (`\\10.50.0.11\homes`).
 
-### 3.3 Puesta en marcha y pruebas rapidas
-- Instala servidor y cliente: `sudo apt install samba samba-client` (en RHEL/Fedora: `dnf -y install samba samba-client`).
-- Servicio: `sudo systemctl enable --now smbd nmbd` (activa NetBIOS para entornos mixtos); revisa sintaxis con `testparm`.
-- Usuarios Samba: crea credencial local con `sudo pdbedit -a usuario` (o `smbpasswd -a`); deben existir en el sistema/LDAP.
-- Pruebas desde cliente (o desde cualquier host con red al servidor): `smbclient -L //10.50.0.11 -U usuario` para ver compartidos y `smbclient //10.50.0.11/grupo_clase -U usuario` para verificar acceso.
-- Para limitar superficie, en `[global]` añade `interfaces = lo eth0` y, si procede, `bind interfaces only = yes`.
+
 
 
 ## 4. Nextcloud
