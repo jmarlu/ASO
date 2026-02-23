@@ -95,7 +95,7 @@ Los bits especiales son tres banderas adicionales al `rwx` clasico. Modifican **
    ```
    *Limpieza*: `sudo rm -r /tmp/sgid-demo /tmp/sticky-demo`.
 
-# 🗂️ ACL en sistemas de ficheros (GNU/Linux)
+## 🗂️ ACL en sistemas de ficheros (GNU/Linux)
 
 > “Compartir sin romper la seguridad: mismo recurso, permisos granulados.”
 
@@ -344,10 +344,16 @@ id alumno1                              # revisa grupos efectivos
   3. **Permisos del sistema de ficheros (POSIX + ACL)** en el servidor: kernel Linux, `mask`, ACL y permisos de travesia del path.  
      Si falla aqui, entras al recurso pero operaciones como `put`/`mkdir` devuelven "Access denied".
 - Resumen: Samba controla la **puerta de entrada**; el FS controla la **operacion final** sobre ficheros y directorios.
-- Parametros clave para este laboratorio:
-  - `vfs objects = acl_xattr`: conserva ACL compatibles con clientes SMB.
-  - `inherit permissions = yes`: ayuda a heredar permisos del directorio padre.
-  - `create mask` y `directory mask`: maximos de permisos que Samba crea; si son muy restrictivos, recortan lo que esperabas por ACL.
+- **Parametros clave para este laboratorio**:
+  - `vfs objects = acl_xattr`: hace que Samba guarde metadatos ACL en atributos extendidos (`xattr`) para mantener compatibilidad con clientes Windows/SMB. Sin esto, es mas facil perder detalle de permisos al crear o modificar desde SMB.
+    Ejemplo didactico: un alumno crea un fichero por SMB y luego en servidor haces `getfacl /srv/aso-ud4/compartida/ok-alumno1`; debes ver ACL coherente con lo esperado en el recurso compartido.
+  - `inherit permissions = yes`: cuando un cliente SMB crea algo, Samba intenta heredar permisos del directorio padre en lugar de aplicar solo valores por defecto. Esto ayuda a mantener colaboracion estable en carpetas compartidas con `setgid` y ACL por defecto.
+    Ejemplo rapido:
+    - Padre: `chmod 2770 /srv/aso-ud4/compartida`
+    - Cliente SMB: `mkdir prueba-herencia`
+    - Servidor: `ls -ld /srv/aso-ud4/compartida/prueba-herencia` -> debe conservar grupo del recurso y bit `g+s`.
+  - `create mask` (archivos) y `directory mask` (carpetas) son el "techo" de permisos al crear por SMB: aunque la ACL permita mas, Samba no creara por encima de esa mascara. Ejemplo: con `create mask = 0660` y `directory mask = 2770`, los ficheros nuevos no tendran permisos para `other` y las carpetas heredaran grupo (`setgid`).
+ 
 
 Diagnostico rapido Samba:
 ```bash
@@ -400,7 +406,9 @@ EOF"
 Que debe comprobar el alumnado:
 - `read only = no` habilita escritura a nivel de share.
 - `valid users = @grupo_datos` solo deja entrar a miembros del grupo.
-- `create mask` y `directory mask` limitan permisos al crear por SMB.
+- `map to guest = never` evita accesos anonimos por error: si el usuario no existe o la contrasena falla, Samba deniega el acceso en vez de entrar como `guest`.
+- Comprobacion rapida: prueba `smbclient //ud4-lab/compartida -U alumno1` con contrasena incorrecta; debe fallar con error de autenticacion.
+
 
 2. Crea usuario Samba y reinicia servicio:
 ```bash
@@ -487,7 +495,71 @@ id alumno1
 getent passwd alumno1
 ```
 
-### 5.6 Orden mental para depurar un "Permission denied"
+### 5.6 Ejemplo guiado (ud4-lab -> ud4-client)
+Objetivo: compartir una carpeta en `ud4-lab`, montarla en `ud4-client` y validar escritura sin pararse a depurar en clase.
+
+1. En `ud4-lab` (servidor), crea la carpeta y permisos base:
+```bash
+sudo mkdir -p /srv/aso-ud4/nfs-compartida
+sudo chown root:grupo_datos /srv/aso-ud4/nfs-compartida
+sudo chmod 2770 /srv/aso-ud4/nfs-compartida
+sudo setfacl -m g:grupo_datos:rwx -m d:g:grupo_datos:rwx /srv/aso-ud4/nfs-compartida
+```
+
+2. Exporta la carpeta por NFS (ajusta la red a la IP real del cliente):
+```bash
+# Si /etc/exports.d no existe, usa /etc/exports
+sudo mkdir -p /etc/exports.d
+echo "/srv/aso-ud4/nfs-compartida 10.233.242.0/24(rw,sync,root_squash,no_subtree_check,insecure)" | sudo tee /etc/exports.d/ud4-nfs.exports
+sudo exportfs -ra
+sudo exportfs -v | grep nfs-compartida
+```
+
+3. En `ud4-client`, comprueba export y monta:
+```bash
+showmount -e ud4-lab
+sudo mkdir -p /mnt/ud4-nfs
+sudo mount -t nfs -o vers=4,proto=tcp ud4-lab:/srv/aso-ud4/nfs-compartida /mnt/ud4-nfs
+mount | grep ud4-nfs
+```
+
+4. Prueba de escritura con usuario normal (no `root`, por `root_squash`):
+```bash
+id alumno1
+su - alumno1
+cd /mnt/ud4-nfs
+touch ok-alumno1
+ls -l /mnt/ud4-nfs
+```
+
+5. Verificacion final en servidor (`ud4-lab`):
+```bash
+ls -l /srv/aso-ud4/nfs-compartida
+```
+Resultado esperado: aparece `ok-alumno1` en cliente y en servidor (misma ruta remota).
+
+Incidencias tipicas:
+- `showmount -e` vacio:
+  - no se creo el fichero de export (`/etc/exports.d` inexistente) o no se recargo `exportfs -ra`.
+- `mount.nfs: Operation not permitted`:
+  - En LXC/LXD, ejecutar en el host (no dentro del contenedor):
+  ```bash
+  lxc stop ud4-client
+  lxc config set ud4-client security.privileged true
+  lxc config set ud4-client security.nesting true
+  lxc config set ud4-client raw.lxc "lxc.apparmor.profile=unconfined"
+  lxc start ud4-client
+  lxc config show ud4-client | grep -E "security.privileged|security.nesting|raw.lxc"
+  ```
+  - Reintentar en `ud4-client`:
+  ```bash
+  sudo mount -v -t nfs -o vers=4,proto=tcp ud4-lab:/srv/aso-ud4/nfs-compartida /mnt/ud4-nfs
+  ```
+- `cd`/`touch` devuelve `Permission denied` tras montar:
+  - usuario en cliente no tiene el mismo UID/GID que en servidor (en NFS `sec=sys` mandan los numeros, no el nombre).
+  - se prueba como `root` y `root_squash` lo bloquea.
+
+### 5.7 Orden mental para depurar un "Permission denied"
 1. **Identidad**: `id usuario`, `getent passwd usuario`, `getent group grupo_datos`.
 2. **Servicio**:
    - Samba: revisar `valid users`, `read only`, masks, `testparm`.
@@ -495,7 +567,7 @@ getent passwd alumno1
 3. **FS**: revisar `ls -ld`, `getfacl`, `mask`, `default ACL`, y permisos de travesia en todo el path.
 4. **Prueba minima reproducible**: crear un archivo con el usuario real (`sudo -u usuario touch ...`) y repetir desde cliente.
 
-### 5.7 Errores tipicos de laboratorio
+### 5.8 Errores tipicos de laboratorio
 - ACL correcta en archivo, pero directorio sin `x` para ese usuario/grupo.
 - ACL `rwX` configurada, pero `mask::r--` recorta escritura.
 - Usuario permitido en Samba, pero no existe/mapea distinto en el host (`getent` falla).
@@ -504,7 +576,7 @@ getent passwd alumno1
 
 ---
 
-# 🌐 Recursos compartidos en entornos heterogéneos
+## 🌐 Recursos compartidos en entornos heterogéneos
 
 > "Un único directorio de identidades (LDAP), varios protocolos de acceso a ficheros."
 
@@ -579,6 +651,7 @@ sudo apt install samba
   directory mask = 0700
 ```
 - `acl_xattr` guarda ACL compatibles con clientes Windows; hereda las ACL POSIX si el FS las soporta.
+- `map to guest = never` desactiva el mapeo automatico a invitado (`guest`) cuando hay fallos de autenticacion; obliga a usar credenciales validas.
 ### 3.2 Integracion de permisos
 - Usa grupos LDAP para `valid users` y combina con ACL en el FS. La regla es doble: **Samba filtra por grupo** y **el sistema de ficheros aplica permisos/ACL**. Si falla cualquiera, se deniega el acceso.
   - `valid users = @grupo_datos` permite entrar solo a miembros del grupo LDAP.
