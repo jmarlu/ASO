@@ -91,6 +91,9 @@ gantt
 Este diagrama proporciona una visión general de las fechas y duración de cada unidad didáctica, incluyendo los festivos relevantes.
 
 ## Evaluación
+
+    Para superar el módulo tenéis quetener todos los **RA aprobados**.
+
 ### Instrumentos de calificación
 
 1. **Instrumento de calificación 1 (IC1):**: *escala de valores* comprendidas entre 0 y 3 puntos calificados de la siguiente forma:
@@ -112,7 +115,7 @@ La nota de cada **Resultado de Aprendizaje** se calcula mediante la media ponder
     1. Se evalúan todas las actividades realizadas en clase.
     2. Las actividades se evalúan mediante observación directa del docente y aplicando el **IC1**.
     
-2. **Instrumentos de Evaluación 2 (IE2). Pruebas de Auditoría.**
+2. **Instrumentos de Evaluación 2 (IE2). Pruebas de Auditoría y objetivas.**
     Pueden conterner:
     1. Cuestionario multi-opción (test) de 20 preguntas sobre la teoría de la unidad.
     2. Ejercicios prácticos sobre las actividades realizadas de la unidad.
