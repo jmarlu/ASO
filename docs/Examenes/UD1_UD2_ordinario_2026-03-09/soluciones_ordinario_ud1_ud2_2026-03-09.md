@@ -2,7 +2,7 @@
 search:
   exclude: true
 ---
-# Soluciones orientativas - Examen de recuperacion UD1 + UD2 (2026-03-09)
+# Soluciones orientativas - Examen ordinario UD1 + UD2 (2026-03-09)
 
 > Estas soluciones son orientativas. Se aceptan variantes equivalentes si
 > cumplen el enunciado, dejan evidencias claras y usan las rutas pedidas.
@@ -13,18 +13,18 @@ En el host:
 
 ```bash
 # Crear el contenedor sin arrancarlo todavia
-lxc init ubuntu:24.04 rec-ud1ud2
-lxc config set rec-ud1ud2 limits.memory 512MiB
-lxc config set rec-ud1ud2 boot.autostart true
-lxc start rec-ud1ud2
-lxc list rec-ud1ud2
-lxc exec rec-ud1ud2 -- bash
+lxc init ubuntu:24.04 ord-ud1ud2
+lxc config set ord-ud1ud2 limits.memory 512MiB
+lxc config set ord-ud1ud2 boot.autostart true
+lxc start ord-ud1ud2
+lxc list ord-ud1ud2
+lxc exec ord-ud1ud2 -- bash
 ```
 
 Dentro del contenedor:
 
 ```bash
-mkdir -p ~/recuperacion_ud1_ud2/{scripts,resultados,datos,cron}
+mkdir -p ~/ordinario_ud1_ud2/{scripts,resultados,datos,cron}
 exit
 ```
 
@@ -32,21 +32,21 @@ En el host, guardar evidencias y crear el snapshot:
 
 ```bash
 {
-  echo '$ lxc info rec-ud1ud2'
-  lxc info rec-ud1ud2
+  echo '$ lxc info ord-ud1ud2'
+  lxc info ord-ud1ud2
   echo
-  echo '$ lxc config get rec-ud1ud2 limits.memory'
-  lxc config get rec-ud1ud2 limits.memory
+  echo '$ lxc config get ord-ud1ud2 limits.memory'
+  lxc config get ord-ud1ud2 limits.memory
   echo
-  echo '$ lxc config get rec-ud1ud2 boot.autostart'
-  lxc config get rec-ud1ud2 boot.autostart
+  echo '$ lxc config get ord-ud1ud2 boot.autostart'
+  lxc config get ord-ud1ud2 boot.autostart
   echo
-  echo '$ lxc snapshot rec-ud1ud2 inicio'
-  lxc snapshot rec-ud1ud2 inicio
+  echo '$ lxc snapshot ord-ud1ud2 inicio'
+  lxc snapshot ord-ud1ud2 inicio
 } > /tmp/lxc.txt
 
 lxc file push /tmp/lxc.txt \
-  rec-ud1ud2/root/recuperacion_ud1_ud2/resultados/lxc.txt
+  ord-ud1ud2/root/ordinario_ud1_ud2/resultados/lxc.txt
 ```
 
 ## Parte 2 - Datos y scripting en bash
@@ -54,7 +54,7 @@ lxc file push /tmp/lxc.txt \
 Dentro del contenedor:
 
 ```bash
-cat <<'EOF' > ~/recuperacion_ud1_ud2/datos/inventario.txt
+cat <<'EOF' > ~/ordinario_ud1_ud2/datos/inventario.txt
 # ip nombre disco ram servicio estado
 10.0.0.21 web01 12 4 nginx activo
 10.0.0.22 app01 28 2 apache2 mantenimiento
@@ -66,7 +66,7 @@ cat <<'EOF' > ~/recuperacion_ud1_ud2/datos/inventario.txt
 EOF
 ```
 
-`~/recuperacion_ud1_ud2/scripts/revision_inventario.sh`:
+`~/ordinario_ud1_ud2/scripts/revision_inventario.sh`:
 
 ```bash
 #!/usr/bin/env bash
@@ -86,8 +86,8 @@ if ! [[ $umbral_disco =~ ^[0-9]+$ && $umbral_ram =~ ^[0-9]+$ ]]; then
   exit 1
 fi
 
-inventario="$HOME/recuperacion_ud1_ud2/datos/inventario.txt"
-salida_csv="$HOME/recuperacion_ud1_ud2/resultados/resumen_inventario.csv"
+inventario="$HOME/ordinario_ud1_ud2/datos/inventario.txt"
+salida_csv="$HOME/ordinario_ud1_ud2/resultados/resumen_inventario.csv"
 
 if [[ ! -f $inventario ]]; then
   echo "ERROR FICHERO"
@@ -179,11 +179,11 @@ echo "Minimo disco: $min_nombre ($min_ip) -> ${min_disco}GB"
 Ejecutar y guardar evidencias:
 
 ```bash
-chmod u+x ~/recuperacion_ud1_ud2/scripts/revision_inventario.sh
-~/recuperacion_ud1_ud2/scripts/revision_inventario.sh 20 4 \
-  > ~/recuperacion_ud1_ud2/resultados/revision_20.txt
-cat ~/recuperacion_ud1_ud2/scripts/revision_inventario.sh \
-  > ~/recuperacion_ud1_ud2/resultados/revision_script.txt
+chmod u+x ~/ordinario_ud1_ud2/scripts/revision_inventario.sh
+~/ordinario_ud1_ud2/scripts/revision_inventario.sh 20 4 \
+  > ~/ordinario_ud1_ud2/resultados/revision_20.txt
+cat ~/ordinario_ud1_ud2/scripts/revision_inventario.sh \
+  > ~/ordinario_ud1_ud2/resultados/revision_script.txt
 ```
 
 Salida esperada principal:
@@ -214,10 +214,10 @@ cat > /var/www/html/index.html <<EOF
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Recuperacion UD1 UD2</title>
+  <title>Ordinario UD1 UD2</title>
 </head>
 <body>
-  <h1>Recuperacion UD1 UD2</h1>
+  <h1>Ordinario UD1 UD2</h1>
   <p>$hostname_actual</p>
 </body>
 </html>
@@ -283,7 +283,7 @@ EOF
   echo
   echo '$ ss -ltnp | rg ":80"'
   ss -ltnp | rg ":80"
-} > ~/recuperacion_ud1_ud2/resultados/servicios.txt 2>&1
+} > ~/ordinario_ud1_ud2/resultados/servicios.txt 2>&1
 ```
 
 ## Parte 4 - Procesos y tareas programadas
@@ -315,7 +315,7 @@ pid_900=$!
   kill -KILL "$pid_600"
   sleep 1
   ps -p "$pid_600" || true
-} > ~/recuperacion_ud1_ud2/resultados/procesos.txt 2>&1
+} > ~/ordinario_ud1_ud2/resultados/procesos.txt 2>&1
 ```
 
 Cron del usuario actual:
@@ -323,12 +323,12 @@ Cron del usuario actual:
 ```bash
 {
   crontab -l 2>/dev/null | \
-    sed '/recuperacion_ud1_ud2\/cron\/\(fechas\|carga\)\.log/d'
-  echo "*/15 * * * * date >> $HOME/recuperacion_ud1_ud2/cron/fechas.log"
-  echo "5 * * * * uptime >> $HOME/recuperacion_ud1_ud2/cron/carga.log"
+    sed '/ordinario_ud1_ud2\/cron\/\(fechas\|carga\)\.log/d'
+  echo "*/15 * * * * date >> $HOME/ordinario_ud1_ud2/cron/fechas.log"
+  echo "5 * * * * uptime >> $HOME/ordinario_ud1_ud2/cron/carga.log"
 } | crontab -
 
-crontab -l > ~/recuperacion_ud1_ud2/cron/crontab.txt
+crontab -l > ~/ordinario_ud1_ud2/cron/crontab.txt
 ```
 
 ## Parte 5 - Systemd timer y empaquetado final
@@ -338,16 +338,16 @@ Dentro del contenedor:
 ```bash
 cat > /etc/systemd/system/estado.service <<'EOF'
 [Unit]
-Description=Guardar estado periodico para la recuperacion UD1 UD2
+Description=Guardar estado periodico para el ordinario UD1 UD2
 
 [Service]
 Type=oneshot
-ExecStart=/bin/bash -lc 'date >> /root/recuperacion_ud1_ud2/cron/estado.log; uptime >> /root/recuperacion_ud1_ud2/cron/estado.log'
+ExecStart=/bin/bash -lc 'date >> /root/ordinario_ud1_ud2/cron/estado.log; uptime >> /root/ordinario_ud1_ud2/cron/estado.log'
 EOF
 
 cat > /etc/systemd/system/estado.timer <<'EOF'
 [Unit]
-Description=Timer de estado para la recuperacion UD1 UD2
+Description=Timer de estado para el ordinario UD1 UD2
 
 [Timer]
 OnCalendar=*:0/30
@@ -361,8 +361,8 @@ systemctl daemon-reload
 systemctl enable --now estado.timer
 systemctl start estado.service
 
-cp /etc/systemd/system/estado.service ~/recuperacion_ud1_ud2/cron/
-cp /etc/systemd/system/estado.timer ~/recuperacion_ud1_ud2/cron/
+cp /etc/systemd/system/estado.service ~/ordinario_ud1_ud2/cron/
+cp /etc/systemd/system/estado.timer ~/ordinario_ud1_ud2/cron/
 
 {
   systemctl status estado.timer --no-pager
@@ -370,13 +370,13 @@ cp /etc/systemd/system/estado.timer ~/recuperacion_ud1_ud2/cron/
   systemctl list-timers estado.timer --all --no-pager
   echo
   journalctl -u estado.service -n 20 --no-pager
-} > ~/recuperacion_ud1_ud2/resultados/timer.txt
+} > ~/ordinario_ud1_ud2/resultados/timer.txt
 
-tar -czf ~/recuperacion_ud1_ud2_entrega.tar.gz -C ~ recuperacion_ud1_ud2
+tar -czf ~/ordinario_ud1_ud2_entrega.tar.gz -C ~ ordinario_ud1_ud2
 ```
 
 Desde el host:
 
 ```bash
-lxc file pull rec-ud1ud2/root/recuperacion_ud1_ud2_entrega.tar.gz .
+lxc file pull ord-ud1ud2/root/ordinario_ud1_ud2_entrega.tar.gz .
 ```
