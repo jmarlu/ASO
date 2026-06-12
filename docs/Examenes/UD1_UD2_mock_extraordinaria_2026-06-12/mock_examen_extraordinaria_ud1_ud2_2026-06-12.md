@@ -32,12 +32,6 @@ estructura:
 
 Guarda en esa carpeta todos los scripts, evidencias y ficheros pedidos.
 
-Entrega final de practica:
-
-1. Genera en el contenedor el fichero
-   `~/mock_extra_ud1_ud2_entrega.tar.gz` con toda la carpeta de trabajo.
-2. Descarga ese fichero al host.
-3. Comprueba que el `.tar.gz` contiene todas las rutas solicitadas.
 
 ## Parte 1 - Preparacion del laboratorio LXD/LXC (1 punto)
 
