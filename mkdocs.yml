@@ -5,9 +5,8 @@ nav:
  # - Recordatorio de Commandos:
      # - linux: ./recordatorios/commandosLinux.md
      # - windows: ./recordatorios/commandosWindows.md
-#  - Examenes:
-    #- Examen comandos: ./Examenes/Examen de comandos.md
-    #- Examen scripts: ./Examenes/Examen_shell_scripting.md  
+  - Examenes:
+    - Mock extraordinaria UD1 + UD2: ./Examenes/UD1_UD2_mock_extraordinaria_2026-06-12/mock_examen_extraordinaria_ud1_ud2_2026-06-12.md
   - UD1-Shell Scripting:
     - Linux:
         - Creación de Scripts: ./UD1/linux/Scripts.md
