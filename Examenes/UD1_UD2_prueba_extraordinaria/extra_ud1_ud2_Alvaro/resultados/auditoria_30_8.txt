@@ -1,0 +1,16 @@
+comando:
+./auditoria_servicios.sh 30 8 activo > /home/ubuntu/extra_ud1_ud2/resultados/auditoria_30_8.txt
+  120  nano /home/ubuntu/extra_ud1_ud2/resultados/auditoria_30_8.txt
+
+DISCO BAJO: web02 (10.10.0.31) -> 18GB
+RAM BAJA: web02 (10.10.0.31) -> 4GB
+RAM BAJA: app02 (10.10.0.32) -> 2GB
+ESTADO INCORRECTO: app02 -> mantenimiento
+DISCO BAJO: backup02 (10.10.0.34) -> 12GB
+RAM BAJA: backup02 (10.10.0.34) -> 1GB
+ESTADO INCORRECTO: backup02 -> caido
+ERROR DATOS: cache02 (10.10.0.35)
+ERROR DATOS: monitor02 (10.10.0.36)
+ERROR DATOS: proxy02 (10.10.0.37)
+DISCO BAJO: dns02 (10.10.0.38) -> 8GB
+RAM BAJA: dns02 (10.10.0.38) -> 2GB

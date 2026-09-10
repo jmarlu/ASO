@@ -1,0 +1,7 @@
+[Unit]
+Description=Resumen extra UD1 UD2
+
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c 'date >> /home/ubuntu/extra_ud1_ud2/cron/resumen.log; hostname >> /root/extra_ud1_ud2/cron/re>

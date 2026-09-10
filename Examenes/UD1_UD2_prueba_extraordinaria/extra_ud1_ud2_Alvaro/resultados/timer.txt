@@ -1,0 +1,35 @@
+comandos:
+RESULT=~/extra_ud1_ud2/resultados/timer.txt
+  systemctl status resumen-extra.timer          >> $RESULT
+  systemctl list-timers resumen-extra.timer     >> $RESULT
+  journalctl -u resumen-extra.service -n 20     >> $RESULT
+  systemctl cat resumen-extra.service           >> $RESULT
+  RESULT=/home/ubuntu/extra_ud1_ud2/resultados/timer.txt
+  systemctl status resumen-extra.timer          >> $RESULT
+  systemctl list-timers resumen-extra.timer     >> $RESULT
+  journalctl -u resumen-extra.service -n 20     >> $RESULT
+  systemctl cat resumen-extra.service           >> $RESULT
+
+
+○ resumen-extra.timer - Timer resumen extra cada hora
+     Loaded: loaded (/etc/systemd/system/resumen-extra.timer; enabled; preset: enabled)
+     Active: inactive (dead)
+    Trigger: n/a
+   Triggers: ● resumen-extra.service
+
+Jun 26 09:04:36 extra-ud1ud2 systemd[1]: resumen-extra.timer: Refusing to start, unit resumen-extra.service to trigger not loaded.
+Jun 26 09:04:36 extra-ud1ud2 systemd[1]: Failed to start resumen-extra.timer - Timer resumen extra cada hora.
+NEXT LEFT LAST PASSED UNIT ACTIVATES
+
+0 timers listed.
+Pass --all to see loaded but inactive timers, too.
+Jun 26 09:04:36 extra-ud1ud2 systemd[1]: /etc/systemd/system/resumen-extra.service:7: Unbalanced quoting, ignoring: "/bin/bash -c 'date >> /home/ubuntu/extra_ud1_ud2/cron/resumen.log; hostname >> /root/extra_ud1_ud2/cron/re>"
+Jun 26 09:04:36 extra-ud1ud2 systemd[1]: resumen-extra.service: Unit configuration has fatal error, unit will not be started.
+# /etc/systemd/system/resumen-extra.service
+[Unit]
+Description=Resumen extra UD1 UD2
+
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c 'date >> /home/ubuntu/extra_ud1_ud2/cron/resumen.log; hostname >> /root/extra_ud1_ud2/cron/re>

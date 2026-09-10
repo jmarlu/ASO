@@ -1,0 +1,43 @@
+Name: extra-ud1ud2
+Status: RUNNING
+Type: container
+Architecture: x86_64
+PID: 17275
+Created: 2026/06/26 09:38 CEST
+Last Used: 2026/06/26 09:45 CEST
+
+Resources:
+  Processes: 25
+  Disk usage:
+    root: 0B
+  Disk total:
+    root: 0B
+  CPU usage:
+    CPU usage (in seconds): 12
+  Memory usage:
+    Memory (current): 357.89MiB
+  Network usage:
+    eth0:
+      Type: broadcast
+      State: UP
+      Host interface: veth5474ea2b
+      MAC address: 00:16:3e:99:59:c8
+      MTU: 1500
+      Bytes received: 36.08MB
+      Bytes sent: 306.19kB
+      Packets received: 4436
+      Packets sent: 4245
+      IP addresses:
+        inet:  10.245.247.47/24 (global)
+        inet6: fe80::216:3eff:fe99:59c8/64 (link)
+    lo:
+      Type: loopback
+      State: UP
+      MTU: 65536
+      Bytes received: 21.25kB
+      Bytes sent: 21.25kB
+      Packets received: 192
+      Packets sent: 192
+      IP addresses:
+        inet:  127.0.0.1/8 (local)
+        inet6: ::1/128 (local)
