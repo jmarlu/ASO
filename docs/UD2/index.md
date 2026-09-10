@@ -23,5 +23,5 @@
 - Configurar y documentar sistemas (registro de hardware/software, parches y ajustes).
 - Gestionar servicios con systemd y services.msc, incluyendo desactivar/activar y crear overrides.
 - Monitorizar procesos y ajustar prioridades de ejecución.
-- Programar tareas con cron/systemd timers y con el Programador de tareas de Windows.
+- Reconocer tareas automatizables y continuar su planificación con cron, at y systemd en [UD5](../UD5/index.md).
 - Configurar actualizaciones desatendidas priorizando parches de seguridad.

@@ -1,14 +1,26 @@
 site_name: Administración de Sistemas Operativos
 site_url: https://example.com/
 nav:
-  - Home: index.html
+  - Home: index.md
+  - Calendario 2026/2027: temporalizacion_2026_2027.md
+  - Plan de revisión ASO: plan_revision_actualizacion_comprobacion_aso.md
  # - Recordatorio de Commandos:
      # - linux: ./recordatorios/commandosLinux.md
      # - windows: ./recordatorios/commandosWindows.md
-  - Examenes:
-    - Mock extraordinaria UD1 + UD2: ./Examenes/UD1_UD2_mock_extraordinaria_2026-06-12/mock_examen_extraordinaria_ud1_ud2_2026-06-12.md
+  #- Examenes: []
+  # - Mock extraordinaria UD1 + UD2: ./Examenes/UD1_UD2_mock_extraordinaria_2026-06-12/mock_examen_extraordinaria_ud1_ud2_2026-06-12.md
   - UD1-Shell Scripting:
     - Linux:
+        - Fundamentos de GNU/Linux:
+            - Presentación: ./UD1/linux/fundamentos/index.md
+            - Terminal y ayuda: ./UD1/linux/fundamentos/IntroTerminal.md
+            - Directorios y rutas: ./UD1/linux/fundamentos/EstructuraDirectorios.md
+            - Gestión de archivos: ./UD1/linux/fundamentos/gestionArchivos.md
+            - Permisos básicos: ./UD1/linux/fundamentos/permisosBasicos.md
+            - Redirecciones y tuberías: ./UD1/linux/fundamentos/redirecciones.md
+            - Filtros de texto: ./UD1/linux/fundamentos/filtros.md
+            - Búsqueda de archivos: ./UD1/linux/fundamentos/busquedaArchivos.md
+            - Actividades de repaso: ./UD1/linux/fundamentos/Actividades.md
         - Creación de Scripts: ./UD1/linux/Scripts.md
         - Variables: ./UD1/linux/Variables.md
         - Aritmetica: ./UD1/linux/Aritmetica.md
@@ -54,6 +66,11 @@ nav:
   - UD4.Integración de sistemas operativos en red:
       - Teoria: ./UD4/teoria.md
       - Actividades: ./UD4/actividades.md
+  - UD5.Automatización y mantenimiento GNU/Linux:
+      - Presentación y objetivos: ./UD5/index.md
+      - Teoría: ./UD5/teoria.md
+      - Laboratorio guiado: ./UD5/laboratorio.md
+      - Actividades y evaluación: ./UD5/actividades.md
      
 theme:
   name: material

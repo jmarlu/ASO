@@ -1,0 +1,14 @@
+[Unit]
+Description=Informe de mantenimiento ASO
+
+[Service]
+Type=oneshot
+User=asoauto
+Group=asoauto
+UMask=0077
+ExecStart=/usr/local/lib/aso-ud5/informe.sh /var/lib/aso-ud5/informes
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/aso-ud5

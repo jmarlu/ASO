@@ -1,0 +1,18 @@
+site_name: Revisión de fundamentos GNU/Linux para ASO
+site_url: https://example.com/
+nav:
+  - Presentación: index.md
+  - Terminal: IntroTerminal.md
+  - Directorios y rutas: EstructuraDirectorios.md
+  - Archivos: gestionArchivos.md
+  - Permisos: permisosBasicos.md
+  - Redirecciones: redirecciones.md
+  - Filtros: filtros.md
+  - Búsquedas: busquedaArchivos.md
+  - Actividades: Actividades.md
+theme:
+  name: material
+  language: es
+markdown_extensions:
+  - tables
+  - fenced_code

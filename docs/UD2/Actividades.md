@@ -1,5 +1,8 @@
 # Actividades de la UD2
 
+!!! info "Continuidad con UD5"
+    Las tareas de copia, cron y systemd de esta página se desarrollan y entregan en la [UD5](../UD5/actividades.md). Utiliza sus instrucciones actualizadas y sus rutas de laboratorio; no es necesaria una segunda entrega de esas tareas en UD2.
+
 ## Entrega y evaluación
 
 - Entrega única por actividad (PDF/MD) con capturas que demuestren cada paso.
@@ -32,11 +35,10 @@ Objetivo: aplicar administración de software, servicios y tareas programadas en
       - Lanza un contenedor Ubuntu con LXD, instala nginx desde repositorios, identifica el servicio (`nginx.service`) y desactiva su arranque automático (`systemctl disable nginx`). Verifica tras reiniciar el contenedor.
       - Apóyate en la guía de contenedores (`ContenedoresLXC.md`, sección LXD) para red, autostart y comprobaciones. Añade `systemctl status nginx --no-pager` y `journalctl -u nginx -n 10` como validación.
 
-4. **Copia horaria con cron/Task Scheduler**
-     - GNU/Linux: programa en `crontab` o `/etc/crontab` una copia de `/mnt/datos` a `/mnt/respaldo` cada hora con `cp` o `rsync`. Incluye montaje o entrada en `/etc/fstab` si procede y verifica con `chronyc tracking` que el reloj está sincronizado.
-      - Windows: tarea programada que copie `C:\Datos` a `D:\Respaldo` cada hora con `copy`. Muestra historial de la tarea.
-5. **Backup diario con systemd**
-      - Crea `backup-logs.service` y `backup-logs.timer` para añadir los archivos de `/var/log` a `~/copia_de_seguridad/backup.tar.gz` cada día. Incluye ambos archivos, salida de `systemctl list-timers --all` y `systemctl cat backup-logs.service`.
+4. **Copia programada**
+      - Continúa en el [laboratorio de UD5](../UD5/laboratorio.md): prepara datos de prueba, programa una copia y demuestra su restauración. La entrega corresponde a UD5.
+5. **Servicios y temporizadores de mantenimiento**
+      - Crea y comprueba los servicios y timers del [laboratorio de UD5](../UD5/laboratorio.md). Documenta cuenta, calendario, estado y resultado. La entrega corresponde a UD5.
 6. **Actualizaciones desatendidas**
       - Configura solo actualizaciones de seguridad en Ubuntu Server con `unattended-upgrades`; muestra fragmento de `/etc/apt/apt.conf.d/50unattended-upgrades` y log de ejecución. En Windows, muestra la política de Windows Update configurada.
 7. **Registro de Windows**
@@ -48,8 +50,8 @@ Objetivo: aplicar administración de software, servicios y tareas programadas en
 1. **Conversión de paquetes**
       - Descarga Firefox en formato RPM en Ubuntu Desktop, conviértelo con `alien -d`, instala el `.deb` y comenta por qué convertir. Indica dos métodos alternativos de instalación (snap/apt) y cómo consultar archivos instalados con `dpkg -L`.
 2. **Programación de script en cron**
-      - Crea un script sencilllo y  con `chmod 777 script.sh` (explica por qué no es buena práctica y qué permiso usarías realmente).
-      - Añade en `sudo crontab -e`: `* * * * * ~/Escritorio/script.sh`. Explica qué significa cada asterisco y ajusta para ejecutarse cada minuto  entre las 8 y las 20 todos los días. Confirma con `systemctl list-timers` si optas por un timer equivalente.
+      - Prepara el script con propietario y permisos adecuados siguiendo el laboratorio de UD5; explica por qué `chmod 777` no es apropiado.
+      - Programa el script con la cuenta y las rutas absolutas indicadas en UD5. Explica los cinco campos y plantea una ejecución cada minuto entre las 08:00 y las 20:59. Si utilizas un timer, compruébalo con `systemctl list-timers`.
       - Verifica funcionamiento y adjunta salida de `grep script.sh /var/log/syslog` o similar.
 3. **Laboratorio LXD (multi-perfil, límites y backup)**
       - Inicializa LXD y crea dos perfiles: `default` (red NAT en `lxdbr0`, disco root 10GB) y `lab` (añade un NIC a  una red nueva `redlab` 10.50.0.0/24). Aplica ambos al contenedor `lab01`.

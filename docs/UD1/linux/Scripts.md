@@ -1,5 +1,7 @@
 # Scripts en Linux
 
+Antes de empezar, completa el [repaso de fundamentos GNU/Linux](fundamentos/index.md) si necesitas reforzar terminal, archivos, permisos y filtros.
+
 ## Creación de Scripts
 
 - ¿Dónde creo mis scripts?
@@ -16,7 +18,7 @@ El editor Vim es mas completo y cuando lo controlas es mucho mas rápido pero el
 
 |        Controles         |  Funcionamiento                           |
 | :----------------------: | :---------------------------------------- |
-| `nano “NombreFichero”.sh` | Genera o Abre el fichero para su edición. |
+| `nano NombreFichero.sh` | Genera o Abre el fichero para su edición. |
 |      `Control + o`       | Guardar Cambios.                          |
 |      `Control + x`       | Salir.                                    |
 |      `Control + _`       | Ir a una línea.                           |
@@ -29,7 +31,7 @@ En la leyenda “^” equivale a “Control” y “M-“ equivale a “Alt”.
 
 <figure>
   <img src="../imagenes/nano.png" width="800"/>
-</figure> 
+</figure>
 
 - ¿Cómo empiezo mis scripts?
 
@@ -48,22 +50,22 @@ Si vamos a la ruta /bin, veremos que existe un ejecutable llamado “bash”.
 
 - ¿Cómo ejecuto mis scripts?
 
-Una vez guardados los cambios debemos darle permisos de ejecución al fichero, en caso de que estemos trabajando con un script. Es importante solo dar permiso de ejecución al usuario propietario, si no se puede producir una brecha de seguridad, pues los scripts suelen almacenar/manipular datos/servicios importantes de nuestro servidor.
+Una vez guardados los cambios debemos darle permisos de ejecución al fichero, en caso de que estemos trabajando con un script. Para un script privado, el modo 700 permite leer, modificar y ejecutar solo al propietario. Si debe compartirse con un grupo, el modo 750 también permite a ese grupo leerlo y ejecutarlo. Elige los permisos según quién deba utilizarlo.
 
 ```bash
-chmod 750 “NombreFichero”.sh
+chmod 700 NombreFichero.sh
 ```
 
 Una vez hecho, ya podemos ejecutar nuestro script de una de las siguientes formas:
 
 ```bash
-./”NombreFichero”.sh
-bash “NombreFIchero”.sh
+./NombreFichero.sh
+bash NombreFichero.sh
 ```
 
 !!! warning
 
-      No uséis el comando “sh script.sh” donde script.sh es el nombre de vuestro script. Esto fuerza al terminal a usar el shell SHELL, y nosotros vamos a usar BASH. Por lo que en ciertos comandos nos dará error al usar SHELL.
+      No uséis el comando “sh script.sh” donde script.sh es el nombre de vuestro script. Esto fuerza la interpretación con `sh`, que puede ser un intérprete distinto de Bash. Los ejemplos de esta unidad utilizan sintaxis de Bash.
 
 ## Comentarios
 

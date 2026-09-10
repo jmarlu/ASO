@@ -2,7 +2,9 @@
 
 Aquí puedes encontrar los apuntes del módulo de ***Administración de Sistemas Operativos***, que se imparte en el segundo curso del ciclo formativo de grado superior de Administración de Sistemas Informáticos en Red.
 
-* La duración del módulo es de **85 horas lectivas**, a razón de **4 horas semanales**. Estas horas son totales que cubren las prácticas. 
+* **Curso 2026/2027 · Elche (Alicante) · 4 horas semanales.**
+* El currículo de ASIR asigna **133 horas** al módulo 0374. La programación debe distinguir formación en el centro y la parte que corresponda desarrollar en empresa; no se consideran 133 horas de aula antes de la salida. [Decreto 114/2025, página 72](https://dogv.gva.es/datos/2025/08/04/pdf/2025_29742_es.pdf).
+* Se organizan dos evaluaciones en el centro y una fase posterior de formación en empresa, con seguimiento y evaluación final. La [temporalización revisada](temporalizacion_2026_2027.md) diferencia calendario confirmado y propuesta pendiente del horario y plan del centro.
 
 ## ¿Qué voy a aprender?
 
@@ -25,74 +27,44 @@ Los Resultados de Aprendizaje de ASO son:
 6. Integra sistemas operativos libres y propietarios, justificando y garantizando su interoperabilidad.
 7. Utiliza lenguajes de guiones en sistemas operativos, describiendo su aplicación y administrando servicios del sistema operativo.
 
+## Relación entre RA, unidades y peso de programación
+
+La normativa fija los resultados de aprendizaje y sus criterios de evaluación. Los pesos siguientes proceden de la programación del módulo revisada en el centro y sirven para organizar la evaluación y la carga de trabajo.
+
+| RA | Resultado de aprendizaje | Unidad principal | Peso programación |
+|---:|---|---|---:|
+| RA1 | Administra el servicio de directorio interpretando especificaciones e integrándolo en una red. | UD3. Servicios de directorio | 18% |
+| RA2 | Administra procesos del sistema describiéndolos y aplicando criterios de seguridad y eficiencia. | UD2. Procesos y servicios | 8% |
+| RA3 | Gestiona la automatización de tareas del sistema, aplicando criterios de eficiencia y utilizando comandos y herramientas gráficas. | UD5. Automatización y mantenimiento GNU/Linux | 18% |
+| RA4 | Administra de forma remota el sistema operativo en red valorando su importancia y aplicando criterios de seguridad. | UD6. Acceso y administración remota | 9% |
+| RA5 | Administra servidores de impresión describiendo sus funciones e integrándolos en una red. | UD7. Servidores de impresión | 5% |
+| RA6 | Integra sistemas operativos libres y propietarios, justificando y garantizando su interoperabilidad. | UD4. Integración de sistemas operativos en red | 22% |
+| RA7 | Utiliza lenguajes de guiones en sistemas operativos, describiendo su aplicación y administrando servicios del sistema operativo. | UD1. Scripting Linux y PowerShell | 20% |
+
+La correlación recomendada es mantener una unidad principal por RA, pero diseñar prácticas integradas:
+
+- UD1 se debe reutilizar en UD2, UD5 y UD7 mediante scripts de administración.
+- UD3 debe preparar la base de usuarios y autenticación que se aprovechará en UD4 y UD6.
+- UD4 debe actuar como unidad integradora fuerte porque es el RA con mayor peso.
+- [UD5](UD5/index.md) desarrolla informes, tareas programadas y mantenimiento GNU/Linux a partir de los procesos y servicios estudiados en UD2.
+
 ## Unidades didácticas / Temporalización
 
-A continuación se muestran las unidades didácticas y una estimación temporal de cada una de ellas, ajustadas al calendario escolar y repartidas en cada evaluación con una duración aproximada de **32 sesiones**.
+La propuesta se adapta al **calendario de Elche 2026/2027** y a las **cuatro horas semanales**. Sustituye la temporalización antigua de 2025/2026.
 
-### Primera evaluación
+| Fase | Periodo propuesto | Trabajo principal |
+|---|---|---|
+| Primera evaluación | Septiembre – 10 de diciembre | UD1 (incluido fundamentos Linux), UD2 y UD3; prueba y recuperación |
+| Segunda evaluación | 15 de diciembre – 23 de marzo | UD4, UD5, UD6 y UD7; prueba, recuperación y preparación de empresa |
+| Formación en empresa y cierre | 6 de abril – 18 de junio | Actividades del plan formativo, seguimiento y evaluación final |
 
-1. **ShellScripting Linux y Powershell. (4 sesiones, 8 horas)**
-    * Fechas: 8-sep-2025 al 24-sep-2025.
-    * ShellScripting, creación scripts, variables, parámetros, operadores.
-    * ShellScripting, Re-direcciones, tuberías.
-    * Control de flujo en Shell, vectores.
-2. **Administración de Procesos del Sistema. (4 sesiones, 8 horas)**
-    * Fechas: 29-sep-2025 al 15-oct-2025 (excepto festivo 10-oct-2025).
-    * Procesos. Tipos. Estados. Estructura. Transiciones, Hilos.
-    * Planificador, Tipos de algoritmos de planificación, Sincronización e interrupciones entre procesos.
-    * Gestión de procesos, demonios/servicios con Shell y Powershell.
-3. **Servicios de Directorio (4 sesiones, 8 horas)**
-    * Fechas: 20-oct-2025 al 5-nov-2025.
-    * Libres: LDAP (No tiene que ser ese obligatorio).
-    * Propietarios: Active Directory 
-### Segunda evaluación
-4. **Integración de sistemas operativos en red. (8 sesiones, 16 horas).**
-    * Fechas: 10-nov-2025 al 10-dic-2025.
-    * Escenarios heterogéneos, Protocolos para redes heterogéneas, servicios de recursos compartidos.
-    * NFS, Instalación, Permisos, Montaje automático de un cliente NFS, configuración de ficheros.
-    * NextCloud, Instalación, configuración de ficheros y permisos de usuario.
-    * SAMBA, fichero configuración, Creación directorio compartido, Integración de permisos.
-    * SAMBA, Administración de servicios con RSAT, perfiles de usuario y carpetas personales, cuotas.
-5. **Información del sistema operativo (4 sesiones, 8 horas).**
-    * Fechas: 15-ene-2026 al 3-feb-2026 (excepto festivo 16-feb-2026).
-    * Estructura directorios. Búsqueda de información del sistema. Rendimiento. Estadísticas.
-    * Planificación de Tareas, Programador de tareas, `crontab`.
-    * Servicio Monitorización, Nagios, PRTG, OpenNMS.
-6. **Servicios de acceso y administración remota (4 sesiones, 8 horas).** 
-    * Fechas: 8-feb-2026 al 24-feb-2026.
-    * Acceso remoto en modo texto `SSH`. Tunelización.
-    * Escritorio Remoto:  RDP y xRDP. Acceso remoto de equipos en el AD con PWSH.
-    * Herramientas gráficas externas, TeamViewer, AnyDesk y Apache Guacamole.
-7. **Administración de Servidores de Impresión (4 sesiones, 8 horas).**
-    * Fechas: 1-mar-2026 al 16-mar-2026 (excepto festivo 20-mar-2026).
-    * Sistemas de Impresión, Puertos y protocolos de impresión.
-    * Servidor de impresión en GNU/Linux, `CUPS`. Órdenes para la gestión de impresoras y trabajos.
-    * Administración de los Servicios de Impresión en Windows Server.
+**Fechas orientativas:** el cálculo detallado usa martes y jueves, dos horas cada día, como ejemplo de horario. Da 102 horas en el centro, incluidas 10 para evaluación y recuperación. Los días reales de ASO y el plan de empresa deben confirmar o ajustar ese escenario; no se asignan automáticamente las 31 horas restantes del currículo a empresa.
 
-## Diagrama de Gantt
-
-A continuación se presenta un diagrama de Gantt que ilustra la temporalización de las unidades didácticas y sus fechas:
-
-```mermaid
-gantt
-    title Temporalización de las Unidades Didácticas
-    dateFormat  YYYY-MM-DD
-    section Primera Evaluación
-    ShellScripting Linux y Powershell      :done, 2025-09-08, 2025-09-24
-    Administración de Procesos del Sistema:done, 2025-09-29, 2025-10-15
-    Servicios de Directorio               :done, 2025-10-20, 2025-11-05
-    section Segunda Evaluación
-    Integración de sistemas operativos en red :active, 2025-11-10, 2025-12-10
-    Información del sistema operativo         :2026-01-15, 2026-02-03
-    Servicios de acceso y administración remota :2026-02-08, 2026-02-24
-    Administración de Servidores de Impresión  :2026-03-01, 2026-03-16
-```
-
-Este diagrama proporciona una visión general de las fechas y duración de cada unidad didáctica, incluyendo los festivos relevantes.
+Consulta la **[temporalización completa, calendario local y Gantt](temporalizacion_2026_2027.md)**, que también explica en qué condiciones encajarían 400 horas de empresa en segundo curso.
 
 ## Evaluación
 
-    Para superar el módulo tenéis quetener todos los **RA aprobados**.
+Para superar el módulo hay que tener todos los **RA aprobados**.
 
 ### Instrumentos de calificación
 
@@ -115,8 +87,8 @@ La nota de cada **Resultado de Aprendizaje** se calcula mediante la media ponder
     1. Se evalúan todas las actividades realizadas en clase.
     2. Las actividades se evalúan mediante observación directa del docente y aplicando el **IC1**.
     
-2. **Instrumentos de Evaluación 2 (IE2). Pruebas de Auditoría y objetivas.**
-    Pueden conterner:
+2. **Instrumentos de Evaluación 2 (IE2). Pruebas de auditoría y objetivas.**
+    Pueden contener:
     1. Cuestionario multi-opción (test) de 20 preguntas sobre la teoría de la unidad.
     2. Ejercicios prácticos sobre las actividades realizadas de la unidad.
 
@@ -125,4 +97,3 @@ La nota de cada **Resultado de Aprendizaje** se calcula mediante la media ponder
 - **0-10** puntos. Donde Cada dos contestaciones incorrectas contestadas resta una bien.
 - **0-6** puntos: dos ejercicios de *nivel medio-bajo*, 3 puntos cada uno de ellos aplicando **IC1**.
 - **0-14** puntos: dos ejercicios de *nivel medio-alto* aplicando **IC2**.
-
