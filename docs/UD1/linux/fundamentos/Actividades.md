@@ -16,8 +16,10 @@ Sin ayuda, intenta: mostrar el directorio actual, listar ocultos, copiar un arch
 2. Localiza en la ayuda de `ls` qué hacen `-a`, `-l` y `-d`. Demuestra la diferencia entre listar `datos` y consultar el propio directorio.
 3. Explica por qué `bash ls -l` no es la forma general de listar archivos.
 4. Ejecuta `type cd` y `type ls` e interpreta la salida de tu máquina, incluidos posibles alias.
+5. Identifica el emulador de terminal utilizado, la shell configurada y la shell de la sesión actual. Explica la diferencia.
+6. Comprueba a qué programa apunta `/bin/sh`. Elige dos shells de la tabla de teoría y compara una característica de cada una con Bash. No cambies tu shell de inicio de sesión.
 
-**Entrega:** `evidencias/01-terminal.md` con cuatro órdenes comentadas y la identidad real. El texto del prompt no basta para acreditar privilegios.
+**Entrega:** `evidencias/01-terminal.md` con las órdenes comentadas, la identidad real y la comparación de shells. El texto del prompt no basta para acreditar privilegios.
 
 ## 2. Rutas y archivos — 35 minutos
 

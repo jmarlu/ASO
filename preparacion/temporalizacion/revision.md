@@ -6,6 +6,8 @@ Fecha: 10 de septiembre de 2026. Estado: diagnóstico inicial conservado como an
 
 El escenario por sesiones se reproduce con `python3 preparacion/temporalizacion/calcular.py`; usa martes/jueves 2+2 como hipótesis, no como horario confirmado. El resultado está en `escenario_2026_2027.csv`.
 
+**Corrección del 16/09/2026:** el DOCX ya recoge 133 horas y 4 semanales, con 92 horas de unidades y 10 de pruebas/recuperación en el escenario de aula. Las 31 horas restantes siguen pendientes del plan del centro. El punto 4 del diagnóstico siguiente describe el documento anterior a esta corrección. Véase el [registro de cambios de programación](../../Programación/README.md).
+
 ## Condiciones indicadas por el docente
 
 - Centro de la Comunitat Valenciana.

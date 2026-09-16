@@ -1,8 +1,11 @@
-# Temporalización ASO 2026/2027 — Elche
+# Calendario y organización de ASO 2026/2027 — Elche
 
-**Cuatro horas semanales. Dos evaluaciones en el centro y formación en empresa durante los últimos meses.** Revisión: 10 de septiembre de 2026.
+**Cuatro horas semanales. Dos evaluaciones en el centro y formación en empresa durante los últimos meses.** Actualizado: 16 de septiembre de 2026.
 
-El calendario municipal está contrastado. Las fechas de unidades y empresa que siguen son una **propuesta de organización**, no las fechas aprobadas por el centro. Para calcular sesiones se ha usado como ejemplo martes y jueves, dos horas cada día; el docente aún no ha indicado los días reales.
+Aquí puedes consultar el orden de las unidades, las horas previstas de clase y los periodos de evaluación y formación en empresa.
+
+!!! warning "Fechas de unidades y empresa pendientes de confirmación"
+    La distribución por unidades es orientativa: utiliza martes y jueves, dos horas cada día, como horario de ejemplo. Consulta con el profesorado tu horario real y las fechas de las pruebas antes de organizarte. La incorporación a empresa requiere la confirmación del centro.
 
 ## Calendario escolar de Elche
 
@@ -17,15 +20,23 @@ El calendario municipal está contrastado. Las fechas de unidades y empresa que 
 
 Se utiliza el calendario definitivo autorizado para Elche, que modifica el general autonómico. En El Altet, el 12 de febrero se sustituye por el 2 de octubre. Fuente: [Ayuntamiento de Elche, calendario definitivo publicado en agosto de 2026](https://www.elche.es/2026/08/elche-aprueba-el-calendario-escolar-definitivo-para-el-curso-2026-2027-con-un-no-lectivo-mas-en-semana-santa/).
 
-## Qué significan las 400 horas de empresa
+## Horas del módulo
 
-Las instrucciones de FP de 2026/2027 establecen, para régimen general de grado medio/superior, entre el 25 % y el 35 % de la duración del ciclo en empresa, repartida entre cursos, y un mínimo de 100 horas en primero. En un ciclo de 2.000 horas, el intervalo es **500–700 horas**. Por tanto, **100 en primero + 400 en segundo es un reparto compatible**, no una duración universal obligatoria de segundo. Debe comprobarse en el plan formativo del grupo. [Resolución de 16 de julio de 2026, apartado 15.1.1, páginas 21–22](https://www.mclibre.org/consultar/legislacion/files/dogv/DOGV-2026-07-16-R-inicio-curso-fp-2627-es.pdf).
+ASO tiene **133 horas curriculares y 4 horas semanales**, según el [Decreto 114/2025, tabla de ASIR, página 72](https://dogv.gva.es/datos/2025/08/04/pdf/2025_29742_es.pdf).
 
-Las horas de empresa corresponden al conjunto del ciclo; no son 400 horas del módulo ASO. El currículo asigna a ASO **133 horas y 4 horas semanales**. [Decreto 114/2025, tabla de ASIR, página 72](https://dogv.gva.es/datos/2025/08/04/pdf/2025_29742_es.pdf).
+| Organización prevista | Horas |
+|---|---:|
+| Trabajo de las unidades UD1–UD7 en el centro | 92 |
+| Pruebas, recuperación y cierre en el centro | 10 |
+| **Total previsto en el centro** | **102** |
+| Pendientes de distribuir por el centro | 31 |
+| **Total del módulo** | **133** |
 
-## Escenario calculado de clases en el centro
+Las 31 horas pendientes no se consideran realizadas ni están asignadas todavía a empresa. El reparto definitivo dependerá del horario y del plan formativo del grupo. Los porcentajes de los resultados de aprendizaje indican su peso en la evaluación, no su duración.
 
-Hipótesis: clases los martes y jueves, dos horas por sesión, hasta el 23 de marzo. Se descuentan los no lectivos anteriores. Resultan **51 sesiones, 102 horas**, distribuidas en 92 horas para unidades y 10 para pruebas, recuperación y cierre. Las fechas de cada fila corresponden a su primera y última sesión; no implican clase todos los días del intervalo.
+## Unidades y evaluaciones en el centro
+
+Con el horario de ejemplo de martes y jueves, hasta el 23 de marzo, se prevén **51 sesiones, 102 horas**, distribuidas en 92 horas para unidades y 10 para pruebas, recuperación y cierre. Las fechas de cada fila corresponden a su primera y última sesión; no implican clase todos los días del intervalo.
 
 ### Primera evaluación: septiembre – 10 de diciembre
 
@@ -52,34 +63,22 @@ UD1 incluye unas cinco horas de fundamentos dentro de sus 24 horas. Se prioriza 
 
 Las sesiones de evaluación del equipo docente deben fijarlas el centro. Aquí las filas de prueba y recuperación reservan horas de clase; no se presentan como convocatorias oficiales ni como evaluación final del módulo.
 
-### Ajustes respecto al material completo
+### Cómo trabajarás las unidades
 
-Este escenario no pretende desarrollar todos los ejercicios existentes en las horas reducidas. Se seleccionan prácticas integradas para reutilizar servidores y evidencias:
+- En UD1 repasarás fundamentos de Linux y trabajarás scripting en Linux y PowerShell.
+- En UD3 y UD4 reutilizarás el entorno LDAP y los usuarios en las prácticas de integración.
+- En UD5 realizarás una selección de actividades de automatización y mantenimiento. El material completo incluye ampliaciones; el profesorado indicará las actividades obligatorias y las entregas.
+- En UD6 y UD7 trabajarás la administración remota y los servicios de impresión.
 
-- UD3 y UD4 comparten el entorno LDAP y los usuarios; no se reinstala el laboratorio desde cero en cada unidad.
-- UD5 conserva un itinerario completo de 24 horas como material de referencia y propone una selección de 16 horas: preparación de scripts (2), cron/at/KCron (4), timers (4), fiabilidad y cuentas (3), caso integrado y evidencias (3). Se parte de los scripts entregados y se reutilizan resultados, sin eliminar las evidencias de los criterios gráficos y de cuentas.
-- UD6 reutiliza los servidores anteriores; UD7 se centra en una cola y pruebas desde cliente.
-- Las actividades adicionales quedan como ampliación o refuerzo, sin computarlas ficticiamente como horas de clase.
+Las actividades de refuerzo y ampliación te ayudan a practicar; su presencia en los apuntes no implica que todas sean entregas obligatorias.
 
-**El balance curricular aún debe cerrarse con el plan de empresa:** 133 − 102 = 31 horas de ASO fuera de este escenario presencial. No se dan por realizadas ni se asignan automáticamente a empresa. El equipo docente deberá vincular la formación que corresponda a ASO con actividades y resultados de aprendizaje concretos, o revisar la distribución de clases. Las ponderaciones de RA no cambian por reducir el tiempo de un bloque.
+## Formación en empresa y evaluación final
 
-### Si los días de clase son otros
+El periodo previsto es **del 6 de abril al 18 de junio de 2027**, pendiente de confirmación por el centro. Antes de incorporarte debes conocer tu fecha de inicio, jornada, calendario, actividades y forma de seguimiento.
 
-Hasta el 23 de marzo hay 24 lunes, 25 martes, 25 miércoles, 26 jueves y 23 viernes lectivos en el calendario considerado. Con dos sesiones semanales de dos horas, el total puede variar entre **94 y 102 horas**. Si las cuatro horas estuvieran concentradas en un solo día, el intervalo sería 92–104 horas. No debe copiarse la tabla fechada como definitiva hasta sustituir el horario de ejemplo por el real.
+La propuesta contempla **400 horas en segundo curso**, sujetas al plan formativo del grupo. Son horas del conjunto del ciclo, no 400 horas de ASO. El calendario de empresa puede diferir del calendario escolar: confirma los días de asistencia con el centro y tu tutoría de empresa.
 
-## Ventana propuesta de formación en empresa
-
-Se propone reservar **del 6 de abril al 18 de junio de 2027**, después de Pascua, para empresa y cierre del curso. Es una ventana de trabajo, no una fecha de incorporación confirmada.
-
-| Jornada efectiva acordada | Tiempo necesario para 400 horas |
-|---|---|
-| 8 horas/día | 50 jornadas completas |
-| 7 horas/día | 57 jornadas completas y una hora más; 58 días de asistencia |
-| 6 horas/día | 66 jornadas completas y cuatro horas más; 67 días de asistencia |
-
-Ejemplo aritmético: empezando el 6 de abril a ocho horas diarias, de lunes a viernes, sin asistir el 3 de mayo y sin otras interrupciones, las 400 horas se alcanzarían el **15 de junio**. Es necesario dejar margen para incidencias y cierre. Con siete horas diarias esa misma ventana no basta: habría que adelantar la incorporación o cambiar el calendario acordado.
-
-El calendario efectivo de empresa debe incorporar jornada, festivos aplicables, asistencia al centro y seguimiento acordados. Los días no lectivos escolares no se convierten automáticamente en días sin actividad en empresa. La evaluación final tendrá en cuenta la formación realizada allí; no se considera cerrado ASO solo por terminar la segunda evaluación de aula. [Instrucciones 2026/2027, apartados 9.6 y 15](https://www.mclibre.org/consultar/legislacion/files/dogv/DOGV-2026-07-16-R-inicio-curso-fp-2627-es.pdf).
+La evaluación final tendrá en cuenta la formación realizada en empresa. Terminar las clases de la segunda evaluación no supone haber cerrado el módulo. Consulta los [resultados de aprendizaje y la evaluación](index.md#evaluacion).
 
 ## Diagrama de la propuesta
 
@@ -107,6 +106,6 @@ gantt
     Ventana pendiente del plan del centro :2027-04-06, 2027-06-19
 ```
 
-## Datos que debe cerrar el centro
+## Información pendiente de confirmar
 
-El horario real de ASO, el reparto efectivo de horas de empresa entre primero y segundo, los resultados de aprendizaje que se desarrollarán en empresa, la jornada diaria de estancia y las fechas de evaluación. Estos datos concretan la propuesta; el calendario municipal y las cuatro horas semanales ya están incorporados.
+El profesorado y el centro deben concretar el horario por días, las fechas de pruebas y recuperación, el reparto de las 31 horas pendientes y el plan de formación en empresa. Hasta entonces, las fechas de las unidades y de incorporación que aparecen en esta página son orientativas.

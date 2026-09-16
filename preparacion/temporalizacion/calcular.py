@@ -7,6 +7,9 @@ import sys
 from collections import Counter
 from datetime import date, timedelta
 
+HORAS_CURRICULARES = 133
+HORAS_SEMANALES = 4
+
 INICIO = date(2026, 9, 9)
 FIN_CENTRO = date(2027, 3, 23)
 HORARIO = {1: 2, 3: 2}  # lunes=0; sustituir por el horario real cuando se conozca
@@ -39,11 +42,15 @@ def fechas():
         d += timedelta(days=1)
 
 if __name__ == '__main__':
+    if sum(HORARIO.values()) != HORAS_SEMANALES:
+        raise SystemExit('El horario debe sumar 4 horas semanales')
     slots = [d for d in fechas() if lectivo(d)
              for _ in range(HORARIO.get(d.weekday(), 0))]
     required = sum(h for _, _, h in BLOQUES)
     if required > len(slots):
         raise SystemExit(f'No cabe: {required} horas previstas, {len(slots)} disponibles')
+    if required > HORAS_CURRICULARES:
+        raise SystemExit('La propuesta supera las horas curriculares de ASO')
     writer = csv.writer(sys.stdout)
     writer.writerow(['evaluacion', 'bloque', 'horas', 'inicio', 'fin'])
     offset = 0
@@ -53,3 +60,6 @@ if __name__ == '__main__':
     counts = Counter(d.weekday() for d in fechas() if lectivo(d))
     print(f'Sesiones lectivas por día (lunes=0): {dict(sorted(counts.items()))}', file=sys.stderr)
     print(f'Horas previstas/disponibles: {required}/{len(slots)}', file=sys.stderr)
+    print(f'Balance curricular: {HORAS_CURRICULARES} = {required} de aula previstas + '
+          f'{HORAS_CURRICULARES - required} pendientes de concretar (no asignadas a empresa)',
+          file=sys.stderr)

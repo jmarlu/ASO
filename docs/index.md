@@ -3,8 +3,15 @@
 Aquí puedes encontrar los apuntes del módulo de ***Administración de Sistemas Operativos***, que se imparte en el segundo curso del ciclo formativo de grado superior de Administración de Sistemas Informáticos en Red.
 
 * **Curso 2026/2027 · Elche (Alicante) · 4 horas semanales.**
-* El currículo de ASIR asigna **133 horas** al módulo 0374. La programación debe distinguir formación en el centro y la parte que corresponda desarrollar en empresa; no se consideran 133 horas de aula antes de la salida. [Decreto 114/2025, página 72](https://dogv.gva.es/datos/2025/08/04/pdf/2025_29742_es.pdf).
-* Se organizan dos evaluaciones en el centro y una fase posterior de formación en empresa, con seguimiento y evaluación final. La [temporalización revisada](temporalizacion_2026_2027.md) diferencia calendario confirmado y propuesta pendiente del horario y plan del centro.
+* El currículo de ASIR asigna **133 horas** al módulo 0374. Estas horas incluyen la formación del módulo según el reparto que concrete el centro. [Decreto 114/2025, página 72](https://dogv.gva.es/datos/2025/08/04/pdf/2025_29742_es.pdf).
+* Se organizan dos evaluaciones en el centro y una fase posterior de formación en empresa, con seguimiento y evaluación final. La [calendario del curso](temporalizacion_2026_2027.md) diferencia calendario confirmado y propuesta pendiente del horario y plan del centro.
+
+## Cómo utilizar esta web
+
+- Consulta el [calendario del curso](temporalizacion_2026_2027.md) para conocer el orden de las unidades y los periodos previstos de evaluación y empresa.
+- Accede desde el menú a los apuntes, laboratorios y actividades de cada unidad publicada.
+- Revisa los resultados de aprendizaje y los [criterios de evaluación](#evaluacion) de esta página para saber qué debes demostrar.
+- El profesorado te indicará las actividades obligatorias, los plazos y las fechas de las pruebas. Las fechas pendientes se señalan en el calendario.
 
 ## ¿Qué voy a aprender?
 
@@ -27,11 +34,11 @@ Los Resultados de Aprendizaje de ASO son:
 6. Integra sistemas operativos libres y propietarios, justificando y garantizando su interoperabilidad.
 7. Utiliza lenguajes de guiones en sistemas operativos, describiendo su aplicación y administrando servicios del sistema operativo.
 
-## Relación entre RA, unidades y peso de programación
+## Resultados de aprendizaje, unidades y peso en la evaluación
 
 La normativa fija los resultados de aprendizaje y sus criterios de evaluación. Los pesos siguientes proceden de la programación del módulo revisada en el centro y sirven para organizar la evaluación y la carga de trabajo.
 
-| RA | Resultado de aprendizaje | Unidad principal | Peso programación |
+| RA | Resultado de aprendizaje | Unidad principal | Peso en la evaluación |
 |---:|---|---|---:|
 | RA1 | Administra el servicio de directorio interpretando especificaciones e integrándolo en una red. | UD3. Servicios de directorio | 18% |
 | RA2 | Administra procesos del sistema describiéndolos y aplicando criterios de seguridad y eficiencia. | UD2. Procesos y servicios | 8% |
@@ -41,16 +48,11 @@ La normativa fija los resultados de aprendizaje y sus criterios de evaluación. 
 | RA6 | Integra sistemas operativos libres y propietarios, justificando y garantizando su interoperabilidad. | UD4. Integración de sistemas operativos en red | 22% |
 | RA7 | Utiliza lenguajes de guiones en sistemas operativos, describiendo su aplicación y administrando servicios del sistema operativo. | UD1. Scripting Linux y PowerShell | 20% |
 
-La correlación recomendada es mantener una unidad principal por RA, pero diseñar prácticas integradas:
-
-- UD1 se debe reutilizar en UD2, UD5 y UD7 mediante scripts de administración.
-- UD3 debe preparar la base de usuarios y autenticación que se aprovechará en UD4 y UD6.
-- UD4 debe actuar como unidad integradora fuerte porque es el RA con mayor peso.
-- [UD5](UD5/index.md) desarrolla informes, tareas programadas y mantenimiento GNU/Linux a partir de los procesos y servicios estudiados en UD2.
+Las prácticas conectan varias unidades: reutilizarás scripts, servidores y usuarios en distintas tareas de administración. Los porcentajes de la tabla suman el 100 % y expresan el peso de cada RA en la evaluación; no son porcentajes de horas de clase.
 
 ## Unidades didácticas / Temporalización
 
-La propuesta se adapta al **calendario de Elche 2026/2027** y a las **cuatro horas semanales**. Sustituye la temporalización antigua de 2025/2026.
+La propuesta se adapta al **calendario de Elche 2026/2027** y a las **cuatro horas semanales**.
 
 | Fase | Periodo propuesto | Trabajo principal |
 |---|---|---|
@@ -60,7 +62,7 @@ La propuesta se adapta al **calendario de Elche 2026/2027** y a las **cuatro hor
 
 **Fechas orientativas:** el cálculo detallado usa martes y jueves, dos horas cada día, como ejemplo de horario. Da 102 horas en el centro, incluidas 10 para evaluación y recuperación. Los días reales de ASO y el plan de empresa deben confirmar o ajustar ese escenario; no se asignan automáticamente las 31 horas restantes del currículo a empresa.
 
-Consulta la **[temporalización completa, calendario local y Gantt](temporalizacion_2026_2027.md)**, que también explica en qué condiciones encajarían 400 horas de empresa en segundo curso.
+Consulta el **[calendario completo y las horas por unidad](temporalizacion_2026_2027.md)** para organizar tu trabajo y conocer qué datos están pendientes de confirmación.
 
 ## Evaluación
 
@@ -68,7 +70,7 @@ Para superar el módulo hay que tener todos los **RA aprobados**.
 
 ### Instrumentos de calificación
 
-1. **Instrumento de calificación 1 (IC1):**: *escala de valores* comprendidas entre 0 y 3 puntos calificados de la siguiente forma:
+1. **Instrumento de calificación 1 (IC1):** *escala de valores* comprendidas entre 0 y 3 puntos calificados de la siguiente forma:
     * **0**: No realizada.
     * **1**: Realizada pero solución errónea o incompleta.
     * **2**: Realizada y solución aceptable, aunque tiene algún apartado incompleto.
@@ -86,14 +88,15 @@ La nota de cada **Resultado de Aprendizaje** se calcula mediante la media ponder
 1. **Instrumento de Evaluación 1 (IE1). Trabajo en Clase/Actividades.**
     1. Se evalúan todas las actividades realizadas en clase.
     2. Las actividades se evalúan mediante observación directa del docente y aplicando el **IC1**.
-    
+
 2. **Instrumentos de Evaluación 2 (IE2). Pruebas de auditoría y objetivas.**
     Pueden contener:
     1. Cuestionario multi-opción (test) de 20 preguntas sobre la teoría de la unidad.
     2. Ejercicios prácticos sobre las actividades realizadas de la unidad.
 
-!!! not "**Nota**:"    
+!!! note "Puntuación de la prueba"
     Esta prueba se califica entre 0 y 30 puntos siguiendo las siguientes premisas:
-- **0-10** puntos. Donde Cada dos contestaciones incorrectas contestadas resta una bien.
-- **0-6** puntos: dos ejercicios de *nivel medio-bajo*, 3 puntos cada uno de ellos aplicando **IC1**.
-- **0-14** puntos: dos ejercicios de *nivel medio-alto* aplicando **IC2**.
+
+    - **0-10** puntos: cada dos respuestas incorrectas restan una correcta.
+    - **0-6** puntos: dos ejercicios de *nivel medio-bajo*, 3 puntos cada uno de ellos aplicando **IC1**.
+    - **0-14** puntos: dos ejercicios de *nivel medio-alto* aplicando **IC2**.

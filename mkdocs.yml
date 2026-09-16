@@ -1,9 +1,8 @@
 site_name: Administración de Sistemas Operativos
 site_url: https://example.com/
 nav:
-  - Home: index.md
+  - Guía del módulo: index.md
   - Calendario 2026/2027: temporalizacion_2026_2027.md
-  - Plan de revisión ASO: plan_revision_actualizacion_comprobacion_aso.md
  # - Recordatorio de Commandos:
      # - linux: ./recordatorios/commandosLinux.md
      # - windows: ./recordatorios/commandosWindows.md
