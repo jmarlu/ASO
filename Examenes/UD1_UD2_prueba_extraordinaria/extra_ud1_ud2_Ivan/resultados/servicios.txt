@@ -1,0 +1,107 @@
+# Instalacion de paquetes
+
+ sudo apt update && sudo apt install nginx curl htop
+
+# Evidencia instlacion y actualiacion
+
+root@examen:/extra_ud1_ud2/scripts# apt install nginx curl htop
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+curl is already the newest version (8.5.0-2ubuntu10.9).
+curl set to manually installed.
+htop is already the newest version (3.3.0-4build1).
+htop set to manually installed.
+The following additional packages will be installed:
+  nginx-common
+Suggested packages:
+  fcgiwrap nginx-doc ssl-cert
+The following NEW packages will be installed:
+  nginx nginx-common
+
+
+# Pquetes ya isntalados
+
+curl y htop
+
+# Paquetes instalados
+
+nginx
+
+nginx-common
+
+# Ver estado nginx
+
+sudo systemctl status nginx
+
+nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2026-06-26 08:20:34 UTC; 10min ago
+       Docs: man:nginx(8)
+    Process: 1337 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/>
+    Process: 1339 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+   Main PID: 1367 (nginx)
+      Tasks: 2 (limit: 18666)
+     Memory: 1.8M (peak: 3.7M)
+        CPU: 9ms
+     CGroup: /system.slice/nginx.service
+             ├─1367 "nginx: master process /usr/sbin/nginx -g daemon on; master_process on;"
+             └─1370 "nginx: worker process"
+
+# Ultimos 20 registros de nginx
+
+journalctl -u nginx | tail -n 20
+
+root@examen:/extra_ud1_ud2/scripts# journalctl -u nginx | tail -n 20
+Jun 26 08:20:34 examen systemd[1]: Starting nginx.service - A high performance web server and a reverse proxy server...
+Jun 26 08:20:34 examen systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+root@examen:/extra_ud1_ud2/scripts# 
+
+
+
+# Puerto escucha de ngixn
+root@examen:/extra_ud1_ud2/scripts# ss -tnlp | grep nginx
+LISTEN 0      511          0.0.0.0:80        0.0.0.0:*    users:(("nginx",pid=1370,fd=5),("nginx",pid=1367,fd=5))
+LISTEN 0      511             [::]:80           [::]:*    users:(("nginx",pid=1370,fd=6),("nginx",pid=1367,fd=6))
+root@examen:/extra_ud1_ud2/scripts# 
+
+# Ver estado de unidades nginx y cron
+
+root@examen:/extra_ud1_ud2/scripts# systemctl list-unit-files | grep nginx
+nginx.service                                enabled         enabled
+root@examen:/extra_ud1_ud2/scripts# systemctl list-unit-files | grep cron
+cron.service                                 enabled         enabled
+root@examen:/extra_ud1_ud2/scripts# 
+
+# comprobacion pagina nginx con curl
+
+crul localhost o crul 10.102.89.9
+
+root@examen:/extra_ud1_ud2/scripts# curl localhost
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Practica extraordianria UD1 UD2</h1>
+</body>
+</html>
+root@examen:/extra_ud1_ud2/scripts# 
+
+
+# Deshabilitar arranque automatico nginx y nuevo estado
+
+root@examen:/extra_ud1_ud2/scripts# sudo systemctl disable nginx
+Synchronizing state of nginx.service with SysV service script with /usr/lib/systemd/systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install disable nginx
+root@examen:/extra_ud1_ud2/scripts# sudo systemctl status nginx
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/usr/lib/systemd/system/nginx.service; disabled; preset: enabled)
+     Active: active (running) since Fri 2026-06-26 08:55:52 UTC; 1min 19s ago
+       Docs: man:nginx(8)
+   Main PID: 1776 (nginx)
+      Tasks: 2 (limit: 18666)
+     Memory: 1.7M (peak: 2.0M)
+        CPU: 8ms
+     CGroup: /system.slice/nginx.service
+             ├─1776 "nginx: master process /usr/sbin/nginx -g daemon on; master_process on;"
+             └─1778 "nginx: worker process"
+

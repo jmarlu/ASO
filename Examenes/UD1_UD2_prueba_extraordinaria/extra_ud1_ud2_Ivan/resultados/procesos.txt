@@ -1,0 +1,61 @@
+# Ejecutar segundo plano
+
+sleep 500&
+sleep 700&
+sleep 900&
+
+root@examen:/extra_ud1_ud2/scripts# sleep 700&
+[6] 2046
+root@examen:/extra_ud1_ud2/scripts# sleep 900&
+[7] 2047
+
+# Lista de procesos
+
+ps -f
+
+root@examen:/extra_ud1_ud2/scripts# ps -f | grep sleep
+UID          PID    PPID  C STIME TTY          TIME CMD
+root        2046     757  0 09:06 pts/1    00:00:00 sleep 700
+root        2047     757  0 09:06 pts/1    00:00:00 sleep 900
+root        2068     757  0 09:14 pts/1    00:00:00 sleep 500
+
+# Nice modificado con htop
+
+top
+
+   2046 root      20   0    6112   1972   1856 S   0.0   0.3   0:00.00 sleep                                                        
+   2047 root      20   0    6112   1972   1856 S   0.0   0.3   0:00.00 sleep                                                        
+   2068 root      30  10    6112   1972   1856 S   0.0   0.3   0:00.00 sleep
+
+
+# Sleep 700 kill con sgterm
+
+kill -sigterm 2046
+
+root@examen:/extra_ud1_ud2/scripts# kill -SIGTERM 2046
+root@examen:/extra_ud1_ud2/scripts# ps -f | grep sleep
+root        2047     757  0 09:06 pts/1    00:00:00 sleep 900
+root        2068     757  0 09:14 pts/1    00:00:00 sleep 500
+root        2118     757  0 09:19 pts/1    00:00:00 grep --color=auto sleep
+root@examen:/extra_ud1_ud2/scripts# 
+
+
+# Sleep 900 kill con sigkill
+
+kill -SIGKILL 2047
+
+root@examen:/extra_ud1_ud2/scripts# kill -SIGKILL 2047
+root@examen:/extra_ud1_ud2/scripts# ps -f | grep sleep
+root        2068     757  0 09:14 pts/1    00:00:00 sleep 500
+root        2123     757  0 09:20 pts/1    00:00:00 grep --color=auto sleep
+[7]   Killed                  sleep 900
+root@examen:/extra_ud1_ud2/scripts# 
+
+# Comprobacion sin sleep
+
+ps -f | grep sleep
+
+root@examen:/extra_ud1_ud2/scripts# ps -f | grep sleep
+root        2139     757  0 09:23 pts/1    00:00:00 grep --color=auto sleep
+root@examen:/extra_ud1_ud2/scripts# 
+

@@ -1,0 +1,24 @@
+#Creacion del contenedor
+
+lxc launch ubuntu:24.04 examen
+
+#ENntrer en terminal
+
+lxc exec examen bash
+
+#Limitar memoria a 798 y uso nucleos a 1
+
+lxc config set examen limits.memory 798MB
+lxc config set examen limits.cpu 1
+
+#Habilitar autostart
+
+lxc config set exmaen boot.autostart true
+
+#Ip asignada
+
+10.102.89.9/24
+
+#Crear snapshot contenedor examen
+
+lxc snapshot examen snapshot1

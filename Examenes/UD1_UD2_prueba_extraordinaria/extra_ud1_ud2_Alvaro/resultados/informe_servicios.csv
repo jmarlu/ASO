@@ -1,0 +1,6 @@
+ip,nombre,disco,ram,servicio,puerto,tipo,estado
+10.10.0.31,web02,18,4,nginx,80,web,activo
+10.10.0.32,app02,42,2,apache2,8080,web,mantenimiento
+10.10.0.33,db02,60,8,mariadb,3306,datos,activo
+10.10.0.34,backup02,12,1,rsync,873,copias,caido
+10.10.0.38,dns02,8,2,bind9,53,red,activo

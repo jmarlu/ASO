@@ -1,0 +1,201 @@
+comandos:
+apt update
+
+apt install nginx curl htop
+
+sudo nano /var/www/html/index.html
+
+RESULT=/home/ubuntu/extra_ud1_ud2/resultados/servicios.txt
+
+  apt update                                    >> $RESULT 2>&1
+  apt list --upgradable 2>/dev/null             >> $RESULT
+  dpkg -l | grep -E "nginx|curl|htop"          >> $RESULT
+  apt show nginx                                >> $RESULT 2>&1
+  apt-cache depends nginx                       >> $RESULT
+  apt show curl                                 >> $RESULT 2>&1
+  dpkg -L nginx | head -20                      >> $RESULT
+  systemctl status nginx                        >> $RESULT
+  journalctl -u nginx -n 20                     >> $RESULT
+  ss -tlnp | grep nginx                         >> $RESULT
+  systemctl get-default                         >> $RESULT
+  systemctl status nginx cron                   >> $RESULT
+  curl -s http://localhost                      >> $RESULT
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Hit:1 http://archive.ubuntu.com/ubuntu noble InRelease
+Hit:2 http://security.ubuntu.com/ubuntu noble-security InRelease
+Get:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+Hit:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+Get:5 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1041 kB]
+Get:6 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1656 kB]
+Get:7 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [34.8 kB]
+Fetched 2858 kB in 3s (1008 kB/s)
+Reading package lists...
+Building dependency tree...
+Reading state information...
+14 packages can be upgraded. Run 'apt list --upgradable' to see them.
+Listing...
+ca-certificates/noble-updates,noble-security 20260601~24.04.1 all [upgradable from: 20240203]
+kpartx/noble-updates 0.9.4-5ubuntu8.2 amd64 [upgradable from: 0.9.4-5ubuntu8.1]
+libperl5.38t64/noble-updates,noble-security 5.38.2-3.2ubuntu0.3 amd64 [upgradable from: 5.38.2-3.2ubuntu0.2]
+libxml2/noble-updates,noble-security 2.9.14+dfsg-1.3ubuntu3.8 amd64 [upgradable from: 2.9.14+dfsg-1.3ubuntu3.7]
+multipath-tools/noble-updates 0.9.4-5ubuntu8.2 amd64 [upgradable from: 0.9.4-5ubuntu8.1]
+perl-base/noble-updates,noble-security 5.38.2-3.2ubuntu0.3 amd64 [upgradable from: 5.38.2-3.2ubuntu0.2]
+perl-modules-5.38/noble-updates,noble-security 5.38.2-3.2ubuntu0.3 all [upgradable from: 5.38.2-3.2ubuntu0.2]
+perl/noble-updates,noble-security 5.38.2-3.2ubuntu0.3 amd64 [upgradable from: 5.38.2-3.2ubuntu0.2]
+tar/noble-updates,noble-security 1.35+dfsg-3ubuntu0.1 amd64 [upgradable from: 1.35+dfsg-3build1]
+vim-common/noble-updates,noble-security 2:9.1.0016-1ubuntu7.16 all [upgradable from: 2:9.1.0016-1ubuntu7.15]
+vim-runtime/noble-updates,noble-security 2:9.1.0016-1ubuntu7.16 all [upgradable from: 2:9.1.0016-1ubuntu7.15]
+vim-tiny/noble-updates,noble-security 2:9.1.0016-1ubuntu7.16 amd64 [upgradable from: 2:9.1.0016-1ubuntu7.15]
+vim/noble-updates,noble-security 2:9.1.0016-1ubuntu7.16 amd64 [upgradable from: 2:9.1.0016-1ubuntu7.15]
+xxd/noble-updates,noble-security 2:9.1.0016-1ubuntu7.16 amd64 [upgradable from: 2:9.1.0016-1ubuntu7.15]
+ii  curl                            8.5.0-2ubuntu10.9                                amd64        command line tool for transferring data with URL syntax
+ii  htop                            3.3.0-4build1                                    amd64        interactive processes viewer
+ii  libcurl3t64-gnutls:amd64        8.5.0-2ubuntu10.9                                amd64        easy-to-use client-side URL transfer library (GnuTLS flavour)
+ii  libcurl4t64:amd64               8.5.0-2ubuntu10.9                                amd64        easy-to-use client-side URL transfer library (OpenSSL flavour)
+ii  nginx                           1.24.0-2ubuntu7.13                               amd64        small, powerful, scalable web/proxy server
+ii  nginx-common                    1.24.0-2ubuntu7.13                               all          small, powerful, scalable web/proxy server - common files
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+
+Package: nginx
+Version: 1.24.0-2ubuntu7.13
+Priority: optional
+Section: web
+Origin: Ubuntu
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Installed-Size: 1354 kB
+Provides: httpd, httpd-cgi, nginx-abi-1.24.0-1
+Depends: libc6 (>= 2.34), libcrypt1 (>= 1:4.1.0), libpcre2-8-0 (>= 10.22), libssl3t64 (>= 3.0.0), zlib1g (>= 1:1.1.4), iproute2, nginx-common (= 1.24.0-2ubuntu7.13)
+Breaks: nginx-core (<< 1.22.1-6~), nginx-extras (<< 1.22.1-6~), nginx-light (<< 1.22.1-6~)
+Replaces: nginx-core (<< 1.22.1-6~), nginx-extras (<< 1.22.1-6~), nginx-light (<< 1.22.1-6~)
+Homepage: https://nginx.org
+Download-Size: 524 kB
+APT-Manual-Installed: yes
+APT-Sources: http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages
+Description: small, powerful, scalable web/proxy server
+ Nginx ("engine X") is a high-performance web and reverse proxy server
+ created by Igor Sysoev. It can be used both as a standalone web server
+ and as a proxy to reduce the load on back-end HTTP or mail servers.
+
+nginx
+  Depends: libc6
+  Depends: libcrypt1
+  Depends: libpcre2-8-0
+  Depends: libssl3t64
+  Depends: zlib1g
+  Depends: iproute2
+  Depends: nginx-common
+  Breaks: nginx-core
+  Breaks: nginx-extras
+  Breaks: nginx-light
+  Replaces: nginx-core
+  Replaces: nginx-extras
+  Replaces: nginx-light
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Package: curl
+Version: 8.5.0-2ubuntu10.9
+Priority: optional
+Section: web
+Origin: Ubuntu
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian Curl Maintainers <team+curl@tracker.debian.org>
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Installed-Size: 535 kB
+Depends: libc6 (>= 2.34), libcurl4t64 (= 8.5.0-2ubuntu10.9), zlib1g (>= 1:1.1.4)
+Homepage: https://curl.se/
+Task: cloud-minimal, cloud-image, cloud-image, server-minimal, ubuntu-wsl, server, ubuntu-server-raspi, lubuntu-desktop, ubuntustudio-publishing, ubuntu-budgie-desktop-minimal, ubuntu-budgie-desktop, ubuntu-budgie-desktop-raspi
+Download-Size: 227 kB
+APT-Manual-Installed: yes
+APT-Sources: http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages
+Description: command line tool for transferring data with URL syntax
+ curl is a command line tool for transferring data with URL syntax, supporting
+ DICT, FILE, FTP, FTPS, GOPHER, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3,
+ POP3S, RTMP, RTSP, SCP, SFTP, SMTP, SMTPS, TELNET and TFTP.
+ .
+ curl supports SSL certificates, HTTP POST, HTTP PUT, FTP uploading, HTTP form
+ based upload, proxies, cookies, user+password authentication (Basic, Digest,
+ NTLM, Negotiate, kerberos...), file transfer resume, proxy tunneling and a
+ busload of other useful tricks.
+
+/.
+/usr
+/usr/sbin
+/usr/sbin/nginx
+/usr/share
+/usr/share/doc
+/usr/share/doc/nginx
+/usr/share/doc/nginx/changelog.Debian.gz
+/usr/share/doc/nginx/copyright
+/usr/share/man
+/usr/share/man/man8
+/usr/share/man/man8/nginx.8.gz
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2026-06-26 08:45:49 UTC; 2min 41s ago
+       Docs: man:nginx(8)
+    Process: 1481 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+    Process: 1483 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+   Main PID: 1512 (nginx)
+      Tasks: 2 (limit: 18666)
+     Memory: 1.7M (peak: 3.7M)
+        CPU: 9ms
+     CGroup: /system.slice/nginx.service
+             ├─1512 "nginx: master process /usr/sbin/nginx -g daemon on; master_process on;"
+             └─1514 "nginx: worker process"
+
+Jun 26 08:45:49 extra-ud1ud2 systemd[1]: Starting nginx.service - A high performance web server and a reverse proxy server...
+Jun 26 08:45:49 extra-ud1ud2 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Jun 26 08:45:49 extra-ud1ud2 systemd[1]: Starting nginx.service - A high performance web server and a reverse proxy server...
+Jun 26 08:45:49 extra-ud1ud2 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+LISTEN 0      511          0.0.0.0:80        0.0.0.0:*    users:(("nginx",pid=1514,fd=5),("nginx",pid=1512,fd=5))
+LISTEN 0      511             [::]:80           [::]:*    users:(("nginx",pid=1514,fd=6),("nginx",pid=1512,fd=6))
+graphical.target
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2026-06-26 08:45:49 UTC; 3min 5s ago
+       Docs: man:nginx(8)
+    Process: 1481 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+    Process: 1483 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+   Main PID: 1512 (nginx)
+      Tasks: 2 (limit: 18666)
+     Memory: 1.7M (peak: 3.7M)
+        CPU: 9ms
+     CGroup: /system.slice/nginx.service
+             ├─1512 "nginx: master process /usr/sbin/nginx -g daemon on; master_process on;"
+             └─1514 "nginx: worker process"
+
+Jun 26 08:45:49 extra-ud1ud2 systemd[1]: Starting nginx.service - A high performance web server and a reverse proxy server...
+Jun 26 08:45:49 extra-ud1ud2 systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+
+● cron.service - Regular background program processing daemon
+     Loaded: loaded (/usr/lib/systemd/system/cron.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2026-06-26 07:45:37 UTC; 1h 3min ago
+       Docs: man:cron(8)
+   Main PID: 343 (cron)
+      Tasks: 1 (limit: 18666)
+     Memory: 368.0K (peak: 1.8M)
+        CPU: 54ms
+     CGroup: /system.slice/cron.service
+             └─343 /usr/sbin/cron -f -P
+
+Jun 26 08:17:01 extra-ud1ud2 CRON[888]: pam_unix(cron:session): session closed for user root
+Jun 26 08:25:01 extra-ud1ud2 CRON[1216]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+Jun 26 08:25:01 extra-ud1ud2 CRON[1217]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+Jun 26 08:25:01 extra-ud1ud2 CRON[1216]: pam_unix(cron:session): session closed for user root
+Jun 26 08:35:01 extra-ud1ud2 CRON[1230]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+Jun 26 08:35:01 extra-ud1ud2 CRON[1231]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+Jun 26 08:35:01 extra-ud1ud2 CRON[1230]: pam_unix(cron:session): session closed for user root
+Jun 26 08:45:01 extra-ud1ud2 CRON[1291]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+Jun 26 08:45:01 extra-ud1ud2 CRON[1292]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+Jun 26 08:45:01 extra-ud1ud2 CRON[1291]: pam_unix(cron:session): session closed for user root
+<h1>Practica extraordinaria UD1 UD2</h1>
+<p>Hostname: $(hostname)</p>
+<p>Fecha: $(date)</p>
