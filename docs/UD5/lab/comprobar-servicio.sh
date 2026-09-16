@@ -14,7 +14,7 @@ if systemctl is-active --quiet "$unidad"; then
     rm -f -- "$destino/$unidad.incidencia"
     echo "$(date --iso-8601=seconds) OK $unidad"
 else
-    printf '%s INACTIVO O NO DISPONIBLE %s\n' "$(date --iso-8601=seconds)" "$unidad" >"$destino/$unidad.incidencia"
+    echo "$(date --iso-8601=seconds) INACTIVO O NO DISPONIBLE $unidad" >"$destino/$unidad.incidencia"
     cat -- "$destino/$unidad.incidencia" >&2
     exit 1
 fi

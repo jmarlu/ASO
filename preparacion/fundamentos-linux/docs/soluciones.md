@@ -29,18 +29,23 @@ Este bloque es una posible solución completa; se puede ejecutar desde la raíz 
 
 ```bash
 {
-    printf 'Informe del aula\n'
+    echo 'Informe del aula'
     date --iso-8601=seconds
     id
-    printf '\nTotal de equipos: '
+    echo
+    echo -n 'Total de equipos: '
     wc -l < datos/servicios.txt
-    printf '\nEquipos fallidos:\n'
+    echo
+    echo 'Equipos fallidos:'
     grep ';fallido;' datos/servicios.txt | cut -d';' -f1
-    printf '\nInventario por memoria:\n'
+    echo
+    echo 'Inventario por memoria:'
     LC_ALL=C sort -t';' -k4,4nr datos/servicios.txt
-    printf '\nEquipos por servicio:\n'
+    echo
+    echo 'Equipos por servicio:'
     cut -d';' -f2 datos/servicios.txt | LC_ALL=C sort | uniq -c
-    printf '\nErrores por equipo:\n'
+    echo
+    echo 'Errores por equipo:'
     grep ' ERROR ' datos/eventos.log | cut -d' ' -f3 | LC_ALL=C sort | uniq -c
 } > salidas/informe-aula.txt
 chmod 600 salidas/informe-aula.txt

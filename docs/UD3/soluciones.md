@@ -203,7 +203,7 @@ Diseña  una arquitectura con **slapd maestro** y **réplica**, 3 aplicaciones c
 
    openssl x509 -req -in certs/asir.local.csr -CA certs/ca.crt -CAkey certs/ca.key \
      -CAcreateserial -out certs/asir.local.crt -days 365 -sha256 \
-     -extfile <(printf "subjectAltName=DNS:asir.local,IP:127.0.0.1")
+     -extfile <(echo -n "subjectAltName=DNS:asir.local,IP:127.0.0.1")
    ```
    Entrega `certs/ca.crt` (y opcionalmente `asir.local.crt`) a los clientes; la clave `asir.local.key` permanece solo en el servidor.
 

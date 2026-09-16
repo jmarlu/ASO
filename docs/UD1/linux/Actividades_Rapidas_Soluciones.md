@@ -80,7 +80,7 @@ read -rp "Hasta qué factor: " limite
 for (( i = 1; i <= limite; i++ ))
 do
     resultado=$(( numero * i ))
-    printf "%d x %d = %d\n" "$numero" "$i" "$resultado"
+    echo "$numero x $i = $resultado"
 done
 ```
 

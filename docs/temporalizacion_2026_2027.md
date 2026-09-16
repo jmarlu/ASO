@@ -70,7 +70,7 @@ Las sesiones de evaluación del equipo docente deben fijarlas el centro. Aquí l
 - En UD5 realizarás una selección de actividades de automatización y mantenimiento. El material completo incluye ampliaciones; el profesorado indicará las actividades obligatorias y las entregas.
 - En UD6 y UD7 trabajarás la administración remota y los servicios de impresión.
 
-Las actividades de refuerzo y ampliación te ayudan a practicar; su presencia en los apuntes no implica que todas sean entregas obligatorias.
+Las [actividades de fundamentos de Linux](UD1/linux/fundamentos/Actividades.md) son obligatorias, incluida la explicación individual de cada comando propuesto. Para los materiales identificados expresamente como refuerzo o ampliación en otras unidades, el profesorado indicará las entregas.
 
 ## Formación en empresa y evaluación final
 

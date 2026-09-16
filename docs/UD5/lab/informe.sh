@@ -13,14 +13,20 @@ temporal=$(mktemp "$destino/.informe.XXXXXX")
 trap 'rm -f -- "$temporal"' EXIT
 {
     date --iso-8601=seconds
-    printf '\nEquipo: '; hostname
-    printf '\nTiempo de actividad y carga:\n'; uptime
-    printf '\nDisco:\n'; df -h /
-    printf '\nMemoria:\n'; free -h
-    printf '\nServicios fallidos:\n'
-    systemctl --failed --no-pager || printf 'AVISO: no se pudo consultar systemd\n'
-    printf '\nErrores recientes visibles para esta cuenta:\n'
-    journalctl -p err --since '-24 hours' -n 30 --no-pager || printf 'AVISO: no se pudo consultar el journal\n'
+    echo
+    echo -n 'Equipo: '; hostname
+    echo
+    echo 'Tiempo de actividad y carga:'; uptime
+    echo
+    echo 'Disco:'; df -h /
+    echo
+    echo 'Memoria:'; free -h
+    echo
+    echo 'Servicios fallidos:'
+    systemctl --failed --no-pager || echo 'AVISO: no se pudo consultar systemd'
+    echo
+    echo 'Errores recientes visibles para esta cuenta:'
+    journalctl -p err --since '-24 hours' -n 30 --no-pager || echo 'AVISO: no se pudo consultar el journal'
 } >"$temporal"
 mv -- "$temporal" "$destino/ultimo.txt"
 echo "Informe actualizado: $destino/ultimo.txt"

@@ -9,9 +9,9 @@ Un **emulador de terminal** es la ventana que muestra texto, recibe pulsaciones 
 Puedes comprobar ambos elementos con:
 
 ```bash
-printf 'Terminal: %s\n' "${TERM_PROGRAM:-no identificado}"
-printf 'Shell configurada: %s\n' "$SHELL"
-printf 'Proceso actual: '
+echo "Terminal: ${TERM_PROGRAM:-no identificado}"
+echo "Shell configurada: $SHELL"
+echo -n 'Proceso actual: '
 ps -p $$ -o comm=
 ```
 
@@ -90,9 +90,9 @@ Un prompt como `alumno@servidor:~$` suele mostrar usuario, equipo y directorio. 
 ## Comillas y patrones de nombres
 
 ```bash
-printf 'Documento\n' > 'trabajo/informe de aula.txt'
+echo 'Documento' > 'trabajo/informe de aula.txt'
 ls -l -- 'trabajo/informe de aula.txt'
-printf '%s\n' datos/*
+echo datos/*
 ```
 
 Las comillas agrupan un argumento y evitan que el shell interprete sus caracteres especiales. Las simples conservan el texto literalmente; las dobles permiten, entre otras cosas, expandir variables como `"$HOME"`.
@@ -105,6 +105,30 @@ Las comillas agrupan un argumento y evitan que el shell interprete sus caractere
 | `[!ab]*` | Nombres cuyo primer carácter no es a ni b |
 
 `!` no es una negación genérica fuera de los corchetes. Por defecto, `*` no incluye nombres que empiezan por punto; si un patrón no coincide, Bash normalmente lo conserva como texto. Estos patrones no son las expresiones regulares de `grep`.
+
+## Mostrar texto con `echo`
+
+Usaremos `echo` para mostrar mensajes y valores de variables. Añade un salto de línea al final; en Bash, `echo -n` permite omitirlo.
+
+```bash
+echo 'Hola, mundo'
+echo "Directorio actual: $PWD"
+echo -n 'Texto sin salto de línea'
+```
+
+`echo datos/*` muestra los nombres que coinciden con el patrón separados por espacios, en una sola línea.
+
+### Alternativa: `printf`
+
+`printf` permite controlar el formato y mostrar cada argumento en una línea. No añade un salto de línea automáticamente: se indica con `\n`.
+
+```bash
+printf 'Hola, mundo\n'
+printf 'Directorio actual: %s\n' "$PWD"
+printf '%s\n' datos/*
+```
+
+`%s` representa texto. Puedes utilizar esta alternativa cuando necesites un formato concreto o imprimir literalmente valores que puedan comenzar por `-n` o contener barras invertidas.
 
 ## Consultar ayuda
 

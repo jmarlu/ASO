@@ -84,7 +84,7 @@ sudo /usr/local/lib/aso-ud5/cuentas-prueba.sh --simular
 sudo /usr/local/lib/aso-ud5/cuentas-prueba.sh --aplicar
 sudo chage -l ud5_prueba1
 sudo chage -l ud5_prueba2
-printf '%s\n' '/usr/local/lib/aso-ud5/cuentas-prueba.sh --aplicar >> /root/ud5-cuentas.log 2>&1' | sudo at now + 2 minutes
+echo '/usr/local/lib/aso-ud5/cuentas-prueba.sh --aplicar >> /root/ud5-cuentas.log 2>&1' | sudo at now + 2 minutes
 sudo atq
 ```
 

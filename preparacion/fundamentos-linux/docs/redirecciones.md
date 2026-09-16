@@ -15,8 +15,8 @@ Cada proceso dispone normalmente de entrada estándar (stdin, descriptor 0), sal
 ## Guardar resultados
 
 ```bash
-printf 'Primera línea\n' > trabajo/redireccion.txt
-printf 'Segunda línea\n' >> trabajo/redireccion.txt
+echo 'Primera línea' > trabajo/redireccion.txt
+echo 'Segunda línea' >> trabajo/redireccion.txt
 wc -l < trabajo/redireccion.txt
 ```
 
@@ -47,9 +47,9 @@ Para guardar varios resultados juntos podemos agrupar órdenes:
 
 ```bash
 {
-    printf 'Inventario del aula\n'
+    echo 'Inventario del aula'
     date --iso-8601=seconds
-    printf 'Número de equipos: '
+    echo -n 'Número de equipos: '
     wc -l < datos/servicios.txt
 } > salidas/resumen.txt
 ```

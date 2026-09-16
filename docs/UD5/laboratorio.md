@@ -16,7 +16,7 @@ sudo install -d -o root -g root -m 755 /usr/local/lib/aso-ud5
 sudo install -o root -g root -m 755 informe.sh copia.sh comprobar-servicio.sh /usr/local/lib/aso-ud5/
 sudo install -d -o asoauto -g asoauto -m 700 /var/lib/aso-ud5/{informes,copias,estado,restauracion}
 sudo install -d -o root -g asoauto -m 750 /srv/aso-ud5/datos
-printf 'Documento de prueba UD5\n' | sudo tee /srv/aso-ud5/datos/ejemplo.txt
+echo 'Documento de prueba UD5' | sudo tee /srv/aso-ud5/datos/ejemplo.txt
 sudo chmod 644 /srv/aso-ud5/datos/ejemplo.txt
 id asoauto
 timedatectl
@@ -75,7 +75,7 @@ sudo rm /etc/cron.d/aso-ud5
 ## 4. Tarea puntual con at
 
 ```bash
-printf '%s\n' '/usr/local/lib/aso-ud5/informe.sh /var/lib/aso-ud5/informes >> /var/lib/aso-ud5/informes/at.log 2>&1' | sudo -u asoauto at now + 2 minutes
+echo '/usr/local/lib/aso-ud5/informe.sh /var/lib/aso-ud5/informes >> /var/lib/aso-ud5/informes/at.log 2>&1' | sudo -u asoauto at now + 2 minutes
 sudo -u asoauto atq
 ```
 

@@ -29,7 +29,7 @@ sudo apt update
 sudo apt install cron kcron
 sudo systemctl enable --now cron
 mkdir -p "$HOME/ud5-gui"
-printf '%s\n' "$HOME/ud5-gui"
+echo "$HOME/ud5-gui"
 ```
 
 1. Abre Preferencias del sistema y busca «Planificador de tareas» o «Task Scheduler». KCron es un módulo de configuración y puede no aparecer como aplicación independiente.

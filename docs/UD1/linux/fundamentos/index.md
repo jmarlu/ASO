@@ -1,6 +1,6 @@
 # Fundamentos de GNU/Linux para ASO
 
-Repaso previo a scripting, adaptado del bloque UD2 de ISO, con 4–6 horas ajustables mediante diagnóstico inicial.
+Repaso previo a scripting, adaptado del bloque UD2 de ISO. Incluye ejercicios obligatorios de comandos antes de comenzar scripting.
 
 ## Recorrido
 
@@ -19,6 +19,8 @@ Al terminar podrás organizar archivos, interpretar permisos, buscar informació
 
 Al completar el repaso, continúa con [Creación de scripts](../Scripts.md).
 
+Las [actividades](Actividades.md) son obligatorias en todos los temas. Debes ejecutar y explicar cada comando propuesto por separado, resolver los ejercicios numerados y entregar las evidencias. El profesorado indicará los plazos; la estimación inicial de 4–6 horas no representa el tiempo necesario para completar el conjunto actual.
+
 ## Preparar las prácticas
 
 Descarga [servicios.txt](datos/servicios.txt) y [eventos.log](datos/eventos.log) en una carpeta de tu VM. Abre la terminal en esa carpeta y ejecuta:
@@ -28,7 +30,7 @@ zona_aso=$(mktemp -d "$HOME/aso-fundamentos.XXXXXX")
 mkdir -p "$zona_aso"/{datos,trabajo,salidas,evidencias}
 cp -- servicios.txt eventos.log "$zona_aso/datos/"
 cd "$zona_aso"
-printf 'Directorio de práctica: %s\n' "$PWD"
+echo "Directorio de práctica: $PWD"
 ```
 
 Conserva esa ruta. Si abres otra terminal, vuelve a ella con `cd /ruta/real/de/la/practica`. Los ejemplos de teoría parten de su raíz, salvo que indiquen otro directorio; usa los archivos de `trabajo` para las pruebas y conserva los datos originales.
