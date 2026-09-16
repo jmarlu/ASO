@@ -108,6 +108,9 @@ StyleCopReport.xml
 *.tmp_proj
 *_wpftmp.csproj
 *.log
+# Datos de ejemplo necesarios para las prácticas de fundamentos de Linux.
+!/docs/UD1/linux/fundamentos/datos/eventos.log
+!/preparacion/fundamentos-linux/docs/datos/eventos.log
 *.tlog
 *.vspscc
 *.vssscc

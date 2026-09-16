@@ -21,15 +21,42 @@ Las [actividades](Actividades.md) son obligatorias en todos los temas. Debes eje
 
 ## Preparar las prácticas
 
-Descarga [servicios.txt](datos/servicios.txt) y [eventos.log](datos/eventos.log) en una carpeta de tu VM. Abre la terminal en esa carpeta y ejecuta:
+Descarga [servicios.txt](datos/servicios.txt) en una carpeta de tu VM. Abre la terminal en esa carpeta y ejecuta:
 
 ```bash
 zona_aso=$(mktemp -d "$HOME/aso-fundamentos.XXXXXX")
 mkdir -p "$zona_aso"/{datos,trabajo,salidas,evidencias}
-cp -- servicios.txt eventos.log "$zona_aso/datos/"
+cp -- servicios.txt "$zona_aso/datos/"
 cd "$zona_aso"
 echo "Directorio de práctica: $PWD"
 ```
+
+Crea ahora `datos/eventos.log` con los ocho registros que utilizan los ejercicios. Copia y ejecuta el bloque completo, incluida la última línea `EOF`:
+
+```bash
+cat > datos/eventos.log <<'EOF'
+2026-09-01T08:00 INFO web01 inicio
+2026-09-01T08:02 ERROR web02 conexion
+2026-09-01T08:03 WARN files01 espacio
+2026-09-01T08:04 ERROR web03 permisos
+2026-09-01T08:05 INFO ldap01 consulta
+2026-09-01T08:06 ERROR web02 timeout
+2026-09-01T08:07 INFO backup01 copia
+2026-09-01T08:08 WARN files01 espacio
+EOF
+```
+
+La orden `cat` guarda literalmente las líneas comprendidas entre los marcadores `EOF`. Si el archivo ya existe, sustituye su contenido.
+
+Comprueba el contenido del registro:
+
+```bash
+wc -l datos/eventos.log
+head -n 1 datos/eventos.log
+grep -Ec ' (ERROR|WARN) ' datos/eventos.log
+```
+
+Debes obtener ocho líneas, la primera línea `2026-09-01T08:00 INFO web01 inicio` y un recuento de cinco líneas ERROR o WARN. Si los resultados no coinciden, vuelve a ejecutar el bloque de creación completo desde el directorio de práctica.
 
 Conserva esa ruta. Si abres otra terminal, vuelve a ella con `cd /ruta/real/de/la/practica`. Los ejemplos de teoría parten de su raíz, salvo que indiquen otro directorio; usa los archivos de `trabajo` para las pruebas y conserva los datos originales.
 
