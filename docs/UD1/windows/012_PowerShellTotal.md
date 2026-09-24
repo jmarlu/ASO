@@ -458,7 +458,7 @@ Las opciones que ofrece PowerShell en cuanto a estructuras de control parece una
 
 !!! example
 `yaml
-  $Vacia = @{}
+  $Vacia = @()
   $Enteros = 1,2,3,4,5
   $Texto = “Lunes”,“Martes”,”Miércoles”, “Jueves”,”Viernes”
   $EnterosRango = 1..10
@@ -473,7 +473,7 @@ El operador de **rango** representa una secuencia de enteros, con los límites s
 
 !!! example
 `yaml
-  $EnterosFor = @(For($i;$i < 5;$i++){$i})
+  $EnterosFor = @(for ($i = 0; $i -lt 5; $i++) { $i })
   $Comando = Get-Process | Sort-Object ProcessName
  `
 

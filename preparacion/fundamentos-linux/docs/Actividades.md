@@ -446,6 +446,41 @@ Resuelve los enunciados utilizando lo que has practicado. Guarda el comando, el 
 
 **Reto final:** intercambia solo los comandos con otro compañero. Debe poder reproducir el informe en una zona de práctica nueva con los mismos datos, sin depender de rutas personales escritas a mano.
 
+## 8. Ampliación desde el banco de cuestionarios
+
+Estos ejercicios aprovechan contenidos del banco de cuestionarios de la unidad, pero están adaptados a la zona de práctica. No los ejecutes sobre `/`, `/etc`, `$HOME` completo ni sobre cuentas reales. Guarda las órdenes y sus salidas en `evidencias/08-ampliacion.md`.
+
+### 8.1. Entorno, rutas y metadatos
+
+1. Muestra `PATH`, `HOME`, el directorio actual y la ruta del intérprete que ejecuta `ls` (`command -v ls`). Explica qué diferencia hay entre la variable `HOME` y el directorio `/home`.
+2. Consulta con `file` y `stat` los archivos `datos/servicios.txt` y `datos/eventos.log`. Identifica tipo, tamaño, propietario, permisos y fecha de modificación.
+3. Crea `trabajo/estructura/color/frio`, `trabajo/estructura/forma/angulo` y `trabajo/estructura/forma/curva` con una sola orden por árbol. No cambies de directorio para crearlos.
+4. Crea seis archivos vacíos dentro de `trabajo/estructura`: `redondo`, `triangulo`, `cuadrado`, `rectangulo`, `verde` y `azul`. Mueve cada uno a su directorio según la tabla equivalente de la actividad publicada y comprueba el resultado con `find`.
+5. Copia `color/frio` como `color/caliente` y renombra en la copia `azul` como `rojo` y `verde` como `amarillo`. Explica por qué la copia no cambia los archivos originales.
+
+### 8.2. Máscara y permisos
+
+1. Anota `umask` y crea objetos dentro de `trabajo/umask`; comprueba sus modos con `stat` y explica por qué un archivo nuevo no parte de permisos de ejecución.
+2. En una subshell, aplica `umask 027`, crea otro archivo y directorio y compara los modos. No modifiques la configuración permanente.
+3. Practica modos `400` y `640` únicamente sobre archivos de `trabajo/umask` y explica qué puede hacer cada clase de usuario.
+
+### 8.3. `find`, filtros y acciones controladas
+
+1. Busca dentro de `trabajo` archivos `.txt` o `.log`, ignorando mayúsculas y agrupando las alternativas.
+2. Busca archivos regulares de exactamente 10 bytes y verifica cada resultado con `wc -c`.
+3. Busca archivos de tu usuario con `-user "$(id -un)"`, siempre limitado a `trabajo`.
+4. Ejecuta `wc -l --` con `find -exec ... {} +` sobre los `.txt` y explica la protección de nombres especiales.
+5. Cambia permisos solo de los archivos de prueba que hayas creado y comprueba el antes y el después. No uses `-delete`, `rm -r` ni `chown` en esta práctica.
+
+### 8.4. Procesos y planificación segura
+
+1. Ejecuta un `sleep` creado por ti en segundo plano, consulta su PID con `ps` y termínalo con `kill -TERM`.
+2. Ordena una copia de la salida de `ps` por nombre de comando en `salidas/procesos.txt`.
+3. Si el entorno dispone de `atd`, programa una escritura de prueba en `salidas/at.txt`, consulta `atq` y documenta la retirada; si no, registra el requisito pendiente.
+4. Prepara una tarea temporal de `cron` con ruta absoluta, comprueba `crontab -l` y retírala al terminar. No uses `/root` ni `/etc/crontab`.
+
+**Criterios de ampliación:** exactitud, explicación, seguridad/limpieza y evidencias reproducibles pesan por igual.
+
 ## Entrega y valoración
 
 Entrega una carpeta con `datos`, `salidas` y `evidencias`. Las evidencias deben incluir la explicación individual de todos los comandos propuestos y la resolución de todos los ejercicios numerados. `trabajo` puede conservarse para demostrar pruebas, pero no hace falta entregar archivos ajenos al ejercicio ni el historial completo de tu terminal.

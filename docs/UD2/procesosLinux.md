@@ -20,7 +20,7 @@ Un proceso pasa por distintos estados durante la ejecución del mismo:
 - dormido en el swap (**memoria virtual**)
 - nuevo proceso
 - fin de proceso
-- (**zombie**). Cuando un padre termina sus hijos terminan. Pero, cuando algunos de sus hijos queda ejecutándose y su padre termina se le denomina de esa manera.
+- (**zombi**). Es un proceso que ya ha terminado, pero cuyo padre todavía no ha recogido su estado de salida mediante `wait()`; conserva una entrada breve en la tabla de procesos. Se diferencia del **huérfano**, que sigue ejecutándose después de que termina su padre y es adoptado por otro proceso.
 
 Además se pueden ejecutar de dos formas:
 

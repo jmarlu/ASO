@@ -59,10 +59,18 @@ while [[ $# -gt 0 ]]
 do
     case $1 in
         --usuario)
+            if (( $# < 2 )) || [[ -z $2 || $2 == --* ]]; then
+                echo "Falta el valor de --usuario" >&2
+                exit 2
+            fi
             usuario=$2
             shift 2
             ;;
         --grupo)
+            if (( $# < 2 )) || [[ -z $2 || $2 == --* ]]; then
+                echo "Falta el valor de --grupo" >&2
+                exit 2
+            fi
             grupo=$2
             shift 2
             ;;

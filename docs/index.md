@@ -43,8 +43,8 @@ La normativa fija los resultados de aprendizaje y sus criterios de evaluación. 
 | RA1 | Administra el servicio de directorio interpretando especificaciones e integrándolo en una red. | UD3. Servicios de directorio | 18% |
 | RA2 | Administra procesos del sistema describiéndolos y aplicando criterios de seguridad y eficiencia. | UD2. Procesos y servicios | 8% |
 | RA3 | Gestiona la automatización de tareas del sistema, aplicando criterios de eficiencia y utilizando comandos y herramientas gráficas. | UD5. Automatización y mantenimiento GNU/Linux | 18% |
-| RA4 | Administra de forma remota el sistema operativo en red valorando su importancia y aplicando criterios de seguridad. | UD6. Acceso y administración remota | 9% |
-| RA5 | Administra servidores de impresión describiendo sus funciones e integrándolos en una red. | UD7. Servidores de impresión | 5% |
+| RA4 | Administra de forma remota el sistema operativo en red valorando su importancia y aplicando criterios de seguridad. | [UD6. Acceso y administración remota](UD6/index.md) | 9% |
+| RA5 | Administra servidores de impresión describiendo sus funciones e integrándolos en una red. | [UD7. Servidores de impresión](UD7/index.md) | 5% |
 | RA6 | Integra sistemas operativos libres y propietarios, justificando y garantizando su interoperabilidad. | UD4. Integración de sistemas operativos en red | 22% |
 | RA7 | Utiliza lenguajes de guiones en sistemas operativos, describiendo su aplicación y administrando servicios del sistema operativo. | UD1. Scripting Linux y PowerShell | 20% |
 

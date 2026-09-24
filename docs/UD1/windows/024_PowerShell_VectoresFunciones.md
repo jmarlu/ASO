@@ -8,7 +8,7 @@
 !!! example
 
     ```pwsh
-        $Vacia = @{}
+        $Vacia = @()
         $Enteros = 1,2,3,4,5
         $Texto = “Lunes”,“Martes”,”Miércoles”, “Jueves”,”Viernes”
         $EnterosRango = 1..10
@@ -25,7 +25,7 @@ De esta forma se han definido cuatro vectores; el segundo contendrá enteros y e
 !!! example
 
     ```pwsh
-        $EnterosFor = @(For($i;$i < 5;$i++){$i})
+        $EnterosFor = @(for ($i = 0; $i -lt 5; $i++) { $i })
         $Comando = Get-Process | Sort-Object ProcessName
     ```
 

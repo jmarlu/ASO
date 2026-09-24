@@ -1,4 +1,5 @@
 site_name: Administración de Sistemas Operativos
+docs_dir: docs
 site_url: https://example.com/
 nav:
   - Guía del módulo: index.md
@@ -6,8 +7,6 @@ nav:
  # - Recordatorio de Commandos:
      # - linux: ./recordatorios/commandosLinux.md
      # - windows: ./recordatorios/commandosWindows.md
-  #- Examenes: []
-  # - Mock extraordinaria UD1 + UD2: ./Examenes/UD1_UD2_mock_extraordinaria_2026-06-12/mock_examen_extraordinaria_ud1_ud2_2026-06-12.md
   - UD1-Shell Scripting:
     - Linux:
         - Fundamentos de GNU/Linux:
@@ -32,7 +31,6 @@ nav:
         - Esructura FOR: ./UD1/linux/For.md
         - Break y Continue: ./UD1/linux/Break.md
         - Actividades: ./UD1/linux/Actividades.md
-      #  - Soluciones de Actividades: ./UD1/linux/Soluciones_Actividades.md
         - Actividades Scripts_refuerzo: ./UD1/linux/Scripts_refuerzo.md
     - Windows:
       - Introducción: ./UD1/windows/021_IntroducciónPwSh.md
@@ -61,7 +59,6 @@ nav:
       - PAM en Linux: ./UD3/pam.md
       - Servicios de Autenticación: ./UD3/ServiciosAutenticacion.md
       - Actividades: ./UD3/actividades.md
-      #- soluciones: ./UD3/soluciones.md
   - UD4.Integración de sistemas operativos en red:
       - Teoria: ./UD4/teoria.md
       - Actividades: ./UD4/actividades.md
@@ -70,6 +67,18 @@ nav:
       - Teoría: ./UD5/teoria.md
       - Laboratorio guiado: ./UD5/laboratorio.md
       - Actividades y evaluación: ./UD5/actividades.md
+  - UD6.Acceso y administración remota:
+      - Presentación y objetivos: ./UD6/index.md
+      - Teoría: ./UD6/teoria.md
+      - Laboratorio guiado: ./UD6/laboratorio.md
+      - Actividades y evaluación: ./UD6/actividades.md
+      - Ampliación PowerShell y xRDP: ./UD6/ampliacion.md
+  - UD7.Servidores de impresión:
+      - Presentación y objetivos: ./UD7/index.md
+      - Teoría: ./UD7/teoria.md
+      - Laboratorio CUPS: ./UD7/laboratorio.md
+      - Actividades y evaluación: ./UD7/actividades.md
+      - Ampliación servidor Windows: ./UD7/windows.md
      
 theme:
   name: material

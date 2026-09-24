@@ -448,6 +448,50 @@ Resuelve los enunciados utilizando lo que has practicado. Guarda el comando, el 
 
 **Reto final:** intercambia solo los comandos con otro compañero. Debe poder reproducir el informe en una zona de práctica nueva con los mismos datos, sin depender de rutas personales escritas a mano.
 
+## 8. Ampliación desde el banco de cuestionarios
+
+Estos ejercicios aprovechan contenidos del banco de cuestionarios de la unidad, pero están adaptados a la zona de práctica. No los ejecutes sobre `/`, `/etc`, `$HOME` completo ni sobre cuentas reales. Guarda las órdenes y sus salidas en `evidencias/08-ampliacion.md`.
+
+### 8.1. Entorno, rutas y metadatos
+
+1. Muestra `PATH`, `HOME`, el directorio actual y la ruta del intérprete que ejecuta `ls` (`command -v ls`). Explica qué diferencia hay entre la variable `HOME` y el directorio `/home`.
+2. Consulta con `file` y `stat` los archivos `datos/servicios.txt` y `datos/eventos.log`. Identifica tipo, tamaño, propietario, permisos y fecha de modificación.
+3. Crea `trabajo/estructura/color/frio`, `trabajo/estructura/forma/angulo` y `trabajo/estructura/forma/curva` con una sola orden por árbol. No cambies de directorio para crearlos.
+4. Crea seis archivos vacíos dentro de `trabajo/estructura`: `redondo`, `triangulo`, `cuadrado`, `rectangulo`, `verde` y `azul`. Mueve cada uno a su directorio según esta tabla y comprueba el resultado con `find`:
+
+   | Directorio | Archivos |
+   |---|---|
+   | `color/frio` | `verde`, `azul` |
+   | `forma/angulo` | `triangulo`, `cuadrado`, `rectangulo` |
+   | `forma/curva` | `redondo` |
+
+5. Copia `color/frio` como `color/caliente` y renombra en la copia `azul` como `rojo` y `verde` como `amarillo`. Explica por qué la copia no cambia los archivos originales.
+
+### 8.2. Máscara y permisos
+
+1. Anota la máscara actual con `umask` y crea `trabajo/umask/archivo` y `trabajo/umask/directorio`. Comprueba sus modos con `stat`; explica por qué un archivo nuevo no parte de permisos de ejecución.
+2. En una subshell, aplica `umask 027`, crea otro archivo y directorio y compara los modos. La máscara modificada no debe cambiar los objetos anteriores ni tu configuración permanente.
+3. Sobre `trabajo/umask/archivo`, deja solo lectura para el propietario (`400`) y demuestra que otro usuario no puede escribir si el entorno dispone de una cuenta de prueba. No cambies permisos de rutas del sistema.
+4. Crea `trabajo/umask/privado.txt` con modo `640`. Explica qué puede hacer el propietario, el grupo y el resto. Comprueba cada afirmación con una orden de consulta, no intentando modificar cuentas reales.
+
+### 8.3. `find`, filtros y acciones controladas
+
+1. Busca en `trabajo` los archivos regulares que terminen en `.txt` o `.log`, ignorando mayúsculas. Agrupa las alternativas con `\( ... -o ... \)` y explica qué cambiaría si omites los paréntesis.
+2. Busca archivos regulares de exactamente 10 bytes y verifica cada resultado con `wc -c`.
+3. Busca los archivos pertenecientes a tu usuario usando `-user "$(id -un)"`; limita siempre la búsqueda a `trabajo`.
+4. Ejecuta `wc -l --` con `find -exec ... {} +` sobre los `.txt` y explica por qué `--` y `{}` protegen nombres especiales.
+5. Añade permiso de ejecución a los `.sh` que hayas creado dentro de `trabajo`, y quita permisos de escritura para otros sobre los `.txt`. Antes y después, lista los modos y revisa que no has afectado a otra ruta.
+6. Repite la búsqueda de un nombre sin borrar nada con `-print`. Como ampliación opcional, utiliza `-ok` para pedir confirmación antes de una acción sobre un archivo de prueba. No se admite `-delete`, `rm -r` ni `chown` en esta actividad.
+
+### 8.4. Procesos y planificación segura
+
+1. Ejecuta `sleep 120 &`, guarda su PID con `$!`, consulta su estado con `ps -o pid,ppid,stat,ni,comm -p "$!"` y finalízalo con `kill -TERM "$!"`. Comprueba que desaparece con `wait`.
+2. Ordena una copia de la salida de `ps` por nombre de comando usando `tr`, `sort` y una redirección a `salidas/procesos.txt`. No mates procesos que no hayas creado tú.
+3. Programa una tarea de prueba con `at` para escribir la fecha en `salidas/at.txt` dentro de dos minutos, consulta la cola con `atq` y conserva la salida. Si `atd` no está disponible, documenta el requisito y no lo instales sin autorización.
+4. Escribe una entrada temporal de `cron` que añada la fecha a `salidas/cron.txt` cada cinco minutos. Usa una ruta absoluta al script, revisa la entrada con `crontab -l` y retírala al terminar. No uses `/root`, no escribas en `/etc/crontab` y no dejes tareas aceleradas activas.
+
+**Criterios de ampliación:** 25 % exactitud de las órdenes, 25 % explicación de expansión/redirecciones, 25 % límites de seguridad y limpieza del entorno, 25 % evidencias reproducibles. Una salida correcta sin explicar la orden queda incompleta.
+
 ## Entrega y valoración
 
 Entrega una carpeta con `datos`, `salidas` y `evidencias`. Las evidencias deben incluir la explicación individual de todos los comandos propuestos y la resolución de todos los ejercicios numerados. `trabajo` puede conservarse para demostrar pruebas, pero no hace falta entregar archivos ajenos al ejercicio ni el historial completo de tu terminal.
