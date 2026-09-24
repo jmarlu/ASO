@@ -1,0 +1,32 @@
+# Ajusta entradas críticas para que cumplan los requisitos POSIX del laboratorio.
+dn: uid=profesor,ou=People,dc=asir,dc=local
+changetype: modify
+add: objectClass
+objectClass: posixAccount
+objectClass: shadowAccount
+-
+replace: uidNumber
+uidNumber: 10000
+-
+replace: gidNumber
+gidNumber: 10000
+-
+replace: homeDirectory
+homeDirectory: /home/profesor
+-
+replace: loginShell
+loginShell: /bin/bash
+-
+replace: gecos
+gecos: Profesor ASIR
+
+dn: cn=asirusers,ou=Groups,dc=asir,dc=local
+changetype: modify
+add: objectClass
+objectClass: posixGroup
+-
+replace: gidNumber
+gidNumber: 10000
+-
+add: memberUid
+memberUid: profesor
