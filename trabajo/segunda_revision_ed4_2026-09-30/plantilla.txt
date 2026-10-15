@@ -1,0 +1,320 @@
+[0] P Normal: 
+[1] P Normal: 
+[2] P Normal: 
+[3] P Normal: 
+[4] P Normal: 
+[5] P Normal: 
+[6] P Normal: FAMILIA PROFESIONAL / DEPARTAMENTO X X X X
+[7] P Normal: 
+[8] P Normal: CICLO FORMATIVO DE GRADO MEDIO / SUPERIOR
+[9] P Normal: NOMBRE DEL CICLO
+[10] P Normal: 
+[11] P Normal: 
+[12] P Normal: PROPUESTA DIDÁCTICA
+[13] P Normal: MÓDULO / UNIDAD FORMATIVA
+[14] P Normal: XXXXXXX
+[15] P Normal: 
+[16] P Normal: Código:	Nº Horas: 	Modalidad: 
+[17] P Normal: 
+[18] P Normal: Curso: xxxx/xxxx
+[19] P Normal: 
+[20] P Normal: 
+[21] P Normal: 
+[22] P Normal: 
+[23] P Normal: 
+[24] P Normal: ÍNDICE DE CONTENIDOS
+[26] P Normal: 
+[27] P Normal: 
+[28] P Heading 1: PROPUESTAS DE MEJORA DEL CURSO ANTERIOR
+[29] P Normal: [Cumplimentado a partir de las programaciones de aula de los diferentes grupos del curso anterior, y de las observaciones de todos los/las docentes que participen en la elaboración del presente documento.]
+[30] P Normal: 
+[31] P Heading 1: INTRODUCCIÓN Y JUSTIFICACIÓN TEÓRICA CONTEXTUALIZADA
+[32] P Normal: 
+[33] P Heading 2: Normativa de referencia
+[34] TABLE
+ROW0:  || Ámbito || Tipo || Norma
+ROW1: Enseñanza || Estatal || Normativa de ordenación || Ley Orgánica 3/2022, de 31 de marzo, de ordenación e integración de la Formación Profesional
+ROW2:  || Estatal || Normativa de ordenación || Real Decreto 659/2023, de 18 de julio, por el que se desarrolla la ordenación del Sistema de Formación Profesional
+ROW3:  || Autonómico || Atención a la diversidad || Decreto 104/2018, de 27 de julio, del Consell, por el que se desarrollan los principios de equidad y de inclusión en el sistema educativo valenciano
+ROW4:  || Autonómico || Atención a la diversidad || ORDEN 20/2019, de 30 de abril, de la Conselleria de Educación, Investigación, Cultura y Deporte, por la cual se regula la organización de la respuesta educativa para la inclusión del alumnado en los centros docentes sostenidos con fondos públicos del sistema educativo valenciano
+ROW5:  || Autonómico || Normativa de evaluación || ORDEN 8/2025, de 22 de abril, de la Conselleria de Educación, Cultura, Universidades y Empleo, por la que se regula la evaluación del proceso de enseñanza-aprendizaje en ciclos formativos y cursos de especialización derivados de la Ley orgánica 3/2022, de 31 de marzo, de ordenación e integración de
+ROW6:  || Autonómico || Instrucciones de inicio de curso || 
+ROW7:  || Autonómico || Instrucciones de inicio de curso || 
+ROW8: Etapa || Estatal || Real Decreto de Título || [RD 499/2024, de 21 de mayo] GRADO MEDIO / [RD 500/2024, de 21 de mayo] GRADO SUPERIOR / [RD 497/2024, de 21 de mayo] C. ESPECIALIZACIÓN
+ROW9: Modalidad || Autonómico || Normativa de la modalidad semipresencial || ORDEN 30/2022, de 12 de mayo, de la Conselleria de Educación, Cultura y Deporte, por la que se regula la organización y autorización de las enseñanzas de los ciclos formativos de Formación Profesional en el régimen semipresencial en centros docentes públicos y privados de la Comunitat Valenciana.
+ROW10: Ciclo || Estatal || Real Decreto de Título || [RD de título]
+ROW11:  || Autonómico || Normativa autonómica de Título (Orden o Decreto) || [Orden de currículo]
+[35] P Normal: 
+[36] P Heading 2: Identificación del título
+[37] P Normal: 
+[38] TABLE
+ROW0:  / Identificación || Grado D
+ROW1: Identificación || Ciclo Formativo || 
+ROW2:  || Denominación || 
+ROW3:  || Duración || 
+ROW4:  || Familia profesional || 
+ROW5: Perfil profesional || Competencia general || 
+[39] P Normal: 
+[40] P Normal: 
+[41] P Heading 2: Cuadro horario
+[42] P Explicación: [En el Anexo II del currículo del ciclo se encuentra la secuenciación y distribución horaria semanal de los módulos profesionales. Se deberá indicar; las unidades formativas en el caso de programas de flexibilización, si el horario reservado de inglés está incluido en algún módulo profesional y la lengua vehicular de cada módulo.]
+[43] TABLE
+ROW0: Módulo profesional / Unidad formativa || Lengua vehicular || Carga lectiva / (horas) || Primer curso / (horas/sem) || Segundo curso / (horas/sem)
+ROW1:  ||  ||  ||  || 
+ROW2:  ||  ||  ||  || 
+ROW3:  ||  ||  ||  || 
+ROW4:  ||  ||  ||  || 
+ROW5:  ||  ||  ||  || 
+ROW6:  ||  ||  ||  || 
+ROW7:  ||  ||  ||  || 
+ROW8:  ||  ||  ||  || 
+ROW9:  ||  ||  ||  || 
+ROW10:  ||  ||  ||  || 
+ROW11:  ||  ||  ||  || 
+ROW12: Total ciclo formativo ||  || 2000 ||  || 
+[44] P Explicación: 
+[45] P Normal: [Para el caso de semipresencial]
+[46] P Normal: En la modalidad Semipresencial del territorio autonómico Comunidad Valenciana se ha establecido el siguiente reparto entre tutorías individuales y colectivas:
+[47] TABLE
+ROW0: Carga semanal total || Tutorías colectivas || Tutorías individuales
+ROW1: 2 || 1 || 1
+ROW2: 3 || 1 || 1
+ROW3: 4 || 2 || 1
+ROW4: 5 || 2 || 2
+ROW5: 6 || 3 || 2
+ROW6: 7 || 3 || 2
+ROW7: 8 || 4 || 2
+ROW8: 9 || 4 || 3
+ROW9: 10 || 5 || 3
+ROW10: 11 || 6 || 3
+ROW11: 12 || 6 || 4
+[48] P Normal: 
+[49] P Heading 2: Relación entre los estándares de competencia y los módulos del ciclo formativo
+[50] P Normal: 
+[51] TABLE
+ROW0: MÓDULOS || ESTÁNDARES DE COMPETENCIA
+ROW1:  || 
+ROW2:  || 
+ROW3:  || 
+[52] P Normal: 
+[53] P Normal: 
+[54] P Heading 2: Identificación del módulo / unidad formativa
+[55] P Normal: [Cumplimentar la tabla que corresponda]
+[56] TABLE
+ROW0: MÓDULO PROFESIONAL
+ROW1: Identificación || Código || 
+ROW2:  || Módulo profesional || 
+ROW3:  || Curso || 
+ROW4: Distribución horaria || Horas || 
+ROW5:  || Horas semanales || 
+ROW6: Asociado a los Estándares de competencia || 
+[57] P Normal: 
+[58] P Normal: [Para el caso de unidades formativas]
+[59] TABLE
+ROW0: Unidad Formativa || Curso || Horas
+ROW1:  ||  || 
+ROW2: Resultados de aprendizaje || Módulo
+ROW3:  || 
+ROW4:  || 
+ROW5:  || 
+ROW6:  || 
+ROW7:  || 
+ROW8:  || 
+ROW9:  || 
+[60] P Normal: 
+[61] P Normal: 
+[62] P Heading 2: Características del alumnado
+[63] P Normal: [Características del alumnado de Formación Profesional del centro, no del grupo, y en consonancia con lo que diga el PEC.]
+[64] P Normal: 
+[65] P Heading 2: Del sector productivo
+[66] P Normal: [Características del perfil demandado por las empresas, puestos laborales más relevantes. Consultar orientaciones pedagógicas del RD.]
+[67] P Heading 1: DESARROLLO CURRICULAR
+[68] P Heading 2: Competencias y Objetivos
+[69] P Normal: Relación entre las competencias PPS y los objetivos generales del ciclo.
+[70] P Normal: [Esta relación viene dada en el RD de título. Diferenciar los dos grupos en caso de unidades formativas, en registros diferentes.]
+[71] P Normal: 
+[72] TABLE
+ROW0: Competencias || Objetivos
+ROW1:  /  || 
+[73] P Heading 2: 
+[74] P Heading 2: Resultados de aprendizaje y Criterios de evaluación
+[75] P Normal: Con el objetivo de realizar la trazabilidad del alumnado en las actividades de enseñanza y aprendizaje, es imprescindible asociar por cada uno de los resultados de aprendizaje de la unidad formativa, las evidencias (criterios de evaluación) que aseguran al alumnado haberlas alcanzado.
+[76] TABLE
+ROW0: Resultados de Aprendizaje || Criterios de evaluación
+ROW1:  || 
+ROW2:  || 
+ROW3:  || 
+ROW4:  || 
+[77] P Normal: 
+[78] P Normal: 
+[79] P Heading 2: Relación entre Competencias y Resultados de aprendizaje
+[80] TABLE
+ROW0: Competencia || Resultados de aprendizaje
+ROW1:  || 
+ROW2:  || 
+ROW3:  || 
+[81] P Normal: 
+[82] P Normal: 
+[83] P Heading 2: Contenidos básicos de referencia del módulo
+[84] P Normal: [Tomados del RD]
+[85] TABLE
+ROW0: Contenidos básicos de referencia
+ROW1: 
+[86] P Normal: 
+[87] P Heading 1: METODOLOGÍA DIDÁCTICA
+[88] P Normal: [Introducción]
+[89] P Normal: 
+[90] P Heading 2: Estrategias metodológicas
+[91] P Normal: [Líneas metodológicas generales del/de la docente.]
+[92] P Normal: 
+[93] P Heading 2: Líneas pedagógicas del centro
+[94] P Normal: [En el marco del PEC, se trata de justificar la aportación de esta propuesta didáctica a las líneas pedagógicas del centro (apartado 4.1 de dicho documento).]
+[95] P Normal: 
+[96] P Heading 2: Recursos
+[97] P Normal: [Recursos recomendados (libros, apuntes online, cursos Udemy, canales Youtube...).]
+[98] P Normal: 
+[99] P Heading 1: UNIDADES
+[100] TABLE
+ROW0:  / UNIDADES || RESULTADOS DE APRENDIZAJE
+ROW1:  || 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9
+ROW2: UD1: ||  / X /  ||  / X /  ||  / X /  ||  ||  ||  ||  ||  ||  / X / 
+ROW3: UD2: ||  ||  ||  ||  / X /  ||  / X /  ||  / X /  ||  ||  || 
+ROW4: UD3: ||  ||  ||  ||  ||  ||  ||  / X /  ||  / X /  ||  / X / 
+[101] P Normal: 
+[102] TABLE
+ROW0: Unidad didáctica 1 ||  || Sesiones || 
+ROW1: Resultado(s) de aprendizaje || RA1 / RA2
+ROW2: Criterios de evaluación
+ROW3: 
+ROW4: Competencias personales y sociales. Aprendizajes de carácter transversal
+ROW5: Concreción de competencias personales y sociales, así como otros temas de carácter transversal que quieran desarrollarse a nivel de centro y familia profesional o departamento didáctico.
+ROW6: Objetivos de aprendizaje
+ROW7: 
+ROW8: Tipificación de actividades formativas
+ROW9: Introducción || Formativas no evaluables || Formativas evaluables
+ROW10:  ||  || 
+ROW11: Actividades de proyecto intermodular
+ROW12:  /  / 
+ROW13: Actividades de refuerzo || Actividades de profundización
+ROW14:  || 
+ROW15: Actividades de recuperación
+ROW16:  /  / 
+ROW17: Actividades Complementarias
+ROW18: 
+ROW19: Actividades CLIL
+ROW20: 
+ROW21: Materiales y recursos disponibles
+ROW22: 
+[103] P Normal: 
+[104] P Normal: 
+[105] P Heading 1: PROYECTO INTERMODULAR
+[106] P Heading 2: Especificaciones
+[107] P Normal: 
+[108] P Heading 2: Distribución de elementos curriculares
+[109] P Normal: 
+[110] TABLE
+ROW0: UNIDAD || CRITERIOS DE EVALUACIÓN
+ROW1:  || 
+ROW2:  || 
+ROW3:  || 
+[111] P Normal: 
+[112] P Normal: 
+[113] P Heading 1: PLAN FORMATIVO EN EMPRESA
+[114] P Normal: En la siguiente tabla se detallan qué resultados de aprendizaje del módulo se desarrollarán en empresa, ya sea de modo exclusivo o compartido. En el caso de compartición del resultado de aprendizaje, se detalla el modo en que se calificarán las actividades desarrolladas en la empresa:
+[115] TABLE
+ROW0: Resultado de aprendizaje || Centro || Empresa || Evaluación compartida
+ROW1:  ||  ||  || Modo || % Centro || % Empresa || % Ampliac.
+ROW2:  ||  ||  ||  ||  ||  || 
+ROW3:  ||  ||  ||  ||  ||  || 
+ROW4:  ||  ||  ||  ||  ||  || 
+ROW5:  ||  ||  ||  ||  ||  || 
+ROW6: Actividades formativas a realizar en la empresa relacionaddas con los resultados de aprendizaje
+ROW7: 
+[116] P Normal: 
+[117] P Heading 1: EVALUACIÓN Y CALIFICACIÓN
+[118] P Normal: La evaluación del aprendizaje es un factor fundamental para garantizar la calidad del proceso de enseñanza y aprendizaje. Por tanto, la evaluación es un proceso permanente y continuo, aunque en algunos momentos se realicen acciones específicas con un fin determinado. En función de cuál sea este momento, podemos diferenciar:
+[119] P List Paragraph: Evaluación inicial o diagnóstica. Se realiza al comienzo del módulo, en el mes de septiembre y su finalidad es la toma de decisiones sobre la planificación inicial del módulo según las capacidades y necesidades del alumnado. Por norma general se realizará por medio de un cuestionario que valore los conocimientos previos.
+[120] P List Paragraph: Una vez analizadas las respuestas de todo el alumnado, el equipo educativo realizará las adaptaciones necesarias de la propuesta didáctica.
+[121] P List Paragraph: Evaluación continua. Se realiza durante el desarrollo de la unidad formativa y con ella se puede valorar el progreso del alumnado, así como la calidad de la práctica docente. Permite ir adaptándose a las circunstancias e imponderables que vayan surgiendo e ir mejorando el proceso. 
+[122] P List Paragraph: Al ser una evaluación competencial en el que se toma como referente los resultados de aprendizaje, estos se ponderan en porcentajes indicando la relevancia que tienen en el total de la calificación de la evaluación final del alumnado.
+[123] P List Paragraph: Esta evaluación se realiza por medio de instrumentos de evaluación e instrumentos de calificación que se indican en cada una de las actividades con calificación de la programación de aula.
+[124] P List Paragraph: Evaluación final. Si el/la alumno/a no supera por medio de la evaluación continua el módulo, tendrá derecho a una evaluación en la convocatoria ordinaria y extraordinaria de los RAs no superados. 
+[125] P List Paragraph: 
+[126] P Heading 2: Instrumentos de evaluación
+[127] TABLE
+ROW0: Código || Nombre || Descripción
+ROW1:  ||  || 
+ROW2:  ||  || 
+ROW3:  ||  || 
+ROW4:  ||  || 
+[128] P Normal: 
+[129] P Heading 2: Criterios de calificación
+[130] P Normal: Las actividades de enseñanza-aprendizaje de evaluación contenidas en cada unidad formativa serán valoradas de 0 a 10 puntos. Dichas actividades están asociadas a uno o más Criterios de evaluación (e indirectamente, a uno o más resultados de aprendizaje).
+[131] P Normal: Para calcular la calificación de cada resultado de aprendizaje se tendrán en cuenta los criterios de evaluación trabajados en cada actividad de enseñanza-aprendizaje.
+[132] P Normal: La calificación final se calculará como la media ponderada de los Resultados de Aprendizaje y los Criterios de evaluación, según las ponderaciones detalladas en el Anexo I.
+[133] P Normal: Los criterios de calificación de cada resultado de aprendizaje se detallan en el anexo I.
+[134] P Normal: Para superar el módulo, el alumnado debe obtener una calificación igual o mayor a 5 en cada RA.
+[135] P Heading 2: Recuperación de los resultados de aprendizaje 
+[136] P Normal: La recuperación de los RAs no superados y/o actividades se realizará durante el periodo lectivo ordinario del curso de las siguientes maneras dependiendo de las características de las actividades evaluables y del criterio docente:
+[137] P List Paragraph: Realización o rectificación de las mismas actividades evaluables asociadas al CE/RA siempre que no se haya proporcionado las soluciones y/o no exista riesgo de copia.
+[138] P List Paragraph: Actividades de recuperación complementarias que sustituyan a las no superadas, atendiendo a los principios de evaluación continua, formativa y formadora.
+[139] P List Paragraph: Pruebas escritas finales con contenido teórico-práctico. Cada elemento de la prueba deberá indicar el RA asociado y su puntuación.
+[140] P Normal: La calificación de los RAs no superados serán los mismos que los especificados en el apartado 7.2, y su valoración será entre 0 y 10.
+[141] P Normal: El alumnado que pierda la evaluación continua por inasistencia atendiendo al procedimiento F15.PC02, tendrá la oportunidad de ser evaluado de los Resultados de Aprendizaje afectados, utilizando el método de evaluación y el momento que determine el/la docente.
+[142] P Normal: El alumnado que no haya obtenido una calificación superior a 5 en el periodo ordinario, tendrá la posibilidad de presentarse a la convocatoria extraordinaria. El/La docente completará el informe de recuperación indicando los RAs no superados y las actividades de recuperación asociadas, que deberán ser realizables en tiempo y forma entre el periodo ordinario y extraordinario. Igualmente, la calificación será numérica, entre 0 y 10. 
+[143] P Heading 2: Criterios de inasistencia
+[144] P Normal: La presencialidad será de al menos el 85% y se debe ajustar a lo que regula la Orden 8/2025, de 22 de abril, de evaluación en FP.
+[145] P Normal: En régimen semipresencial, se deberá cumplir al menos el 85% de la presencialidad exigible en los módulos profesionales asociados a estándares de competencia.
+[146] P Normal: La pérdida de evaluación continua se justificará por medio del documento F15.PC02, y será visada por Jefatura de estudios de FP. El hecho de que un/a alumno/a pierda laevaluación continua no supondrá la pérdida a una evaluación final. A criterio del/de la docente el alumnado que pierda el derecho a la evaluación continua podrá o no realizar las actividades del resto del curso. En todo caso, se fomentará que el alumnado pueda reincorporarse a la evaluación continua si el/la docente, así lo considera procedente.
+[147] P Normal: Será causa de anulación de matrícula la inasistencia durante un periodo de 10 días lectivos consecutivos no justificada a las actividades formativas.
+[148] P Normal: 
+[149] P Heading 1: EVALUACIÓN DE LA PRÁCTICA DOCENTE
+[150] P Normal: De acuerdo con el apartado 19 de la Resolución de 16 de julio de 2026, de la Secretaría Autonómica de Educación, por la que se dictan instrucciones sobre ordenación académica y de organización de los centros que impartan los grados D y E de Formación Profesional durante el curso 2026-2027 en la Comunitat Valenciana, el profesorado evaluará la obtención de los resultados de aprendizaje del alumnado, el proceso de enseñanza y su propia práctica docente en relación con los reales decretos y el currículo del título, con las necesidades educativas del entorno económico y productivo del centro y con las características del alumnado.
+[151] P Normal: Esta evaluación implicará la revisión, cuando proceda, del Proyecto Curricular del Ciclo Formativo y de las programaciones didácticas.
+[152] P Normal: Al finalizar el curso académico, y a la vista de los resultados obtenidos por el alumnado, se evaluará el desarrollo de la presente programación didáctica y de la práctica docente, teniendo en consideración, entre otros, los siguientes aspectos:
+[153] P Normal: a) La adecuación de la secuenciación y temporalización de los resultados de aprendizaje, criterios de evaluación y contenidos.
+[154] P Normal: b) La adecuación de la metodología utilizada y de las actividades de enseñanza-aprendizaje desarrolladas.
+[155] P Normal: c) La idoneidad de los recursos, materiales, espacios y equipamientos utilizados.
+[156] P Normal: d) La adecuación de los procedimientos e instrumentos de evaluación y de los criterios de calificación establecidos.
+[157] P Normal: e) La eficacia de las medidas adoptadas para atender a la diversidad y a las diferentes necesidades del alumnado.
+[158] P Normal: f) Los resultados obtenidos por el alumnado, tanto en el centro educativo como, cuando corresponda, durante la fase de formación en empresa u organismo equiparado.
+[159] P Normal: g) Las dificultades detectadas durante el desarrollo de la programación y las correspondientes propuestas de mejora.
+[160] P Normal: Dicha evaluación se completará como un apartado en la programación de aula (F02.PC02) y trimestralmente la Jefatura de familia profesional lo incluirá en el informe trimestral de seguimiento de las programaciones (F03.PC02).
+[161] P Heading 1: Medidas de atención a la diversidad
+[162] P Normal: En la actualidad la atención al alumnado con necesidades específicas de apoyo educativo está regulada en la Comunidad Valenciana a través de la siguiente normativa:
+[163] P List Paragraph: Decreto 104/2018, de 27 de julio, del Consell, por el que se desarrollan los principios de equidad y de inclusión en el sistema educativo valenciano.
+[164] P List Paragraph: Orden 20/2019, de 30 de abril, de la Conselleria de Educación, Investigación, Cultura y Deporte, por la cual se regula la organización de la respuesta educativa para la inclusión del alumnado en los centros docentes sostenidos con fondos públicos del sistema educativo valenciano.
+[165] P Normal: Esta normativa establece las medidas de respuesta educativa para la inclusión que constituyen todas las actuaciones educativas planificadas con la finalidad de eliminar las barreras identificadas en los diversos contextos donde se desarrolla el proceso educativo de todo el alumnado, y contribuyen de esta manera a la personalización del proceso de aprendizaje en todas las etapas educativas. Están divididas en cuatro niveles. En concreto, nos centraremos en las medidas de nivel III y IV.
+[166] P List Paragraph: Nivel III: Lo constituyen las medidas dirigidas al alumnado que requiere una respuesta diferenciada, individualmente o en grupo, que implican apoyos ordinarios adicionales.
+[167] P List Paragraph: Nivel IV: Lo constituyen las medidas dirigidas al alumnado con necesidades específicas de apoyo educativo que requiere una respuesta personalizada e individualizada de carácter extraordinario que implique apoyos especializados adicionales.
+[168] P Normal: El departamento de orientación informará sobre el alumnado que necesita medidas de respuesta educativa para la inclusión de niveles III y IV para personalizar el proceso de aprendizaje. 
+[169] P Normal: 
+[170] P Normal: 
+[171] P Heading 1: ANEXO I
+[172] P Normal: A continuación, se detallan las ponderaciones de los Resultados de aprendizaje del módulo, así como la ponderación de cada Criterio de evaluación respecto a su Resultado de aprendizaje:
+[173] P Standard: [Las ponderaciones de los criterios de evaluación se establecen equitativamente por defecto. Se deja al criterio del/de la docente/s que elaboran la propuesta didáctica, el establecer pesos diferentes.]
+[174] P Normal: 
+[175] TABLE
+ROW0: Resultado de aprendizaje ([CODIGOMODULO].1) || Ponderación
+ROW1: [Descripción] || XX.XX %
+ROW2: Criterio de Evaluación || Ponderación
+ROW3:  / a. [Descripción] /  || XX.XX %
+ROW4:  / b. [Descripción] /  || XX.XX %
+ROW5:  / c. [Descripción] /  || XX.XX %
+[176] P Normal: 
+[177] TABLE
+ROW0: Resultado de aprendizaje ([CODIGOMODULO].2) || Ponderación
+ROW1: [Descripción] || XX.XX %
+ROW2: Criterio de Evaluación || Ponderación
+ROW3:  / a. [Descripción] /  || XX.XX %
+ROW4:  / b. [Descripción] /  || XX.XX %
+ROW5:  / c. [Descripción] /  || XX.XX %
+[178] P Normal: 
+[179] P Normal: 
+[180] P Normal: Ponderación de los criterios de evaluación distribuidos entre diferentes unidades:
+[181] TABLE
+ROW0: Criterio de evaluación || Unidad de trabajo || Ponderación
+ROW1: a. [Descripción] ||  [Unidad 1] || XX.XX %
+ROW2: a. [Descripción] ||  [Unidad 2] || XX.XX %
+[182] P Normal: 
+[183] P Normal: 

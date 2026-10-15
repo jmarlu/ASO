@@ -4,7 +4,7 @@ Fecha: 10 de septiembre de 2026. Estado: diagnóstico inicial conservado como an
 
 **Actualización:** el docente ha confirmado 2026/2027, Elche y cuatro horas semanales. Se han contrastado calendario local e instrucciones FP 2026/2027 y preparado la [propuesta publicada](../../docs/temporalizacion_2026_2027.md). Los pendientes y referencias generales que siguen describen el estado previo a esa comprobación.
 
-El escenario por sesiones se reproduce con `python3 preparacion/temporalizacion/calcular.py`; usa martes/jueves 2+2 como hipótesis, no como horario confirmado. El resultado está en `escenario_2026_2027.csv`.
+El escenario por sesiones se reproduce con `python3 preparacion/temporalizacion/calcular.py`; usa miércoles/jueves 2+2, confirmado por el docente; las fechas de evaluación y empresa siguen propuestas. El resultado está en `escenario_2026_2027.csv`.
 
 **Corrección del 16/09/2026:** el DOCX ya recoge 133 horas y 4 semanales, con 92 horas de unidades y 10 de pruebas/recuperación en el escenario de aula. Las 31 horas restantes siguen pendientes del plan del centro. El punto 4 del diagnóstico siguiente describe el documento anterior a esta corrección. Véase el [registro de cambios de programación](../../Programación/README.md).
 

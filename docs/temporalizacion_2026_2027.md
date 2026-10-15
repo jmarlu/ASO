@@ -4,8 +4,8 @@
 
 Aquí puedes consultar el orden de las unidades, las horas previstas de clase y los periodos de evaluación y formación en empresa.
 
-!!! warning "Fechas de unidades y empresa pendientes de confirmación"
-    La distribución por unidades es orientativa: utiliza martes y jueves, dos horas cada día, como horario de ejemplo. Consulta con el profesorado tu horario real y las fechas de las pruebas antes de organizarte. La incorporación a empresa requiere la confirmación del centro.
+!!! warning "Fechas de unidades y plan de empresa por concretar"
+    El horario confirmado es de miércoles y jueves, dos horas cada día. Las fechas de las unidades y las pruebas son orientativas; consúltalas con el profesorado antes de organizarte. La ventana general de formación en empresa va del 6 de abril al 18 de junio de 2027. Cada estudiante tendrá fechas y jornada concretas según su empresa y su plan formativo.
 
 ## Calendario escolar de Elche
 
@@ -29,36 +29,35 @@ ASO tiene **133 horas curriculares y 4 horas semanales**, según el [Decreto 114
 | Trabajo de las unidades UD1–UD7 en el centro | 92 |
 | Pruebas, recuperación y cierre en el centro | 10 |
 | **Total previsto en el centro** | **102** |
-| Pendientes de distribuir por el centro | 31 |
-| **Total del módulo** | **133** |
+| **Duración curricular oficial del módulo** | **133** |
 
-Las 31 horas pendientes no se consideran realizadas ni están asignadas todavía a empresa. El reparto definitivo dependerá del horario y del plan formativo del grupo. Los porcentajes de los resultados de aprendizaje indican su peso en la evaluación, no su duración.
+**El decreto fija 133 horas y 4 horas semanales. No establece el reparto 102 horas en el centro y 31 en empresa.** Las 102 horas proceden exclusivamente del ejemplo de calendario desarrollado a continuación, con clases los miércoles y jueves y una última sesión calculada el 18 de marzo. La diferencia aritmética de 31 horas muestra que ese ejemplo no constituye la temporalización completa del módulo; no es una bolsa de horas establecida por la norma ni una asignación a empresa. El reparto definitivo debe concretarse con las fechas de evaluación y el plan formativo del grupo. Los porcentajes de los resultados de aprendizaje indican su peso en la evaluación, no su duración.
 
 ## Unidades y evaluaciones en el centro
 
-Con el horario de ejemplo de martes y jueves, hasta el 23 de marzo, se prevén **51 sesiones, 102 horas**, distribuidas en 92 horas para unidades y 10 para pruebas, recuperación y cierre. Las fechas de cada fila corresponden a su primera y última sesión; no implican clase todos los días del intervalo.
+Con el horario confirmado de miércoles y jueves y el periodo de aula propuesto hasta el 23 de marzo, se prevén **51 sesiones, 102 horas**, distribuidas en 92 horas para unidades y 10 para pruebas, recuperación y cierre. Las fechas de cada fila corresponden a su primera y última sesión; no implican clase todos los días del intervalo.
 
-### Primera evaluación: septiembre – 10 de diciembre
+### Primera evaluación: septiembre – 3 de diciembre
 
 | Bloque | Primera sesión | Última sesión | Horas de aula |
 |---|---|---|---:|
-| UD1. Fundamentos y scripting | 10/09/2026 | 20/10/2026 | 24 |
-| UD2. Procesos y servicios | 22/10/2026 | 03/11/2026 | 8 |
-| UD3. Servicios de directorio | 05/11/2026 | 01/12/2026 | 16 |
-| Prueba y recuperación | 03/12/2026 | 10/12/2026 | 4 |
+| UD1. Fundamentos y scripting | 09/09/2026 | 15/10/2026 | 24 |
+| UD2. Procesos y servicios | 21/10/2026 | 29/10/2026 | 8 |
+| UD3. Servicios de directorio | 04/11/2026 | 26/11/2026 | 16 |
+| Prueba y recuperación | 02/12/2026 | 03/12/2026 | 4 |
 | **Total** | | | **52** |
 
 UD1 incluye unas cinco horas de fundamentos dentro de sus 24 horas. Se prioriza Linux y se mantiene el trabajo necesario con sistemas propietarios para las evidencias que lo requieran; no se suma el repaso al presupuesto de horas.
 
-### Segunda evaluación: 15 de diciembre – 23 de marzo
+### Segunda evaluación: 9 de diciembre – 18 de marzo
 
 | Bloque | Primera sesión | Última sesión | Horas de aula |
 |---|---|---|---:|
-| UD4. Integración de sistemas en red | 15/12/2026 | 21/01/2027 | 16 |
-| UD5. Automatización y mantenimiento | 26/01/2027 | 18/02/2027 | 16 |
-| UD6. Administración remota | 23/02/2027 | 04/03/2027 | 8 |
-| UD7. Impresión | 09/03/2027 | 11/03/2027 | 4 |
-| Prueba, recuperación y preparación de empresa | 16/03/2027 | 23/03/2027 | 6 |
+| UD4. Integración de sistemas en red | 09/12/2026 | 20/01/2027 | 16 |
+| UD5. Automatización de tareas y monitorización del sistema | 21/01/2027 | 17/02/2027 | 16 |
+| UD6. Administración remota | 18/02/2027 | 03/03/2027 | 8 |
+| UD7. Impresión | 04/03/2027 | 10/03/2027 | 4 |
+| Prueba, recuperación y preparación de empresa | 11/03/2027 | 18/03/2027 | 6 |
 | **Total** | | | **50** |
 
 Las sesiones de evaluación del equipo docente deben fijarlas el centro. Aquí las filas de prueba y recuperación reservan horas de clase; no se presentan como convocatorias oficiales ni como evaluación final del módulo.
@@ -67,16 +66,16 @@ Las sesiones de evaluación del equipo docente deben fijarlas el centro. Aquí l
 
 - En UD1 repasarás fundamentos de Linux y trabajarás scripting en Linux y PowerShell.
 - En UD3 y UD4 reutilizarás el entorno LDAP y los usuarios en las prácticas de integración.
-- En UD5 realizarás una selección de actividades de automatización y mantenimiento. El material completo incluye ampliaciones; el profesorado indicará las actividades obligatorias y las entregas.
+- En UD5 realizarás una selección de actividades de automatización y monitorización. El material completo incluye ampliaciones; el profesorado indicará las actividades obligatorias y las entregas.
 - En UD6 y UD7 trabajarás la administración remota y los servicios de impresión.
 
 Las [actividades de fundamentos de Linux](UD1/linux/fundamentos/Actividades.md) son obligatorias, incluida la explicación individual de cada comando propuesto. Para los materiales identificados expresamente como refuerzo o ampliación en otras unidades, el profesorado indicará las entregas.
 
 ## Formación en empresa y evaluación final
 
-El periodo previsto es **del 6 de abril al 18 de junio de 2027**, pendiente de confirmación por el centro. Antes de incorporarte debes conocer tu fecha de inicio, jornada, calendario, actividades y forma de seguimiento.
+El centro ha confirmado como **ventana general de formación en empresa el periodo del 6 de abril al 18 de junio de 2027**. No todo el alumnado empezará o terminará el mismo día. La jornada, los festivos, las actividades y el seguimiento de cada estudiante se concretarán con su empresa en el plan formativo.
 
-La propuesta contempla **400 horas en segundo curso**, sujetas al plan formativo del grupo. Son horas del conjunto del ciclo, no 400 horas de ASO. El calendario de empresa puede diferir del calendario escolar: confirma los días de asistencia con el centro y tu tutoría de empresa.
+El centro ha confirmado **400 horas de empresa en segundo curso** para el conjunto del ciclo. No son 400 horas de ASO: los RA, las actividades y las horas que correspondan al módulo se concretarán en el plan formativo. Como referencia, **400 horas equivalen a 50 jornadas de ocho horas**. El número de días y las fechas reales dependen de la jornada y del calendario de cada empresa.
 
 La evaluación final tendrá en cuenta la formación realizada en empresa. Terminar las clases de la segunda evaluación no supone haber cerrado el módulo. Consulta los [resultados de aprendizaje y la evaluación](index.md#evaluacion).
 
@@ -86,26 +85,26 @@ Las barras señalan intervalos, no horas de clase continuas. Las fechas de fin d
 
 ```mermaid
 gantt
-    title ASO 2026/2027 — escenario orientativo martes y jueves
+    title ASO 2026/2027 — escenario orientativo miércoles y jueves
     dateFormat YYYY-MM-DD
     section Primera evaluación
-    UD1 Fundamentos y scripting :2026-09-10, 2026-10-21
-    UD2 Procesos y servicios :2026-10-22, 2026-11-04
-    UD3 Directorio :2026-11-05, 2026-12-02
-    Prueba y recuperación :2026-12-03, 2026-12-11
+    UD1 Fundamentos y scripting :2026-09-09, 2026-10-16
+    UD2 Procesos y servicios :2026-10-21, 2026-10-30
+    UD3 Directorio :2026-11-04, 2026-11-27
+    Prueba y recuperación :2026-12-02, 2026-12-04
     section Segunda evaluación
-    UD4 Integración en red :2026-12-15, 2027-01-22
-    UD5 Automatización :2027-01-26, 2027-02-19
-    UD6 Administración remota :2027-02-23, 2027-03-05
-    UD7 Impresión :2027-03-09, 2027-03-12
-    Prueba y cierre de aula :2027-03-16, 2027-03-24
+    UD4 Integración en red :2026-12-09, 2027-01-21
+    UD5 Automatización :2027-01-21, 2027-02-18
+    UD6 Administración remota :2027-02-18, 2027-03-04
+    UD7 Impresión :2027-03-04, 2027-03-11
+    Prueba y cierre de aula :2027-03-11, 2027-03-19
     section Periodos no lectivos
     Navidad :2026-12-23, 2027-01-07
     Pascua :2027-03-24, 2027-04-06
     section Empresa y evaluación final
-    Ventana pendiente del plan del centro :2027-04-06, 2027-06-19
+    Ventana general de empresa :2027-04-06, 2027-06-19
 ```
 
 ## Información pendiente de confirmar
 
-El profesorado y el centro deben concretar el horario por días, las fechas de pruebas y recuperación, el reparto de las 31 horas pendientes y el plan de formación en empresa. Hasta entonces, las fechas de las unidades y de incorporación que aparecen en esta página son orientativas.
+El profesorado y el centro deben concretar las fechas de pruebas y recuperación, la temporalización completa de las 133 horas y el plan de formación en empresa. Las fechas de las unidades y pruebas son orientativas. La ventana general de empresa es del 6 de abril al 18 de junio de 2027; las fechas individuales, la jornada, los festivos y las actividades quedan pendientes de cada plan formativo.

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Escenario orientativo ASO 2026/27: martes y jueves, dos horas cada día.
-No representa un horario confirmado por el docente. Salida CSV por stdout.
+"""Escenario orientativo ASO 2026/27: miércoles y jueves, dos horas cada día.
+Los días y la carga 2+2 están confirmados; las fechas de evaluación y empresa son orientativas. Salida CSV por stdout.
 """
 import csv
 import sys
@@ -12,7 +12,7 @@ HORAS_SEMANALES = 4
 
 INICIO = date(2026, 9, 9)
 FIN_CENTRO = date(2027, 3, 23)
-HORARIO = {1: 2, 3: 2}  # lunes=0; sustituir por el horario real cuando se conozca
+HORARIO = {2: 2, 3: 2}  # lunes=0; miércoles y jueves, dos horas cada día
 NO_LECTIVOS = {
     date(2026, 10, 9), date(2026, 10, 12),
     date(2026, 12, 7), date(2026, 12, 8),
@@ -24,7 +24,7 @@ BLOQUES = [
     ('1ª', 'UD3: directorio', 16),
     ('1ª', 'Prueba y recuperación', 4),
     ('2ª', 'UD4: integración en red', 16),
-    ('2ª', 'UD5: automatización', 16),
+    ('2ª', 'UD5: automatización y monitorización', 16),
     ('2ª', 'UD6: administración remota', 8),
     ('2ª', 'UD7: impresión', 4),
     ('2ª', 'Prueba, recuperación y cierre', 6),
@@ -60,6 +60,8 @@ if __name__ == '__main__':
     counts = Counter(d.weekday() for d in fechas() if lectivo(d))
     print(f'Sesiones lectivas por día (lunes=0): {dict(sorted(counts.items()))}', file=sys.stderr)
     print(f'Horas previstas/disponibles: {required}/{len(slots)}', file=sys.stderr)
-    print(f'Balance curricular: {HORAS_CURRICULARES} = {required} de aula previstas + '
-          f'{HORAS_CURRICULARES - required} pendientes de concretar (no asignadas a empresa)',
+    print(f'Referencia oficial: {HORAS_CURRICULARES} horas y {HORAS_SEMANALES} semanales. '
+          f'El ejemplo calcula {required} horas de aula; la diferencia de '
+          f'{HORAS_CURRICULARES - required} horas no es un reparto normativo ni una asignación a empresa. '
+          'La temporalización completa requiere las fechas de evaluación y el plan formativo.',
           file=sys.stderr)

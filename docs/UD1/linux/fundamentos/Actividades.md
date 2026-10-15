@@ -14,9 +14,6 @@ Comienza cada bloque desde la raíz de la zona de práctica y ejecuta cada prepa
 
 Usa `echo` para los mensajes; `printf` queda como alternativa cuando necesites controlar el formato. Intenta resolver los retos sin copiar una solución y explica los comandos que utilices.
 
-## Diagnóstico inicial
-
-Sin ayuda, intenta: mostrar el directorio actual, listar ocultos, copiar un archivo con espacios en su nombre, interpretar 640 y explicar `>` frente a `>>`. Anota dudas. Esta actividad decide cuánto repaso necesitas; no se califica como una práctica final.
 
 ## 1. Terminal y ayuda
 
@@ -454,7 +451,7 @@ Estos ejercicios aprovechan contenidos del banco de cuestionarios de la unidad, 
 
 ### 8.1. Entorno, rutas y metadatos
 
-1. Muestra `PATH`, `HOME`, el directorio actual y la ruta del intérprete que ejecuta `ls` (`command -v ls`). Explica qué diferencia hay entre la variable `HOME` y el directorio `/home`.
+1. Muestra `PATH`, `HOME`, el directorio actual y cómo se resuelve la orden `ls` (`command -v ls`; puede mostrar un alias o una ruta de ejecutable). Explica qué diferencia hay entre la variable `HOME` y el directorio `/home`.
 2. Consulta con `file` y `stat` los archivos `datos/servicios.txt` y `datos/eventos.log`. Identifica tipo, tamaño, propietario, permisos y fecha de modificación.
 3. Crea `trabajo/estructura/color/frio`, `trabajo/estructura/forma/angulo` y `trabajo/estructura/forma/curva` con una sola orden por árbol. No cambies de directorio para crearlos.
 4. Crea seis archivos vacíos dentro de `trabajo/estructura`: `redondo`, `triangulo`, `cuadrado`, `rectangulo`, `verde` y `azul`. Mueve cada uno a su directorio según esta tabla y comprueba el resultado con `find`:

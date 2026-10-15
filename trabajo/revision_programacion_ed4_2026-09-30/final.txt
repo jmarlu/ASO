@@ -1,0 +1,2441 @@
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+1/49
+Nº edición: 04
+FAMILIA PROFESIONAL / DEPARTAMENTO
+INFORMÁTICA Y COMUNICACIONES
+FORMACIÓN PROFESIONAL DE GRADO SUPERIOR
+ADMINISTRACIÓN DE SISTEMAS INFORMÁTICOS EN RED
+PROPUESTA DIDÁCTICA
+MÓDULO PROFESIONAL
+ADMINISTRACIÓN DE SISTEMAS OPERATIVOS
+Código: 0374    Nº horas: 133    Modalidad: Presencial
+Curso: 2026/2027 · Adaptación a edición 04: 30/09/2026
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+2/49
+Nº edición: 04
+ÍNDICE DE CONTENIDOS
+0. PROPUESTAS DE MEJORA DEL CURSO ANTERIOR...........................................................................3
+1. INTRODUCCIÓN Y JUSTIFICACIÓN TEÓRICA CONTEXTUALIZADA..................................................3
+1.1. Normativa de referencia.....................................................................................................................3
+1.2. Identificación del título........................................................................................................................4
+1.3. Cuadro horario....................................................................................................................................5
+1.4. Relación entre los estándares de competencia y los módulos del ciclo formativo............................7
+1.5. Identificación del módulo / unidad formativa......................................................................................8
+1.6. Características del alumnado.............................................................................................................8
+1.7. Del sector productivo..........................................................................................................................9
+2. DESARROLLO CURRICULAR................................................................................................................10
+2.1. Competencias y objetivos................................................................................................................10
+2.2. Resultados de aprendizaje y criterios de evaluación.......................................................................11
+2.3. Relación entre competencias y resultados de aprendizaje.............................................................15
+2.4. Contenidos básicos de referencia del módulo.................................................................................16
+3. METODOLOGÍA DIDÁCTICA..................................................................................................................18
+3.1. Estrategias metodológicas...............................................................................................................18
+3.2. Líneas pedagógicas del centro........................................................................................................18
+3.3. Recursos..........................................................................................................................................19
+4. UNIDADES...............................................................................................................................................20
+5. PROYECTO INTERMODULAR...............................................................................................................35
+5.1. Especificaciones...............................................................................................................................35
+5.2. Distribución de elementos curriculares............................................................................................35
+6. PLAN FORMATIVO EN EMPRESA.........................................................................................................37
+7. EVALUACIÓN Y CALIFICACIÓN.............................................................................................................40
+7.1. Instrumentos de evaluación.............................................................................................................40
+7.2. Criterios de calificación....................................................................................................................40
+7.3. Recuperación de los resultados de aprendizaje..............................................................................41
+7.4. Criterios de inasistencia...................................................................................................................41
+8. EVALUACIÓN DE LA PRÁCTICA DOCENTE.........................................................................................43
+9. MEDIDAS DE ATENCIÓN A LA DIVERSIDAD........................................................................................44
+10. ANEXO I.................................................................................................................................................45
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+3/49
+Nº edición: 04
+0. PROPUESTAS DE MEJORA DEL CURSO ANTERIOR
+Se propone reforzar en el primer curso del ciclo la base de Linux y Windows, con especial 
+atención al manejo de la línea de comandos en ambos sistemas. Así, el alumnado llegará a 
+segundo curso con los conocimientos previos necesarios para abordar las tareas de 
+administración de sistemas operativos.
+1. INTRODUCCIÓN Y JUSTIFICACIÓN TEÓRICA CONTEXTUALIZADA
+1.1. Normativa de referencia
+Ámbito
+Tipo
+Norma
+Enseñanza
+Estatal
+Normativa de ordenación
+Ley Orgánica 3/2022, de 31 de marzo, de 
+ordenación e integración de la Formación 
+Profesional
+Estatal
+Normativa de ordenación
+Real Decreto 659/2023, de 18 de julio, por el que 
+se desarrolla la ordenación del Sistema de 
+Formación Profesional
+Autonómico
+Atención a la diversidad
+Decreto 104/2018, de 27 de julio, del Consell, por 
+el que se desarrollan los principios de equidad y de 
+inclusión en el sistema educativo valenciano
+Autonómico
+Atención a la diversidad
+ORDEN 20/2019, de 30 de abril, de la Conselleria 
+de Educación, Investigación, Cultura y Deporte, por 
+la cual se regula la organización de la respuesta 
+educativa para la inclusión del alumnado en los 
+centros docentes sostenidos con fondos públicos 
+del sistema educativo valenciano
+Autonómico
+Normativa de evaluación
+Orden 8/2025, de 22 de abril, de la Conselleria de 
+Educación, Cultura, Universidades y Empleo, por la 
+que se regula la evaluación del proceso de 
+enseñanza-aprendizaje en ciclos formativos y 
+cursos de especialización derivados de la Ley 
+Orgánica 3/2022, de 31 de marzo, de ordenación e 
+integración de la Formación Profesional. 
+Modificada por la Orden 5/2026, de 1 de abril.
+Autonómico
+Instrucciones de inicio de 
+curso
+Resolución de 16 de julio de 2026, de la Secretaría 
+Autonómica de Educación, por la que se dictan 
+instrucciones sobre ordenación académica y de 
+organización de los centros que impartan los 
+grados D y E de Formación Profesional durante el 
+curso 2026-2027 en la Comunitat Valenciana.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+4/49
+Nº edición: 04
+Ámbito
+Tipo
+Norma
+Autonómico
+Instrucciones de inicio de 
+curso
+Resolución de 15 de junio de 2026, de la Dirección 
+General de Centros Docentes, por la que se fija el 
+calendario escolar del curso académico 2026-2027 
+en la Comunitat Valenciana, con las adaptaciones 
+del calendario local aprobadas para Elche.
+Etapa
+Estatal
+Real Decreto de Título
+Real Decreto 500/2024, de 21 de mayo, por el que 
+se modifican determinados reales decretos por los 
+que se establecen títulos de Formación Profesional 
+de grado superior y se fijan sus enseñanzas 
+mínimas, incluido el título de ASIR.
+Modalidad
+Autonómico
+Normativa de la modalidad 
+presencial
+Resolución de 16 de julio de 2026, de instrucciones 
+para los grados D y E de Formación Profesional 
+durante 2026-2027, en sus disposiciones sobre 
+organización y asistencia en régimen presencial. 
+La Orden 30/2022 de semipresencial no se aplica a 
+esta propuesta.
+Ciclo
+Estatal
+Real Decreto de Título
+Real Decreto 1629/2009, de 30 de octubre, por el 
+que se establece el título de Técnico Superior en 
+Administración de Sistemas Informáticos en Red y 
+se fijan sus enseñanzas mínimas, con sus 
+modificaciones.
+Autonómico
+Normativa autonómica de 
+Título (Orden o Decreto)
+Decreto 114/2025, de 29 de julio, del Consell, por el 
+que se establecen los currículos de los ciclos 
+formativos de grado medio y superior. Tabla de 
+ASIR, página 72: módulo 0374, 133 horas y 4 
+horas semanales. Orden 36/2012, de 22 de junio, 
+como antecedente curricular y en lo que resulte 
+aplicable conforme al marco vigente.
+Referencias complementarias: Real Decreto 69/2025, de 4 de febrero, sobre los elementos e 
+instrumentos del Sistema Nacional de Formación Profesional; y Decreto 252/2019, de 29 de 
+noviembre, sobre organización y funcionamiento de centros públicos de ESO, Bachillerato y 
+Formación Profesional.
+Fuentes: RD 500/2024 — https://www.boe.es/eli/es/rd/2024/05/21/500
+Evaluación — https://dogv.gva.es/datos/2025/04/30/pdf/2025_13083_es.pdf
+Instrucciones 2026/2027 — https://dogv.gva.es/datos/2026/07/20/pdf/2026_24495_es.pdf
+Currículo y horario — https://dogv.gva.es/datos/2025/08/04/pdf/2025_29742_es.pdf
+1.2. Identificación del título
+Real Decreto 1629/2009, de 30 de octubre, por el que se establece el título de Técnico Superior 
+en Administración de Sistemas Informáticos en Red. 
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+5/49
+Nº edición: 04
+Identificación
+Grado D
+Ciclo Formativo
+Técnico Superior en Administración de Sistemas 
+Informáticos en Red
+Denominación
+Administración de Sistemas Informáticos en Red
+Duración
+2000 horas
+Familia profesional
+Informática y comunicaciones.
+Perfil 
+profesional
+Competencia general
+Configurar, administrar y mantener sistemas informáticos, 
+garantizando la funcionalidad, la integridad de los recursos 
+y servicios del sistema, con la calidad exigida y cumpliendo 
+la reglamentación vigente.
+Estándares de 
+competencia del ciclo
+ECP0485_3: Gestionar el «software» de un sistema 
+informático
+ECP0223_3: Configurar y explotar sistemas informáticos
+ECP0484_3: Administrar los dispositivos «hardware» de un 
+sistema informático
+ECP0225_3: Configurar y gestionar bases de datos 
+relacionales
+ECP0490_3: Gestionar servicios en el sistema informático
+ECP0495_3: Instalar, configurar y administrar el software 
+para gestionar un entorno web
+ECP0496_3: Instalar, configurar y administrar servicios de 
+mensajería electrónica
+ECP0497_3: Instalar, configurar y administrar servicios de 
+transferencia de archivos y multimedia
+ECP0493_3: Entregar aplicaciones web
+ECP0224_3: Instalar y administrar sistemas gestores de 
+bases de datos
+ECP0486_3: Asegurar equipos informáticos
+Se utiliza la denominación de estándares de competencia profesional (ECP), coherente con el 
+apartado 1.4. Las referencias UC de la normativa original se interpretan en su contexto 
+histórico y no constituyen una segunda relación de competencias.
+1.3. Cuadro horario
+Módulo profesional
+Lengua 
+vehicular
+Carga 
+lectiva
+(horas)
+Primer 
+curso
+(horas/
+sem)
+Segundo
+curso
+(horas/
+sem)
+Inglés profesional GS
+Inglés
+67
+2
+Implantación de sistemas operativos
+Castellano 
+(previsión)
+233
+7
+Planificación y administración de redes
+Castellano 
+(previsión)
+200
+6
+Fundamentos de hardware
+Castellano 
+(previsión)
+100
+3
+Gestión de bases de datos
+Castellano 
+(previsión)
+166
+5
+Lenguajes de marcas y sistemas de gestión Castellano 
+100
+3
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+6/49
+Nº edición: 04
+Módulo profesional
+Lengua 
+vehicular
+Carga 
+lectiva
+(horas)
+Primer 
+curso
+(horas/
+sem)
+Segundo
+curso
+(horas/
+sem)
+de información
+(previsión)
+Proyecto intermodular de Administración de 
+Sistemas Informáticos en Red
+Castellano 
+(previsión)
+34
+1
+Itinerario personal para la empleabilidad I
+Castellano 
+(previsión)
+100
+3
+Administración de sistemas operativos
+Castellano
+133
+4
+Servicios de red e internet
+Castellano 
+(previsión)
+166
+5
+Implantación de aplicaciones web
+Castellano 
+(previsión)
+133
+4
+Administración de sistemas gestores de 
+bases de datos
+Castellano 
+(previsión)
+67
+2
+Seguridad y alta disponibilidad
+Castellano 
+(previsión)
+133
+4
+Proyecto intermodular de Administración de 
+Sistemas Informáticos en Red
+Castellano 
+(previsión)
+100
+3
+Digitalización aplicada al sistema productivo 
+(GS)
+Castellano 
+(previsión)
+34
+1
+Sostenibilidad aplicada al sistema productivo Castellano 
+(previsión)
+34
+1
+Itinerario personal para la empleabilidad II
+Castellano 
+(previsión)
+100
+3
+Módulo optativo
+Castellano 
+(previsión)
+100
+3
+Total ciclo formativo
+2000
+Lenguas vehiculares: se mantiene el castellano en ASO y el inglés en Inglés Profesional. Para 
+el resto del ciclo se propone castellano como previsión de coordinación, que se adecuará al 
+proyecto lingüístico y a la asignación del centro. El cuadro identifica un módulo propio de Inglés 
+Profesional; no se atribuyen horas adicionales de inglés a ASO. Las actividades CLIL se 
+integran en las horas previstas.
+Módulo profesional
+Curs
+o
+Lengua 
+vehicular
+Horas 
+curriculares
+Horas 
+semanales
+0374. Administración de 
+sistemas operativos
+2º
+Castellano
+133
+4
+Duración curricular de referencia: 133 horas y 4 horas semanales en segundo curso, según el 
+Decreto 114/2025, tabla de ASIR, página 72.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+7/49
+Nº edición: 04
+Horario de aula confirmado: miércoles y jueves, dos horas cada día. En el escenario del 
+09/09/2026 al 23/03/2027, la última sesión calculada es el 18/03/2027. Descontados los días no 
+lectivos, se prevén 51 sesiones de dos horas: 102 horas, con 52 en la primera evaluación y 50 
+en la segunda. Las fechas de pruebas y evaluaciones se ajustarán al calendario del centro.
+Se propone la siguiente distribución didáctica completa de las 133 horas: 92 horas de unidades 
+en el aula, 10 de pruebas y recuperación y 31 de aplicación, consolidación y verificación de 
+aprendizajes. La aplicación se desarrollará en la empresa cuando existan tareas adecuadas o 
+mediante actividades supervisadas en el centro, conforme al plan individual y a la organización 
+del equipo docente.
+Bloque
+Aula (h)
+Aplicación (h)*
+Total (h)
+UD1. Scripting
+24
+6
+30
+UD2. Procesos
+8
+4
+12
+UD3. Directorio
+16
+2
+18
+UD4. Integración
+16
+8
+24
+UD5. Automatización
+16
+5
+21
+UD6. Administración remota
+8
+4
+12
+UD7. Impresión
+4
+2
+6
+Pruebas y recuperación
+10
+0
+10
+TOTAL
+102
+31
+133
+* Aplicación provisional en empresa o centro, según las oportunidades del destino y el plan 
+formativo. Se priorizan integración, scripting y automatización; directorio e impresión pueden 
+resolverse mediante prácticas de laboratorio. La distribución temporal no modifica los pesos de 
+los RA.
+Las 31 horas de aplicación son una propuesta didáctica para completar el módulo, no una 
+duración de empresa fijada por la normativa ni una asignación automática por diferencia de 
+calendario. El plan individual identificará su distribución entre centro y empresa y sus fechas. Si 
+el destino no ofrece una tarea de ASO, el centro programará su alternativa con horario efectivo. 
+No se sustituirán horas formativas por deberes sin supervisión ni se computarán dos veces las 
+mismas horas.
+La ventana general de formación en empresa comunicada por el centro va del 6 de abril al 18 
+de junio de 2027. Las 400 horas de empresa de segundo corresponden al conjunto del ciclo. La 
+contribución concreta de ASO dependerá de las actividades acordadas y de las horas 
+registradas; no se deduce de los porcentajes de calificación. Las fichas distinguen la base de 
+aula y la fase de aplicación provisional.
+1.4. Relación entre los estándares de competencia y los módulos del ciclo formativo
+MÓDULOS
+ESTÁNDARES DE COMPETENCIA
+0369. Implantación de sistemas 
+operativos
+ECP0485_3: Gestionar el «software» de un sistema 
+informático
+0369. Implantación de sistemas 
+operativos
+0371. Fundamentos de hardware
+ECP0223_3: Configurar y explotar sistemas 
+informáticos
+0371. Fundamentos de hardware
+ECP0484_3: Administrar los dispositivos «hardware» de 
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+8/49
+Nº edición: 04
+MÓDULOS
+ESTÁNDARES DE COMPETENCIA
+0378. Seguridad y alta disponibilidad
+un sistema informático
+0372. Gestión de bases de datos
+ECP0225_3: Configurar y gestionar bases de datos 
+relacionales
+0374. Administración de sistemas 
+operativos
+ECP0485_3: Gestionar el «software» de un sistema 
+informático
+ECP0490_3: Gestionar servicios en el sistema 
+informático
+0375. Servicios de red e internet
+ECP0495_3: Instalar, configurar y administrar el 
+software para gestionar un entorno web
+ECP0496_3: Instalar, configurar y administrar servicios 
+de mensajería electrónica
+ECP0497_3: Instalar, configurar y administrar servicios 
+de transferencia de archivos y multimedia
+0376. Implantación de aplicaciones 
+web
+ECP0493_3: Entregar aplicaciones web
+0377. Administración de sistemas 
+gestores de bases de datos
+ECP0224_3: Instalar y administrar sistemas gestores de 
+bases de datos
+0378. Seguridad y alta disponibilidad
+ECP0486_3: Asegurar equipos informáticos
+1.5. Identificación del módulo / unidad formativa
+MÓDULO PROFESIONAL
+Identificación
+Código
+0374
+Módulo profesional
+Administración de sistemas operativos
+Curso
+2º
+Distribución horaria
+Horas
+133
+Horas semanales
+4
+Asociado a 
+estándares de 
+competencia
+ECP0490_3: Gestionar servicios en el sistema informático.
+ECP0485_3: Gestionar el «software» de un sistema informático.
+Síntesis del módulo
+La instalación y administración del servicio de directorios.
+La automatización de tareas del sistema y el control de procesos del sistema.
+La administración remota del sistema.
+La utilización de escenarios heterogéneos compartiendo recursos.
+La programación básica de sistemas.
+1.6. Características del alumnado
+El alumnado de Formación Profesional del centro presenta diversidad de edades, itinerarios 
+académicos, experiencia laboral y competencia digital. En grado superior confluyen personas 
+procedentes de Bachillerato, ciclos de grado medio, pruebas de acceso y otras vías previstas. La 
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+9/49
+Nº edición: 04
+programación de aula concretará esta descripción general mediante la evaluación inicial, sin 
+atribuir a todo el alumnado las características de un grupo particular.
+En ASO se comprobarán especialmente los conocimientos de Linux y Windows, terminal, 
+redes, permisos y máquinas virtuales. Se ofrecerán guías graduadas, materiales accesibles y 
+actividades de refuerzo y profundización. La tutoría y orientación coordinarán los apoyos de 
+acuerdo con el PEC y con las necesidades detectadas.
+1.7. Del sector productivo
+El centro se sitúa en Elche, en un entorno industrial y de servicios donde conviven empresas del 
+calzado, pymes, departamentos de informática y proveedores tecnológicos. La propuesta 
+aproxima el aprendizaje a la administración de sistemas, al soporte a usuarios y a la continuidad 
+de los servicios de estas organizaciones.
+El Técnico Superior en Administración de Sistemas Informáticos en Red está capacitado para 
+configurar, administrar y mantener sistemas informáticos, garantizando la funcionalidad, la 
+integridad de los recursos y servicios del sistema, con la calidad exigida y cumpliendo la 
+reglamentación vigente. 
+Este profesional ejerce su actividad principalmente en empresas del sector servicios que 
+dispongan de sistemas para la gestión de datos e infraestructura de redes (intranet, internet y/o 
+extranet). 
+Lo que nos lleva a una demanda cada vez mayor de personal especializado en actividades del 
+tipo: 
+
+Técnico en administración de sistemas. 
+
+Responsable de informática. 
+
+Técnico en servicios de Internet. 
+
+Técnico en servicios de mensajería electrónica. 
+
+Personal de apoyo y soporte técnico. 
+
+Técnico en teleasistencia. 
+
+Técnico en administración de base de datos. 
+
+Técnico de redes. 
+
+Supervisor de sistemas. 
+
+Técnico en servicios de comunicaciones. 
+
+Técnico en entornos web. 
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+10/49
+Nº edición: 04 
+2. DESARROLLO CURRICULAR
+2.1. Competencias y objetivos
+Relación entre las competencias PPS y los objetivos generales del ciclo.
+Competencias
+Objetivos
+a) Administrar sistemas operativos de servidor, instalando y 
+configurando el software, en condiciones de calidad para asegurar el 
+funcionamiento del sistema
+l) Administrar usuarios de acuerdo a las especificaciones de 
+explotación para garantizar los accesos y la disponibilidad de los 
+recursos del sistema
+m) Diagnosticar las disfunciones del sistema y adoptar las medidas 
+correctivas para restablecer su funcionalidad
+n) Gestionar y/o realizar el mantenimiento de los recursos de su área 
+(programando y verificando su cumplimiento), en función de las 
+cargas de trabajo y el plan de mantenimiento
+ñ) Efectuar consultas, dirigiéndose a la persona adecuada y saber 
+respetar la autonomía de los subordinados, informando cuando sea 
+conveniente
+o) Mantener el espíritu de innovación y actualización en el ámbito de 
+su trabajo para adaptarse a los cambios tecnológicos y organizativos 
+a) Analizar la estructura del software de base, comparando las 
+características y prestaciones de sistemas libres y propietarios, para 
+administrar sistemas operativos de servidor
+b) Instalar y configurar el software de base, siguiendo documentación 
+técnica y especificaciones dadas, para administrar sistemas 
+operativos de servidor
+n) Asignar los accesos y recursos del sistema, aplicando las 
+especificaciones de la explotación, para administrar usuarios
+ñ) Aplicar técnicas de monitorización interpretando los resultados y 
+relacionándolos con las medidas correctoras para diagnosticar y 
+corregir las disfunciones
+o) Establecer la planificación de tareas, analizando actividades y 
+cargas de trabajo del sistema para gestionar el mantenimiento
+q) Identificar formas de intervención en situaciones colectivas, 
+analizando el proceso de toma de decisiones y efectuando consultas 
+para liderar las mismas
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+11/49
+Nº edición: 04 
+Competencias
+Objetivos
+de su entorno profesional
+q) Resolver problemas y tomar decisiones individuales, siguiendo las 
+normas y procedimientos establecidos, definidos dentro del ámbito de 
+su competencia
+r) Gestionar su carrera profesional, analizando las oportunidades de 
+empleo, autoempleo y de aprendizaje
+s) Participar de forma activa en la vida económica, social y cultural 
+con actitud crítica y responsable
+2.2. Resultados de aprendizaje y criterios de evaluación
+Con el objetivo de realizar la trazabilidad del alumnado en las actividades de enseñanza y aprendizaje, es imprescindible asociar por cada 
+uno de los resultados de aprendizaje de la unidad formativa, las evidencias (criterios de evaluación) que aseguran al alumnado haberlas 
+alcanzado.
+Resultados de Aprendizaje
+Criterios de evaluación
+1. Administra el servicio de directorio 
+interpretando especificaciones e integrándolo en 
+una red
+a) Se han identificado la función, los elementos y las estructuras lógicas del servicio de 
+directorio
+b) Se ha determinado y creado el esquema del servicio de directorio
+c) Se ha realizado la instalación del servicio de directorio en el servidor
+d) Se ha realizado la configuración y personalización del servicio de directorio
+e) Se ha integrado el servicio de directorio con otros servicios
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+12/49
+Nº edición: 04 
+Resultados de Aprendizaje
+Criterios de evaluación
+f) Se han aplicado filtros de búsqueda en el servicio de directorio
+g) Se ha utilizado el servicio de directorio como mecanismo de acreditación centralizada 
+de los usuarios en una red
+h) Se ha realizado la configuración del cliente para su integración en el servicio de 
+directorio
+i) Se han utilizado herramientas gráficas y comandos para la administración del servicio 
+de directorio
+j) Se ha documentado la estructura e implantación del servicio de directorio
+2. Administra procesos del sistema 
+describiéndolos y aplicando criterios de 
+seguridad y eficiencia
+a) Se han descrito el concepto de proceso del sistema, tipos, estados y ciclo de vida
+b) Se han utilizado interrupciones y excepciones para describir los eventos internos del 
+procesador
+c) Se ha diferenciado entre proceso, hilo y trabajo
+d) Se han realizado tareas de creación, manipulación y terminación de procesos
+e) Se ha utilizado el sistema de archivos como medio lógico para el registro e 
+identificación de los procesos del sistema
+f) Se han utilizado herramientas gráficas y comandos para el control y seguimiento de los 
+procesos del sistema
+g) Se ha comprobado la secuencia de arranque del sistema, los procesos implicados y la 
+relación entre ellos
+h) Se han tomado medidas de seguridad ante la aparición de procesos no identificados
+i) Se han documentado los procesos habituales del sistema, su función y relación entre 
+ellos
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+13/49
+Nº edición: 04 
+Resultados de Aprendizaje
+Criterios de evaluación
+3. Gestiona la automatización de tareas del 
+sistema, aplicando criterios de eficiencia y 
+utilizando comandos y herramientas gráficas
+a) Se han descrito las ventajas de la automatización de las tareas repetitivas en el sistema
+b) Se han utilizado los comandos del sistema para la planificación de tareas
+c) Se han establecido restricciones de seguridad
+d) Se han realizado planificaciones de tareas repetitivas o puntuales relacionadas con la 
+administración del sistema
+e) Se ha automatizado la administración de cuentas
+f) Se han instalado y configurado herramientas gráficas para la planificación de tareas
+g) Se han utilizado herramientas gráficas para la planificación de tareas
+h) Se han documentado los procesos programados como tareas automáticas
+4. Administra de forma remota el sistema 
+operativo en red valorando su importancia y 
+aplicando criterios de seguridad
+a) Se han descrito métodos de acceso y administración remota de sistemas
+b) Se ha diferenciado entre los servicios orientados a sesión y los no orientados a sesión
+c) Se han utilizado herramientas de administración remota suministradas por el propio 
+sistema operativo
+d) Se han instalado servicios de acceso y administración remota
+e) Se han utilizado comandos y herramientas gráficas para gestionar los servicios de 
+acceso y administración remota
+f) Se han creado cuentas de usuario para el acceso remoto
+g) Se han realizado pruebas de acceso y administración remota entre sistemas 
+heterogéneos
+h) Se han utilizado mecanismos de encriptación de la información transferida
+i) Se han documentado los procesos y servicios del sistema administrados de forma 
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+14/49
+Nº edición: 04 
+Resultados de Aprendizaje
+Criterios de evaluación
+remota
+5. Administra servidores de impresión 
+describiendo sus funciones e integrándolos en 
+una red
+a) Se ha descrito la funcionalidad de los sistemas y servidores de impresión
+b) Se han identificado los puertos y los protocolos utilizados
+c) Se han utilizado las herramientas para la gestión de impresoras integradas en el 
+sistema operativo
+d) Se ha instalado y configurado un servidor de impresión en entorno Web
+e) Se han creado y clasificado impresoras lógicas
+f) Se han creado grupos de impresión
+g) Se han gestionado impresoras y colas de trabajos mediante comandos y herramientas 
+gráficas
+h) Se han compartido impresoras en red entre sistemas operativos diferentes
+i) Se ha documentado la configuración del servidor de impresión y de las impresoras 
+creadas
+6. Integra sistemas operativos libres y 
+propietarios, justificando y garantizando su 
+interoperabilidad
+a) Se ha identificado la necesidad de compartir recursos en red entre diferentes sistemas 
+operativos
+b) Se han establecido niveles de seguridad para controlar el acceso del cliente a los 
+recursos compartidos en red
+c) Se ha comprobado la conectividad de la red en un escenario heterogéneo
+d) Se ha descrito la funcionalidad de los servicios que permiten compartir recursos en red
+e) Se han instalado y configurado servicios para compartir recursos en red
+f) Se ha comprobado el funcionamiento de los servicios instalados
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+15/49
+Nº edición: 04 
+Resultados de Aprendizaje
+Criterios de evaluación
+g) Se ha trabajado en grupo para acceder a sistemas de archivos e impresoras en red 
+desde equipos con diferentes sistemas operativos
+h) Se ha documentado la configuración de los servicios instalados
+7. Utiliza lenguajes de guiones en sistemas 
+operativos, describiendo su aplicación y 
+administrando servicios del sistema operativo
+a) Se han utilizado y combinado las estructuras del lenguaje para crear guiones
+b) Se han utilizado herramientas para depurar errores sintácticos y de ejecución
+c) Se han interpretado guiones de configuración del sistema operativo
+d) Se han realizado cambios y adaptaciones de guiones del sistema
+e) Se han creado y probado guiones de administración de servicios
+f) Se han creado y probado guiones de automatización de tareas
+g) Se han implantado guiones en sistemas libres y propietarios
+h) Se han consultado y utilizado librerías de funciones
+i) Se han documentado los guiones creados
+2.3. Relación entre competencias y resultados de aprendizaje
+La relación siguiente muestra la contribución didáctica principal de las competencias del título a los resultados de aprendizaje del módulo. 
+Algunas competencias transversales se desarrollan a lo largo de varios RA.
+Competencia profesional, personal y social
+Resultados de aprendizaje relacionados
+a) Administrar sistemas operativos de servidor.
+RA1, RA2, RA3, RA4, RA5, RA6 y RA7
+l) Administrar usuarios según las 
+especificaciones de explotación.
+RA1, RA3 y RA6
+m) Diagnosticar disfunciones y adoptar 
+RA2, RA3, RA4 y RA6
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+16/49
+Nº edición: 04 
+Competencia profesional, personal y social
+Resultados de aprendizaje relacionados
+medidas correctivas.
+n) Mantener los recursos del área según 
+cargas de trabajo y plan de mantenimiento.
+RA2, RA3, RA4, RA5, RA6 y RA7
+ñ) Efectuar consultas y comunicar información 
+cuando sea conveniente.
+RA1, RA2, RA4, RA6 y RA7
+o) Mantenerse actualizado ante cambios 
+tecnológicos y organizativos.
+RA1, RA2, RA3, RA4, RA5, RA6 y RA7
+q) Resolver problemas y tomar decisiones 
+dentro del ámbito de competencia.
+RA1, RA2, RA3, RA4, RA5, RA6 y RA7
+r) Gestionar la carrera profesional y las 
+oportunidades de aprendizaje.
+RA1, RA2, RA3, RA4, RA5, RA6 y RA7
+s) Participar en la vida económica, social y 
+cultural con actitud crítica y responsable.
+RA1, RA2, RA3, RA4, RA5, RA6 y RA7
+2.4. Contenidos básicos de referencia del módulo
+Contenidos básicos de referencia
+Administración de servicio de directorio:
+− Servicio de directorio. Definición, elementos y nomenclatura. LDAP.
+− Esquema del servicio de directorio.
+− Controladores de dominio.
+− Instalación, configuración y personalización del servicio de directorio.
+− Creación de dominios.
+− Objetos que administra un dominio: usuarios globales, grupos y equipos entre otros.
+− Herramientas gráficas de administración del servicio de directorio.
+Administración de procesos del sistema:
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+17/49
+Nº edición: 04 
+Contenidos básicos de referencia
+− Procesos. Tipos. Estados. Estructura.
+− Hilos de ejecución.
+− Transiciones de estados.
+− Prioridades.
+− Gestión de los procesos del sistema. Línea de orden. Entorno gráfico.
+− Secuencia de arranque del sistema. Demonios.
+Información del sistema:
+− Estructura de directorios.
+− Búsqueda de información del sistema. Órdenes. Herramientas gráficas.
+− Sistema de archivos virtual.
+Instalación, configuración y uso de servicios de acceso y administración remota:
+− Terminales en modo texto.
+− Escritorio remoto.
+− Protocolos de acceso remoto y puertos implicados.
+− Servicios de acceso remoto del propio sistema operativo.
+− Herramientas gráficas externas para la administración remota.
+Administración de servidores de impresión:
+− Puertos y protocolos de impresión.
+− Sistemas de impresión.
+− Órdenes para la gestión de impresoras y trabajos.
+Integración de sistemas operativos en red libres y propietarios:
+− Descripción de escenarios heterogéneos.
+− Instalación, configuración y uso de servicios de red para compartir recursos.
+− Configuración de recursos compartidos en red.
+− Utilización de redes heterogéneas.
+Aplicación de lenguajes de «scripting» en sistemas operativos libres y propietarios:
+− Estructuras del lenguaje.
+− Creación y depuración de «scripts».
+− Interpretación de «scripts» del sistema. Adaptaciones.
+− Utilización de extensiones de comandos para tareas de administración.
+− «Scripts» para la administración de cuentas de usuario, procesos y servicios del sistema operativo.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+18/49
+Nº edición: 04 
+3. METODOLOGÍA DIDÁCTICA
+El objetivo de la estrategia metodológica a seguir es lograr el aprendizaje significativo del 
+alumnado. En este sentido, el/la docente planteará inicialmente situaciones y actividades que 
+les resulten familiares al alumnado, para ir incrementando paulatinamente su complejidad. De 
+este modo, se pretende conseguir la consecución de todos los resultados de aprendizaje 
+expuestos en esta programación.
+Otro pilar importante será la retroalimentación del/la docente a las soluciones dadas por el 
+alumnado. En este caso, lo que se intentará es guiarles para que puedan plantearse otras 
+posibles vías que les puedan llevar a un mayor conocimiento o desarrollo de la habilidad. Y si 
+fuera necesario, a un replanteamiento de las partes que no han representado una solución 
+óptima o más viable que la conseguida.
+El módulo de Administración de Sistemas Operativos, por su trabajo directo con sistemas 
+actuales, se ve muy afectado por el desfase tecnológico. Motivo por el cual, siempre que sea 
+posible, se compaginará la consulta de información en Internet con conocimientos más 
+generales, intentando que el alumnado conozca las herramientas más actualizadas posible.
+3.1. Estrategias metodológicas
+Nombre
+Descripción
+Activación
+Realización de actividades para que el alumnado sea capaz de 
+relacionar el contenido y competencias nuevas con contenidos 
+anteriores y competencias básicas.
+Aprendizaje basado en 
+problemas
+Planteado un problema, el alumnado debe investigar y trabajar para 
+hallar una solución. Para ello, el alumnado debe razonar y aplicar su 
+conocimiento.
+Demostración
+Presentación de actividades y tareas en las que el alumnado asiste a 
+una demostración teórico-práctica del conocimiento y se ejemplifican 
+las destrezas y técnicas que después aplicará el alumnado. La 
+demostración puede hacerse: por el profesorado, por profesionales, 
+entre iguales, etc.
+3.2. Líneas pedagógicas del centro
+La propuesta concreta las líneas pedagógicas de este apartado mediante las siguientes 
+actuaciones de ASO. Su coordinación con el apartado 4.1 del PEC y con el proyecto lingüístico 
+se realizará en el departamento, conforme a los acuerdos del centro.
+Inclusión y diversidad: guías graduadas, demostraciones, materiales accesibles, apoyos de 
+orientación y distintas formas de presentar evidencias de los mismos CE.
+Continuidad del aprendizaje: repaso inicial de Linux y Windows y reutilización progresiva del 
+laboratorio entre scripting, directorio, integración, automatización y acceso remoto.
+Aprendizaje competencial: prácticas con una necesidad de administración, verificación del 
+resultado y documentación de decisiones e incidencias vinculadas a RA y CE.
+Trabajo colaborativo: resolución de incidencias por parejas, rotación de funciones, revisión 
+entre iguales y comprobación individual de los aprendizajes.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+19/49
+Nº edición: 04 
+Proyecto intermodular: servidor y cliente de pruebas comunes y evidencias compartidas con el 
+proyecto Proxmox, manteniendo la evaluación propia de ASO.
+Uso de TIC: máquinas virtuales, Aules, documentación técnica, control de versiones y registros 
+de pruebas para un trabajo reproducible.
+Comunicación e idiomas: lectura guiada de documentación en inglés, glosarios y breves 
+explicaciones técnicas, con apoyos lingüísticos.
+Igualdad y orientación profesional: ejemplos diversos de profesionales, reparto equitativo de 
+tareas y análisis de roles de administración y soporte.
+Autonomía y actualización: búsqueda contrastada de documentación, justificación de 
+soluciones y análisis de errores antes de aplicar cambios.
+Sostenibilidad y responsabilidad: reutilización del hardware, dimensionamiento de máquinas 
+virtuales, copias de seguridad y uso responsable de datos y credenciales.
+3.3. Recursos
+Recursos comunes: aula con equipos conectados en red, laboratorio de máquinas virtuales 
+Linux y Windows, terminal y herramientas de administración gráfica, Aules para guías, entregas 
+y rúbricas, y repositorio de documentación y scripts. Se emplearán las imágenes y licencias 
+disponibles en el centro y redes de prácticas aisladas cuando sea necesario.
+Documentación de consulta: manuales del sistema (man/help) y documentación oficial de GNU 
+Bash, PowerShell, Windows Server, OpenLDAP, Samba, systemd, OpenSSH y CUPS. El 
+profesorado publicará en Aules los enlaces y versiones utilizados. Para el proyecto se 
+reutilizarán el entorno Proxmox y los materiales coordinados con PI.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+20/49
+Nº edición: 04 
+4. UNIDADES
+UNIDADES
+ RESULTADOS DE APRENDIZAJE
+1
+2
+3
+4
+5
+6
+7
+UD1: Aplicación de lenguajes de «scripting» en 
+sistemas operativos libres y propietarios:
+X
+UD2: Administración de Procesos del Sistema.
+X
+UD3: Administración de servicio de directorio
+X
+UD4: Integración de sistemas operativos en red
+X
+UD5: Automatización de tareas y monitorización 
+del sistema
+X
+UD6: Servicios de acceso y administración 
+remota.
+X
+UD7: Administración de servidores de impresión.
+X
+Las horas de aplicación se desarrollarán con las actividades del apartado 6 o su equivalente 
+supervisado en el centro. El registro de aula y el plan individual identificarán ámbito, fechas y 
+duración efectiva, sin duplicar horas.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+21/49
+Nº edición: 04 
+Unidad didáctica 1
+Aplicación de lenguajes de «scripting» en sistemas 
+operativos libres y propietarios:
+Sesiones / 
+horas aula
+12 / 24 
+h
+Temporalización provisional: 24 h de aula (12 sesiones de 2 h) + 6 h de aplicación en empresa o centro = 30 h. 
+Véanse los apartados 1.3 y 6.
+Resultado(s) de 
+aprendizaje
+7. Utiliza lenguajes de guiones en sistemas operativos, describiendo su aplicación 
+y administrando servicios del sistema operativo
+Criterios de evaluación
+RA7.a. Se han utilizado y combinado las estructuras del lenguaje para crear guiones
+RA7.b. Se han utilizado herramientas para depurar errores sintácticos y de ejecución
+RA7.c. Se han interpretado guiones de configuración del sistema operativo
+RA7.d. Se han realizado cambios y adaptaciones de guiones del sistema
+RA7.e. Se han creado y probado guiones de administración de servicios
+RA7.f. Se han creado y probado guiones de automatización de tareas
+RA7.g. Se han implantado guiones en sistemas libres y propietarios
+RA7.h. Se han consultado y utilizado librerías de funciones
+RA7.i. Se han documentado los guiones creados
+Competencias personales y sociales. Aprendizajes de carácter transversal
+n) Gestionar y/o realizar el mantenimiento de los recursos de su área (programando y verificando su cumplimiento), en 
+función de las cargas de trabajo y el plan de mantenimiento.
+o) Mantener el espíritu de innovación y actualización en el ámbito de su trabajo para adaptarse a los cambios 
+tecnológicos y organizativos de su entorno profesional.
+q) Resolver problemas y tomar decisiones individuales, siguiendo las normas y procedimientos establecidos, definidos 
+dentro del ámbito de su competencia.
+Objetivos de aprendizaje
+a) Analizar la estructura del software de base, comparando las características y prestaciones de sistemas libres y 
+propietarios, para administrar sistemas operativos de servidor.
+q) Identificar formas de intervención en situaciones colectivas, analizando el proceso de toma de decisiones y 
+efectuando consultas para liderar las mismas.
+Tipificación de actividades formativas
+Introducción
+Formativas no evaluables
+Formativas evaluables
+Búsqueda de manuales de shell 
+script y comandos Linux.
+Búsqueda de manuales de 
+PowerShell y comandos 
+Windows.
+Repaso de comandos Linux.
+Repaso de comandos Windows.
+Creación primeros scripts de nivel 
+bajo.
+Depuración de scripts.
+Actividades de proyecto intermodular
+Preparar para el nodo Proxmox dos scripts Bash: uno de inventario del servidor y otro de copia del servicio. 
+Probar una ejecución correcta y un caso de error, verificar la restauración y documentar los resultados en la 
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+22/49
+Nº edición: 04 
+Unidad didáctica 1
+Aplicación de lenguajes de «scripting» en sistemas 
+operativos libres y propietarios:
+Sesiones / 
+horas aula
+12 / 24 
+h
+memoria del proyecto.
+Actividades de refuerzo
+Actividades de profundización
+Creación de scripts y comandos anidados.
+Creación de scripts avanzados, usando estructura 
+de datos y funciones.
+Actividades de recuperación
+Corrección de las prácticas y pruebas no superadas.
+Si se han facilitado las soluciones, realización de nuevas prácticas o pruebas de características similares.
+Actividades Complementarias
+Búsqueda de manuales avanzados de shellscript y comandos Linux.
+Búsqueda de manuales avanzados de PowerShell y comandos Windows.
+Actividades CLIL
+Lectura guiada de un ejemplo de Bash o PowerShell en inglés; glosario de variables, bucles, funciones y errores y 
+comentario breve de un script. Se integra en las horas de la unidad con apoyos lingüísticos y sin una ponderación de 
+idioma independiente de los CE técnicos.
+Materiales y recursos disponibles
+Linux, Windows y PowerShell; editor, terminal, manuales Bash/PowerShell y guías y rúbrica de scripting en Aules.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+23/49
+Nº edición: 04 
+Unidad didáctica 2
+Administración de Procesos del Sistema.
+Sesiones / 
+horas aula
+4 / 8 h
+Temporalización provisional: 8 h de aula (4 sesiones de 2 h) + 4 h de aplicación en empresa o centro = 12 h. Véanse 
+los apartados 1.3 y 6.
+Resultado(s) de 
+aprendizaje
+2. Administra procesos del sistema describiéndolos y aplicando criterios de 
+seguridad y eficiencia
+Criterios de evaluación
+RA2.a. Se han descrito el concepto de proceso del sistema, tipos, estados y ciclo de vida
+RA2.b. Se han utilizado interrupciones y excepciones para describir los eventos internos del procesador
+RA2.c. Se ha diferenciado entre proceso, hilo y trabajo
+RA2.d. Se han realizado tareas de creación, manipulación y terminación de procesos
+RA2.e. Se ha utilizado el sistema de archivos como medio lógico para el registro e identificación de los 
+procesos del sistema
+RA2.f. Se han utilizado herramientas gráficas y comandos para el control y seguimiento de los procesos del 
+sistema
+RA2.g. Se ha comprobado la secuencia de arranque del sistema, los procesos implicados y la relación entre 
+ellos
+RA2.h. Se han tomado medidas de seguridad ante la aparición de procesos no identificados
+RA2.i. Se han documentado los procesos habituales del sistema, su función y relación entre ellos
+Competencias personales y sociales. Aprendizajes de carácter transversal
+m) Diagnosticar las disfunciones del sistema y adoptar las medidas correctivas para restablecer su funcionalidad.
+n) Gestionar y/o realizar el mantenimiento de los recursos de su área (programando y verificando su cumplimiento), en 
+función de las cargas de trabajo y el plan de mantenimiento.
+Objetivos de aprendizaje
+o) Establecer la planificación de tareas, analizando actividades y cargas de trabajo del sistema para gestionar el 
+mantenimiento.
+q) Identificar formas de intervención en situaciones colectivas, analizando el proceso de toma de decisiones y 
+efectuando consultas para liderar las mismas.
+Tipificación de actividades formativas
+Introducción
+Formativas no evaluables
+Formativas evaluables
+Presentación de la gestión de 
+procesos, hilos y trabajos en 
+Windows y Linux.
+Búsqueda de gestión de proceso 
+en diferentes sistemas operativos.
+Gestión de la planificación de 
+procesos.
+Evaluar el proceso de inicio de 
+sistema.
+Actividades de proyecto intermodular
+Comprobar en el servidor del proyecto el estado y el arranque del servicio elegido; consultar procesos y 
+registros, resolver una incidencia de prueba y documentar el diagnóstico en la memoria.
+Actividades de refuerzo
+Actividades de profundización
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+24/49
+Nº edición: 04 
+Unidad didáctica 2
+Administración de Procesos del Sistema.
+Sesiones / 
+horas aula
+4 / 8 h
+Ejecución de diversos métodos de gestión de 
+procesos en Windows y Linux.
+Creación de scripts para la gestión de procesos.
+Diferenciación entre procesos, hilos y trabajos.
+Actividades de recuperación
+Corrección de las prácticas y pruebas no superadas.
+Si se han facilitado las soluciones, realización de nuevas prácticas o pruebas de características similares.
+Actividades Complementarias
+Búsqueda de información sobre automatización de procesos del sistema en Windows y Linux.
+Actividades CLIL
+Interpretación de ayuda y mensajes sobre procesos y servicios en inglés; glosario de process, thread, state, priority y 
+service y explicación de una incidencia. Se integra en las horas de la unidad con apoyos lingüísticos y sin una 
+ponderación de idioma independiente de los CE técnicos.
+Materiales y recursos disponibles
+Máquinas virtuales Linux/Windows; herramientas de procesos, servicios, arranque y registros; casos de incidencia y 
+guías en Aules.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+25/49
+Nº edición: 04 
+Unidad didáctica 3
+Administración de servicio de directorio
+Sesiones / 
+horas aula
+8 / 16 h
+Temporalización provisional: 16 h de aula (8 sesiones de 2 h) + 2 h de aplicación en empresa o centro = 18 h. Véanse 
+los apartados 1.3 y 6.
+Resultado(s) de 
+aprendizaje
+1. Administra el servicio de directorio interpretando especificaciones e integrándolo 
+en una red
+Criterios de evaluación
+RA1.a. Se han identificado la función, los elementos y las estructuras lógicas del servicio de directorio
+RA1.b. Se ha determinado y creado el esquema del servicio de directorio
+RA1.c. Se ha realizado la instalación del servicio de directorio en el servidor
+RA1.d. Se ha realizado la configuración y personalización del servicio de directorio
+RA1.e. Se ha integrado el servicio de directorio con otros servicios
+RA1.f. Se han aplicado filtros de búsqueda en el servicio de directorio
+RA1.g. Se ha utilizado el servicio de directorio como mecanismo de acreditación centralizada de los 
+usuarios en una red
+RA1.h. Se ha realizado la configuración del cliente para su integración en el servicio de directorio
+RA1.i. Se han utilizado herramientas gráficas y comandos para la administración del servicio de directorio
+RA1.j. Se ha documentado la estructura e implantación del servicio de directorio
+Competencias personales y sociales. Aprendizajes de carácter transversal
+a) Administrar sistemas operativos de servidor, instalando y configurando el software, en condiciones de calidad para 
+asegurar el funcionamiento del sistema.
+l) Administrar usuarios de acuerdo a las especificaciones de explotación para garantizar los accesos y la disponibilidad 
+de los recursos del sistema.
+ñ) Efectuar consultas, dirigiéndose a la persona adecuada y saber respetar la autonomía de los subordinados, 
+informando cuando sea conveniente.
+o) Mantener el espíritu de innovación y actualización en el ámbito de su trabajo para adaptarse a los cambios 
+tecnológicos y organizativos de su entorno profesional.
+q) Resolver problemas y tomar decisiones individuales, siguiendo las normas y procedimientos establecidos, definidos 
+dentro del ámbito de su competencia.
+Objetivos de aprendizaje
+b) Instalar y configurar el software de base, siguiendo documentación técnica y especificaciones dadas, para 
+administrar sistemas operativos de servidor.
+n) Asignar los accesos y recursos del sistema, aplicando las especificaciones de la explotación, para administrar 
+usuarios.
+Tipificación de actividades formativas
+Introducción
+Formativas no evaluables
+Formativas evaluables
+Funcionamiento de LDAP.
+Evolución de la gestión de 
+usuarios con LDAP.
+Instalación y configuración de 
+LDAP.
+Instalación y configuración de 
+Active Directory
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+26/49
+Nº edición: 04 
+Unidad didáctica 3
+Administración de servicio de directorio
+Sesiones / 
+horas aula
+8 / 16 h
+Creación de usuarios.
+Actividades de proyecto intermodular
+Si el servicio aprobado utiliza LDAP, instalar el directorio e integrar un cliente de pruebas; documentar 
+configuración y resultados. Si no se utiliza LDAP, trabajar y evaluar el RA1 en las actividades propias de 
+ASO.
+Actividades de refuerzo
+Actividades de profundización
+Modificación de la estructura de usuarios en función 
+de los requisitos solicitados.
+Creación de script y uso de entorno gráfico para la 
+gestión del servicio de directorio.
+Actividades de recuperación
+Corrección de las prácticas y pruebas no superadas.
+Si se han facilitado las soluciones, realización de nuevas prácticas o pruebas de características similares.
+Actividades Complementarias
+Análisis funcional del servicio de directorio y su integración en la estructura de red del sistema.
+Actividades CLIL
+Lectura guiada de documentación LDAP o Active Directory en inglés; identificación de entry, attribute, group y filter y 
+explicación de una consulta. Se integra en las horas de la unidad con apoyos lingüísticos y sin una ponderación de 
+idioma independiente de los CE técnicos.
+Materiales y recursos disponibles
+Servidor y cliente de laboratorio; OpenLDAP y/o Active Directory, herramientas de consulta y administración; guías y 
+evidencias en Aules.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+27/49
+Nº edición: 04 
+Unidad didáctica 4
+Integración de sistemas operativos en red
+Sesiones / 
+horas aula
+8 / 16 h
+Temporalización provisional: 16 h de aula (8 sesiones de 2 h) + 8 h de aplicación en empresa o centro = 24 h. Véanse 
+los apartados 1.3 y 6.
+Resultado(s) de 
+aprendizaje
+6. Integra sistemas operativos libres y propietarios, justificando y garantizando su 
+interoperabilidad
+Criterios de evaluación
+RA6.a. Se ha identificado la necesidad de compartir recursos en red entre diferentes sistemas operativos
+RA6.b. Se han establecido niveles de seguridad para controlar el acceso del cliente a los recursos 
+compartidos en red
+RA6.c. Se ha comprobado la conectividad de la red en un escenario heterogéneo
+RA6.d. Se ha descrito la funcionalidad de los servicios que permiten compartir recursos en red
+RA6.e. Se han instalado y configurado servicios para compartir recursos en red
+RA6.f. Se ha comprobado el funcionamiento de los servicios instalados
+RA6.g. Se ha trabajado en grupo para acceder a sistemas de archivos e impresoras en red desde equipos 
+con diferentes sistemas operativos
+RA6.h. Se ha documentado la configuración de los servicios instalados
+Competencias personales y sociales. Aprendizajes de carácter transversal
+a) Administrar sistemas operativos de servidor, instalando y configurando el software, en condiciones de calidad para 
+asegurar el funcionamiento del sistema.
+l) Administrar usuarios de acuerdo a las especificaciones de explotación para garantizar los accesos y la disponibilidad 
+de los recursos del sistema.
+m) Diagnosticar las disfunciones del sistema y adoptar las medidas correctivas para restablecer su funcionalidad.
+n) Gestionar y/o realizar el mantenimiento de los recursos de su área (programando y verificando su cumplimiento), en 
+función de las cargas de trabajo y el plan de mantenimiento.
+ñ) Efectuar consultas, dirigiéndose a la persona adecuada y saber respetar la autonomía de los subordinados, 
+informando cuando sea conveniente.
+o) Mantener el espíritu de innovación y actualización en el ámbito de su trabajo para adaptarse a los cambios 
+tecnológicos y organizativos de su entorno profesional.
+q) Resolver problemas y tomar decisiones individuales, siguiendo las normas y procedimientos establecidos, definidos 
+dentro del ámbito de su competencia.
+Objetivos de aprendizaje
+a) Analizar la estructura del software de base, comparando las características y prestaciones de sistemas libres y 
+propietarios, para administrar sistemas operativos de servidor.
+b) Instalar y configurar el software de base, siguiendo documentación técnica y especificaciones dadas, para 
+administrar sistemas operativos de servidor.
+n) Asignar los accesos y recursos del sistema, aplicando las especificaciones de la explotación, para administrar 
+usuarios.
+ñ) Aplicar técnicas de monitorización interpretando los resultados y relacionándolos con las medidas correctoras para 
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+28/49
+Nº edición: 04 
+Unidad didáctica 4
+Integración de sistemas operativos en red
+Sesiones / 
+horas aula
+8 / 16 h
+diagnosticar y corregir las disfunciones.
+o) Establecer la planificación de tareas, analizando actividades y cargas de trabajo del sistema para gestionar el 
+mantenimiento.
+q) Identificar formas de intervención en situaciones colectivas, analizando el proceso de toma de decisiones y 
+efectuando consultas para liderar las mismas.
+Tipificación de actividades formativas
+Introducción
+Formativas no evaluables
+Formativas evaluables
+Necesidad de la integración de 
+sistemas.
+Evolución de los diferentes 
+sistemas de integración de 
+sistemas operativos.
+Instalación y configuración de 
+servicios de red.
+Actividades de proyecto intermodular
+Si el servicio elegido requiere compartir recursos, configurar permisos y comprobar el acceso cliente-
+servidor. Incorporar pruebas entre sistemas libres y propietarios cuando se utilicen como evidencia del RA6; 
+documentar la configuración y las pruebas.
+Actividades de refuerzo
+Actividades de profundización
+Instalación de servidor compartido de recursos.
+Creación de usuarios y grupos en Samba.
+Virtualización de servicios.
+Despliegue de sistemas virtualizados
+Actividades de recuperación
+Corrección de las prácticas y pruebas no superadas.
+Si se han facilitado las soluciones, realización de nuevas prácticas o pruebas de características similares.
+Actividades Complementarias
+Instalación de servicios en Docker
+Instalación y configuración de Nextcloud
+Actividades CLIL
+Consulta de documentación Samba en inglés; glosario de share, permission y access y descripción de una prueba 
+cliente-servidor. Se integra en las horas de la unidad con apoyos lingüísticos y sin una ponderación de idioma 
+independiente de los CE técnicos.
+Materiales y recursos disponibles
+Clientes Linux/Windows, Samba y red de prácticas; usuarios, grupos y recursos compartidos; matriz de pruebas de 
+permisos en Aules.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+29/49
+Nº edición: 04 
+Unidad didáctica 5
+Automatización de tareas y monitorización del sistema
+Sesiones / 
+horas aula
+8 / 16 h
+Temporalización provisional: 16 h de aula (8 sesiones de 2 h) + 5 h de aplicación en empresa o centro = 21 h. Véanse 
+los apartados 1.3 y 6.
+Resultado(s) de 
+aprendizaje
+3. Gestiona la automatización de tareas del sistema, aplicando criterios de 
+eficiencia y utilizando comandos y herramientas gráficas
+Criterios de evaluación
+RA3.a. Se han descrito las ventajas de la automatización de las tareas repetitivas en el sistema
+RA3.b. Se han utilizado los comandos del sistema para la planificación de tareas
+RA3.c. Se han establecido restricciones de seguridad
+RA3.d. Se han realizado planificaciones de tareas repetitivas o puntuales relacionadas con la 
+administración del sistema
+RA3.e. Se ha automatizado la administración de cuentas
+RA3.f. Se han instalado y configurado herramientas gráficas para la planificación de tareas
+RA3.g. Se han utilizado herramientas gráficas para la planificación de tareas
+RA3.h. Se han documentado los procesos programados como tareas automáticas
+Competencias personales y sociales. Aprendizajes de carácter transversal
+a) Administrar sistemas operativos de servidor, instalando y configurando el software, en condiciones de calidad para 
+asegurar el funcionamiento del sistema.
+m) Diagnosticar las disfunciones del sistema y adoptar las medidas correctivas para restablecer su funcionalidad.
+n) Gestionar y/o realizar el mantenimiento de los recursos de su área (programando y verificando su cumplimiento), en 
+función de las cargas de trabajo y el plan de mantenimiento.
+Objetivos de aprendizaje
+ñ) Aplicar técnicas de monitorización interpretando los resultados y relacionándolos con las medidas correctoras para 
+diagnosticar y corregir las disfunciones.
+o) Establecer la planificación de tareas, analizando actividades y cargas de trabajo del sistema para gestionar el 
+mantenimiento.
+Tipificación de actividades formativas
+Introducción
+Formativas no evaluables
+Formativas evaluables
+Monitorización del sistema
+Búsqueda de diferentes 
+herramientas de monitorización y 
+automatización de tareas.
+Creación de tareas programadas 
+en Windows y Linux.
+Uso de herramientas de 
+monitorización de tareas en 
+Windows y Linux.
+Actividades de proyecto intermodular
+Si el proyecto incorpora tareas programadas, configurar una tarea de mantenimiento o copia con cron o 
+temporizadores, revisar su registro y documentar la ejecución. Si no se incorpora, trabajar y evaluar el RA3 
+en ASO.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+30/49
+Nº edición: 04 
+Unidad didáctica 5
+Automatización de tareas y monitorización del sistema
+Sesiones / 
+horas aula
+8 / 16 h
+Actividades de refuerzo
+Actividades de profundización
+Modificación de tareas programadas.
+Análisis del sistema a través de la monitorización
+Instalación y configuración de herramientas para la 
+creación de tareas y monitorización.
+Análisis de la seguridad del sistema.
+Actividades de recuperación
+Corrección de las prácticas y pruebas no superadas.
+Si se han facilitado las soluciones, realización de nuevas prácticas o pruebas de características similares.
+Actividades Complementarias
+Búsqueda de herramientas para garantizar la seguridad del sistema.
+Actividades CLIL
+Lectura de ejemplos y mensajes de cron, systemd timers o Task Scheduler en inglés; interpretación de schedule, 
+trigger y log y documentación de una tarea. Se integra en las horas de la unidad con apoyos lingüísticos y sin una 
+ponderación de idioma independiente de los CE técnicos.
+Materiales y recursos disponibles
+Laboratorio reutilizado; cron/at, temporizadores systemd y programador de tareas de Windows; scripts de partida y 
+registros.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+31/49
+Nº edición: 04 
+Unidad didáctica 6
+Servicios de acceso y administración remota.
+Sesiones / 
+horas aula
+4 / 8 h
+Temporalización provisional: 8 h de aula (4 sesiones de 2 h) + 4 h de aplicación en empresa o centro = 12 h. Véanse 
+los apartados 1.3 y 6.
+Resultado(s) de 
+aprendizaje
+4. Administra de forma remota el sistema operativo en red valorando su 
+importancia y aplicando criterios de seguridad
+Criterios de evaluación
+RA4.a. Se han descrito métodos de acceso y administración remota de sistemas
+RA4.b. Se ha diferenciado entre los servicios orientados a sesión y los no orientados a sesión
+RA4.c. Se han utilizado herramientas de administración remota suministradas por el propio sistema 
+operativo
+RA4.d. Se han instalado servicios de acceso y administración remota
+RA4.e. Se han utilizado comandos y herramientas gráficas para gestionar los servicios de acceso y 
+administración remota
+RA4.f. Se han creado cuentas de usuario para el acceso remoto
+RA4.g. Se han realizado pruebas de acceso y administración remota entre sistemas heterogéneos
+RA4.h. Se han utilizado mecanismos de encriptación de la información transferida
+RA4.i. Se han documentado los procesos y servicios del sistema administrados de forma remota
+Competencias personales y sociales. Aprendizajes de carácter transversal
+a) Administrar sistemas operativos de servidor, instalando y configurando el software, en condiciones de calidad para 
+asegurar el funcionamiento del sistema.
+ñ) Efectuar consultas, dirigiéndose a la persona adecuada y saber respetar la autonomía de los subordinados, 
+informando cuando sea conveniente.
+o) Mantener el espíritu de innovación y actualización en el ámbito de su trabajo para adaptarse a los cambios 
+tecnológicos y organizativos de su entorno profesional.
+q) Resolver problemas y tomar decisiones individuales, siguiendo las normas y procedimientos establecidos, definidos 
+dentro del ámbito de su competencia.
+r) Gestionar su carrera profesional, analizando las oportunidades de empleo, autoempleo y de aprendizaje.
+s) Participar de forma activa en la vida económica, social y cultural con actitud crítica y responsable.
+Objetivos de aprendizaje
+b) Instalar y configurar el software de base, siguiendo documentación técnica y especificaciones dadas, para 
+administrar sistemas operativos de servidor.
+q) Identificar formas de intervención en situaciones colectivas, analizando el proceso de toma de decisiones y 
+efectuando consultas para liderar las mismas.
+Tipificación de actividades formativas
+Introducción
+Formativas no evaluables
+Formativas evaluables
+Necesidad de la gestión remota
+Búsqueda de diferentes 
+protocolos de gestión remota en 
+Windows y Linux.
+Configuración del escritorio 
+remoto.
+Instalación y uso del servicio ssh.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+32/49
+Nº edición: 04 
+Unidad didáctica 6
+Servicios de acceso y administración remota.
+Sesiones / 
+horas aula
+4 / 8 h
+Actividades de proyecto intermodular
+Configurar el acceso administrativo por SSH al servidor del proyecto, verificar el acceso cifrado desde el 
+cliente y documentar la configuración y las pruebas.
+Actividades de refuerzo
+Actividades de profundización
+Configuración del sistema a través de la gestión 
+remota
+Diferentes herramientas de control remoto.
+Actividades de recuperación
+Corrección de las prácticas y pruebas no superadas.
+Si se han facilitado las soluciones, realización de nuevas prácticas o pruebas de características similares.
+Actividades Complementarias
+Situación actual de la gestión remota. Protocolos más utilizados
+Riesgos de la gestión remota
+Actividades CLIL
+Consulta de documentación OpenSSH o acceso remoto en inglés; glosario de key, host, session y encryption y 
+explicación de una conexión segura. Se integra en las horas de la unidad con apoyos lingüísticos y sin una 
+ponderación de idioma independiente de los CE técnicos.
+Materiales y recursos disponibles
+Servidor y cliente de prácticas; OpenSSH y herramientas de escritorio remoto disponibles; claves de prueba y guía de 
+verificación.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+33/49
+Nº edición: 04 
+Unidad didáctica 7
+Administración de servidores de impresión.
+Sesiones / 
+horas aula
+2 / 4 h
+Temporalización provisional: 4 h de aula (2 sesiones de 2 h) + 2 h de aplicación en empresa o centro = 6 h. Véanse los 
+apartados 1.3 y 6.
+Resultado(s) de 
+aprendizaje
+5. Administra servidores de impresión describiendo sus funciones e integrándolos 
+en una red
+Criterios de evaluación
+RA5.a. Se ha descrito la funcionalidad de los sistemas y servidores de impresión
+RA5.b. Se han identificado los puertos y los protocolos utilizados
+RA5.c. Se han utilizado las herramientas para la gestión de impresoras integradas en el sistema operativo
+RA5.d. Se ha instalado y configurado un servidor de impresión en entorno Web
+RA5.e. Se han creado y clasificado impresoras lógicas
+RA5.f. Se han creado grupos de impresión
+RA5.g. Se han gestionado impresoras y colas de trabajos mediante comandos y herramientas gráficas
+RA5.h. Se han compartido impresoras en red entre sistemas operativos diferentes
+RA5.i. Se ha documentado la configuración del servidor de impresión y de las impresoras creadas
+Competencias personales y sociales. Aprendizajes de carácter transversal
+a) Administrar sistemas operativos de servidor, instalando y configurando el software, en condiciones de calidad para 
+asegurar el funcionamiento del sistema.
+n) Gestionar y/o realizar el mantenimiento de los recursos de su área (programando y verificando su cumplimiento), en 
+función de las cargas de trabajo y el plan de mantenimiento.
+ñ) Efectuar consultas, dirigiéndose a la persona adecuada y saber respetar la autonomía de los subordinados, 
+informando cuando sea conveniente.
+o) Mantener el espíritu de innovación y actualización en el ámbito de su trabajo para adaptarse a los cambios 
+tecnológicos y organizativos de su entorno profesional.
+q) Resolver problemas y tomar decisiones individuales, siguiendo las normas y procedimientos establecidos, definidos 
+dentro del ámbito de su competencia.
+s) Participar de forma activa en la vida económica, social y cultural con actitud crítica y responsable.
+Objetivos de aprendizaje
+a) Analizar la estructura del software de base, comparando las características y prestaciones de sistemas libres y 
+propietarios, para administrar sistemas operativos de servidor.
+b) Instalar y configurar el software de base, siguiendo documentación técnica y especificaciones dadas, para 
+administrar sistemas operativos de servidor.
+n) Asignar los accesos y recursos del sistema, aplicando las especificaciones de la explotación, para administrar 
+usuarios.
+ñ) Aplicar técnicas de monitorización interpretando los resultados y relacionándolos con las medidas correctoras para 
+diagnosticar y corregir las disfunciones.
+o) Establecer la planificación de tareas, analizando actividades y cargas de trabajo del sistema para gestionar el 
+mantenimiento.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+34/49
+Nº edición: 04 
+Unidad didáctica 7
+Administración de servidores de impresión.
+Sesiones / 
+horas aula
+2 / 4 h
+q) Identificar formas de intervención en situaciones colectivas, analizando el proceso de toma de decisiones y 
+efectuando consultas para liderar las mismas.
+Tipificación de actividades formativas
+Introducción
+Formativas no evaluables
+Formativas evaluables
+Servicios de impresión.
+Búsqueda de diferentes servicios 
+de impresión en los sistemas 
+actuales.
+Comandos para la gestión de 
+impresoras y trabajos.
+Servicios de impresión en Linux a 
+través de Samba y CUPS.
+Configuración de Rol de 
+impresión en Windows.
+Actividades de proyecto intermodular
+Si el servicio aprobado es de impresión, instalar CUPS, gestionar una cola y comprobar un trabajo desde el 
+cliente; documentar las pruebas. Si no se elige impresión, trabajar y evaluar el RA5 en ASO.
+Actividades de refuerzo
+Actividades de profundización
+Instalación y configuración de CUPS.
+Instalación y configuración de servicios de impresión 
+en Windows.
+Protocolos avanzados de impresión en Windows y 
+Linux.
+Actividades de recuperación
+Corrección de las prácticas y pruebas no superadas.
+Si se han facilitado las soluciones, realización de nuevas prácticas o pruebas de características similares.
+Actividades Complementarias
+Impresoras virtuales
+Actividades CLIL
+Lectura guiada de documentación CUPS y mensajes de cola en inglés; glosario de queue, job, printer y driver y 
+descripción de una prueba de impresión. Se integra en las horas de la unidad con apoyos lingüísticos y sin una 
+ponderación de idioma independiente de los CE técnicos.
+Materiales y recursos disponibles
+CUPS y servicio de impresión de Windows cuando esté disponible; impresora física o virtual, clientes y guía de gestión 
+de colas.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+35/49
+Nº edición: 04 
+5. PROYECTO INTERMODULAR
+5.1. Especificaciones
+La coordinación se establece con el módulo de Proyecto intermodular (PI), mediante la 
+construcción, instalación y administración de un nodo Proxmox individual con máquinas 
+virtuales o contenedores y servicios Linux automatizados. Cada estudiante trabaja con 
+hardware reutilizado autorizado o con Proxmox virtualizado en VirtualBox. Se utiliza un entorno 
+de prácticas independiente de la infraestructura de producción del centro.
+El producto incluye un nodo administrable, una plantilla Linux, dos invitados (servidor srv-aso y 
+cliente de pruebas), un servicio de ASO aprobado, dos scripts Bash de inventario y copia del 
+servicio, un playbook Ansible útil ejecutado sobre el servidor, copias y restauración 
+comprobada, pruebas y memoria Markdown en un repositorio individual de GitHub.
+PI desarrolla Proxmox y profundiza en Ansible. ASO aporta los conocimientos de Linux, 
+procesos y servicios, scripting, permisos, integración y administración remota que el alumnado 
+aplica en el proyecto. El servicio se acuerda según los conocimientos disponibles; Samba es 
+una opción, no se exige desplegar todos los servicios. LDAP y CUPS solo se incorporarán si 
+forman parte del servicio elegido o de una ampliación aprobada. Un proyecto realizado 
+únicamente con Linux o Bash no acredita por sí solo los CE que requieren sistemas 
+heterogéneos o guiones en sistemas propietarios.
+5.2. Distribución de elementos curriculares
+Las referencias RA/CE de esta tabla corresponden a ASO, no a los RA propios de PI. Son 
+conexiones propuestas para seleccionar evidencias concretas; no suponen cobertura 
+automática de un RA completo.
+Aportación de ASO
+Unidad / RA
+CE candidatos 
+para la 
+coordinación
+Evidencia
+Procesos y 
+operación del 
+servicio
+UD2 / RA2
+RA2.d, f, g, i
+Estado, arranque, registros, 
+diagnóstico y documentación 
+del servicio.
+Scripts de 
+inventario y copia
+UD1 / RA7
+RA7.a, b, e, f, i
+Dos scripts propios adaptados; 
+caso correcto y caso de error; 
+copia y recuperación 
+verificadas.
+Integración y 
+permisos, según 
+servicio
+UD4 / RA6
+RA6.b, e, f, h
+Configuración y pruebas cliente-
+servidor; completar la 
+heterogeneidad exigida por el 
+CE cuando corresponda.
+Tareas 
+programadas, si se 
+incorporan
+UD5 / RA3
+RA3.b, d, h
+Programación con cron o timers 
+y registros. Ejecutar Ansible 
+manualmente no acredita por sí 
+solo planificación temporal.
+Administración 
+remota
+UD6 / RA4
+RA4.d, e, h, i
+SSH, acceso administrativo, 
+cifrado y documentación.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+36/49
+Nº edición: 04 
+Aportación de ASO
+Unidad / RA
+CE candidatos 
+para la 
+coordinación
+Evidencia
+Directorio, 
+condicionado a la 
+elección
+UD3 / RA1
+RA1.c, d, h, j
+Instalación de LDAP e 
+integración de cliente si el 
+servicio lo requiere.
+Impresión, 
+condicionado a la 
+elección
+UD7 / RA5
+RA5.d, g, i
+CUPS, gestión de colas y 
+documentación si se elige este 
+servicio.
+La coordinación se realizará antes de S13 (base Linux y SSH), S21 (servicio, permisos y 
+pruebas) y S26 (Bash y equipo controlador de Ansible). Se comprobarán los aprendizajes 
+disponibles y se acordarán apoyos o un servicio equivalente si falta algún requisito. Estas 
+referencias son hitos del PI, no fechas confirmadas del calendario de ASO.
+Las evidencias compartidas se localizarán en la memoria del proyecto, sin exigir otra memoria 
+paralela. Cada módulo valorará sus propios RA y CE; no se trasladará automáticamente la nota 
+de PI a ASO ni se sumarán horas por duplicado. Los aprendizajes de ASO que no cubra el 
+servicio seleccionado seguirán trabajándose y evaluándose en ASO.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+37/49
+Nº edición: 04 
+6. PLAN FORMATIVO EN EMPRESA
+PLAN PROVISIONAL Y ADAPTABLE A CADA EMPRESA. ASO participará mediante tareas de 
+administración, soporte y documentación acordes con la actividad del destino. La tabla 
+siguiente propone una selección; no obliga a que todas las empresas ofrezcan los siete RA. 
+Antes de la incorporación, las tutorías del centro y de la empresa y el profesorado de ASO 
+concretarán los RA y CE viables, tareas, entorno, fechas, horas, evidencias y personas 
+responsables en el plan individual.
+La ventana general de estancia comunicada por el centro va del 6 de abril al 18 de junio de 
+2027; las fechas y jornadas individuales se acordarán con cada empresa. Las 400 horas de 
+segundo corresponden al conjunto del ciclo. La aplicación de ASO del apartado 1.3 se 
+incorporará cuando existan tareas adecuadas; el resto se programará en el centro.
+Selección según el destino: en empresas de soporte se priorizarán procesos, acceso remoto y 
+documentación; en empresas con servidores se podrán incorporar recursos compartidos, 
+automatización y scripts. Directorio e impresión se incluirán si forman parte de la actividad real 
+y permiten intervenir con supervisión. Se admiten tecnologías equivalentes que acrediten el 
+mismo CE. Los criterios que exigen sistemas heterogéneos o guiones en sistemas libres y 
+propietarios se completarán en el centro cuando sea necesario.
+Modo de evaluación compartida: los porcentajes propuestos representan el peso de los CE 
+seleccionados dentro de cada RA, tomado del anexo I; no son porcentajes de horas ni una nota 
+numérica emitida por la empresa. El centro trabaja la base de todos los RA y evalúa los CE 
+restantes. Para los CE seleccionados, el docente integra las evidencias, la valoración de la 
+tutoría de empresa y, si se necesita, una comprobación individual. Cada CE recibe una única 
+calificación; no se duplican las notas de las prácticas de aula y de empresa.
+Adaptación: si un RA no se activa en empresa, su reparto pasa a 100 % centro, 0 % empresa y 
+0 % ampliación. Si solo se activa parte de los CE propuestos, el porcentaje de empresa será la 
+suma de sus pesos en el anexo I y el de centro, el complemento a 100 %. El plan y sus 
+cambios se documentarán y comunicarán al alumnado antes de su aplicación. La falta de 
+oportunidades en el destino no penaliza: se ofrece una alternativa de centro con el mismo CE y 
+peso. Esta alternativa para ASO no sustituye la fase de empresa exigida al conjunto del ciclo.
+Resultado de 
+aprendizaje
+Cent
+ro
+Empresa
+*
+Modo: CE 
+compartidos
+% Centro
+% 
+Empresa
+% 
+Ampliac.
+RA1. Directorio
+Sí
+Condicion
+al
+RA1.d, i, j
+70,00 %
+30,00 %
+0 %
+RA2. Procesos
+Sí
+Propuesto
+RA2.f, i
+77,77 %
+22,23 %
+0 %
+RA3. 
+Automatización
+Sí
+Propuesto
+RA3.d, h
+75,00 %
+25,00 %
+0 %
+RA4. Acceso 
+remoto
+Sí
+Propuesto
+RA4.e, i
+77,77 %
+22,23 %
+0 %
+RA5. Impresión
+Sí
+Condicion
+al
+RA5.g, i
+77,77 %
+22,23 %
+0 %
+RA6. Integración
+Sí
+Propuesto
+RA6.b, f, h
+62,50 %
+37,50 %
+0 %
+RA7. Scripting
+Sí
+Propuesto
+RA7.e, i
+77,77 %
+22,23 %
+0 %
+* Propuesto: se prioriza si el destino ofrece una tarea adecuada. Condicional: requiere 
+directorio o impresión disponible. Ambos casos se concretan en el plan individual. El 0 % de 
+ampliación indica que no se añaden bonificaciones ajenas a los CE; las tareas avanzadas se 
+valoran, si procede, dentro de los mismos criterios.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+38/49
+Nº edición: 04 
+Actividades formativas a realizar en la empresa relacionadas con los resultados de 
+aprendizaje
+RA / CE
+Actividad adaptable al 
+destino
+Evidencia prevista
+Alternativa en el centro
+Horas 
+orient
+.
+RA1.d, i, j
+Modificar con supervisión 
+una cuenta, grupo o ajuste 
+autorizado del directorio y 
+documentar el cambio.
+Registro anonimizado y 
+comprobación del 
+resultado.
+Directorio de laboratorio, 
+usuario y cliente de 
+pruebas.
+2
+RA2.f, i
+Consultar procesos, 
+consumo y registros; 
+identificar un servicio y 
+documentar su estado y 
+función ante una 
+incidencia.
+Ficha de incidencia, 
+herramientas y 
+observaciones 
+validadas.
+Diagnóstico y 
+seguimiento de 
+procesos en máquina 
+virtual.
+4
+RA3.d, h
+Configurar o revisar una 
+tarea periódica de 
+mantenimiento o copia y 
+documentar su ejecución.
+Planificación, registro y 
+explicación de la 
+comprobación.
+Tarea programada en 
+Linux o Windows con 
+registros.
+5
+RA4.e, i
+Gestionar una intervención 
+remota autorizada, revisar 
+el servicio y documentar el 
+procedimiento.
+Parte de intervención 
+sin credenciales y 
+validación de la tutoría.
+Acceso remoto al 
+servidor de laboratorio y 
+documentación.
+4
+RA5.g, i
+Gestionar una cola o 
+trabajo de impresión y 
+documentar configuración 
+o resolución de una 
+incidencia.
+Registro de trabajo y 
+ficha de configuración 
+sin datos de usuarios.
+CUPS o impresora 
+virtual, cliente y trabajo 
+de prueba.
+2
+RA6.b, f, h
+Revisar permisos de un 
+recurso compartido, 
+probar accesos 
+autorizados y denegados y 
+documentar la 
+configuración.
+Matriz de permisos y 
+pruebas con datos 
+ficticios o 
+anonimizados.
+Recurso Linux/Windows 
+y pruebas de acceso.
+8
+RA7.e, i
+Crear o adaptar un guion 
+de administración de un 
+servicio, probarlo y 
+documentar su uso.
+Script sin datos 
+sensibles, prueba 
+controlada y 
+explicación individual.
+Guion de administración 
+en el laboratorio y 
+documentación.
+6
+Las horas orientativas suman 31 y corresponden a la fase de aplicación provisional. No se 
+añaden a las 400 horas de empresa del ciclo ni son un reparto obligatorio por destino. La 
+preparación inicial se realiza en las horas de aula de cada unidad. El plan individual distribuirá 
+la aplicación entre empresa y centro y ajustará duraciones sin superar ni duplicar las 133 horas 
+del módulo.
+Seguimiento: reunión inicial para seleccionar tareas y medios; registro semanal breve de 
+actividad del alumnado; contacto entre tutorías al menos quincenal o con mayor frecuencia 
+ante incidencias; revisión intermedia y valoración final. La tutoría del centro y el docente de 
+ASO registrarán el seguimiento en los instrumentos del centro y en ITACA SAO-Gestión cuando 
+corresponda.
+Evaluación: la tutoría de empresa valorará los RA previstos como superado o no superado y 
+aportará observaciones cualitativas. El docente de ASO determinará la calificación numérica 
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+39/49
+Nº edición: 04 
+según los CE, las evidencias y las comprobaciones necesarias; «superado» no se transforma 
+automáticamente en una nota fija. Se contrastarán cumplimiento del CE, funcionamiento 
+verificado y documentación técnica. Los aprendizajes no superados se incorporarán a refuerzo 
+o recuperación en el centro.
+Información y evidencias: se utilizarán descripciones, datos de prueba y registros anonimizados 
+autorizados. No se entregarán credenciales, datos de clientes ni configuraciones sensibles. Si 
+no se pueden extraer evidencias, la tutoría de empresa podrá acreditar la tarea mediante 
+informe y el docente podrá realizar una entrevista técnica o demostración equivalente.
+Concreción individual: el plan identificará empresa y puesto o departamento, tutorías, RA/CE 
+seleccionados, actividades y tecnologías, calendario y horas, evidencias autorizadas, 
+porcentajes resultantes y alternativa de centro. Se revisará ante cambios de funciones o 
+medios, manteniendo la trazabilidad y la evaluación objetiva.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+40/49
+Nº edición: 04 
+7. EVALUACIÓN Y CALIFICACIÓN
+La evaluación del aprendizaje es un factor fundamental para garantizar la calidad del proceso 
+de enseñanza y aprendizaje. Por tanto, la evaluación es un proceso permanente y continuo, 
+aunque en algunos momentos se realicen acciones específicas con un fin determinado. En 
+función de cuál sea este momento, podemos diferenciar:
+
+Evaluación inicial o diagnóstica. Se realiza al comienzo del módulo, en septiembre, para 
+ajustar la planificación a las capacidades y necesidades del alumnado. Combina un 
+cuestionario de conocimientos previos y tareas breves de terminal, permisos, redes y 
+máquinas virtuales.
+Una vez analizadas las respuestas de todo el alumnado, el equipo educativo realizará 
+las adaptaciones necesarias de la propuesta didáctica.
+
+Evaluación continua. Se realiza durante el desarrollo de la unidad formativa y con ella 
+se puede valorar el progreso del alumnado, así como la calidad de la práctica docente. 
+Permite ir adaptándose a las circunstancias e imponderables que vayan surgiendo e ir 
+mejorando el proceso. 
+Al ser una evaluación competencial en el que se toma como referente los resultados 
+de aprendizaje, estos se ponderan en porcentajes indicando la relevancia que tienen en 
+el total de la calificación de la evaluación final del alumnado.
+Esta evaluación se realiza por medio de instrumentos de evaluación y criterios de 
+calificación que se indican en cada una de las actividades con calificación de la 
+programación de aula.
+
+Evaluación final. Si el/la alumno/a no supera por medio de la evaluación continua el 
+módulo, tendrá derecho a una evaluación en la convocatoria ordinaria y extraordinaria 
+de los RAs no superados. 
+7.1. Instrumentos de evaluación
+Código
+Nombre
+Descripción
+IE1
+Cuestionario
+Relación de preguntas con diferentes tipos de 
+respuestas (única, múltiple, respuesta breve ...)
+IE2
+Ejemplo guiado
+Tareas desarrolladas paso a paso, bajo supervisión 
+del docente, al tiempo que se sigue una serie de 
+explicaciones.
+IE3
+Resolución de actividades
+Tareas o ejercicios concretos y aislados de 
+aspectos curriculares, que pueden seguir una 
+secuencia lógica o acumulativa.
+IE4
+Prueba objetiva
+Conjunto de tareas teórico-prácticas con limitación 
+temporal.
+7.2. Criterios de calificación
+Las actividades de enseñanza-aprendizaje de evaluación contenidas en cada unidad 
+formativa serán valoradas de 0 a 10 puntos. Dichas actividades están asociadas a uno o más 
+Criterios de evaluación (e indirectamente, a uno o más resultados de aprendizaje).
+Para calcular la calificación de cada resultado de aprendizaje se tendrán en cuenta los criterios 
+de evaluación trabajados en cada actividad de enseñanza-aprendizaje.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+41/49
+Nº edición: 04 
+La calificación final se calculará como la media ponderada de los Resultados de Aprendizaje y 
+los Criterios de evaluación, según las ponderaciones detalladas en el Anexo I.
+Los criterios de calificación de cada resultado de aprendizaje se detallan en el anexo I.
+Para superar el módulo, el alumnado debe obtener una calificación igual o mayor a 5 en cada 
+RA.
+Los CE desarrollados en empresa se valorarán según el apartado 6, manteniendo los pesos del 
+anexo I. Si una actividad no se puede realizar por causas ajenas al alumnado, el mismo CE se 
+evaluará mediante la alternativa de centro. No se añadirá un porcentaje de empresa por 
+encima del 100 % del módulo.
+La calificación oficial del módulo se consignará entre 1 y 10, sin decimales, conforme al artículo 
+5 de la Orden 8/2025. Las valoraciones de actividades y RA se expresan internamente entre 0 
+y 10.
+7.3. Recuperación de los resultados de aprendizaje
+La recuperación de los RAs no superados y/o actividades se realizará durante el periodo lectivo 
+ordinario del curso de las siguientes maneras dependiendo de las características de las 
+actividades evaluables y del criterio docente:
+-
+Realización o rectificación de las mismas actividades evaluables asociadas al CE/RA 
+siempre que no se haya proporcionado las soluciones y/o no exista riesgo de copia.
+Actividades de recuperación complementarias que sustituyan a las no superadas, 
+especialmente cuando ya se hayan facilitado soluciones, manteniendo los CE y el nivel 
+de exigencia de la actividad original.
+-
+Pruebas escritas finales con contenido teórico-práctico. Cada elemento de la prueba 
+deberá indicar el RA asociado y su puntuación.
+Los RA no superados se valorarán con los mismos criterios del apartado 7.2, entre 0 y 10.
+La pérdida del derecho a la evaluación continua de un módulo se comunicará conforme a la 
+Orden 8/2025 y al procedimiento F15.PC02. El alumnado será evaluado de los RA afectados 
+mediante los procedimientos y en el momento previstos por el docente; si no supera el módulo 
+en la primera convocatoria, dispondrá de la convocatoria extraordinaria del mismo curso.
+El alumnado que no haya superado el módulo en la primera convocatoria podrá presentarse a 
+la extraordinaria del mismo curso. El docente facilitará un programa formativo específico que 
+indique los RA no superados, las actividades de recuperación, los criterios de evaluación y el 
+momento de realización. La calificación oficial del módulo en la convocatoria extraordinaria será 
+numérica, de 1 a 10 y sin decimales.
+7.4. Criterios de inasistencia
+Según los artículos 7 y 8 de la Orden 8/2025, de 22 de abril, y los apartados 8 y 9.5 de la 
+Resolución de 16 de julio de 2026, en régimen presencial la asistencia a las actividades 
+formativas mantiene la matrícula. La presencialidad será de al menos el 85 % y el centro 
+registrará las faltas de asistencia.
+Se perderá el derecho a la evaluación continua de un módulo al superar el 15 % de inasistencia 
+a sus actividades formativas. Al alcanzar el 10 %, el profesorado informará a la tutoría del 
+grupo. Superado el límite, el centro notificará de forma fehaciente la pérdida motivada y sus 
+consecuencias. El procedimiento interno se documentará mediante F15.PC02.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+42/49
+Nº edición: 04 
+El documento F15.PC02 será visado por Jefatura de estudios de Formación Profesional. La 
+pérdida de evaluación continua no impide la evaluación final. Se favorecerá la reincorporación 
+al seguimiento continuo cuando proceda conforme a la normativa y al procedimiento del centro, 
+dejando constancia de las medidas y evidencias requeridas.
+La pérdida de matrícula por inasistencia se produce al alcanzar el 15 % de horas de faltas 
+injustificadas del curso matriculado o por no asistir durante 10 días lectivos consecutivos. Para 
+el cómputo se excluyen los módulos pendientes de cursos anteriores y los convalidados o con 
+renuncia a convocatoria. El centro advertirá de la posibilidad de pérdida al llegar al 5 % de 
+inasistencia o a 8 días lectivos consecutivos sin justificar.
+Las faltas justificadas y las posibles medidas de flexibilización se valorarán conforme al artículo 
+8 de la Orden 8/2025 y al apartado 8.2 de las instrucciones de 2026/2027. La dirección del 
+centro tramitará la pérdida de matrícula con notificación y audiencia previa según el apartado 
+8.3 de dichas instrucciones.
+La pérdida del derecho a la evaluación continua de un módulo y la pérdida de matrícula son 
+situaciones distintas: la primera afecta al modo de evaluar ese módulo; la segunda supone la 
+pérdida de la plaza escolar del curso y de los módulos matriculados.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+43/49
+Nº edición: 04 
+8. EVALUACIÓN DE LA PRÁCTICA DOCENTE
+De acuerdo con el apartado 19 de la Resolución de 16 de julio de 2026, de la Secretaría 
+Autonómica de Educación, por la que se dictan instrucciones sobre ordenación académica y de 
+organización de los centros que impartan los grados D y E de Formación Profesional durante el 
+curso 2026-2027 en la Comunitat Valenciana, el profesorado evaluará la obtención de los 
+resultados de aprendizaje del alumnado, el proceso de enseñanza y su propia práctica docente 
+en relación con los reales decretos y el currículo del título, con las necesidades educativas del 
+entorno económico y productivo del centro y con las características del alumnado.
+Esta evaluación implicará la revisión, cuando proceda, del Proyecto Curricular del Ciclo 
+Formativo y de las programaciones didácticas.
+Al finalizar el curso académico, y a la vista de los resultados obtenidos por el alumnado, se 
+evaluará el desarrollo de la presente programación didáctica y de la práctica docente, teniendo 
+en consideración, entre otros, los siguientes aspectos:
+a) La adecuación de la secuenciación y temporalización de los resultados de aprendizaje, 
+criterios de evaluación y contenidos.
+b) La adecuación de la metodología utilizada y de las actividades de enseñanza-aprendizaje 
+desarrolladas.
+c) La idoneidad de los recursos, materiales, espacios y equipamientos utilizados.
+d) La adecuación de los procedimientos e instrumentos de evaluación y de los criterios de 
+calificación establecidos.
+e) La eficacia de las medidas adoptadas para atender a la diversidad y a las diferentes 
+necesidades del alumnado.
+f) Los resultados obtenidos por el alumnado, tanto en el centro educativo como, cuando 
+corresponda, durante la fase de formación en empresa u organismo equiparado.
+g) Las dificultades detectadas durante el desarrollo de la programación y las correspondientes 
+propuestas de mejora.
+Dicha evaluación se completará como un apartado en la programación de aula (F02.PC02) y 
+trimestralmente la Jefatura de familia profesional lo incluirá en el informe trimestral de 
+seguimiento de las programaciones (F03.PC02).
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+44/49
+Nº edición: 04 
+9. MEDIDAS DE ATENCIÓN A LA DIVERSIDAD
+En la actualidad la atención al alumnado con necesidades específicas de apoyo educativo está 
+regulada en la Comunidad Valenciana a través de la siguiente normativa:
+-
+Decreto 104/2018, de 27 de julio, del Consell, por el que se desarrollan los principios de 
+equidad y de inclusión en el sistema educativo valenciano.
+-
+Orden 20/2019, de 30 de abril, de la Conselleria de Educación, Investigación, Cultura y 
+Deporte, por la cual se regula la organización de la respuesta educativa para la 
+inclusión del alumnado en los centros docentes sostenidos con fondos públicos del 
+sistema educativo valenciano.
+Esta normativa establece las medidas de respuesta educativa para la inclusión que constituyen 
+todas las actuaciones educativas planificadas con la finalidad de eliminar las barreras 
+identificadas en los diversos contextos donde se desarrolla el proceso educativo de todo el 
+alumnado, y contribuyen de esta manera a la personalización del proceso de aprendizaje en 
+todas las etapas educativas. Están divididas en cuatro niveles. En concreto, nos centraremos 
+en las medidas de nivel III y IV.
+-
+Nivel III: Lo constituyen las medidas dirigidas al alumnado que requiere una respuesta 
+diferenciada, individualmente o en grupo, que implican apoyos ordinarios adicionales.
+-
+Nivel IV: Lo constituyen las medidas dirigidas al alumnado con necesidades específicas 
+de apoyo educativo que requiere una respuesta personalizada e individualizada de 
+carácter extraordinario que implique apoyos especializados adicionales.
+El departamento de orientación informará de los alumnos/as que necesitan medidas de 
+respuesta educativa para la inclusión de niveles III y IV para personalizar el proceso de 
+aprendizaje. En concreto, sirvan las siguientes de orientación:
+-
+Nivel III - Adecuación personalizada de las programaciones didácticas. Comporta la 
+planificación de las unidades didácticas y las actividades curriculares en diferentes 
+niveles de amplitud, la utilización de diversas formas de representación y de expresión, 
+actividades e instrumentos de evaluación.
+-
+Nivel III - Accesibilidad personalizada con medios comunes. Las adaptaciones de 
+acceso tienen como objetivo que el alumnado que presenta necesidades específicas de 
+apoyo educativo pueda acceder a las experiencias educativas comunes en entornos 
+normalizados y desarrollar el currículum ordinario o, si procede, el currículum adaptado. 
+Estas adaptaciones implican la modificación o la provisión materiales, espaciales, 
+personales, de comunicación, metodológicos u organizativos.
+-
+Nivel IV - Accesibilidad personalizada con medios específicos como por ejemplo en el 
+caso de discapacidad auditiva, con la utilización de una emisora FM como sistema 
+aumentativo de la comunicación. 
+-
+Nivel IV - Itinerario formativo personalizado en Formación Profesional: las medidas y, 
+cuando proceda, la ampliación de convocatorias se tramitarán conforme a la normativa 
+de evaluación y al asesoramiento de orientación; no se aplicarán de forma automática.
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+45/49
+Nº edición: 04 
+10. ANEXO I
+A continuación, se detallan las ponderaciones de los Resultados de aprendizaje del módulo, así 
+como la ponderación de cada Criterio de evaluación respecto a su Resultado de aprendizaje.
+Resultado de aprendizaje (0374.1)
+Ponderación
+Administra el servicio de directorio interpretando especificaciones e integrándolo en una 
+red
+18.00 %
+Criterio de Evaluación
+Ponderación
+a. Se han identificado la función, los elementos y las estructuras lógicas del servicio de 
+directorio
+10.00 %
+b. Se ha determinado y creado el esquema del servicio de directorio
+10.00 %
+c. Se ha realizado la instalación del servicio de directorio en el servidor
+10.00 %
+d. Se ha realizado la configuración y personalización del servicio de directorio
+10.00 %
+e. Se ha integrado el servicio de directorio con otros servicios
+10.00 %
+f. Se han aplicado filtros de búsqueda en el servicio de directorio
+10.00 %
+g. Se ha utilizado el servicio de directorio como mecanismo de acreditación centralizada de 
+los usuarios en una red
+10.00 %
+h. Se ha realizado la configuración del cliente para su integración en el servicio de 
+directorio
+10.00 %
+i. Se han utilizado herramientas gráficas y comandos para la administración del servicio de 
+directorio
+10.00 %
+j. Se ha documentado la estructura e implantación del servicio de directorio
+10.00 %
+Resultado de aprendizaje (0374.2)
+Ponderación
+Administra procesos del sistema describiéndolos y aplicando criterios de seguridad y 
+eficiencia
+8.00 %
+Criterio de Evaluación
+Ponderación
+a. Se han descrito el concepto de proceso del sistema, tipos, estados y ciclo de vida
+11.11 %
+b. Se han utilizado interrupciones y excepciones para describir los eventos internos del 
+procesador
+11.11 %
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+46/49
+Nº edición: 04 
+Resultado de aprendizaje (0374.2)
+Ponderación
+c. Se ha diferenciado entre proceso, hilo y trabajo
+11.11 %
+d. Se han realizado tareas de creación, manipulación y terminación de procesos
+11.11 %
+e. Se ha utilizado el sistema de archivos como medio lógico para el registro e identificación 
+de los procesos del sistema
+11.11 %
+f. Se han utilizado herramientas gráficas y comandos para el control y seguimiento de los 
+procesos del sistema
+11.11 %
+g. Se ha comprobado la secuencia de arranque del sistema, los procesos implicados y la 
+relación entre ellos
+11.11 %
+h. Se han tomado medidas de seguridad ante la aparición de procesos no identificados
+11.11 %
+i. Se han documentado los procesos habituales del sistema, su función y relación entre 
+ellos
+11.12 %
+Resultado de aprendizaje (0374.3)
+Ponderación
+Gestiona la automatización de tareas del sistema, aplicando criterios de eficiencia y 
+utilizando comandos y herramientas gráficas
+18.00 %
+Criterio de Evaluación
+Ponderación
+a. Se han descrito las ventajas de la automatización de las tareas repetitivas en el sistema
+12.50 %
+b. Se han utilizado los comandos del sistema para la planificación de tareas
+12.50 %
+c. Se han establecido restricciones de seguridad
+12.50 %
+d. Se han realizado planificaciones de tareas repetitivas o puntuales relacionadas con la 
+administración del sistema
+12.50 %
+e. Se ha automatizado la administración de cuentas
+12.50 %
+f. Se han instalado y configurado herramientas gráficas para la planificación de tareas
+12.50 %
+g. Se han utilizado herramientas gráficas para la planificación de tareas
+12.50 %
+h. Se han documentado los procesos programados como tareas automáticas
+12.50 %
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+47/49
+Nº edición: 04 
+Resultado de aprendizaje (0374.3)
+Ponderación
+Resultado de aprendizaje (0374.4)
+Ponderación
+Administra de forma remota el sistema operativo en red valorando su importancia y 
+aplicando criterios de seguridad
+9.00 %
+Criterio de Evaluación
+Ponderación
+a. Se han descrito métodos de acceso y administración remota de sistemas
+11.11 %
+b. Se ha diferenciado entre los servicios orientados a sesión y los no orientados a sesión
+11.11 %
+c. Se han utilizado herramientas de administración remota suministradas por el propio 
+sistema operativo
+11.11 %
+d. Se han instalado servicios de acceso y administración remota
+11.11 %
+e. Se han utilizado comandos y herramientas gráficas para gestionar los servicios de 
+acceso y administración remota
+11.11 %
+f. Se han creado cuentas de usuario para el acceso remoto
+11.11 %
+g. Se han realizado pruebas de acceso y administración remota entre sistemas 
+heterogéneos
+11.11 %
+h. Se han utilizado mecanismos de encriptación de la información transferida
+11.11 %
+i. Se han documentado los procesos y servicios del sistema administrados de forma remota
+11.12 %
+Resultado de aprendizaje (0374.5)
+Ponderación
+Administra servidores de impresión describiendo sus funciones e integrándolos en una red
+5.00 %
+Criterio de Evaluación
+Ponderación
+a. Se ha descrito la funcionalidad de los sistemas y servidores de impresión
+11.11 %
+b. Se han identificado los puertos y los protocolos utilizados
+11.11 %
+c. Se han utilizado las herramientas para la gestión de impresoras integradas en el sistema 
+operativo
+11.11 %
+d. Se ha instalado y configurado un servidor de impresión en entorno Web
+11.11 %
+11.11 %
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+48/49
+Nº edición: 04 
+Resultado de aprendizaje (0374.5)
+Ponderación
+e. Se han creado y clasificado impresoras lógicas
+f. Se han creado grupos de impresión
+11.11 %
+g. Se han gestionado impresoras y colas de trabajos mediante comandos y herramientas 
+gráficas
+11.11 %
+h. Se han compartido impresoras en red entre sistemas operativos diferentes
+11.11 %
+i. Se ha documentado la configuración del servidor de impresión y de las impresoras 
+creadas
+11.12 %
+Resultado de aprendizaje (0374.6)
+Ponderación
+Integra sistemas operativos libres y propietarios, justificando y garantizando su 
+interoperabilidad
+22.00 %
+Criterio de Evaluación
+Ponderación
+a. Se ha identificado la necesidad de compartir recursos en red entre diferentes sistemas 
+operativos
+12.50 %
+b. Se han establecido niveles de seguridad para controlar el acceso del cliente a los 
+recursos compartidos en red
+12.50 %
+c. Se ha comprobado la conectividad de la red en un escenario heterogéneo
+12.50 %
+d. Se ha descrito la funcionalidad de los servicios que permiten compartir recursos en red
+12.50 %
+e. Se han instalado y configurado servicios para compartir recursos en red
+12.50 %
+f. Se ha comprobado el funcionamiento de los servicios instalados
+12.50 %
+g. Se ha trabajado en grupo para acceder a sistemas de archivos e impresoras en red 
+desde equipos con diferentes sistemas operativos
+12.50 %
+h. Se ha documentado la configuración de los servicios instalados
+12.50 %
+Resultado de aprendizaje (0374.7)
+Ponderación
+Utiliza lenguajes de guiones en sistemas operativos, describiendo su aplicación y 
+administrando servicios del sistema operativo
+20.00 %
+Criterio de Evaluación
+Ponderación
+11.11 %
+
+
+F01.PC02 PROPUESTA DIDÁCTICA
+Código: F01.PC02
+49/49
+Nº edición: 04 
+Resultado de aprendizaje (0374.7)
+Ponderación
+a. Se han utilizado y combinado las estructuras del lenguaje para crear guiones
+b. Se han utilizado herramientas para depurar errores sintácticos y de ejecución
+11.11 %
+c. Se han interpretado guiones de configuración del sistema operativo
+11.11 %
+d. Se han realizado cambios y adaptaciones de guiones del sistema
+11.11 %
+e. Se han creado y probado guiones de administración de servicios
+11.11 %
+f. Se han creado y probado guiones de automatización de tareas
+11.11 %
+g. Se han implantado guiones en sistemas libres y propietarios
+11.11 %
+h. Se han consultado y utilizado librerías de funciones
+11.11 %
+i. Se han documentado los guiones creados
+11.12 %
+Ponderación de los criterios de evaluación distribuidos entre diferentes unidades
+Criterios de evaluación
+Unidad de referencia
+Ponderación de cada CE en su 
+unidad
+RA7.a–i
+UD1
+100 %
+RA2.a–i
+UD2
+100 %
+RA1.a–j
+UD3
+100 %
+RA6.a–h
+UD4
+100 %
+RA3.a–h
+UD5
+100 %
+RA4.a–i
+UD6
+100 %
+RA5.a–i
+UD7
+100 %
+Cada CE se atribuye al 100 % a una única unidad de referencia; no se reparte actualmente 
+entre varias unidades. Sus pesos dentro del RA son los de las tablas anteriores. Las evidencias 
+de PI y de empresa pueden contribuir a esos mismos CE y se integran en una única 
+calificación. El reparto centro/empresa del apartado 6 identifica el origen de las evidencias y no 
+modifica la ponderación curricular del anexo.

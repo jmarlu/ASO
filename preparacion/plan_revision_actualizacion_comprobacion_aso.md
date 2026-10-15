@@ -4,7 +4,7 @@ Fecha de revision: 2026-07-30
 
 Documento base revisado:
 
-- `Programación/PD_0374. Administración de sistemas operativos_Presencial_2425 (1).docx`
+- `Programación/PD_0374. Administración de sistemas operativos_Presencial_2026-2027.docx`
 
 Fuentes normativas contrastadas en la Fase 1:
 
