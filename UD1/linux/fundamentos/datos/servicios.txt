@@ -1,0 +1,6 @@
+web01;nginx;activo;120
+web02;nginx;fallido;15
+ldap01;slapd;activo;80
+files01;smbd;activo;200
+backup01;cron;activo;25
+web03;nginx;fallido;10

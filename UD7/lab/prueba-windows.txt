@@ -1,0 +1,8 @@
+ASO UD7 - Prueba desde Windows
+
+Cliente: anota el nombre de tu VM.
+Destino: aula_pdf en el servidor CUPS del laboratorio.
+
+Anota la hora de envio y comprueba el trabajo en el servidor.
+Abre el PDF generado y verifica estas lineas.
+No selecciones Microsoft Print to PDF como destino local.

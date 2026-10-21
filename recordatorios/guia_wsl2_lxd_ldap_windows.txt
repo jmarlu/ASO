@@ -1,0 +1,154 @@
+GUIA WSL2 + UBUNTU + LXD + DOCKER PARA LABORATORIO (WINDOWS 10/11)
+
+Objetivo: que el alumnado en Windows 10/11 tenga el mismo flujo de trabajo que en Linux, usando Ubuntu en WSL2 con Docker (LDAP) y LXD (Samba).
+Nota: esta guia asume un ordenador por alumno. No se trata la solucion de WiFi/bridge. Todo sucede en el mismo equipo.
+
+REQUISITOS
+- Windows 10 (2004 o superior) o Windows 11.
+- Virtualizacion activada en BIOS/UEFI.
+- Permisos de administrador local.
+- Espacio libre: 10-20 GB.
+- No usar Docker Desktop a la vez que Docker dentro de WSL2.
+
+INSTALACION DE WSL2 Y UBUNTU
+1) Instalar WSL2 + Ubuntu
+Abrir PowerShell como administrador y ejecutar:
+
+  wsl --install -d Ubuntu-22.04
+
+Reiniciar si lo solicita. Al abrir Ubuntu por primera vez, se creara usuario y contrasena.
+Abrir Ubuntu desde el menu Inicio o con:
+
+  wsl -d Ubuntu-22.04
+
+2) Activar systemd (necesario para LXD)
+En Ubuntu:
+
+  sudo tee /etc/wsl.conf >/dev/null <<'EOS'
+  [boot]
+  systemd=true
+  EOS
+
+Cerrar Ubuntu y reiniciar WSL:
+
+  wsl --shutdown
+
+Volver a abrir Ubuntu.
+
+INSTALACION DE DOCKER Y LXD EN UBUNTU (WSL2)
+3) Actualizar e instalar paquetes
+En Ubuntu:
+
+  sudo apt-get update
+  sudo apt-get install -y docker.io lxd ldap-utils
+
+4) Permisos y servicios
+En Ubuntu:
+
+  sudo usermod -aG docker "$USER"
+  sudo usermod -aG lxd "$USER"
+  newgrp docker
+  newgrp lxd
+  sudo systemctl enable --now docker
+
+5) Inicializar LXD (modo NAT)
+En Ubuntu:
+
+  sudo lxd init --auto
+
+LDAP EN DOCKER (SEGUN UD3)
+El LDAP corre en Docker dentro de Ubuntu WSL2 usando Docker Compose. Valores segun UD3:
+- Imagen: osixia/openldap:1.5.0
+- Dominio: asir.local
+- Base DN: dc=asir,dc=local
+- Admin DN: cn=admin,dc=asir,dc=local
+- Password admin: admin123
+- Puerto LDAP: 389
+- phpLDAPadmin: http://localhost:8080
+
+6) Crear estructura y docker-compose.yml
+En Ubuntu:
+
+  mkdir -p ~/openldap-lab/datos/ldap ~/openldap-lab/datos/slapd.d
+  cd ~/openldap-lab
+  cat > docker-compose.yml <<'EOF'
+  version: "3.9"
+
+  services:
+    openldap:
+      image: osixia/openldap:1.5.0
+      container_name: openldap
+      environment:
+        LDAP_ORGANISATION: "ASIR2X"
+        LDAP_DOMAIN: "asir.local"
+        LDAP_ADMIN_PASSWORD: "admin123"
+        LDAP_TLS: "false"
+      ports:
+        - "389:389"
+      volumes:
+        - ./datos/ldap:/var/lib/ldap
+        - ./datos/slapd.d:/etc/ldap/slapd.d
+      restart: unless-stopped
+
+    phpldapadmin:
+      image: osixia/phpldapadmin:0.9.0
+      container_name: phpldapadmin
+      environment:
+        PHPLDAPADMIN_LDAP_HOSTS: openldap
+        PHPLDAPADMIN_HTTPS: "false"
+      ports:
+        - "8080:80"
+      depends_on:
+        - openldap
+      restart: unless-stopped
+  EOF
+
+7) Levantar el stack LDAP
+En Ubuntu:
+
+  docker compose up -d
+
+8) Prueba rapida
+En Ubuntu:
+
+  ldapsearch -x -H ldap://localhost:389 -b "dc=asir,dc=local" "(objectClass=*)"
+
+Acceso web a phpLDAPadmin:
+  http://localhost:8080
+  Login DN: cn=admin,dc=asir,dc=local
+  Password: admin123
+
+ACCESO DESDE CONTENEDOR LXD (SAMBA) AL LDAP
+Docker y LXD usan redes NAT diferentes. El contenedor LXD debe acceder al LDAP a traves del host.
+Obtener IP del host en la red de LXD (lxdbr0):
+
+  ip -4 addr show lxdbr0 | awk '/inet /{print $2}'
+
+Ejemplo tipico: 10.0.0.1/24. Usar 10.0.0.1 como LDAP_HOST en el contenedor LXD:
+
+  ldap://10.0.0.1:389
+
+Prueba desde el LXD (ejemplo):
+
+  lxc exec samba -- ldapsearch -x -H ldap://10.0.0.1:389 -b "dc=asir,dc=local"
+
+ACCESO A VM VIRTUALBOX (HOST-ONLY)
+WSL2 no ve la red Host-Only de VirtualBox. Para acceder desde WSL2, se recomienda anadir un segundo adaptador NAT y hacer reenvio de puertos.
+En VirtualBox (VM Ubuntu):
+1) Adaptador 1 = Host-Only (como ya lo teneis).
+2) Adaptador 2 = NAT.
+3) Reenvio de puertos: Host 2222 -> Guest 22 (SSH).
+
+Desde Ubuntu (WSL2):
+
+  ssh usuario@127.0.0.1 -p 2222
+
+Para otros servicios, abrir mas puertos en NAT y conectar a 127.0.0.1:PUERTO.
+
+CHECKLIST FINAL
+- Ubuntu WSL2 abre y tiene usuario creado.
+- systemd activo (WSL reiniciado).
+- Docker y LXD instalados y funcionales.
+- LDAP en Docker Compose con puerto 389 publicado.
+- LXD accede al LDAP via IP de lxdbr0 (10.0.0.1 tipico).
+- VM VirtualBox accesible desde WSL2 por NAT + port forwarding.
