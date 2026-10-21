@@ -471,7 +471,7 @@ Estos ejercicios aprovechan contenidos del banco de cuestionarios de la unidad, 
 3. Sobre `trabajo/umask/archivo`, deja solo lectura para el propietario (`400`) y demuestra que otro usuario no puede escribir si el entorno dispone de una cuenta de prueba. No cambies permisos de rutas del sistema.
 4. Crea `trabajo/umask/privado.txt` con modo `640`. Explica qué puede hacer el propietario, el grupo y el resto. Comprueba cada afirmación con una orden de consulta, no intentando modificar cuentas reales.
 
-### 8.3. `find`, filtros y acciones controladas
+### 8.3. `find`,  acciones controladas
 
 1. Busca en `trabajo` los archivos regulares que terminen en `.txt` o `.log`, ignorando mayúsculas. Agrupa las alternativas con `\( ... -o ... \)` y explica qué cambiaría si omites los paréntesis.
 2. Busca archivos regulares de exactamente 10 bytes y verifica cada resultado con `wc -c`.
@@ -480,12 +480,135 @@ Estos ejercicios aprovechan contenidos del banco de cuestionarios de la unidad, 
 5. Añade permiso de ejecución a los `.sh` que hayas creado dentro de `trabajo`, y quita permisos de escritura para otros sobre los `.txt`. Antes y después, lista los modos y revisa que no has afectado a otra ruta.
 6. Repite la búsqueda de un nombre sin borrar nada con `-print`. Como ampliación opcional, utiliza `-ok` para pedir confirmación antes de una acción sobre un archivo de prueba. No se admite `-delete`, `rm -r` ni `chown` en esta actividad.
 
-### 8.4. Procesos y planificación segura
 
-1. Ejecuta `sleep 120 &`, guarda su PID con `$!`, consulta su estado con `ps -o pid,ppid,stat,ni,comm -p "$!"` y finalízalo con `kill -TERM "$!"`. Comprueba que desaparece con `wait`.
-2. Ordena una copia de la salida de `ps` por nombre de comando usando `tr`, `sort` y una redirección a `salidas/procesos.txt`. No mates procesos que no hayas creado tú.
-3. Programa una tarea de prueba con `at` para escribir la fecha en `salidas/at.txt` dentro de dos minutos, consulta la cola con `atq` y conserva la salida. Si `atd` no está disponible, documenta el requisito y no lo instales sin autorización.
-4. Escribe una entrada temporal de `cron` que añada la fecha a `salidas/cron.txt` cada cinco minutos. Usa una ruta absoluta al script, revisa la entrada con `crontab -l` y retírala al terminar. No uses `/root`, no escribas en `/etc/crontab` y no dejes tareas aceleradas activas.
+
+### 8.4. Filtros combinados y expresiones regulares avanzadas
+
+Aplica los contenidos de [Filtros de texto](filtros.md): `grep -E`, `cut`, `sort`, `uniq`, `tr`, `wc`, `head`, tuberías y redirecciones. Resuelve los retos sin `awk`, `sed`, bucles ni `grep -P`. El objetivo es combinar los filtros vistos en teoría y construir patrones con anclas, alternativas, agrupaciones, clases y repeticiones.
+
+#### Preparación
+
+Desde la raíz de la zona de práctica, crea este inventario independiente. Cada fila contiene exactamente cinco campos separados por `;`: `equipo;servicio;estado;memoria_MiB;IPv4`. No hay cabecera ni espacios dentro de los campos.
+
+```bash
+
+{
+    echo 'web01;nginx;activo;128;192.168.10.10'
+    echo 'web02;nginx;fallido;64;192.168.10.11'
+    echo 'web03;nginx;inactivo;256;192.168.10.12'
+    echo 'ldap01;slapd;activo;512;10.0.0.5'
+    echo 'ldap02;slapd;fallido;128;10.0.0.6'
+    echo 'files01;smbd;activo;1024;172.16.0.20'
+    echo 'backup7;cron;activo;32;192.168.20.7'
+    echo 'backup12;cron;fallido;64;192.168.20.12'
+    echo 'web001;nginx;activo;128;192.168.10.13'
+    echo 'web04;nginx;activo;128;999.168.10.14'
+    echo 'web05;nginx;activo;128;192.168.10.015'
+    echo 'xweb06;nginx;activo;128;192.168.10.16'
+} > trabajo/inventario-filtros.txt
+```
+
+Las últimas cuatro filas contienen errores deliberados. Las reglas de validación son:
+
+- Nombre: web, ldap o files seguido de exactamente dos dígitos; o backup seguido de uno o dos dígitos.
+- Servicio: nginx, slapd, smbd o cron. No se exige relacionarlo con el prefijo del nombre.
+- Estado: activo, inactivo o fallido.
+- Memoria: entero positivo sin ceros iniciales.
+- IPv4: cuatro octetos entre 0 y 255, sin ceros iniciales en números de varias cifras. No se comprueba si la dirección está asignada o es accesible.
+
+#### Ejercicios
+
+Antes de cada solución, escribe el resultado que esperas. Explica cada comando y cada parte de las expresiones regulares, además del paso de datos por las tuberías.
+
+1. **Nombres completos.** Extrae el primer campo y selecciona los nombres válidos con una única expresión regular extendida. Obtén también los rechazados mediante selección inversa. Explica por qué buscar simplemente `web[0-9]{2}` aceptaría fragmentos de nombres incorrectos.
+2. **Condiciones simultáneas.** Selecciona filas de equipos web o ldap con nombre válido y estado activo o fallido. Exige campos completos para no confundir activo con inactivo. Resuelve primero con dos `grep -E` encadenados y después con uno solo; compara las salidas.
+3. **Repeticiones y campos.** Selecciona filas cuya memoria tenga de tres a cuatro cifras, sin ceros iniciales. Construye un patrón que llegue al cuarto campo desde el inicio de línea usando `[^;]+` y una agrupación repetida. Explica por qué buscar `[0-9]{3,4}` en cualquier posición también puede encontrar parte de una IP.
+4. **IPv4 y rangos.** Extrae el quinto campo y valida la dirección completa a partir del patrón de octeto visto en teoría. Guarda las aceptadas en `salidas/ipv4-validas.txt` y las rechazadas en `salidas/ipv4-rechazadas.txt`. Explica por qué cuatro grupos de uno a tres dígitos aceptarían las dos direcciones incorrectas.
+5. **Validación integral.** Construye una única expresión regular que compruebe los cinco campos, los delimitadores y todas las reglas de preparación, desde `^` hasta `$`. Puedes guardar fragmentos en variables Bash, como en el ejemplo de IPv4 de la teoría. Guarda las filas aceptadas en `salidas/inventario-validado.txt` y las rechazadas en `salidas/inventario-rechazado.txt`. Comprueba que la suma de ambas cuentas coincide con el total original.
+6. **Selección por intervalo.** Sobre el inventario validado, selecciona equipos activos con servicio nginx o slapd y memoria entre 100 y 599 MiB, ambos incluidos. Expresa el intervalo mediante clases de dígitos y muestra solo equipo y memoria, separados por `;`.
+7. **Recuento y desempate.** Cuenta equipos por servicio en el inventario validado. Ordena por cantidad descendente y, en los empates, por servicio ascendente. Explica por qué debes ordenar antes de `uniq -c` y cómo limitas las claves de la ordenación final. Usa `LC_ALL=C` para obtener un orden reproducible.
+8. **Los tres mayores.** Ordena el inventario validado por memoria numérica descendente y, en los empates, por nombre ascendente. Muestra solo los tres primeros equipos y sus memorias. Explica por qué ordenar la memoria como texto daría otro resultado.
+9. **Subred y exclusión.** Del inventario validado, obtén los nombres de equipos de `192.168.10.0/24` cuyo estado no sea inactivo. Selecciona los tres primeros octetos exactos al inicio del quinto campo, con puntos literales. Muestra los nombres en mayúsculas y sin duplicados.
+10. **Alcance de las alternativas.** Compara `grep -E '^web|ldap[0-9]{2};'` con `grep -E '^(web|ldap)[0-9]{2};'` sobre el inventario original. Identifica la fila que diferencia las salidas y explica el alcance de las anclas y los paréntesis. Añade con `echo`, solo a otro archivo de prueba, una fila cuyo nombre contenga ldap sin empezar por él y demuestra otro falso positivo del primer patrón.
+11. **Sufijos opcionales y puntos literales.** Crea un archivo con `web01.log`, `web01.log.1`, `web01.log.12`, `ldap02.log`, `web1.log`, `web01Xlog`, `web01.log.123` y `xweb01.log`, uno por línea. Con un único patrón, admite solo web o ldap seguido de dos dígitos, punto literal y log, con un sufijo opcional de punto y uno o dos dígitos. Utiliza un grupo opcional y explica cada rechazo.
+12. **Repetir con nuevos datos.** Copia el inventario original a `trabajo/inventario-filtros-copia.txt` y añade `echo 'web06;nginx;fallido;256;192.168.10.16' >> trabajo/inventario-filtros-copia.txt`. Repite la validación integral y el recuento por servicio sobre la copia. Conserva las salidas originales y explica qué resultados cambian.
+
+#### Correo electrónico: validación y filtros por dominio
+
+Para estos ejercicios usamos un **formato didáctico de correo-e**, no una validación completa de todos los formatos de correo electrónico. Comprobar el patrón no demuestra que el dominio exista ni que el buzón pueda recibir mensajes.
+
+Crea los datos desde la raíz de la práctica:
+
+```bash
+{
+    echo 'ana@centro.example'
+    echo 'Luis.Perez@centro.example'
+    echo 'soporte+linux@aula.centro.example'
+    echo 'admin_2@lab-red.example'
+    echo 'backup-01@servidores.example'
+    echo 'ana@centro.example'
+    echo '.ana@centro.example'
+    echo 'ana..lopez@centro.example'
+    echo 'ana.@centro.example'
+    echo 'ana@@centro.example'
+    echo 'ana@-centro.example'
+    echo 'ana@centro-.example'
+    echo 'ana@centro..example'
+    echo 'ana@centro.e'
+    echo 'ana centro@centro.example'
+    echo 'ana@centro.example.extra1'
+} > trabajo/correos-filtros.txt
+```
+
+Aplica estas reglas exactas:
+
+- La parte anterior a `@` consta de uno o más bloques separados por puntos literales. Cada bloque contiene una o más letras ASCII, dígitos, guiones, guiones bajos o signos `+`. No puede haber puntos iniciales, finales ni consecutivos.
+- Hay exactamente una arroba y no se admiten espacios.
+- Después de `@` hay al menos dos etiquetas separadas por puntos. Cada etiqueta empieza y termina con letra ASCII o dígito; los guiones solo se permiten en el interior. Una etiqueta de un solo carácter también es válida.
+- La última etiqueta contiene únicamente letras ASCII y tiene entre 2 y 10 caracteres. Se admiten mayúsculas y minúsculas en toda la dirección. No se imponen otras restricciones de longitud en este modelo.
+
+13. **Construir una regex por partes.** Diseña por separado los patrones de un bloque local, la parte local completa, una etiqueta de dominio y el dominio completo. Combínalos con anclas en una única expresión de `grep -E`. Utiliza agrupaciones repetidas para los puntos y contempla las etiquetas de un solo carácter. Guarda las líneas aceptadas en `salidas/correos-validos.txt` y las rechazadas en `salidas/correos-rechazados.txt`. Explica por qué `[A-Za-z0-9._+-]+@.+` no basta para cumplir las reglas.
+14. **Justificar los rechazos.** Para cada dirección rechazada, identifica la regla que incumple. Añade a otro archivo los casos `a@b.es`, `a+b@c.example`, `a@b.c`, `a@b_.es` y `a@b.abcdefghijk`. Predice cuáles acepta tu patrón y compruébalo. Explica la función del punto escapado y cómo colocas el guion dentro de una clase para tratarlo como carácter literal.
+15. **Dominios exactos y subdominios.** Sobre los correos válidos, selecciona primero solo el dominio exacto `centro.example` y después ese dominio junto con todos sus subdominios. Utiliza patrones anclados que respeten la arroba y los límites de las etiquetas. Crea dos casos adicionales con `ana@otrocentro.example` y `ana@centro.example.org` y demuestra que ninguna de las dos búsquedas los acepta.
+16. **Extraer, deduplicar y contar.** Extrae los dominios de las líneas válidas con `cut`, normaliza solo esos dominios a minúsculas con `tr`, ordénalos y cuenta sus apariciones con `uniq -c`. Ordena el informe por cantidad descendente y dominio ascendente en los empates. Después elimina las direcciones duplicadas exactas y repite el recuento: explica por qué cambia el total. Conserva la parte local tal como aparece; no hace falta convertir las direcciones completas a minúsculas.
+17. **Coincidencias parciales frente a validación.** Compara el patrón completo del ejercicio 13, con y sin anclas, sobre `.ana@centro.example`, `ana@centro.example.extra1` y `Contacto: ana@centro.example`. Usa también `grep -Eo` con el patrón sin anclas para ver los fragmentos coincidentes. Explica por qué extraer un fragmento con aspecto de correo no demuestra que la línea completa cumpla las reglas.
+
+18. **Combinar `find` y expresiones regulares.** Prepara este árbol independiente desde la raíz de la práctica:
+
+    ```bash
+    mkdir -p trabajo/correos-find/subdirectorio
+    echo 'ana@centro.example' > 'trabajo/correos-find/contactos aula.txt'
+    echo 'ana@@centro.example' > trabajo/correos-find/errores.log
+    echo 'soporte+linux@aula.centro.example' > trabajo/correos-find/subdirectorio/AVISOS.LOG
+    echo 'admin_2@lab-red.example' > trabajo/correos-find/ignorar.csv
+    ```
+
+    Localiza recursivamente solo archivos regulares terminados en `.txt` o `.log`, sin distinguir mayúsculas. Sobre esos archivos, ejecuta mediante `find -exec ... {} +` el patrón completo de correo-e del ejercicio 13 con `grep -E`. Primero muestra las líneas válidas junto con su archivo de origen (`-H`); después muestra únicamente las rutas de archivos con al menos una dirección válida (`-l`). Guarda el segundo resultado ordenado en `salidas/archivos-con-correo.txt`. Protege el nombre con espacios, utiliza `--` antes de las rutas que recibe `grep` y explica por qué los patrones de `-iname` seleccionan nombres mientras que la regex de `grep` examina contenido. No sigas enlaces simbólicos ni uses acciones de borrado.
+
+#### Comprobaciones y entrega
+
+| Ejercicio | Resultado esperado sobre los datos originales |
+|---|---|
+| 1 | 10 nombres válidos; se rechazan web001 y xweb06 |
+| 2 | 6 filas: web01, web02, ldap01, ldap02, web04 y web05 |
+| 3 | 9 filas con memoria de tres o cuatro cifras |
+| 4 | 10 direcciones válidas; se rechazan `999.168.10.14` y `192.168.10.015` |
+| 5 | 8 filas válidas y 4 rechazadas |
+| 6 | `web01;128` y `ldap01;512` |
+| 7 | nginx: 3; cron: 2; slapd: 2; smbd: 1, en ese orden |
+| 8 | files01: 1024; ldap01: 512; web03: 256 |
+| 9 | WEB01 y WEB02 |
+| 10 | El primer patrón incluye además web001 |
+| 11 | Se admiten los cuatro primeros nombres |
+| 12 | 13 filas totales, 9 válidas y 4 rechazadas; nginx pasa a tener 4 equipos válidos |
+| 13 | 16 líneas: 6 aceptadas y 10 rechazadas; 5 direcciones válidas distintas |
+| 14 | Se aceptan `a@b.es` y `a+b@c.example`; se rechazan los otros tres casos |
+| 15 | Dominio exacto: 3 líneas; con subdominios: 4 líneas, antes de eliminar duplicados |
+| 16 | centro.example: 3; aula.centro.example: 1; lab-red.example: 1; servidores.example: 1. Sin direcciones duplicadas, centro.example pasa a 2 y el total a 5 |
+| 17 | Con anclas no se acepta ninguna de las tres líneas; sin anclas las tres contienen un fragmento coincidente |
+| 18 | Dos archivos: `trabajo/correos-find/contactos aula.txt` y `trabajo/correos-find/subdirectorio/AVISOS.LOG`; errores.log no contiene correos válidos e ignorar.csv queda fuera por su extensión |
+
+Guarda predicciones, comandos, resultados y explicaciones en `evidencias/08-4-filtros-regex.md`. Para cada patrón de validación completa, añade al menos dos ejemplos aceptados y dos rechazados que prueben sus límites. Compara lo previsto con lo obtenido y explica las correcciones realizadas. Las salidas deben calcularse desde los datos, no escribirse a mano.
 
 **Criterios de ampliación:** 25 % exactitud de las órdenes, 25 % explicación de expansión/redirecciones, 25 % límites de seguridad y limpieza del entorno, 25 % evidencias reproducibles. Una salida correcta sin explicar la orden queda incompleta.
 
