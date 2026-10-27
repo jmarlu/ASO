@@ -1,0 +1,14 @@
+[Unit]
+Description=Copia de datos ASO
+
+[Service]
+Type=oneshot
+User=asoauto
+Group=asoauto
+UMask=0077
+ExecStart=/usr/local/lib/aso-ud5/copia.sh /srv/aso-ud5/datos /var/lib/aso-ud5/copias
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/aso-ud5

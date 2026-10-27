@@ -1,0 +1,2898 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://example.com/UD1/examen-mock-fundamentos-linux-2026-10-27/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Examen mock: Fundamentos de GNU/Linux (ASO) - Administración de Sistemas Operativos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+  
+  
+    
+      
+      
+    
+  
+  
+  <style>:root{--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M0%202.75C0%201.784.784%201%201.75%201h12.5c.966%200%201.75.784%201.75%201.75v10.5A1.75%201.75%200%200%201%2014.25%2015H1.75A1.75%201.75%200%200%201%200%2013.25Zm1.75-.25a.25.25%200%200%200-.25.25v10.5c0%20.138.112.25.25.25h12.5a.25.25%200%200%200%20.25-.25V2.75a.25.25%200%200%200-.25-.25ZM7.25%208a.75.75%200%200%201-.22.53l-2.25%202.25a.749.749%200%200%201-1.275-.326.75.75%200%200%201%20.215-.734L5.44%208%203.72%206.28a.749.749%200%200%201%20.326-1.275.75.75%200%200%201%20.734.215l2.25%202.25c.141.14.22.331.22.53m1.5%201.5h3a.75.75%200%200%201%200%201.5h-3a.75.75%200%200%201%200-1.5%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#examen-mock-fundamentos-de-gnulinux-aso" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Administración de Sistemas Operativos" class="md-header__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Administración de Sistemas Operativos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Examen mock: Fundamentos de GNU/Linux (ASO)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Administración de Sistemas Operativos" class="md-nav__button md-logo" aria-label="Administración de Sistemas Operativos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Administración de Sistemas Operativos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guía del módulo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../temporalizacion_2026_2027/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calendario 2026/2027
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD1-Shell Scripting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD1-Shell Scripting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fundamentos de GNU/Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fundamentos de GNU/Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/fundamentos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presentación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/fundamentos/IntroTerminal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terminal y ayuda
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/fundamentos/EstructuraDirectorios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Directorios y rutas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/fundamentos/gestionArchivos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestión de archivos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/fundamentos/permisosBasicos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Permisos básicos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/fundamentos/redirecciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Redirecciones y tuberías
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/fundamentos/filtros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Filtros de texto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/fundamentos/busquedaArchivos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Búsqueda de archivos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/fundamentos/Actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades de repaso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/fundamentos/examen-mock-fundamentos-linux-2026-10-27%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examen mock Fundamentos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/Scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creación de Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/Variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/Aritmetica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aritmetica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/Comparadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comparadores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/IF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estructura IF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/Operadores_Binarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operadores Binarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/Argumentos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Argumentos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/Case/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Esructura CASE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/While_Until/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Esructura WHILE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/For/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Esructura FOR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/Break/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Break y Continue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/Actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/Scripts_refuerzo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades Scripts_refuerzo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../windows/021_Introducci%C3%B3nPwSh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../windows/comandos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comandos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../windows/Manejo%20resultados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manejo de Resultados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../windows/022_PowerShell_Sintaxis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sintaxis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../windows/023_PowerShell_ControlFlujo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control de flujo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../windows/024_PowerShell_VectoresFunciones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vectores y funciones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD2.Administración procesos y Servicios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD2.Administración procesos y Servicios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/InstaWindow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalación en Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/InstaLinux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalación en Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/procesosLinux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestión de procesos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/GestiServicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestión de Servicios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/programaTareas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programación de Tareas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/ContenedoresLXC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contenedores lxd/lxc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/actuSisOp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actualización del Sistema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/registroWindow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registro de Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/Actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD3.Servicios de Directorio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD3.Servicios de Directorio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD3/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducción a LDAP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD3/docker-openldap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenLDAP en Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD3/pam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAM en Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD3/ServiciosAutenticacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Servicios de Autenticación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD3/actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD4.Integración de sistemas operativos en red
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD4.Integración de sistemas operativos en red
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD4/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD4/actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD5.Automatización y mantenimiento GNU/Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD5.Automatización y mantenimiento GNU/Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presentación y objetivos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD5/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoría
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD5/laboratorio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratorio guiado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD5/actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades y evaluación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD6.Acceso y administración remota
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD6.Acceso y administración remota
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presentación y objetivos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD6/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoría
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD6/laboratorio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratorio guiado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD6/actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades y evaluación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD6/ampliacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ampliación PowerShell y xRDP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD7.Servidores de impresión
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD7.Servidores de impresión
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presentación y objetivos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD7/teoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoría
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD7/laboratorio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laboratorio CUPS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD7/actividades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades y evaluación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD7/windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ampliación servidor Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="examen-mock-fundamentos-de-gnulinux-aso">Examen mock: Fundamentos de GNU/Linux (ASO)</h1>
+<p><strong>Fecha:</strong> 27 de octubre de 2026</p>
+<p>Entorno: Bash en Ubuntu, usuario sin privilegios (sin <code>sudo</code>). Todas las preguntas parten del directorio de práctica (<code>datos/</code>, <code>trabajo/</code>, <code>salidas/</code>) con <code>eventos.log</code> tal como se crea en la preparación.</p>
+<p>Para la Parte E, crea antes este archivo:</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>&gt;<span class="w"> </span>datos/cuentas.txt<span class="w"> </span><span class="s">&lt;&lt;'EOF'</span>
+<span class="s">ES9121000418450200051332</span>
+<span class="s">ES91 2100 0418 4502 0005 1332</span>
+<span class="s">ES9121000418450200051</span>
+<span class="s">es9121000418450200051332</span>
+<span class="s">ES91 2100 0418 4502 0005 13320</span>
+<span class="s">FR7630006000011234567890189</span>
+<span class="s">EOF</span>
+</code></pre></div>
+<p>Para la Parte F, crea antes este archivo:</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>&gt;<span class="w"> </span>datos/errores.log<span class="w"> </span><span class="s">&lt;&lt;'EOF'</span>
+<span class="s">2026-09-01T09:00 INFO web01 E000 arranque ip=192.168.1.10</span>
+<span class="s">2026-09-01T09:05 ERROR web02 E404 /index.html ip=10.0.0.5</span>
+<span class="s">2026-09-01T09:07 ERROR web02 E500 /api/login ip=10.0.0.5</span>
+<span class="s">2026-09-01T09:10 WARN files01 E201 espacio=91% ip=192.168.1.20</span>
+<span class="s">2026-09-01T09:12 ERROR ldap01 E389 bind-fallido ip=172.16.0.3</span>
+<span class="s">2026-09-01T09:15 ERROR web03 E403 /admin ip=999.1.1.1</span>
+<span class="s">2026-09-01T09:20 INFO backup01 E000 copia-ok ip=192.168.1.30</span>
+<span class="s">2026-09-01T09:22 ERROR web01 E404 /favicon.ico ip=203.0.113.77</span>
+<span class="s">2026-09-01T09:30 WARN web02 E503 timeout ip=10.0.0.5</span>
+<span class="s">2026-09-01T09:31 ERROR files01 E13 disco-lleno ip=192.168.1.20</span>
+<span class="s">2026-09-01T09:40 FATAL db01 E900 caida ip=10.0.0.9</span>
+<span class="s">2026-09-01T09:45 ERROR web03 e404 /Index.html ip=256.10.0.1</span>
+<span class="s">EOF</span>
+wc<span class="w"> </span>-l<span class="w"> </span>datos/errores.log
+</code></pre></div>
+<hr />
+<h2 id="parte-a-test">Parte A. Test</h2>
+<p><strong>A1.</strong> ¿Qué es <code>~</code> en Bash?</p>
+<ul>
+<li>a) La raíz del sistema de archivos</li>
+<li>b) Una expansión de Bash al directorio personal</li>
+<li>c) El directorio padre</li>
+<li>d) El directorio <code>/root</code></li>
+</ul>
+<p><strong>A2.</strong> ¿Qué directorio contiene el archivo <code>/home/alumno/datos/informe.txt</code>?</p>
+<ul>
+<li>a) <code>/home/alumno</code></li>
+<li>b) <code>/home/alumno/datos/informe.txt</code></li>
+<li>c) <code>/home/alumno/datos</code></li>
+<li>d) <code>/home</code></li>
+</ul>
+<p><strong>A3.</strong> El modo <code>750</code> de un archivo equivale a:</p>
+<ul>
+<li>a) <code>rwxr-x---</code>, con ejecución solo para el propietario</li>
+<li>b) <code>rwxr-x---</code>, con ejecución para propietario y grupo</li>
+<li>c) <code>rwxr-xr--</code></li>
+<li>d) <code>rwx---r-x</code></li>
+</ul>
+<p><strong>A4.</strong> Con <code>umask 077</code>, un archivo nuevo creado con <code>touch</code> queda con modo:</p>
+<ul>
+<li>a) 700</li>
+<li>b) 644</li>
+<li>c) 600</li>
+<li>d) 077</li>
+</ul>
+<p><strong>A5.</strong> En <code>find</code>, la prueba <code>-perm /111</code> selecciona entradas con:</p>
+<ul>
+<li>a) Exactamente el modo 111</li>
+<li>b) Los tres bits de ejecución presentes</li>
+<li>c) Al menos uno de los bits de ejecución presente</li>
+<li>d) Solo el bit de ejecución del propietario</li>
+</ul>
+<p><strong>A6.</strong> En la salida de <code>ls -l</code>, una línea que empieza por <code>l</code> corresponde a:</p>
+<ul>
+<li>a) Un archivo de registro (log)</li>
+<li>b) Un enlace simbólico</li>
+<li>c) Un directorio bloqueado</li>
+<li>d) Un dispositivo de bloques</li>
+</ul>
+<p><strong>A7.</strong> ¿Qué hace <code>orden1 &amp;&amp; orden2</code>?</p>
+<ul>
+<li>a) Ejecuta <code>orden2</code> siempre</li>
+<li>b) Ejecuta <code>orden2</code> solo si <code>orden1</code> falla</li>
+<li>c) Ejecuta <code>orden2</code> solo si <code>orden1</code> termina con éxito</li>
+<li>d) Ejecuta ambas en paralelo</li>
+</ul>
+<p><strong>A8.</strong> La orden <code>ls -ld datos ruta-inexistente 2&gt;&amp;1 &gt; salidas/x.log</code> guarda en <code>x.log</code>:</p>
+<ul>
+<li>a) Salida normal y error</li>
+<li>b) Solo el error</li>
+<li>c) Solo la salida normal; el error sigue viéndose en la terminal</li>
+<li>d) Nada</li>
+</ul>
+<p><strong>A9.</strong> ¿Qué mide <code>-ctime</code> en <code>find</code>?</p>
+<ul>
+<li>a) La fecha de creación del archivo</li>
+<li>b) El último acceso</li>
+<li>c) El último cambio de contenido</li>
+<li>d) El último cambio de estado o metadatos</li>
+</ul>
+<p><strong>A10.</strong> <code>grep</code> devuelve el código 1 cuando:</p>
+<ul>
+<li>a) Hay un error de lectura</li>
+<li>b) No hay ninguna línea coincidente</li>
+<li>c) Hay coincidencias</li>
+<li>d) La expresión regular es inválida</li>
+</ul>
+<hr />
+<h2 id="parte-b-predice-la-salida">Parte B. Predice la salida</h2>
+<p>Escribe exactamente qué se mostraría, sin ejecutar nada.</p>
+<p><strong>B1.</strong></p>
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-Ev<span class="w"> </span><span class="s1">' (ERROR|WARN) '</span><span class="w"> </span>datos/eventos.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="s1">' '</span><span class="w"> </span>-f3
+</code></pre></div>
+<p><strong>B2.</strong></p>
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-Eo<span class="w"> </span><span class="s1">'web[0-9]{2}'</span><span class="w"> </span>datos/eventos.log<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">LC_ALL</span><span class="o">=</span>C<span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c
+</code></pre></div>
+<p><strong>B3.</strong></p>
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span><span class="s1">' WARN '</span><span class="w"> </span>datos/eventos.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="s1">' '</span><span class="w"> </span>-f3<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq
+</code></pre></div>
+<p><strong>B4.</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s1">'web123'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'^web[0-9]{1,2}$'</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
+</code></pre></div>
+<hr />
+<h2 id="parte-c-escribe-la-orden">Parte C. Escribe la orden</h2>
+<p>Una sola orden o tubería por apartado, salvo que se indique otra cosa.</p>
+<p><strong>C1.</strong> Muestra las líneas de <code>datos/eventos.log</code> correspondientes a errores de <code>web02</code>, con su número de línea.</p>
+<p><strong>C2.</strong> Guarda en <code>salidas/errores.log</code> todas las líneas ERROR del registro y, a continuación, muestra solo cuántas líneas contiene ese archivo (sin mostrar su contenido).</p>
+<p><strong>C3.</strong> Ejecuta <code>ls -ld datos ruta-inexistente</code> guardando <strong>tanto la salida normal como el error</strong> en <code>salidas/ls.log</code>.</p>
+<p><strong>C4.</strong> Copia <code>datos/servicios.txt</code> a <code>trabajo/secreto.txt</code>, deja el archivo con lectura y escritura para el propietario, solo lectura para el grupo y ningún permiso para otros, y comprueba el resultado mostrando el modo en octal y el nombre.</p>
+<p><strong>C5.</strong> Lista los archivos regulares de <code>trabajo</code> cuyo nombre termine en <code>.txt</code> o <code>.log</code> y que se hayan modificado en los últimos 60 minutos.</p>
+<p><strong>C6.</strong> Estando en <code>trabajo/documentos</code>, crea un enlace simbólico llamado <code>enlace-servicios</code> que apunte a <code>datos/servicios.txt</code> usando una <strong>ruta relativa</strong>.</p>
+<hr />
+<h2 id="parte-d-encuentra-el-fallo">Parte D. Encuentra el fallo</h2>
+<p>Indica qué problema tiene cada caso y cómo corregirlo.</p>
+<p><strong>D1.</strong> <code>sort trabajo/lista.txt &gt; trabajo/lista.txt</code></p>
+<p><strong>D2.</strong> <code>find trabajo -name *.txt</code> (puede dar resultados raros si hay archivos <code>.txt</code> en el directorio actual).</p>
+<p><strong>D3.</strong> Un compañero dice: «<code>grep -E '^web|ldap' datos/servicios.txt</code> selecciona las filas que empiezan por web o por ldap».</p>
+<p><strong>D4.</strong> Un compañero dice: «Con <code>umask 027</code>, un directorio nuevo queda 750 y un archivo nuevo 640».</p>
+<hr />
+<h2 id="parte-e-expresiones-regulares-avanzadas-cuentas-bancarias">Parte E. Expresiones regulares avanzadas (cuentas bancarias)</h2>
+<p>Usa <code>grep -E</code> y, para rangos como <code>[A-Z]</code>, <code>LC_ALL=C</code>.</p>
+<p><strong>E1.</strong> Selecciona los IBAN españoles <strong>sin espacios</strong> de <code>datos/cuentas.txt</code>: <code>ES</code>, dos dígitos de control y 20 dígitos (24 caracteres).</p>
+<p><strong>E2.</strong> Selecciona los IBAN españoles <strong>con espacios cada 4 caracteres</strong> (<code>ES91 2100 0418 4502 0005 1332</code>).</p>
+<p><strong>E3.</strong> Selecciona los IBAN españoles <strong>con o sin espacios</strong>. ¿Qué defecto tiene tu solución con los espacios mezclados?</p>
+<p><strong>E4.</strong> Selecciona IBAN de <strong>cualquier país</strong>: 2 letras, 2 dígitos y de 11 a 30 caracteres alfanuméricos. ¿Qué líneas coinciden y por qué alguna no debería?</p>
+<p><strong>E5.</strong> Número de tarjeta de 16 dígitos en grupos de 4 con <strong>separador coherente</strong> (espacio o guion, el mismo las tres veces). Pruébalo con:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s1">'4539 1488 0343 6467'</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">'4539-1488-0343-6467'</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">'4539 1488-0343 6467'</span>
+</code></pre></div>
+<p><strong>E6.</strong> Importe en formato español: miles con punto, decimales con coma, signo opcional. Debe aceptar <code>1.234,56</code>, <code>-12,05</code>, <code>1234,50</code>, <code>1.000.000,00</code> y rechazar <code>1.23,45</code>, <code>12,5</code>, <code>1,234.56</code>.</p>
+<p><strong>E7.</strong> Fecha ISO (<code>2026-09-01</code>) con mes de 01 a 12 y día de 01 a 31. ¿Acepta <code>2026-02-31</code>? ¿Por qué?</p>
+<p><strong>E8.</strong> Extrae solo el IBAN español, sin el resto del texto, de:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s1">'Transferencia a ES9121000418450200051332 realizada'</span>
+</code></pre></div>
+<p><strong>E9.</strong> Preguntas de reflexión:</p>
+<ol>
+<li>¿Por qué ninguna regex puede validar los dígitos de control del IBAN?</li>
+<li>¿Cómo corregirías E3 para no aceptar espacios mezclados?</li>
+<li>¿Qué diferencia hay entre <code>^ES|FR</code> y <code>^(ES|FR)</code>?</li>
+</ol>
+<hr />
+<h2 id="parte-f-expresiones-regulares-con-erroreslog">Parte F. Expresiones regulares con <code>errores.log</code></h2>
+<p>Usa <code>grep -E</code> y comillas simples. Antes de ejecutar cada orden, anota qué líneas esperas obtener.</p>
+<h3 id="bloque-1-anclas-y-alternativas">Bloque 1. Anclas y alternativas</h3>
+<p><strong>F1.</strong> Cuenta las líneas de nivel <code>ERROR</code>.</p>
+<p><strong>F2.</strong> Cuenta las líneas cuyo código empieza por <code>E4</code> y tiene tres dígitos en total (en mayúscula).</p>
+<p><strong>F3.</strong> Muestra el nombre de los equipos con nivel <code>ERROR</code> o <code>FATAL</code> cuyo nombre <strong>no</strong> empiece por <code>web</code>.</p>
+<p><strong>F4.</strong> Muestra las líneas de nivel <code>WARN</code> o <code>INFO</code>, con su número de línea.</p>
+<h3 id="bloque-2-repeticiones-y-clases">Bloque 2. Repeticiones y clases</h3>
+<p><strong>F5.</strong> Selecciona las líneas con un código de <strong>uno o dos dígitos</strong> (por ejemplo <code>E13</code>).</p>
+<p><strong>F6.</strong> Selecciona los códigos de cliente y servidor (<code>E4xx</code> o <code>E5xx</code>) y muestra cuántas veces aparece cada uno (<code>cut</code>, <code>sort</code>, <code>uniq -c</code>).</p>
+<p><strong>F7.</strong> Muestra solo las rutas que terminan en <code>.html</code> (campo 5), una por línea.</p>
+<p><strong>F8.</strong> Selecciona las líneas cuya hora esté entre <code>09:00</code> y <code>09:15</code> ambas incluidas. Pista: dos alternativas en los minutos.</p>
+<p><strong>F9.</strong> Selecciona las líneas cuyo porcentaje de espacio sea del 90% al 100%.</p>
+<h3 id="bloque-3-mayusculas-puntos-literales-y-alcance">Bloque 3. Mayúsculas, puntos literales y alcance</h3>
+<p><strong>F10.</strong> Cuenta las líneas con código <code>404</code> ignorando mayúsculas en la <code>E</code>, sin usar <code>-i</code>.</p>
+<p><strong>F11.</strong> Explica qué diferencia hay entre estas dos órdenes y qué devuelve cada una:</p>
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'ip=10.0.0.5'</span><span class="w"> </span>datos/errores.log
+grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'ip=10\.0\.0\.5'</span><span class="w"> </span>datos/errores.log
+</code></pre></div>
+<p><strong>F12.</strong> Compara y explica:</p>
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'ERROR|FATAL web03'</span><span class="w"> </span>datos/errores.log
+grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'(ERROR|FATAL) web03'</span><span class="w"> </span>datos/errores.log
+</code></pre></div>
+<h3 id="bloque-4-direcciones-ip">Bloque 4. Direcciones IP</h3>
+<p><strong>F13.</strong> Muestra solo las IP (<code>-o</code>, sin el prefijo <code>ip=</code>), sin repetidas y ordenadas.</p>
+<p><strong>F14.</strong> Selecciona las líneas cuya IP empiece por <code>192.168.</code> o por <code>10.</code>.</p>
+<p><strong>F15.</strong> Selecciona las líneas de nivel <code>ERROR</code> cuya IP empiece por <code>10.</code>.</p>
+<p><strong>F16.</strong> Con la variable <code>octeto</code> de <code>filtros.md</code>, muestra las líneas con una IP <strong>válida</strong> y después las que tienen una IP <strong>no válida</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">octeto</span><span class="o">=</span><span class="s1">'(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])'</span>
+</code></pre></div>
+<h3 id="bloque-5-reto">Bloque 5. Reto</h3>
+<p><strong>F17.</strong> Escribe una sola expresión que valide una línea completa con esta forma: fecha ISO con hora, nivel (<code>INFO|WARN|ERROR|FATAL</code>), equipo (letras minúsculas seguidas de dos dígitos), código <code>E</code> + 1 a 3 dígitos y un último campo <code>ip=</code> con una IP válida. ¿Cuántas líneas coinciden?</p>
+<p><strong>F18.</strong> ¿Qué líneas no cumplen la validación del ejercicio F17 y por qué motivo cada una?</p>
+<h2 id="-">---</h2>
+<h1 id="solucionario">Solucionario</h1>
+<h2 id="parte-a">Parte A</h2>
+<p>1-b · 2-c · 3-b · 4-c · 5-c · 6-b · 7-c · 8-c · 9-d · 10-b</p>
+<ul>
+<li><strong>A2:</strong> el directorio contenedor es <code>/home/alumno/datos</code>, no <code>/home/alumno</code>.</li>
+<li><strong>A3:</strong> el segundo dígito (5 = <code>r-x</code>) da ejecución al grupo.</li>
+<li><strong>A4:</strong> se retiran bits de 666, así que queda 600.</li>
+<li><strong>A8:</strong> <code>2&gt;&amp;1</code> se procesa antes que <code>&gt; archivo</code>, así que stderr adopta el destino anterior de stdout (la terminal).</li>
+<li><strong>A9:</strong> ctime no es la fecha de creación.</li>
+</ul>
+<h2 id="parte-b">Parte B</h2>
+<p><strong>B1.</strong></p>
+<div class="highlight"><pre><span></span><code>web01
+ldap01
+backup01
+</code></pre></div>
+<p><strong>B2.</strong></p>
+<div class="highlight"><pre><span></span><code>      1 web01
+      2 web02
+      1 web03
+</code></pre></div>
+<p>El ancho del contador puede variar, pero los valores son 1, 2 y 1.</p>
+<p><strong>B3.</strong></p>
+<div class="highlight"><pre><span></span><code>files01
+</code></pre></div>
+<p>Las dos líneas WARN son de <code>files01</code> y quedan adyacentes, así que <code>uniq</code> las reduce a una.</p>
+<p><strong>B4.</strong> <code>grep</code> no muestra nada y después aparece <code>1</code> (hay tres dígitos y el patrón admite de uno a dos).</p>
+<h2 id="parte-c">Parte C</h2>
+<p><strong>C1.</strong> <code>grep -n ' ERROR web02 ' datos/eventos.log</code> (líneas 2 y 6)</p>
+<p><strong>C2.</strong></p>
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span><span class="s1">' ERROR '</span><span class="w"> </span>datos/eventos.log<span class="w"> </span>&gt;<span class="w"> </span>salidas/errores.log
+wc<span class="w"> </span>-l<span class="w"> </span>&lt;<span class="w"> </span>salidas/errores.log
+</code></pre></div>
+<p>Resultado: <code>3</code>.</p>
+<p><strong>C3.</strong> <code>ls -ld datos ruta-inexistente &gt; salidas/ls.log 2&gt;&amp;1</code> (el orden importa)</p>
+<p><strong>C4.</strong></p>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>--<span class="w"> </span>datos/servicios.txt<span class="w"> </span>trabajo/secreto.txt
+chmod<span class="w"> </span><span class="m">640</span><span class="w"> </span>trabajo/secreto.txt
+stat<span class="w"> </span>-c<span class="w"> </span><span class="s1">'%a %n'</span><span class="w"> </span>trabajo/secreto.txt
+</code></pre></div>
+<p>También vale <code>chmod u=rw,g=r,o=</code>.</p>
+<p><strong>C5.</strong> <code>find trabajo -type f \( -name '*.txt' -o -name '*.log' \) -mmin -60 -print</code></p>
+<p>Los paréntesis escapados son necesarios porque <code>-a</code> tiene prioridad sobre <code>-o</code>.</p>
+<p><strong>C6.</strong> <code>ln -s -- ../../datos/servicios.txt enlace-servicios</code></p>
+<p>La ruta relativa se interpreta desde la carpeta que contiene el enlace (<code>trabajo/documentos</code>), por eso hacen falta dos <code>../</code>.</p>
+<h2 id="parte-d">Parte D</h2>
+<p><strong>D1.</strong> La redirección se prepara antes de ejecutar <code>sort</code>, así que el archivo se vacía antes de leerlo. Solución: <code>sort trabajo/lista.txt &gt; trabajo/lista-ordenada.txt</code>, o <code>sort -o trabajo/lista.txt trabajo/lista.txt</code>.</p>
+<p><strong>D2.</strong> Sin comillas, Bash puede expandir <code>*.txt</code> antes de pasarlo a <code>find</code>. Solución: <code>find trabajo -name '*.txt'</code>.</p>
+<p><strong>D3.</strong> Falso: <code>^web|ldap</code> selecciona líneas que empiezan por <code>web</code> <strong>o contienen <code>ldap</code> en cualquier posición</strong>. Solución: <code>grep -E '^(web|ldap)' datos/servicios.txt</code>.</p>
+<p><strong>D4.</strong> Correcto. Se parte de 777 para directorios (→ 750) y de 666 para archivos (→ 640). No es una resta decimal, sino la retirada de bits.</p>
+<h2 id="parte-e">Parte E</h2>
+<p><strong>E1.</strong> <code>grep -E '^ES[0-9]{22}$' datos/cuentas.txt</code> → solo la línea 1. La 3 es corta y la 4 está en minúsculas.</p>
+<p><strong>E2.</strong> <code>grep -E '^ES[0-9]{2}( [0-9]{4}){5}$' datos/cuentas.txt</code> → solo la línea 2. La 5 falla por tener cinco dígitos en el último grupo.</p>
+<p><strong>E3.</strong> <code>grep -E '^ES[0-9]{2}( ?[0-9]{4}){5}$' datos/cuentas.txt</code> → líneas 1 y 2. Defecto: acepta espacios mezclados (<code>ES912100 0418...</code>), porque no obliga a ser coherente.</p>
+<p><strong>E4.</strong> <code>LC_ALL=C grep -E '^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$' datos/cuentas.txt</code> → líneas 1, 3 y 6. La línea 3 coincide aunque le falte un dígito: la forma genérica no conoce la longitud de cada país. La regex comprueba la forma, no la validez.</p>
+<p><strong>E5.</strong> <code>grep -E '^[0-9]{4}([ -])[0-9]{4}\1[0-9]{4}\1[0-9]{4}$'</code> → coinciden las dos primeras; la tercera no (separadores mezclados). <code>\1</code> es una referencia hacia atrás al primer grupo.</p>
+<p><strong>E6.</strong> <code>grep -E '^-?([0-9]{1,3}(\.[0-9]{3})+|[0-9]+),[0-9]{2}$'</code></p>
+<p><strong>E7.</strong> <code>grep -E '^20[0-9]{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$'</code>. Sí acepta <code>2026-02-31</code>: comprueba rangos, no el calendario real.</p>
+<p><strong>E8.</strong> <code>echo '...' | grep -Eo 'ES[0-9]{22}'</code>. Sin anclas y con <code>-o</code> se muestra solo el fragmento coincidente.</p>
+<p><strong>E9.</strong></p>
+<ol>
+<li>Los dígitos de control se calculan con módulo 97 sobre el número entero; una regex solo describe patrones de texto.</li>
+<li>Con dos alternativas: <code>^(ES[0-9]{22}|ES[0-9]{2}( [0-9]{4}){5})$</code>.</li>
+<li><code>^ES|FR</code> selecciona líneas que empiezan por <code>ES</code> <strong>o contienen <code>FR</code> en cualquier posición</strong>; <code>^(ES|FR)</code> exige que empiecen por una de las dos.</li>
+</ol>
+<h2 id="parte-f">Parte F</h2>
+<p><strong>F1.</strong> <code>grep -Ec ' ERROR ' datos/errores.log</code> → <code>7</code></p>
+<p><strong>F2.</strong> <code>grep -Ec ' E4[0-9]{2} ' datos/errores.log</code> → <code>3</code> (E404, E403, E404). La línea con <code>e404</code> no cuenta por la minúscula.</p>
+<p><strong>F3.</strong> <code>grep -E ' (ERROR|FATAL) ' datos/errores.log | grep -Ev ' web' | cut -d' ' -f3</code></p>
+<div class="highlight"><pre><span></span><code>ldap01
+files01
+db01
+</code></pre></div>
+<p><strong>F4.</strong> <code>grep -nE ' (WARN|INFO) ' datos/errores.log</code> → líneas 1, 4, 7 y 9.</p>
+<p><strong>F5.</strong> <code>grep -E ' E[0-9]{1,2} ' datos/errores.log</code> → solo la línea de <code>E13</code> (<code>files01</code>). Los espacios alrededor impiden confundir <code>E13</code> con parte de <code>E138</code>.</p>
+<p><strong>F6.</strong></p>
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">' E[45][0-9]{2} '</span><span class="w"> </span>datos/errores.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="s1">' '</span><span class="w"> </span>-f4<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">LC_ALL</span><span class="o">=</span>C<span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>      1 E403
+      2 E404
+      1 E500
+      1 E503
+</code></pre></div>
+<p><strong>F7.</strong> <code>grep -E ' /[^ ]+\.html ' datos/errores.log | cut -d' ' -f5</code></p>
+<div class="highlight"><pre><span></span><code>/index.html
+/Index.html
+</code></pre></div>
+<p><strong>F8.</strong> <code>grep -E 'T09:(0[0-9]|1[0-5]) ' datos/errores.log</code> → 6 líneas (de 09:00 a 09:15). El espacio final evita aceptar <code>09:150</code>.</p>
+<p><strong>F9.</strong> <code>grep -E 'espacio=(9[0-9]|100)%' datos/errores.log</code> → la línea de <code>files01</code> con <code>espacio=91%</code>.</p>
+<p><strong>F10.</strong> <code>grep -Ec ' [eE]404 ' datos/errores.log</code> → <code>3</code></p>
+<p><strong>F11.</strong> La primera usa <code>.</code> sin escapar, que acepta cualquier carácter: también coincidiría con <code>10X0Y0Z5</code>. La segunda exige puntos literales. Con estos datos las dos devuelven las mismas 3 líneas, pero solo la segunda es correcta.</p>
+<p><strong>F12.</strong> La primera busca <code>ERROR</code> <strong>o</strong> <code>FATAL web03</code> (alternativa sin agrupar): selecciona todas las líneas ERROR más las FATAL de web03 (ninguna). La segunda agrupa y exige que el nivel sea <code>ERROR</code> o <code>FATAL</code> seguido de <code>web03</code>: devuelve solo las 2 líneas de <code>ERROR web03</code>; la primera devuelve las 7 líneas ERROR. Los paréntesis cambian el alcance de la alternativa.</p>
+<p><strong>F13.</strong></p>
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-Eo<span class="w"> </span><span class="s1">'ip=[0-9.]+'</span><span class="w"> </span>datos/errores.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="o">=</span><span class="w"> </span>-f2<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">LC_ALL</span><span class="o">=</span>C<span class="w"> </span>sort<span class="w"> </span>-u
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>10.0.0.5
+10.0.0.9
+172.16.0.3
+192.168.1.10
+192.168.1.20
+192.168.1.30
+203.0.113.77
+256.10.0.1
+999.1.1.1
+</code></pre></div>
+<p><strong>F14.</strong> <code>grep -E 'ip=(192\.168|10)\.' datos/errores.log</code> → 8 líneas.</p>
+<p><strong>F15.</strong> <code>grep -E ' ERROR .* ip=10\.' datos/errores.log | cut -d' ' -f3</code> → <code>web02</code> y <code>web02</code>.</p>
+<p><strong>F16.</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nv">octeto</span><span class="o">=</span><span class="s1">'(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])'</span>
+grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">"ip=(</span><span class="nv">$octeto</span><span class="s2">\.){3}</span><span class="nv">$octeto</span>$<span class="s2">"</span><span class="w"> </span>datos/errores.log<span class="w">      </span><span class="c1"># IP válida: 10 líneas</span>
+grep<span class="w"> </span>-Ev<span class="w"> </span><span class="s2">"ip=(</span><span class="nv">$octeto</span><span class="s2">\.){3}</span><span class="nv">$octeto</span>$<span class="s2">"</span><span class="w"> </span>datos/errores.log<span class="w">     </span><span class="c1"># IP no válida: 2 líneas</span>
+</code></pre></div>
+<p>Las no válidas son <code>999.1.1.1</code> (web03, 09:15) y <code>256.10.0.1</code> (web03, 09:45).</p>
+<p><strong>F17.</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nv">octeto</span><span class="o">=</span><span class="s1">'(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])'</span>
+grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">"^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2} (INFO|WARN|ERROR|FATAL) [a-z]+[0-9]{2} E[0-9]{1,3} [^ ]+ ip=(</span><span class="nv">$octeto</span><span class="s2">\.){3}</span><span class="nv">$octeto</span>$<span class="s2">"</span><span class="w"> </span>datos/errores.log
+</code></pre></div>
+<p>Coinciden <strong>10</strong> líneas.</p>
+<p><strong>F18.</strong> Fallan 2 líneas:</p>
+<ul>
+<li>Línea 6 (<code>web03 E403</code>): IP <code>999.1.1.1</code>, primer octeto fuera de rango.</li>
+<li>Línea 12 (<code>web03 e404</code>): IP <code>256.10.0.1</code> fuera de rango y, además, código con <code>e</code> minúscula, que tampoco encajaría con <code>E[0-9]{1,3}</code>.</li>
+</ul>
+<p>La línea 10 (<code>E13</code>) sí cumple, porque el código admite de 1 a 3 dígitos.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.path", "navigation.footer", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotate", "content.code.copy", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
